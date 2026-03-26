@@ -8,119 +8,135 @@
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<div class="page">
 
-<div class="site-logo"><img src="assets/images/dhwani-logo.png" alt="Dhwani RIS"></div>
+<!-- Mobile header -->
+<div class="mobile-header">
+  <img src="assets/images/dhwani-logo.png" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
 
-<header>
-  <h1>AI Playground<span>.</span></h1>
-  <div class="sub">Dhwani RIS &mdash; Weekly AI Sessions for Product &amp; Operations</div>
-  <div class="quip">"The best way to learn AI is to use AI. The best way to use AI is to teach it about you."</div>
-</header>
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="assets/images/dhwani-logo.png" alt="Dhwani RIS">
+    <div class="sidebar-title">AI Playground</div>
+    <div class="sidebar-sub">Product &amp; Operations</div>
+  </div>
+  <div class="sidebar-section">
+    <a class="sidebar-link active" href="index.html"><span class="link-icon">~</span> Home</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sessions</div>
+    <a class="sidebar-link" href="sessions/session-0.html"><span class="link-icon">0</span> Introduction</a>
+    <a class="sidebar-link" href="sessions/session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
+    <a class="sidebar-link" href="sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
+    <a class="sidebar-link" href="sessions/session-3.html"><span class="link-icon">3</span> Hands On <span class="badge-new">Latest</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Resources</div>
+    <a class="sidebar-link" href="readings.html"><span class="link-icon">R</span> Readings</a>
+    <a class="sidebar-link" href="tools.html"><span class="link-icon">T</span> Tools</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="https://dhwaniris.com">dhwaniris.com</a>
+    <small>Built by Nihaan Mohammed</small>
+  </div>
+</aside>
 
-<nav>
-  <a href="index.html" class="active">Home</a>
-  <a href="sessions/session-0.html">Session 0</a>
-  <a href="sessions/session-1.html">Session 1</a>
-  <a href="sessions/session-2.html">Session 2</a>
-  <a href="sessions/session-3.html">Session 3</a>
-</nav>
+<!-- Main content -->
+<div class="main"><div class="content">
 
-<!-- ══ WHAT IS THIS ══ -->
+<div class="page-header">
+  <h1>Welcome to AI Playground<span>.</span></h1>
+  <div class="page-meta">Every Thursday &middot; 5:00 &ndash; 6:00 PM &middot; Dhwani RIS</div>
+</div>
+
+<!-- What is this -->
 <section>
   <h2>What Is This?</h2>
   <div class="prose">
-    <p>Every Thursday from 4:00 to 5:00 PM, the product and operations team at Dhwani RIS sits together to learn how to work with AI &mdash; not as developers, but as <strong>domain experts</strong> who happen to have AI as a team member.</p>
-    <p>These sessions follow two principles:</p>
+    <p>Every Thursday evening, the product and operations team sits together to learn how to work with AI. Not as developers — as <strong>domain experts</strong> who happen to have AI as a team member.</p>
+    <p>No slides. No theory dumps. Every session, you leave having <strong>built something</strong>.</p>
   </div>
   <div class="quote">
-    <strong>Richard Feynman:</strong> Start from what you know. Use analogies. If it feels complicated, we haven't explained it well enough.
-    <br><br>
-    <strong>Andrew Ng:</strong> Start small. Ship something. Your first attempt doesn't need to be perfect &mdash; it needs to exist.
-  </div>
-  <div class="prose">
-    <p>No slides. No theory dumps. Every session, you leave having <strong>built</strong> something.</p>
+    <strong>Our approach:</strong> Start from what you know. Use simple language. If it feels complicated, we haven't explained it well enough. And the most important thing — just get started. Your first attempt doesn't need to be perfect. It needs to exist.
+    <cite>Inspired by Richard Feynman &amp; Andrew Ng</cite>
   </div>
 </section>
 
-<!-- ══ SESSIONS ══ -->
+<!-- Sessions -->
 <section>
   <h2>Sessions</h2>
   <div class="session-grid">
-
     <a href="sessions/session-3.html" class="session-card">
       <div class="card-num upcoming">3</div>
       <div class="card-body">
-        <h3>Your AI Knowledge Base &mdash; Hands On</h3>
+        <h3>Your AI Knowledge Base — Hands On</h3>
         <div class="card-date">26 Mar 2026 &middot; Latest</div>
-        <div class="card-desc">Create your GitHub repo, CLAUDE.md, and first domain skill. Connect GitHub to Claude UI. Stop explaining yourself from scratch every conversation.</div>
+        <div class="card-desc">Create your GitHub repo, CLAUDE.md, and first domain skill. Connect GitHub to Claude. Stop explaining yourself from scratch every conversation.</div>
       </div>
     </a>
-
     <a href="sessions/session-2.html" class="session-card">
       <div class="card-num">2</div>
       <div class="card-body">
         <h3>GitHub as Your Knowledge Base</h3>
         <div class="card-date">19 Mar 2026</div>
-        <div class="card-desc">Why GitHub beats folders and email attachments. Repository structure. CLI introduction. Real-world QA demo with dashboard testing via video.</div>
+        <div class="card-desc">Why GitHub beats folders. Repository basics. CLI introduction. Dashboard QA demo using video.</div>
       </div>
     </a>
-
     <a href="sessions/session-1.html" class="session-card">
       <div class="card-num">1</div>
       <div class="card-body">
-        <h3>Vibe Coding &mdash; The How-To Guide</h3>
+        <h3>Vibe Coding — The How-To Guide</h3>
         <div class="card-date">12 Mar 2026</div>
-        <div class="card-desc">GitHub tokens, CLAUDE.md, Security MD, Claude Code vs Codex. How to write better prompts. Developer review workflow. Common mistakes to avoid.</div>
+        <div class="card-desc">GitHub tokens. CLAUDE.md and Security MD. Claude Code vs Codex. Better prompts. Developer review workflow.</div>
       </div>
     </a>
-
     <a href="sessions/session-0.html" class="session-card">
       <div class="card-num">0</div>
       <div class="card-body">
         <h3>Introduction &amp; Open Build</h3>
         <div class="card-date">6 Mar 2026</div>
-        <div class="card-desc">Why AI matters for our work. Tools landscape. MD files as the universal format. Skills concept. Token efficiency. Setting the open-build culture.</div>
+        <div class="card-desc">Why AI matters for our work. Tools overview. MD files. Skills concept. Token efficiency.</div>
       </div>
     </a>
-
   </div>
 </section>
 
-<!-- ══ HOW TO USE THIS SITE ══ -->
+<!-- How to use this site -->
 <section>
   <h2>How To Use This Site</h2>
-  <div class="n"><i>1</i><p><strong>Before a session:</strong> Open the latest session page. Read the prerequisites. Come prepared.</p></div>
-  <div class="n"><i>2</i><p><strong>During a session:</strong> Follow along on this site. Nihaan screen-shares from here. All templates and instructions are on the page.</p></div>
-  <div class="n"><i>3</i><p><strong>After a session:</strong> Come back to the page for reference. Complete the action items. Share questions in the group.</p></div>
+  <div class="n"><i>1</i><p><strong>Before a session:</strong> Open the latest session page. Read the objective and pre-reading. Come prepared.</p></div>
+  <div class="n"><i>2</i><p><strong>During a session:</strong> Follow along here. All templates and step-by-step guides are on the page.</p></div>
+  <div class="n"><i>3</i><p><strong>After a session:</strong> Come back for reference. Complete the action items. Check the further reading section.</p></div>
   <div class="n"><i>4</i><p><strong>Feed it to AI:</strong> Paste any session page URL into Claude and say "read this and help me complete the action items."</p></div>
 </section>
 
-<!-- ══ QUICK LINKS ══ -->
-<section>
-  <h2>Quick Links</h2>
-  <div class="r"><code>GitHub</code><span><a href="https://github.com" style="color:var(--primary)">github.com</a> &mdash; sign up or log in</span></div>
-  <div class="r"><code>Claude</code><span><a href="https://claude.ai" style="color:var(--primary)">claude.ai</a> &mdash; start a conversation</span></div>
-  <div class="r"><code>Deploy</code><span><a href="https://platform.dhwaniris.in" style="color:var(--primary)">platform.dhwaniris.in</a> &mdash; get scoped GitHub tokens for org repos</span></div>
-  <div class="r"><code>Source</code><span><a href="https://github.com/prody-dris/ai-playground-sessions" style="color:var(--primary)">This site's repo</a> &mdash; everything here is open</span></div>
-</section>
-
-<!-- ══ WHO IS THIS FOR ══ -->
+<!-- Who is this for -->
 <section>
   <h2>Who Is This For?</h2>
   <div class="prose">
-    <p>Product managers, operations leads, domain experts, and anyone at Dhwani RIS who wants to work with AI effectively &mdash; <strong>without becoming a developer</strong>. You bring the knowledge. AI brings the execution. These sessions teach you how to bridge the gap.</p>
+    <p>Product managers, operations leads, domain experts, and anyone at Dhwani RIS who wants to work with AI effectively — <strong>without becoming a developer</strong>.</p>
+    <p>You bring the knowledge. AI brings the execution. These sessions teach you how to bridge the gap.</p>
   </div>
 </section>
 
-<footer>
-  <div>
-    <a href="https://dhwaniris.com">Dhwani RIS</a> &middot;
-    <a href="https://github.com/prody-dris/ai-playground-sessions">Source &amp; Contribute</a>
-  </div>
-  <small>Built by Nihaan Mohammed with Claude Code &middot; 2026</small>
-</footer>
+<!-- Quick links -->
+<section>
+  <h2>Quick Links</h2>
+  <div class="r"><code>GitHub</code><span><a href="https://github.com">github.com</a> — sign up or log in</span></div>
+  <div class="r"><code>Claude</code><span><a href="https://claude.ai">claude.ai</a> — start a conversation</span></div>
+  <div class="r"><code>Deploy</code><span><a href="https://platform.dhwaniris.in">platform.dhwaniris.in</a> — scoped tokens for org repos</span></div>
+  <div class="r"><code>Source</code><span><a href="https://github.com/prody-dris/ai-playground-sessions">This site's repo</a> — everything here is open</span></div>
+</section>
 
+<div class="main-footer">
+  <div><a href="https://dhwaniris.com">Dhwani RIS</a> &middot; <a href="https://github.com/prody-dris/ai-playground-sessions">Source</a></div>
+  <small>Built by Nihaan Mohammed with Claude Code &middot; 2026</small>
 </div>
+
+</div></div>
 </body>
 </html>

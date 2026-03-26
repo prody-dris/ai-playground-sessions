@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tools — AI Playground</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="mobile-header">
+  <img src="assets/images/dhwani-logo.png" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="assets/images/dhwani-logo.png" alt="Dhwani RIS">
+    <div class="sidebar-title">AI Playground</div>
+    <div class="sidebar-sub">Product &amp; Operations</div>
+  </div>
+  <div class="sidebar-section">
+    <a class="sidebar-link" href="index.html"><span class="link-icon">~</span> Home</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sessions</div>
+    <a class="sidebar-link" href="sessions/session-0.html"><span class="link-icon">0</span> Introduction</a>
+    <a class="sidebar-link" href="sessions/session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
+    <a class="sidebar-link" href="sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
+    <a class="sidebar-link" href="sessions/session-3.html"><span class="link-icon">3</span> Hands On <span class="badge-new">Latest</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Resources</div>
+    <a class="sidebar-link" href="readings.html"><span class="link-icon">R</span> Readings</a>
+    <a class="sidebar-link active" href="tools.html"><span class="link-icon">T</span> Tools</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="https://dhwaniris.com">dhwaniris.com</a>
+    <small>Built by Nihaan Mohammed</small>
+  </div>
+</aside>
+
+<div class="main"><div class="content">
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Tools</div>
+  <h1>Tools<span>.</span></h1>
+  <div class="page-meta">Everything our team uses — curated for non-developers</div>
+</div>
+
+<!-- Core AI -->
+<section>
+  <h2>Core AI Tools</h2>
+  <div class="prose"><p>The main AI tools we use at Dhwani RIS. Start here.</p></div>
+  <div class="tool-grid">
+    <a class="tool-card" href="https://claude.ai" target="_blank">
+      <h4>Claude (Chat UI)</h4>
+      <p>Thinking, brainstorming, writing, document creation, image generation. Best for conversations and artifacts.</p>
+      <span class="tool-tag core">Core</span>
+    </a>
+    <a class="tool-card" href="https://claude.ai/code" target="_blank">
+      <h4>Claude Code (CLI)</h4>
+      <p>Terminal-based coding. Parallel agents, MCP connections, infinite sessions. For code work and integrations.</p>
+      <span class="tool-tag core">Core</span>
+    </a>
+    <a class="tool-card" href="https://chatgpt.com" target="_blank">
+      <h4>ChatGPT</h4>
+      <p>Strong complex reasoning (GPT-5). Good for breaking down requirements and structured analysis.</p>
+      <span class="tool-tag core">Core</span>
+    </a>
+    <a class="tool-card" href="https://chatgpt.com/codex" target="_blank">
+      <h4>Codex (OpenAI)</h4>
+      <p>Quick scripts, Python utilities, second opinions on code. Free to explore alongside Claude.</p>
+      <span class="tool-tag core">Core</span>
+    </a>
+  </div>
+</section>
+
+<!-- Data & Spreadsheets -->
+<section>
+  <h2>Data &amp; Spreadsheets <small>— Excel alternatives with AI built in</small></h2>
+  <div class="prose"><p>If you work with data, these tools let you analyse, visualise, and query data using plain English instead of formulas.</p></div>
+  <div class="tool-grid">
+    <a class="tool-card" href="https://julius.ai" target="_blank">
+      <h4>Julius AI</h4>
+      <p>Upload a CSV or Excel file, ask questions in English. Creates charts, runs analysis, exports results. Best Excel replacement for non-technical users.</p>
+      <span class="tool-tag data">Data</span>
+    </a>
+    <a class="tool-card" href="https://rows.com" target="_blank">
+      <h4>Rows</h4>
+      <p>Spreadsheet with AI built into every cell. Summarise, classify, extract data using natural language. Feels like Excel but smarter.</p>
+      <span class="tool-tag data">Data</span>
+    </a>
+    <a class="tool-card" href="https://workspace.google.com/products/sheets/" target="_blank">
+      <h4>Google Sheets + Gemini</h4>
+      <p>Google Sheets now has Gemini AI. Generate formulas, create charts, and analyse data by describing what you want.</p>
+      <span class="tool-tag data">Data</span>
+    </a>
+    <a class="tool-card" href="https://airtable.com" target="_blank">
+      <h4>Airtable</h4>
+      <p>Database meets spreadsheet. Great for tracking projects, managing records, and building simple apps without code.</p>
+      <span class="tool-tag data">Data</span>
+    </a>
+  </div>
+</section>
+
+<!-- AI Video -->
+<section>
+  <h2>AI Video &amp; Recording</h2>
+  <div class="prose"><p>Create professional videos, record sessions, and edit footage using AI. No video editing skills needed.</p></div>
+  <div class="tool-grid">
+    <a class="tool-card" href="https://www.loom.com" target="_blank">
+      <h4>Loom</h4>
+      <p>Screen recording with AI summaries, auto-chapters, and transcription. Perfect for sharing demos and walkthroughs.</p>
+      <span class="tool-tag video">Video</span>
+    </a>
+    <a class="tool-card" href="https://www.descript.com" target="_blank">
+      <h4>Descript</h4>
+      <p>Edit video by editing text. Remove filler words, add captions, clip highlights — all by editing a transcript.</p>
+      <span class="tool-tag video">Video</span>
+    </a>
+    <a class="tool-card" href="https://www.capcut.com" target="_blank">
+      <h4>CapCut</h4>
+      <p>Free AI video editor. Auto-captions, background removal, templates. Great for quick polished clips.</p>
+      <span class="tool-tag video">Video</span>
+    </a>
+    <a class="tool-card" href="https://www.heygen.com" target="_blank">
+      <h4>HeyGen</h4>
+      <p>AI avatar videos. Type a script, pick an avatar, get a professional video. Good for training content and explainers.</p>
+      <span class="tool-tag video">Video</span>
+    </a>
+    <a class="tool-card" href="https://www.synthesia.io" target="_blank">
+      <h4>Synthesia</h4>
+      <p>Enterprise AI video platform. Create training videos with AI presenters in multiple languages. No camera needed.</p>
+      <span class="tool-tag video">Video</span>
+    </a>
+    <a class="tool-card" href="https://gamma.app" target="_blank">
+      <h4>Gamma</h4>
+      <p>AI presentations. Describe what you want, get a polished slide deck. Export to PDF or present directly.</p>
+      <span class="tool-tag video">Video</span>
+    </a>
+  </div>
+</section>
+
+<!-- Research & Search -->
+<section>
+  <h2>Research &amp; Search</h2>
+  <div class="tool-grid">
+    <a class="tool-card" href="https://www.perplexity.ai" target="_blank">
+      <h4>Perplexity</h4>
+      <p>AI search engine. Ask a question, get a researched answer with sources. Great for fact-checking and web research.</p>
+      <span class="tool-tag research">Research</span>
+    </a>
+    <a class="tool-card" href="https://grok.x.ai" target="_blank">
+      <h4>Grok</h4>
+      <p>X/Twitter integrated AI. Good for real-time information, trending topics, and social media research.</p>
+      <span class="tool-tag research">Research</span>
+    </a>
+  </div>
+</section>
+
+<!-- Writing & Docs -->
+<section>
+  <h2>Writing &amp; Documentation</h2>
+  <div class="tool-grid">
+    <a class="tool-card" href="https://www.notion.so" target="_blank">
+      <h4>Notion AI</h4>
+      <p>Documents, wikis, and project management with AI built in. Summarise pages, draft content, answer questions about your workspace.</p>
+      <span class="tool-tag writing">Writing</span>
+    </a>
+    <a class="tool-card" href="https://www.markdownguide.org" target="_blank">
+      <h4>Markdown Guide</h4>
+      <p>Learn the MD format — the universal language for AI. This reference covers everything from basics to advanced syntax.</p>
+      <span class="tool-tag writing">Writing</span>
+    </a>
+  </div>
+</section>
+
+<!-- Internal Tools -->
+<section>
+  <h2>Dhwani Internal</h2>
+  <div class="r"><code>Deploy Control</code><span><a href="https://platform.dhwaniris.in">platform.dhwaniris.in</a> — generate scoped GitHub tokens for org repos (1-hour expiry)</span></div>
+  <div class="r"><code>GitHub Org</code><span><a href="https://github.com/dhwani-ris">github.com/dhwani-ris</a> — organisation repositories (PR required for changes)</span></div>
+  <div class="r"><code>GitHub</code><span><a href="https://github.com">github.com</a> — personal accounts and repos (no PR needed for your own repos)</span></div>
+</section>
+
+<div class="main-footer">
+  <div><a href="index.html">Home</a> &middot; <a href="readings.html">Readings</a></div>
+  <small>Dhwani RIS &middot; AI Playground &middot; 2026</small>
+</div>
+
+</div></div>
+</body>
+</html>

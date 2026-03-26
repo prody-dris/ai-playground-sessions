@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Readings — AI Playground</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="mobile-header">
+  <img src="assets/images/dhwani-logo.png" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="assets/images/dhwani-logo.png" alt="Dhwani RIS">
+    <div class="sidebar-title">AI Playground</div>
+    <div class="sidebar-sub">Product &amp; Operations</div>
+  </div>
+  <div class="sidebar-section">
+    <a class="sidebar-link" href="index.html"><span class="link-icon">~</span> Home</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sessions</div>
+    <a class="sidebar-link" href="sessions/session-0.html"><span class="link-icon">0</span> Introduction</a>
+    <a class="sidebar-link" href="sessions/session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
+    <a class="sidebar-link" href="sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
+    <a class="sidebar-link" href="sessions/session-3.html"><span class="link-icon">3</span> Hands On <span class="badge-new">Latest</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Resources</div>
+    <a class="sidebar-link active" href="readings.html"><span class="link-icon">R</span> Readings</a>
+    <a class="sidebar-link" href="tools.html"><span class="link-icon">T</span> Tools</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="https://dhwaniris.com">dhwaniris.com</a>
+    <small>Built by Nihaan Mohammed</small>
+  </div>
+</aside>
+
+<div class="main"><div class="content">
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Readings</div>
+  <h1>Readings<span>.</span></h1>
+  <div class="page-meta">Curated articles, courses, and guides — all accessible without a technical background</div>
+</div>
+
+<!-- Start Here -->
+<section>
+  <h2>Start Here <small>— if you read nothing else, read these</small></h2>
+  <div class="reading-card">
+    <span class="reading-type article">Article</span>
+    <div class="reading-body">
+      <a href="https://www.deeplearning.ai/the-batch/how-to-build-your-career-in-ai-part-1-three-steps-to-career-growth/" target="_blank">How to Build Your Career in AI — Andrew Ng</a>
+      <p>Andrew Ng's practical advice on growing with AI. Written for everyone, not just engineers. 10 min read.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type guide">Guide</span>
+    <div class="reading-body">
+      <a href="https://www.markdownguide.org/getting-started/" target="_blank">Getting Started with Markdown</a>
+      <p>The format that makes AI 10x more efficient. Learn the basics in 5 minutes. You'll use this every day.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type article">Article</span>
+    <div class="reading-body">
+      <a href="https://www.anthropic.com/news/claude-4" target="_blank">Introducing Claude 4 — Anthropic</a>
+      <p>What Claude can do today. Written for a general audience. Understand the tool before you use it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Prompting & Working with AI -->
+<section>
+  <h2>Prompting &amp; Working With AI</h2>
+  <div class="reading-card">
+    <span class="reading-type docs">Docs</span>
+    <div class="reading-body">
+      <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank">Prompt Engineering Guide — Anthropic</a>
+      <p>Official guide on writing better prompts for Claude. Covers structure, clarity, and common patterns.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type article">Article</span>
+    <div class="reading-body">
+      <a href="https://simonwillison.net/2025/Mar/19/vibe-coding/" target="_blank">Vibe Coding — Simon Willison</a>
+      <p>What "vibe coding" really means. A balanced take on using AI to write code when you're not a developer.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type guide">Guide</span>
+    <div class="reading-body">
+      <a href="https://docs.anthropic.com/en/docs/build-with-claude/context-windows" target="_blank">Understanding Context Windows — Anthropic</a>
+      <p>Why token efficiency matters. What happens when AI "forgets" things. How to keep conversations productive.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type article">Article</span>
+    <div class="reading-body">
+      <a href="https://www.oneusefulthing.org/p/what-people-ask-me-most-also-some" target="_blank">Practical AI Tips — Ethan Mollick</a>
+      <p>A Wharton professor's real-world advice on using AI at work. Written for non-technical professionals.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GitHub & Knowledge Management -->
+<section>
+  <h2>GitHub &amp; Knowledge Management</h2>
+  <div class="reading-card">
+    <span class="reading-type guide">Guide</span>
+    <div class="reading-body">
+      <a href="https://docs.github.com/en/get-started/start-your-journey/hello-world" target="_blank">Hello World — GitHub Docs</a>
+      <p>GitHub's official beginner tutorial. Create a repo, make a branch, commit a change. Takes 10 minutes.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type guide">Guide</span>
+    <div class="reading-body">
+      <a href="https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files" target="_blank">Editing Files on GitHub — GitHub Docs</a>
+      <p>How to edit files directly in the browser. No terminal needed. This is how you'll update your CLAUDE.md.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type article">Article</span>
+    <div class="reading-body">
+      <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens" target="_blank">Managing Personal Access Tokens — GitHub</a>
+      <p>How to create, manage, and revoke GitHub tokens. Essential for connecting GitHub to Claude.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Courses -->
+<section>
+  <h2>Courses <small>— go deeper when you're ready</small></h2>
+  <div class="reading-card">
+    <span class="reading-type course">Course</span>
+    <div class="reading-body">
+      <a href="https://www.deeplearning.ai/courses/ai-for-everyone/" target="_blank">AI for Everyone — Andrew Ng (Coursera)</a>
+      <p>Free course designed for non-technical people. Covers what AI can do, how to spot opportunities, and how to work with AI teams. 6 hours total.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type course">Course</span>
+    <div class="reading-body">
+      <a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank">Prompt Engineering — DeepLearning.AI</a>
+      <p>Short course on writing effective prompts. Developer-oriented title but the principles apply to everyone. 1 hour.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type course">Course</span>
+    <div class="reading-body">
+      <a href="https://skills.github.com/" target="_blank">GitHub Skills</a>
+      <p>Interactive tutorials to learn GitHub. Start with "Introduction to GitHub" — it walks you through everything in your browser.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletters -->
+<section>
+  <h2>Stay Current <small>— newsletters worth reading</small></h2>
+  <div class="reading-card">
+    <span class="reading-type article">Weekly</span>
+    <div class="reading-body">
+      <a href="https://www.deeplearning.ai/the-batch/" target="_blank">The Batch — Andrew Ng</a>
+      <p>Weekly AI newsletter. Practical, accessible, no hype. The best way to stay current without drowning in Twitter.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type article">Weekly</span>
+    <div class="reading-body">
+      <a href="https://www.oneusefulthing.org/" target="_blank">One Useful Thing — Ethan Mollick</a>
+      <p>A professor who actually uses AI daily. Practical insights on AI at work. Written for normal people.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type article">Updates</span>
+    <div class="reading-body">
+      <a href="https://www.anthropic.com/news" target="_blank">Anthropic News</a>
+      <p>Official updates from the team behind Claude. New features, capabilities, and research — straight from the source.</p>
+    </div>
+  </div>
+</section>
+
+<div class="main-footer">
+  <div><a href="index.html">Home</a> &middot; <a href="tools.html">Tools</a></div>
+  <small>Dhwani RIS &middot; AI Playground &middot; 2026</small>
+</div>
+
+</div></div>
+</body>
+</html>
