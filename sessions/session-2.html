@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 2 — GitHub as Your Knowledge Base | AI Playground</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="page">
+
+<div class="site-logo"><img src="../assets/images/dhwani-logo.png" alt="Dhwani RIS"></div>
+
+<header>
+  <h1>AI Playground<span>.</span></h1>
+  <div class="sub">Dhwani RIS &mdash; Weekly AI Sessions for Product &amp; Operations</div>
+</header>
+
+<nav>
+  <a href="../index.html">Home</a>
+  <a href="session-0.html">Session 0</a>
+  <a href="session-1.html">Session 1</a>
+  <a href="session-2.html" class="active">Session 2</a>
+  <a href="session-3.html">Session 3</a>
+</nav>
+
+<div class="timestamp">Session 2 &middot; Thursday, 19 March 2026 &middot; 4:00 &ndash; 5:00 PM</div>
+
+<section>
+  <h2>Session 2</h2>
+  <div style="font-size: 18px; font-weight: 700; margin-bottom: 6px;">GitHub as Your Knowledge Base</div>
+  <div class="prose">
+    <p>The conceptual shift. We stopped thinking of GitHub as "a developer thing" and started seeing it as <strong>the best place to store everything your AI needs to know about you</strong>. We also got our first look at the CLI and saw a real-world QA demo.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The Problem We Solved</h2>
+  <div class="analogy">
+    <div class="label">The old way</div>
+    <p>You create a skill file. You want to share it with Banita. You download it, put it on a cloud drive, she downloads it, uploads it to her Claude UI. Next week you update the skill. Repeat the entire process. Every. Single. Time.</p>
+  </div>
+  <div class="analogy">
+    <div class="label">The GitHub way</div>
+    <p>You put your skill in a GitHub repo. Banita gets access. Her Claude reads directly from your repo. When you update the skill, Banita's Claude gets the update automatically. One update, everyone benefits.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Why GitHub Beats Folders</h2>
+  <div class="n"><i>1</i><p><strong>Version history.</strong> Every change is tracked. You can always go back. Unlike a folder where you overwrite and lose the previous version.</p></div>
+  <div class="n"><i>2</i><p><strong>Live updates.</strong> Update once, everyone sees it. No download-upload cycle.</p></div>
+  <div class="n"><i>3</i><p><strong>API access.</strong> Claude (and other AI tools) can read from GitHub directly via tokens. They can't read from your Google Drive or local folder.</p></div>
+  <div class="n"><i>4</i><p><strong>Collaboration.</strong> Multiple people can contribute to the same repo. Pull requests ensure no one accidentally overwrites someone else's work.</p></div>
+  <div class="n"><i>5</i><p><strong>Developers already use it.</strong> By storing your knowledge on GitHub, you're speaking the same language as the development team.</p></div>
+</section>
+
+<section>
+  <h2>Personal vs Org Repos</h2>
+  <div class="cols">
+    <div>
+      <div class="callout">
+        <p><strong>Personal repo</strong><br>Your own GitHub account. Private to you. For your CLAUDE.md, personal skills, preferences. No PR required &mdash; you commit directly. <strong>This is what you set up in Session 3.</strong></p>
+      </div>
+    </div>
+    <div>
+      <div class="callout accent">
+        <p><strong>Org repo</strong><br>Dhwani RIS shared repository. Contains Security MD, domain skills, coding standards. Changes require a PR and developer approval. <strong>Coming soon &mdash; Ankit will share access.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>CLI Introduction</h2>
+  <div class="prose">
+    <p>We got our first look at Claude Code &mdash; the command-line interface. Key advantages over the chat UI:</p>
+  </div>
+  <div class="n"><i class="accent">+</i><p><strong>No time limits.</strong> CLI continues indefinitely. No session timeouts.</p></div>
+  <div class="n"><i class="accent">+</i><p><strong>Context preservation.</strong> If it stops, it picks up where it left off. Full history is saved.</p></div>
+  <div class="n"><i class="accent">+</i><p><strong>Parallel agents.</strong> Give it 3 tasks and it sends 3 agents simultaneously. No waiting in line.</p></div>
+  <div class="n"><i class="accent">+</i><p><strong>MCP connections.</strong> Connect to Gmail, Slack, Calendar, Apple Reminders &mdash; directly from the terminal.</p></div>
+  <div class="n"><i class="accent">+</i><p><strong>Side questions.</strong> Ask a quick question without disrupting the main task using <code>/btw</code>.</p></div>
+
+  <div class="callout">
+    <p><strong>CLI is not a replacement for the UI.</strong> Use UI for thinking, brainstorming, document creation, image generation, sharing conversations. Use CLI for coding, parallel tasks, integrations, and long-running work. <strong>Use both.</strong></p>
+  </div>
+</section>
+
+<section>
+  <h2>Real-World Demo: Dashboard QA via Video</h2>
+  <div class="prose">
+    <p>Sunchay demonstrated a powerful technique for testing dashboards:</p>
+  </div>
+  <div class="n"><i>1</i><p><strong>Record a 2-minute screen recording</strong> of the dashboard, applying filters and scrolling through data.</p></div>
+  <div class="n"><i>2</i><p><strong>Compress to under 20 MB</strong> (Claude's attachment limit).</p></div>
+  <div class="n"><i>3</i><p><strong>Feed to Claude</strong> with a skill that says: read every 2 frames per second, extract all data points, compare against:</p></div>
+  <div class="n"><i class="accent">A</i><p>The logic sheet (expected values)</p></div>
+  <div class="n"><i class="accent">B</i><p>The API response (actual data)</p></div>
+  <div class="n"><i class="accent">C</i><p>The UI screenshots (displayed values)</p></div>
+  <div class="callout accent">
+    <p><strong>Result:</strong> Claude identified matching data, flagged mismatches, and even warned about KPIs that were technically correct but might not represent what the user intended. Three-layer validation from a 2-minute video.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Repo Structure at Dhwani</h2>
+  <div class="prose">
+    <p>For mGrant, there are multiple apps (repos) that work together:</p>
+  </div>
+  <div class="r"><code>Theme</code><span>Shared utilities &mdash; functions useful across all products (e.g., draft mode logic)</span></div>
+  <div class="r"><code>Donor</code><span>Donor-facing features &mdash; grant management for corporate donors</span></div>
+  <div class="r"><code>CSR</code><span>CSR compliance features &mdash; MCA Section 135 specific</span></div>
+  <div class="r"><code>Client App</code><span>Client-specific customizations &mdash; portal, iframes, client-specific logic</span></div>
+</section>
+
+<section>
+  <h2>Key Takeaways</h2>
+  <div class="n"><i>1</i><p><strong>GitHub is a knowledge repository, not just a code repository.</strong> Use it for skills, CLAUDE.md, domain knowledge &mdash; not just code.</p></div>
+  <div class="n"><i>2</i><p><strong>Personal repos are your starting point.</strong> No PRs, no approval. Just you and your knowledge base.</p></div>
+  <div class="n"><i>3</i><p><strong>CLI and UI serve different purposes.</strong> Neither replaces the other. Learn when to use which.</p></div>
+  <div class="n"><i>4</i><p><strong>Video-based QA is real.</strong> You can test dashboards by recording, compressing, and feeding to AI.</p></div>
+</section>
+
+<footer>
+  <div>
+    <a href="session-1.html">&larr; Session 1</a> &middot;
+    <a href="../index.html">All Sessions</a> &middot;
+    <a href="session-3.html">Session 3 &rarr;</a>
+  </div>
+  <small>Dhwani Rural Information Systems &middot; AI Playground &middot; 2026</small>
+</footer>
+
+</div>
+</body>
+</html>

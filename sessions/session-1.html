@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 1 — Vibe Coding How-To | AI Playground</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="page">
+
+<div class="site-logo"><img src="../assets/images/dhwani-logo.png" alt="Dhwani RIS"></div>
+
+<header>
+  <h1>AI Playground<span>.</span></h1>
+  <div class="sub">Dhwani RIS &mdash; Weekly AI Sessions for Product &amp; Operations</div>
+</header>
+
+<nav>
+  <a href="../index.html">Home</a>
+  <a href="session-0.html">Session 0</a>
+  <a href="session-1.html" class="active">Session 1</a>
+  <a href="session-2.html">Session 2</a>
+  <a href="session-3.html">Session 3</a>
+</nav>
+
+<div class="timestamp">Session 1 &middot; Thursday, 12 March 2026 &middot; 4:00 &ndash; 5:00 PM</div>
+
+<section>
+  <h2>Session 1</h2>
+  <div style="font-size: 18px; font-weight: 700; margin-bottom: 6px;">Vibe Coding &mdash; The How-To Guide</div>
+  <div class="prose">
+    <p>The mechanics session. How to actually get AI to write code for your projects &mdash; safely, with guardrails, and with developer review. Everything a non-developer needs to know before their first vibe coding session.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The Big Idea</h2>
+  <div class="quote">
+    Vibe coding means using AI tools to write, edit, and ship code &mdash; without being a developer yourself. You describe what you want in English. The AI writes the code.
+  </div>
+</section>
+
+<section>
+  <h2>Before You Start &mdash; Checklist</h2>
+  <div class="n"><i class="check">&#10003;</i><p>Access to <code>platform.dhwaniris.in</code> (Deploy Control)</p></div>
+  <div class="n"><i class="check">&#10003;</i><p>Your repo name confirmed with a developer</p></div>
+  <div class="n"><i class="check">&#10003;</i><p>CLAUDE.md set up in your repo (or ask a dev to create it)</p></div>
+  <div class="n"><i class="check">&#10003;</i><p>Security_DRIS.md ready to attach to your session</p></div>
+  <div class="n"><i class="check">&#10003;</i><p>Working on a feature branch &mdash; <strong>never on main or develop</strong></p></div>
+  <div class="n"><i class="check">&#10003;</i><p>You know which tool to use: Claude Code (CLI) or Claude UI</p></div>
+</section>
+
+<section>
+  <h2>Getting a GitHub Token</h2>
+  <div class="prose">
+    <p>Tokens let AI push code to a repo. For org repos, use Deploy Control. For personal repos, use GitHub Settings.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div class="step-title">Via Deploy Control (for org repos)</div>
+    </div>
+    <div class="step-body">
+      <ul>
+        <li>Log in at <code>platform.dhwaniris.in</code></li>
+        <li>Click the <strong>GitHub Token</strong> tab</li>
+        <li>Enter the <strong>exact repo name</strong> &mdash; confirm with your developer first (no validation!)</li>
+        <li>Click <strong>Generate Scoped Token</strong></li>
+        <li>Copy immediately &mdash; expires in 1 hour</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="r"><code>Lifetime</code><span>1 hour</span></div>
+  <div class="r"><code>Scope</code><span>Single repo only</span></div>
+  <div class="r"><code>Permissions</code><span>Read + Write</span></div>
+  <div class="r"><code>Account</code><span>dhwani-jenkins (service account)</span></div>
+</section>
+
+<section>
+  <h2>The Two Key Files</h2>
+  <div class="cols">
+    <div>
+      <div class="callout">
+        <p><strong>CLAUDE.md</strong><br>The AI's memory for your project. Lives in the root of your repo. Stores project context, tech stack, past decisions. <strong>Update at the end of every session.</strong> No CLAUDE.md = AI starts from scratch.</p>
+      </div>
+    </div>
+    <div>
+      <div class="callout accent">
+        <p><strong>Security_DRIS.md</strong><br>Dhwani RIS security rules for AI-generated code. <strong>Attach to every session &mdash; no exceptions.</strong> Without it, the AI has no guardrails and may produce insecure code.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Ways to Do Vibe Coding</h2>
+  <div class="r"><code>Claude Code</code><span>CLI &mdash; building features, multi-file tasks, Frappe work. Pushes code directly.</span></div>
+  <div class="r"><code>Claude UI</code><span>Chat &mdash; drafting, planning, reviewing logic. Hand off to dev for code changes.</span></div>
+  <div class="r"><code>Codex</code><span>OpenAI &mdash; quick scripts, Python utilities, second opinions. Via API.</span></div>
+</section>
+
+<section>
+  <h2>When to Use Which</h2>
+  <div class="n"><i class="accent">C</i><p><strong>Building a Frappe feature or doctype</strong> &rarr; Claude Code</p></div>
+  <div class="n"><i class="accent">C</i><p><strong>Complex multi-file changes in a repo</strong> &rarr; Claude Code</p></div>
+  <div class="n"><i class="accent">~</i><p><strong>Quick Python script or data task</strong> &rarr; Either</p></div>
+  <div class="n"><i class="accent">X</i><p><strong>Second opinion on code</strong> &rarr; Codex</p></div>
+  <div class="n"><i class="accent">C</i><p><strong>Working within Dhwani repo workflow</strong> &rarr; Claude Code</p></div>
+</section>
+
+<section>
+  <h2>How to Write Better Prompts</h2>
+  <div class="n"><i>1</i><p><strong>Be specific.</strong> Not "add a field" but "add a Currency field called sanctioned_amount to the Grant doctype, visible in the main form, not mandatory."</p></div>
+  <div class="n"><i>2</i><p><strong>Provide context.</strong> Paste error messages. Describe what already exists. Mention the doctype or module.</p></div>
+  <div class="n"><i>3</i><p><strong>One task at a time.</strong> Break large requests into smaller steps. Review output before asking for the next step.</p></div>
+  <div class="n"><i>4</i><p><strong>Always reference CLAUDE.md.</strong> It gives AI the project context without you explaining everything each time.</p></div>
+  <div class="n"><i>5</i><p><strong>Ask the AI to explain.</strong> You don't need to understand the code &mdash; but you should understand the intent.</p></div>
+</section>
+
+<section>
+  <h2>Common Mistakes</h2>
+  <div class="n"><i class="x">!</i><p><strong>Wrong repo name for token</strong> &mdash; no validation. Fails silently or pushes to the wrong place.</p></div>
+  <div class="n"><i class="x">!</i><p><strong>Reusing expired tokens</strong> &mdash; always generate fresh. They last 1 hour.</p></div>
+  <div class="n"><i class="x">!</i><p><strong>Skipping Security_DRIS.md</strong> &mdash; AI won't follow Dhwani security standards without it.</p></div>
+  <div class="n"><i class="x">!</i><p><strong>Not updating CLAUDE.md</strong> &mdash; next session starts from scratch. All context lost.</p></div>
+  <div class="n"><i class="x">!</i><p><strong>Pushing to main or develop</strong> &mdash; always use a feature branch. Always raise a PR.</p></div>
+  <div class="n"><i class="x">!</i><p><strong>Accepting output without reviewing</strong> &mdash; review what AI produces. Correct the instruction if needed.</p></div>
+</section>
+
+<section>
+  <h2>The Golden Rule</h2>
+  <div class="callout">
+    <p><strong>All AI-produced code must go through a pull request.</strong> A developer reviews and merges &mdash; never push directly. This is non-negotiable. Pair with a developer for your first 2-3 sessions.</p>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <a href="session-0.html">&larr; Session 0</a> &middot;
+    <a href="../index.html">All Sessions</a> &middot;
+    <a href="session-2.html">Session 2 &rarr;</a>
+  </div>
+  <small>Dhwani Rural Information Systems &middot; AI Playground &middot; 2026</small>
+</footer>
+
+</div>
+</body>
+</html>

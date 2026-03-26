@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 3 — Your AI Knowledge Base: Hands On | AI Playground</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="page">
+
+<div class="site-logo"><img src="../assets/images/dhwani-logo.png" alt="Dhwani RIS"></div>
+
+<header>
+  <h1>AI Playground<span>.</span></h1>
+  <div class="sub">Dhwani RIS &mdash; Weekly AI Sessions for Product &amp; Operations</div>
+</header>
+
+<nav>
+  <a href="../index.html">Home</a>
+  <a href="session-0.html">Session 0</a>
+  <a href="session-1.html">Session 1</a>
+  <a href="session-2.html">Session 2</a>
+  <a href="session-3.html" class="active">Session 3</a>
+</nav>
+
+<div class="timestamp">Session 3 &middot; Thursday, 26 March 2026 &middot; 4:00 &ndash; 5:00 PM</div>
+
+<!-- ══ TITLE ══ -->
+<section>
+  <h2>Session 3 <span class="badge-live">Today</span></h2>
+  <div style="font-size: 18px; font-weight: 700; margin-bottom: 6px;">Your AI Knowledge Base &mdash; Hands On</div>
+  <div class="prose">
+    <p>We've talked about tools, mechanics, and concepts. Today we <strong>build</strong>. By the end of this hour, you'll have a working AI knowledge base on GitHub &mdash; one that your AI assistant can read, learn from, and use every time you start a conversation.</p>
+  </div>
+</section>
+
+<!-- ══ THE BIG IDEA ══ -->
+<section>
+  <h2>The Big Idea</h2>
+  <div class="quote">
+    "If you can't explain it simply, you don't understand it well enough."
+    <cite>&mdash; Richard Feynman</cite>
+  </div>
+  <div class="prose">
+    <p>Here's the problem we're solving: every time you open a new Claude conversation, it's like talking to a brilliant stranger. They know everything about technology &mdash; but nothing about <strong>you</strong>, your project, or your domain.</p>
+    <p>Today, we fix that. We're going to give your AI a <strong>memory</strong> &mdash; stored on GitHub, accessible from anywhere, shareable with your team.</p>
+  </div>
+  <div class="analogy">
+    <div class="label">Think of it this way</div>
+    <p>You know how when a new team member joins, you spend the first week explaining how things work? CLAUDE.md is that onboarding document &mdash; except your AI reads it in 2 seconds and never forgets it.</p>
+  </div>
+</section>
+
+<!-- ══ WHAT YOU'LL BUILD ══ -->
+<section>
+  <h2>What You'll Build Today</h2>
+  <div class="outcomes">
+    <h3>By 5:00 PM, you will have</h3>
+    <ul>
+      <li>A personal GitHub repository (your AI's home base)</li>
+      <li>A CLAUDE.md file (your AI's memory of you and your work)</li>
+      <li>Your first domain skill (CSR rules, grant lifecycle, dashboard specs &mdash; whatever you know best)</li>
+      <li>A working connection between GitHub and Claude UI</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ WHERE WE ARE ══ -->
+<section>
+  <h2>Our Journey So Far</h2>
+  <div class="n"><i class="check">0</i><p><strong>Session 0:</strong> Why AI matters for our work. Tools overview. Open build format established.</p></div>
+  <div class="n"><i class="check">1</i><p><strong>Session 1:</strong> Vibe coding mechanics &mdash; tokens, CLAUDE.md, Security MD, CLI vs UI, Claude Code vs Codex.</p></div>
+  <div class="n"><i class="check">2</i><p><strong>Session 2:</strong> GitHub as a knowledge base &mdash; repos, branches, PRs, why GitHub beats folders.</p></div>
+  <div class="n"><i class="accent">3</i><p><strong>Today:</strong> We stop talking about it and start building it. Hands on keyboards.</p></div>
+</section>
+
+<!-- ══ META MOMENT ══ -->
+<section>
+  <h2>This Site <small>&mdash; what you're looking at right now</small></h2>
+  <div class="callout">
+    <p><strong>This website IS a GitHub repository.</strong> Every session page, every resource, every guide &mdash; it's all markdown and HTML files stored on GitHub and published via GitHub Pages. No Word docs. No email attachments. One source of truth, always up to date, accessible to everyone.</p>
+  </div>
+  <div class="prose">
+    <p>This is exactly what we want each of you to build for your own AI workflows. A place where your knowledge lives, grows, and works for you &mdash; automatically.</p>
+  </div>
+</section>
+
+<!-- ══ WALKTHROUGH ══ -->
+<section>
+  <h2>Walkthrough</h2>
+
+  <!-- Step 1 -->
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div class="step-title">Set Up Your GitHub Account</div>
+    </div>
+    <div class="step-body">
+      <p><strong>If you already have one:</strong> Skip to Step 2.</p>
+      <p><strong>If you don't:</strong> Go to <code>github.com</code> and sign up with your Dhwani email.</p>
+      <ul>
+        <li>Pick a username you'll remember (your name works fine)</li>
+        <li>Free plan is all you need</li>
+        <li>Verify your email when prompted</li>
+      </ul>
+      <div class="analogy">
+        <div class="label">What is GitHub?</div>
+        <p>Think of GitHub as Google Drive &mdash; but it remembers every version of every file you've ever saved. You can go back to any point in time. And it's built for collaboration &mdash; multiple people can work on the same files without overwriting each other.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div class="step-title">Create Your Personal Repository</div>
+    </div>
+    <div class="step-body">
+      <p>A repository (repo) is just a project folder on GitHub.</p>
+      <ul>
+        <li>Click the <strong>+</strong> button (top right) &rarr; <strong>New repository</strong></li>
+        <li>Name it: <code>my-ai-workspace</code> (or anything you like)</li>
+        <li>Set it to <strong>Private</strong> (only you can see it)</li>
+        <li>Check <strong>"Add a README file"</strong></li>
+        <li>Click <strong>Create repository</strong></li>
+      </ul>
+      <div class="analogy">
+        <div class="label">What just happened?</div>
+        <p>You created a folder in the cloud. It has one file in it (README.md). That's it. Nothing scary. This folder is now your AI's brain &mdash; and right now it's empty. Let's fill it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div class="step-title">Create Your CLAUDE.md</div>
+    </div>
+    <div class="step-body">
+      <p>CLAUDE.md is the most important file in your AI workflow. It tells AI who you are, what you work on, and how you like to work.</p>
+      <ul>
+        <li>In your repo, click <strong>Add file</strong> &rarr; <strong>Create new file</strong></li>
+        <li>Name it: <code>CLAUDE.md</code></li>
+        <li>Paste the template below</li>
+        <li>Edit it to match your role and preferences</li>
+        <li>Click <strong>Commit changes</strong> (green button at bottom)</li>
+      </ul>
+
+      <div class="template"><span class="comment"># CLAUDE.md &mdash; [Your Name]</span>
+
+<span class="comment">## Who I Am</span>
+<span class="key">- Role:</span> <span class="val">[Your title at Dhwani RIS]</span>
+<span class="key">- Domain:</span> <span class="val">[What you work on &mdash; grants, CSR, dashboards, MIS, etc.]</span>
+<span class="key">- Technical level:</span> <span class="val">[Be honest &mdash; "non-technical PM", "comfortable with Excel", etc.]</span>
+
+<span class="comment">## What I Work On</span>
+<span class="key">- Products:</span> <span class="val">[mGrant, Frappe LMS, dashboards, etc.]</span>
+<span class="key">- Clients:</span> <span class="val">[Who you serve, what they care about]</span>
+<span class="key">- Current focus:</span> <span class="val">[What you're working on this month]</span>
+
+<span class="comment">## How I Like to Work</span>
+<span class="val">- Be concise. Lead with the answer.</span>
+<span class="val">- Don't ask me to write or edit code.</span>
+<span class="val">- When in doubt, ask me &mdash; don't guess.</span>
+<span class="val">- [Add your own preferences]</span>
+
+<span class="comment">## Domain Knowledge I Have</span>
+<span class="val">- [What do you know that the AI doesn't?]</span>
+<span class="val">- [CSR Section 135 rules? Grant lifecycle? MIS report formats?]</span>
+<span class="val">- [This is your superpower. Write it down.]</span></div>
+
+      <div class="quote">
+        "The most important thing is to get started. Your first CLAUDE.md doesn't need to be perfect &mdash; it needs to exist."
+        <cite>&mdash; Andrew Ng's principle, applied here</cite>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div class="step-title">Create Your First Domain Skill</div>
+    </div>
+    <div class="step-body">
+      <p>A skill is a cheat sheet you give your AI. Instead of explaining the same thing every conversation, you write it once and the AI references it forever.</p>
+
+      <div class="analogy">
+        <div class="label">Why skills matter</div>
+        <p>Imagine you hire a new analyst. Day one, you explain CSR rules. Day two, you explain them again. Day three, again. That's what happens without skills &mdash; your AI starts from zero every time. A skill file is the onboarding doc that makes day one the only day you explain.</p>
+      </div>
+
+      <p><strong>Pick your area.</strong> What do you know that AI doesn't?</p>
+
+      <div class="n"><i class="accent">A</i><p><strong>CSR compliance</strong> &mdash; Section 135 rules, MCA reporting, budget cycles</p></div>
+      <div class="n"><i class="accent">B</i><p><strong>Grant lifecycle</strong> &mdash; proposal to disbursement to closure</p></div>
+      <div class="n"><i class="accent">C</i><p><strong>Dashboard specs</strong> &mdash; KPIs, data sources, filter logic, RLS</p></div>
+      <div class="n"><i class="accent">D</i><p><strong>MIS reporting</strong> &mdash; report formats, data validation, client expectations</p></div>
+      <div class="n"><i class="accent">E</i><p><strong>Client management</strong> &mdash; communication norms, escalation paths, SLAs</p></div>
+      <div class="n"><i class="accent">F</i><p><strong>Something else entirely</strong> &mdash; your expertise, your rules, your domain</p></div>
+
+      <p style="margin-top: 10px;">Now create it:</p>
+      <ul>
+        <li>In your repo, click <strong>Add file</strong> &rarr; <strong>Create new file</strong></li>
+        <li>Name it: <code>skills/[your-area].md</code> (e.g., <code>skills/csr-compliance.md</code>)</li>
+        <li>Use the template below as a starting point</li>
+        <li>Commit when done</li>
+      </ul>
+
+      <div class="template"><span class="comment"># Skill: [Your Area]</span>
+<span class="comment"># Purpose: Give AI the domain knowledge it needs</span>
+
+<span class="comment">## What This Covers</span>
+<span class="val">[One paragraph: what area does this skill address?]</span>
+
+<span class="comment">## Key Concepts</span>
+<span class="val">- [Concept 1]: [Brief explanation]</span>
+<span class="val">- [Concept 2]: [Brief explanation]</span>
+<span class="val">- [Concept 3]: [Brief explanation]</span>
+
+<span class="comment">## Rules &amp; Constraints</span>
+<span class="val">- [What must always be true in this domain?]</span>
+<span class="val">- [What are the compliance requirements?]</span>
+<span class="val">- [What mistakes do people commonly make?]</span>
+
+<span class="comment">## Common Tasks</span>
+<span class="val">- [Task 1]: [How it should be done]</span>
+<span class="val">- [Task 2]: [How it should be done]</span>
+
+<span class="comment">## Vocabulary</span>
+<span class="val">- [Term 1] = [What it means in your context]</span>
+<span class="val">- [Term 2] = [What it means in your context]</span></div>
+
+      <div class="callout accent">
+        <p><strong>Start small.</strong> 10 bullet points is better than an empty file. You can always add more later. The point is to capture what's in your head so your AI can use it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 5 -->
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div class="step-title">Connect GitHub to Claude UI</div>
+    </div>
+    <div class="step-body">
+      <p>Now let's make Claude actually <strong>read</strong> your GitHub repo. No terminal required.</p>
+
+      <p><strong>Generate a token:</strong></p>
+      <ul>
+        <li>Go to <code>github.com</code> &rarr; click your avatar (top right) &rarr; <strong>Settings</strong></li>
+        <li>Scroll down to <strong>Developer settings</strong> (bottom of left sidebar)</li>
+        <li>Click <strong>Personal access tokens</strong> &rarr; <strong>Tokens (classic)</strong></li>
+        <li>Click <strong>Generate new token (classic)</strong></li>
+        <li>Name: <code>claude-access</code></li>
+        <li>Expiration: 30 days (you can always regenerate)</li>
+        <li>Scopes: check <strong>repo</strong> (that's all you need)</li>
+        <li>Click <strong>Generate token</strong></li>
+        <li><strong>Copy it immediately</strong> &mdash; you won't see it again</li>
+      </ul>
+
+      <p><strong>Use it in Claude:</strong></p>
+      <ul>
+        <li>Open <code>claude.ai</code></li>
+        <li>Start a new conversation</li>
+        <li>Tell Claude: <em>"I have a GitHub repo at github.com/[your-username]/my-ai-workspace. Here is my token: [paste token]. Please read my CLAUDE.md and skills folder, then tell me what you learned about me."</em></li>
+        <li>Watch it read your files and summarize your profile</li>
+      </ul>
+
+      <div class="callout">
+        <p><strong>What just happened?</strong> Claude read your GitHub files and now understands your role, your domain, and your preferences. Next conversation, paste the same instruction and it starts from the same baseline. No more explaining from scratch.</p>
+      </div>
+
+      <div class="callout accent">
+        <p><strong>Security note:</strong> Personal access tokens are like passwords. Never share them in group chats or emails. They're for your Claude sessions only. If one leaks, revoke it immediately from GitHub Settings.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 6 -->
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div class="step-title">Update Your Repo After Every Session</div>
+    </div>
+    <div class="step-body">
+      <p>The most common mistake: creating CLAUDE.md once and never updating it. Your AI's memory is only as good as the last update.</p>
+
+      <p><strong>After every AI session, ask Claude:</strong></p>
+      <div class="template"><span class="val">"Summarize what we did today and give me updates</span>
+<span class="val"> for my CLAUDE.md. Format it so I can paste it</span>
+<span class="val"> directly into the file."</span></div>
+
+      <p>Then go to your GitHub repo, open CLAUDE.md via the web editor (pencil icon), paste the updates, and commit.</p>
+
+      <p><strong>Takes 2 minutes. Saves 20 minutes next session.</strong></p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══ KEY TAKEAWAYS ══ -->
+<section>
+  <h2>Key Takeaways</h2>
+  <div class="n"><i>1</i><p><strong>GitHub is your AI's brain.</strong> A repo with CLAUDE.md and skills means your AI never starts from scratch.</p></div>
+  <div class="n"><i>2</i><p><strong>Skills capture YOUR expertise.</strong> You know things AI doesn't &mdash; CSR rules, grant processes, client quirks. Write them down once, use them forever.</p></div>
+  <div class="n"><i>3</i><p><strong>Update after every session.</strong> The habit is more important than the content. Even one new bullet point keeps your AI current.</p></div>
+  <div class="n"><i>4</i><p><strong>Share with your team.</strong> When your skill files live on GitHub, your colleagues can learn from them too. Knowledge compounds.</p></div>
+</section>
+
+<!-- ══ ACTION ITEMS ══ -->
+<section>
+  <h2>Action Items <small>&mdash; before Session 4</small></h2>
+  <div class="n"><i>1</i><p><strong>Complete your CLAUDE.md</strong> &mdash; fill in all sections of the template. Make it real.</p></div>
+  <div class="n"><i>2</i><p><strong>Create at least 2 domain skills</strong> &mdash; one for your primary area, one for a process you repeat often.</p></div>
+  <div class="n"><i>3</i><p><strong>Run one Claude session using your GitHub</strong> &mdash; paste your token, have Claude read your repo, do real work.</p></div>
+  <div class="n"><i>4</i><p><strong>Share your repo link</strong> in the AI Playground group chat (or share it privately with Nihaan).</p></div>
+  <div class="n"><i>5</i><p><strong>Note what worked and what didn't</strong> &mdash; bring your experience to Session 4.</p></div>
+</section>
+
+<!-- ══ NEXT SESSION PREVIEW ══ -->
+<section>
+  <h2>Session 4 Preview <small>&mdash; Thursday, 2 April</small></h2>
+  <div class="callout accent">
+    <p><strong>Collaborative Knowledge &amp; the Org Repository.</strong> How the Dhwani org repo works. Contributing skills to the shared knowledge base. Introduction to CLI for those ready. Reviewing each other's CLAUDE.md files and skills. Optional: MCP connections (Gmail, Calendar, Slack).</p>
+  </div>
+</section>
+
+<!-- ══ RESOURCES ══ -->
+<section>
+  <h2>Resources</h2>
+  <div class="r"><code>CLAUDE.md</code><span>Template &mdash; scroll up to Step 3 for the full template</span></div>
+  <div class="r"><code>Skill file</code><span>Template &mdash; scroll up to Step 4 for the full template</span></div>
+  <div class="r"><code>GitHub</code><span><a href="https://github.com" style="color:var(--primary)">github.com</a> &mdash; sign up or log in</span></div>
+  <div class="r"><code>Claude UI</code><span><a href="https://claude.ai" style="color:var(--primary)">claude.ai</a> &mdash; start a conversation</span></div>
+  <div class="r"><code>Tokens</code><span>GitHub &rarr; Settings &rarr; Developer settings &rarr; Personal access tokens</span></div>
+</section>
+
+<footer>
+  <div>
+    <a href="../index.html">All Sessions</a> &middot;
+    <a href="https://github.com/prody-dris/ai-playground-sessions">Source on GitHub</a>
+  </div>
+  <small>Dhwani Rural Information Systems &middot; AI Playground &middot; 2026</small>
+</footer>
+
+</div>
+</body>
+</html>
