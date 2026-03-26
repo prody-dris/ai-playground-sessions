@@ -592,6 +592,149 @@ code {
 /* ═══════════════════════════════
    RESPONSIVE
    ═══════════════════════════════ */
+/* ── Copy block ── */
+.copy-block {
+  position: relative;
+}
+.copy-block .copy-btn {
+  position: absolute;
+  top: 8px; right: 8px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #aaa;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.15s;
+  z-index: 2;
+}
+.copy-block .copy-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.copy-block .copy-btn.copied {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+/* ── Screenshot ── */
+.screenshot {
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  margin: 12px 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.screenshot img {
+  width: 100%;
+  display: block;
+}
+.screenshot .caption {
+  font-size: 11px;
+  color: var(--text-light);
+  padding: 8px 12px;
+  background: var(--sidebar-bg);
+  font-style: italic;
+}
+
+/* ── Team callout ── */
+.team-callout {
+  background: var(--green-bg);
+  border: 1px solid rgba(34, 139, 34, 0.12);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 12px 0;
+}
+.team-callout .team-names {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+.team-callout p {
+  font-size: 13.5px;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+/* ── Stat row ── */
+.stat-row {
+  display: flex; gap: 14px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+.stat {
+  flex: 1; min-width: 120px;
+  background: var(--accent-bg);
+  border-radius: 8px;
+  padding: 14px 16px;
+  text-align: center;
+}
+.stat .stat-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px; font-weight: 700;
+  color: var(--accent);
+}
+.stat .stat-label {
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+/* ── File tree ── */
+.file-tree {
+  background: var(--code-bg);
+  color: #D4D4D4;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  padding: 16px 20px;
+  border-radius: 6px;
+  margin: 8px 0;
+  line-height: 2;
+}
+.file-tree .folder { color: var(--code-fg); font-weight: 600; }
+.file-tree .file { color: #9CDCFE; }
+.file-tree .desc { color: #6A9955; font-size: 10px; }
+
+/* ── Video banner ── */
+.video-banner {
+  background: linear-gradient(135deg, var(--primary), #5a1010);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.video-banner .play-icon {
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 18px;
+  color: #fff;
+}
+.video-banner .video-info a {
+  font-size: 14px; font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+}
+.video-banner .video-info a:hover { text-decoration: underline; }
+.video-banner .video-info p {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 2px;
+}
+
 @media (max-width: 900px) {
   .sidebar {
     transform: translateX(-100%);

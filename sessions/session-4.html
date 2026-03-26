@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 4 — CLI, Hooks & Maintaining Real Products | AI Playground</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="mobile-header">
+  <img src="../assets/images/dhwani-logo.png" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="../assets/images/dhwani-logo.png" alt="Dhwani RIS">
+    <div class="sidebar-title">AI Playground</div>
+    <div class="sidebar-sub">Product &amp; Operations</div>
+  </div>
+  <div class="sidebar-section">
+    <a class="sidebar-link" href="../index.html"><span class="link-icon">~</span> Home</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sessions</div>
+    <a class="sidebar-link" href="session-0.html"><span class="link-icon">0</span> Introduction</a>
+    <a class="sidebar-link" href="session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
+    <a class="sidebar-link" href="session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
+    <a class="sidebar-link" href="session-3.html"><span class="link-icon">3</span> Hands On</a>
+    <a class="sidebar-link active" href="session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks <span class="badge-new">Latest</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Resources</div>
+    <a class="sidebar-link" href="../readings.html"><span class="link-icon">R</span> Readings</a>
+    <a class="sidebar-link" href="../tools.html"><span class="link-icon">T</span> Tools</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="https://dhwaniris.com">dhwaniris.com</a>
+    <small>Built by Nihaan Mohammed</small>
+  </div>
+</aside>
+
+<div class="main"><div class="content">
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html">Sessions</a> / Session 4</div>
+  <h1>CLI, Hooks &amp; Maintaining Real Products<span>.</span></h1>
+  <div class="page-meta">Session 4 &middot; Thursday, 2 April 2026 &middot; 5:00 &ndash; 6:00 PM</div>
+</div>
+
+<!-- OBJECTIVE -->
+<section>
+  <h2>Objective <span class="badge-live">Upcoming Session</span></h2>
+  <div class="prose">
+    <p>Session 3 proved you can build. Now we upgrade <strong>how</strong> you build. Claude Code (CLI) is the full-power version of Claude — it can read AND write to your repos, run commands, raise PRs, and automate workflows. Today, we set it up and learn to use hooks to make it even smarter.</p>
+  </div>
+  <div class="outcomes">
+    <h3>What you'll have by 6:00 PM</h3>
+    <ul>
+      <li>Claude Code installed and configured on your machine</li>
+      <li>Your first hook — automating a repetitive part of your workflow</li>
+      <li>Understanding of MCPs — connecting personal tools to AI</li>
+      <li>A real case study of maintaining existing software with AI</li>
+    </ul>
+  </div>
+</section>
+
+<!-- THE BIG IDEA -->
+<section>
+  <h2>The Big Idea</h2>
+  <div class="quote">
+    "The best tool is the one that disappears into your workflow."
+    <cite>— Jef Raskin, creator of the Macintosh project</cite>
+  </div>
+  <div class="prose">
+    <p>Claude UI is a conversation. Claude Code is a <strong>collaborator</strong>. It sits in your terminal, reads your files, writes code, runs tests, and pushes changes — all while following your CLAUDE.md and Security.md rules. The difference? UI is like texting a colleague. CLI is like pair programming with them.</p>
+  </div>
+  <div class="analogy">
+    <div class="label">Think of it this way</div>
+    <p>Claude UI is like calling someone on the phone to ask for help. Claude Code is like having them sit next to you, looking at the same screen, making changes alongside you.</p>
+  </div>
+</section>
+
+<!-- OUR JOURNEY -->
+<section>
+  <h2>Our Journey So Far</h2>
+  <div class="n"><i class="check">0</i><p><strong>Session 0:</strong> Why AI matters for our work. Tools overview. Open build format.</p></div>
+  <div class="n"><i class="check">1</i><p><strong>Session 1:</strong> Vibe coding mechanics — tokens, CLAUDE.md, Security.md, tools.</p></div>
+  <div class="n"><i class="check">2</i><p><strong>Session 2:</strong> GitHub as a knowledge base — repos, branches, PRs, CLI intro.</p></div>
+  <div class="n"><i class="check">3</i><p><strong>Session 3:</strong> Hands-on build — GitHub setup, token management, first skills, IDH case study.</p></div>
+  <div class="n"><i class="accent">4</i><p><strong>Session 4:</strong> CLI setup, hooks, MCPs, and maintaining existing software with AI.</p></div>
+</section>
+
+<!-- WHAT'S CHANGING -->
+<section>
+  <h2>What's Changing</h2>
+  <div class="prose">
+    <p>In Session 3, we connected Claude UI to GitHub. It could read your repos and understand your context. But it couldn't write back easily — no commits, no PRs, no file updates from the UI. That changes today.</p>
+  </div>
+  <div class="cols">
+    <div>
+      <h3>Claude UI (What you've been using)</h3>
+      <div class="n"><i>1</i><p>Can read GitHub repos via token</p></div>
+      <div class="n"><i>2</i><p>Great for conversations and brainstorming</p></div>
+      <div class="n"><i>3</i><p>Cannot push changes or raise PRs</p></div>
+      <div class="n"><i>4</i><p>Each conversation is isolated</p></div>
+    </div>
+    <div>
+      <h3>Claude Code / CLI (What we're setting up)</h3>
+      <div class="n"><i class="accent">1</i><p>Reads AND writes to your local files</p></div>
+      <div class="n"><i class="accent">2</i><p>Runs commands, tests, builds</p></div>
+      <div class="n"><i class="accent">3</i><p>Can commit, push, and raise PRs</p></div>
+      <div class="n"><i class="accent">4</i><p>Follows CLAUDE.md and Security.md automatically</p></div>
+      <div class="n"><i class="accent">5</i><p>Hooks automate pre/post actions</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT ARE HOOKS -->
+<section>
+  <h2>What Are Hooks?</h2>
+  <div class="prose">
+    <p>Hooks are automatic actions that run before or after Claude does something. Think of them as guardrails that activate themselves.</p>
+  </div>
+  <div class="analogy">
+    <div class="label">Think of it this way</div>
+    <p>You know how your car beeps when you don't wear a seatbelt? That's a hook. It doesn't stop you from driving, but it makes sure you're safe before you go. Pre-hooks check before action. Post-hooks verify after.</p>
+  </div>
+  <div class="n"><i>1</i><p><strong>Pre-commit hook:</strong> Scans for secrets (API keys, passwords) before any code is committed. If it finds one — blocked.</p></div>
+  <div class="n"><i>2</i><p><strong>Pre-push hook:</strong> Checks if Security.md rules are followed before pushing to GitHub.</p></div>
+  <div class="n"><i>3</i><p><strong>Post-commit hook:</strong> Automatically updates your heartbeat.md with what just changed.</p></div>
+  <div class="n"><i>4</i><p><strong>Custom hook:</strong> Runs your own validation — "does this PR have a description?", "did the tests pass?"</p></div>
+  <div class="callout">
+    <p><strong>Hooks are why CLI is mandatory for serious work.</strong> They enforce discipline automatically. No human memory required.</p>
+  </div>
+</section>
+
+<!-- WHAT ARE MCPs -->
+<section>
+  <h2>What Are MCPs?</h2>
+  <div class="prose">
+    <p>MCP stands for Model Context Protocol. In simple terms: it's how you connect your personal tools — Slack, Gmail, Calendar, Linear — directly to AI. Instead of copy-pasting between apps, AI reads from and writes to your tools natively.</p>
+  </div>
+  <div class="n"><i>1</i><p><strong>Slack MCP:</strong> AI reads your Slack messages and drafts replies</p></div>
+  <div class="n"><i>2</i><p><strong>Gmail MCP:</strong> AI can search your emails and draft responses</p></div>
+  <div class="n"><i>3</i><p><strong>Calendar MCP:</strong> AI checks your schedule and suggests meeting times</p></div>
+  <div class="n"><i>4</i><p><strong>Linear MCP:</strong> AI reads your tickets and creates new ones</p></div>
+  <div class="callout accent">
+    <p><strong>We won't set up all MCPs today</strong> — just understand the concept. The goal is to know what's possible so you can decide what's useful for your workflow.</p>
+  </div>
+</section>
+
+<!-- GUEST -->
+<section>
+  <h2>Guest: Namandeep on Maintaining mGrant</h2>
+  <div class="prose">
+    <p>Most AI demos show building things from scratch. But most of our work is <strong>maintaining, extending, and debugging</strong> existing software. Namandeep Chaudhary is working on mGrant setup for a client, and he'll share what that looks like with AI.</p>
+  </div>
+  <h3>What he'll cover</h3>
+  <div class="n"><i>1</i><p>Working with an existing codebase — not starting fresh</p></div>
+  <div class="n"><i>2</i><p>The challenges of context when the product already has thousands of lines</p></div>
+  <div class="n"><i>3</i><p>How CLAUDE.md and context files help AI understand legacy decisions</p></div>
+  <div class="n"><i>4</i><p>Real blockers and workarounds when AI meets existing architecture</p></div>
+  <div class="quote">
+    "Building from scratch is the demo. Maintaining what exists is the job."
+    <cite>— Nihaan Mohammed, Session 3</cite>
+  </div>
+</section>
+
+<!-- PREREQUISITES -->
+<section>
+  <h2>Prerequisites</h2>
+  <div class="callout green">
+    <p><strong>Complete these before Session 4</strong> to get the most out of the hands-on time.</p>
+  </div>
+  <div class="n"><i>1</i><p><strong>GitHub account set up</strong> with at least one repository (from Session 3)</p></div>
+  <div class="n"><i>2</i><p><strong>CLAUDE.md file</strong> committed to your personal repo</p></div>
+  <div class="n"><i>3</i><p><strong>Security.md file</strong> in every repo you own</p></div>
+  <div class="n"><i>4</i><p><strong>GitHub token</strong> generated and stored securely</p></div>
+  <div class="n"><i>5</i><p><strong>Laptop</strong> with terminal access (we'll be using the command line)</p></div>
+  <div class="callout">
+    <p><strong>If you haven't completed Session 3 setup,</strong> arrive 15 minutes early. We'll help you catch up before we start CLI work.</p>
+  </div>
+</section>
+
+<!-- KEY TAKEAWAYS -->
+<section>
+  <h2>Key Takeaways <small>— what to expect</small></h2>
+  <div class="n"><i>1</i><p><strong>CLI is the bridge.</strong> Between your knowledge (CLAUDE.md) and real action (commits, PRs, deployments).</p></div>
+  <div class="n"><i>2</i><p><strong>Hooks enforce discipline.</strong> What you'd forget to check manually, hooks check automatically.</p></div>
+  <div class="n"><i>3</i><p><strong>MCPs extend reach.</strong> Your tools talk to AI natively. No more copy-paste workflows.</p></div>
+  <div class="n"><i>4</i><p><strong>Maintaining > Building.</strong> Real work is evolving existing systems. AI helps here too.</p></div>
+</section>
+
+<!-- ACTION ITEMS -->
+<section>
+  <h2>Action Items <small>— before Session 4</small></h2>
+  <div class="n"><i>1</i><p><strong>Complete all Session 3 action items</strong> — especially CLAUDE.md and Security.md.</p></div>
+  <div class="n"><i>2</i><p><strong>Open your terminal</strong> — just get comfortable seeing it. Type <code>whoami</code> and see what happens.</p></div>
+  <div class="n"><i>3</i><p><strong>Think about your hooks</strong> — what repetitive check do you wish happened automatically?</p></div>
+  <div class="n"><i>4</i><p><strong>Bring a real problem</strong> — something you're working on this week. We'll use CLI on it live.</p></div>
+</section>
+
+<!-- FURTHER READING -->
+<section>
+  <h2>Further Reading</h2>
+  <div class="reading-card">
+    <span class="reading-type guide">Guide</span>
+    <div class="reading-body">
+      <a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank">Claude Code — Getting Started</a>
+      <p>Official guide to installing and using Claude Code. Start here.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type docs">Docs</span>
+    <div class="reading-body">
+      <a href="https://docs.anthropic.com/en/docs/claude-code/hooks" target="_blank">Hooks in Claude Code</a>
+      <p>How to set up pre-tool-use, post-tool-use, and notification hooks.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type article">Article</span>
+    <div class="reading-body">
+      <a href="https://modelcontextprotocol.io" target="_blank">Model Context Protocol</a>
+      <p>The open standard for connecting AI to your tools. Understand the architecture.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type article">Article</span>
+    <div class="reading-body">
+      <a href="https://www.oneusefulthing.org/p/what-people-ask-me-most-also-some" target="_blank">Practical AI Tips — Ethan Mollick</a>
+      <p>Real-world advice on using AI at work. Written for non-technical professionals.</p>
+    </div>
+  </div>
+</section>
+
+<div class="main-footer">
+  <div><a href="session-3.html">&larr; Session 3</a> &middot; <a href="../index.html">Home</a></div>
+  <small>Dhwani RIS &middot; AI Playground &middot; 2026</small>
+</div>
+
+</div></div>
+</body>
+</html>
