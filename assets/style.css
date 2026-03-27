@@ -452,6 +452,7 @@ code {
 .session-card:hover {
   border-color: var(--primary);
   box-shadow: 0 2px 12px rgba(139, 26, 26, 0.06);
+  transform: translateY(-1px);
 }
 .session-card .card-num {
   font-family: 'JetBrains Mono', monospace;
