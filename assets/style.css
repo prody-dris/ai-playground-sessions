@@ -735,6 +735,21 @@ code {
   margin-top: 2px;
 }
 
+/* ── Featured prompt section ── */
+.prompt-featured {
+  border: 2px solid rgba(139, 26, 26, 0.15);
+  background: linear-gradient(135deg, #FFFFFF 0%, rgba(139, 26, 26, 0.02) 100%);
+  box-shadow: 0 4px 20px rgba(139, 26, 26, 0.06);
+}
+.prompt-featured h2 {
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+.prompt-featured .copy-block .template {
+  border: 1px solid rgba(232, 164, 53, 0.15);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+}
+
 @media (max-width: 900px) {
   .sidebar {
     transform: translateX(-100%);

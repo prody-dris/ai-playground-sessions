@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompts — AI Playground</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="mobile-header">
+  <img src="assets/images/dhwani-logo.png" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="assets/images/dhwani-logo.png" alt="Dhwani RIS">
+    <div class="sidebar-title">AI Playground</div>
+    <div class="sidebar-sub">Product &amp; Operations</div>
+  </div>
+  <div class="sidebar-section">
+    <a class="sidebar-link" href="index.html"><span class="link-icon">~</span> Home</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sessions</div>
+    <a class="sidebar-link" href="sessions/session-0.html"><span class="link-icon">0</span> Introduction</a>
+    <a class="sidebar-link" href="sessions/session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
+    <a class="sidebar-link" href="sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
+    <a class="sidebar-link" href="sessions/session-3.html"><span class="link-icon">3</span> Hands On</a>
+    <a class="sidebar-link" href="sessions/session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks <span class="badge-new">Next</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Resources</div>
+    <a class="sidebar-link" href="readings.html"><span class="link-icon">R</span> Readings</a>
+    <a class="sidebar-link" href="tools.html"><span class="link-icon">T</span> Tools</a>
+    <a class="sidebar-link active" href="prompts.html"><span class="link-icon">P</span> Prompts</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="https://dhwaniris.com">dhwaniris.com</a>
+    <small>Built by Nihaan Mohammed</small>
+  </div>
+</aside>
+
+<div class="main"><div class="content">
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Prompts</div>
+  <h1>Prompts<span>.</span></h1>
+  <div class="page-meta">Copy-paste prompts that make AI work for you &mdash; no coding needed</div>
+</div>
+
+<!-- INTRO -->
+<section>
+  <h2>How To Use These</h2>
+  <div class="prose">
+    <p>Each prompt below is designed to be <strong>pasted directly into Claude</strong> (UI or CLI). They guide AI step-by-step so you don't have to figure out the right words every time. Think of them as SOPs for your AI.</p>
+  </div>
+  <div class="n"><i>1</i><p><strong>Copy</strong> the prompt using the copy button on each block</p></div>
+  <div class="n"><i>2</i><p><strong>Paste</strong> it into Claude (chat or CLI) and hit enter</p></div>
+  <div class="n"><i>3</i><p><strong>Follow along</strong> as AI guides you through each step</p></div>
+  <div class="callout accent">
+    <p><strong>These are starting points, not scripts.</strong> Modify them for your context. Add your name, your domain, your specific needs. The more specific you are, the better AI performs.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     CLI SETUP — FEATURED PROMPT
+     ═══════════════════════════════ -->
+<section class="prompt-featured">
+  <h2>Claude Code CLI Setup Guide <span class="badge-live">Popular Demand</span></h2>
+  <div class="prose">
+    <p>This is the master prompt for setting up Claude Code (CLI) from scratch. It walks you through everything: GitHub account, CLI installation, MCPs, hooks, best practices, and your first run. <strong>Paste this into Claude UI</strong> and it becomes your setup coach.</p>
+  </div>
+  <div class="callout green">
+    <p><strong>Before Session 4?</strong> Run this prompt now. Come to the session with CLI already installed and you'll be ahead of the room. Takes 20-25 minutes.</p>
+  </div>
+
+  <h3>What this prompt covers</h3>
+  <div class="n"><i>1</i><p><strong>GitHub account verification</strong> &mdash; ensure your account and repo are ready</p></div>
+  <div class="n"><i>2</i><p><strong>Claude Code CLI installation</strong> &mdash; through your Claude subscription (not npm)</p></div>
+  <div class="n"><i>3</i><p><strong>GitHub MCP connection</strong> &mdash; so CLI can read and write to your repos</p></div>
+  <div class="n"><i>4</i><p><strong>Best practices setup</strong> &mdash; CLAUDE.md, Security.md, status line</p></div>
+  <div class="n"><i>5</i><p><strong>Pre and post hooks</strong> &mdash; automated guardrails for safety</p></div>
+  <div class="n"><i>6</i><p><strong>First demo run</strong> &mdash; a sample prompt to see CLI in action</p></div>
+
+  <div class="copy-block">
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+    <div class="template">You are guiding me through setting up Claude Code CLI for the first time. I am non-technical. Go one step at a time. Do NOT move to the next step until I confirm the current one is done. Ask me for a screenshot at every step so you can verify and help me if something looks wrong.
+
+<span class="comment"># My Setup</span>
+<span class="key">- Operating system:</span> <span class="val">[Mac / Windows &mdash; tell Claude which one you use]</span>
+<span class="key">- Claude subscription:</span> <span class="val">I have a Claude Pro/Team subscription</span>
+<span class="key">- GitHub account:</span> <span class="val">[your GitHub username, or "I don't have one yet"]</span>
+
+<span class="comment"># What I need you to do (in this exact order)</span>
+
+<span class="comment">## Phase 1 &mdash; GitHub</span>
+1. Check if my GitHub account is set up. If not, walk me through creating one.
+2. Make sure I have at least one repository. If not, help me create one.
+
+<span class="comment">## Phase 2 &mdash; Install Claude Code CLI</span>
+3. Walk me through installing Claude Code from the official method.
+   <span class="key">IMPORTANT:</span> Use the Claude setup method (claude.ai/code or desktop app), NOT npm.
+   For Mac: I will use Terminal. For Windows: I will use PowerShell.
+4. Help me verify installation by running: claude --version
+5. Help me log in through my Claude subscription.
+
+<span class="comment">## Phase 3 &mdash; Connect GitHub</span>
+6. Set up the GitHub CLI MCP so my CLI can access my GitHub repos.
+7. Verify the connection works by reading one of my repos.
+
+<span class="comment">## Phase 4 &mdash; Best Practices</span>
+8. Help me create or update my CLAUDE.md file in my repo.
+   Use this template as a starting point:
+
+   # CLAUDE.md &mdash; [My Name]
+   ## Who I Am
+   - Role: [my title]
+   - Domain: [what I work on]
+   - Technical level: non-technical
+   ## How I Like to Work
+   - Be concise. Lead with the answer.
+   - Don't ask me to write or edit code &mdash; do it for me.
+   - When in doubt, ask once, then execute.
+
+9. Help me add Security.md to my repo (the AI Playground standard).
+10. Set up the CLI status line so I can see what Claude is doing.
+
+<span class="comment">## Phase 5 &mdash; Hooks</span>
+11. Set up a pre-session hook that checks for secrets before committing.
+12. Set up a post-session hook that logs what was done.
+
+<span class="comment">## Phase 6 &mdash; First Run</span>
+13. Open one of my GitHub projects in Claude Code.
+14. Run a sample prompt to show me what CLI can do that UI can't.
+15. Show me the difference between CLI and UI with a concrete example.
+
+<span class="comment"># Teaching style</span>
+- You are the senior PM. Lead me. Don't ask what I want to do &mdash; tell me what to do next.
+- One step at a time. Wait for my "done" before moving on.
+- If I'm stuck, troubleshoot with me &mdash; don't skip the step.
+- Explain WHY each step matters, not just HOW to do it.
+- Reference this cheatsheet when relevant: https://prody-dris.github.io/claude-code-cheatsheet/
+- Reference the AI Playground site: https://prody-dris.github.io/ai-playground-sessions/
+
+Now start with Phase 1, Step 1. Ask me to confirm my GitHub status.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     CLI vs UI GUIDE
+     ═══════════════════════════════ -->
+<section>
+  <h2>When To Use CLI vs UI</h2>
+  <div class="prose">
+    <p>Claude Code (CLI) and Claude Chat (UI) are the same AI, different modes. Here's when to use each.</p>
+  </div>
+  <div class="cols">
+    <div>
+      <h3>Use Claude Code (CLI) for</h3>
+      <div class="n"><i class="accent">1</i><p>Reading and writing code in your repos</p></div>
+      <div class="n"><i class="accent">2</i><p>Creating commits, branches, and PRs</p></div>
+      <div class="n"><i class="accent">3</i><p>Running tests and build commands</p></div>
+      <div class="n"><i class="accent">4</i><p>Research within codebases</p></div>
+      <div class="n"><i class="accent">5</i><p>File operations and automation</p></div>
+      <div class="n"><i class="accent">6</i><p>Hooks and safety guardrails</p></div>
+      <div class="n"><i class="accent">7</i><p>Connecting tools via MCPs</p></div>
+    </div>
+    <div>
+      <h3>Use Claude Chat (UI) for</h3>
+      <div class="n"><i>1</i><p>Brainstorming and ideation</p></div>
+      <div class="n"><i>2</i><p>Writing documents and reports</p></div>
+      <div class="n"><i>3</i><p>Image generation and visual work</p></div>
+      <div class="n"><i>4</i><p>Conversations and Q&amp;A</p></div>
+      <div class="n"><i>5</i><p>Artifacts (interactive previews)</p></div>
+      <div class="n"><i>6</i><p>Research on the web</p></div>
+      <div class="n"><i>7</i><p>Quick one-off tasks</p></div>
+    </div>
+  </div>
+  <div class="callout">
+    <p><strong>The simple rule:</strong> If you're working with files and code, use CLI. If you're thinking and writing, use UI. When in doubt, start in UI and move to CLI when you need to take action.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     QUICK WINS — FIRST THINGS TO TRY
+     ═══════════════════════════════ -->
+<section>
+  <h2>First Things To Try in CLI</h2>
+  <div class="prose">
+    <p>Once you have Claude Code installed, try these to see what it can do. Each one is a single prompt you can paste.</p>
+  </div>
+
+  <h3>Read your own repo</h3>
+  <div class="copy-block">
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+    <div class="template">Read this project and give me a summary of what it does, what files are here, and what the current state looks like. Keep it short.</div>
+  </div>
+
+  <h3>Check your setup</h3>
+  <div class="copy-block">
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+    <div class="template">Check my CLAUDE.md and Security.md files. Are they complete? What's missing? Suggest improvements but don't make changes yet.</div>
+  </div>
+
+  <h3>Create a PR from a change</h3>
+  <div class="copy-block">
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+    <div class="template">Update the README.md with a better project description based on what you see in the codebase. Create a new branch, commit the change, and raise a PR. Keep the description concise.</div>
+  </div>
+
+  <h3>Research your codebase</h3>
+  <div class="copy-block">
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+    <div class="template">Search this codebase for any hardcoded secrets, API keys, or passwords. Check every file. Report what you find &mdash; even if it's nothing, confirm that explicitly.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     CLAUDE.MD TEMPLATE
+     ═══════════════════════════════ -->
+<section>
+  <h2>CLAUDE.md Template</h2>
+  <div class="prose">
+    <p>Your AI's onboarding document. Copy this, fill it in, commit it to the root of every repo. Your AI starts learning about you the moment you do.</p>
+  </div>
+  <div class="copy-block">
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+    <div class="template"><span class="comment"># CLAUDE.md &mdash; [Your Name]</span>
+
+<span class="comment">## Who I Am</span>
+<span class="key">- Role:</span> <span class="val">[Your title at Dhwani RIS]</span>
+<span class="key">- Domain:</span> <span class="val">[What you work on &mdash; grants, CSR, dashboards, MIS, etc.]</span>
+<span class="key">- Technical level:</span> <span class="val">[Be honest &mdash; "non-technical PM", "comfortable with Excel"]</span>
+
+<span class="comment">## What I Work On</span>
+<span class="key">- Products:</span> <span class="val">[mGrant, Frappe LMS, dashboards, etc.]</span>
+<span class="key">- Clients:</span> <span class="val">[Who you serve, what they care about]</span>
+<span class="key">- Current focus:</span> <span class="val">[What you're working on this month]</span>
+
+<span class="comment">## How I Like to Work</span>
+- Be concise. Lead with the answer.
+- Don't ask me to write or edit code.
+- When in doubt, ask me &mdash; don't guess.
+<span class="val">- [Add your own preferences]</span>
+
+<span class="comment">## Domain Knowledge I Have</span>
+<span class="val">- [What do you know that the AI doesn't?]</span>
+<span class="val">- [CSR Section 135 rules? Grant lifecycle? MIS report formats?]</span>
+<span class="val">- [This is your superpower. Write it down.]</span></div>
+  </div>
+  <div class="callout">
+    <p><strong>Start small.</strong> Even 5 bullet points is a massive upgrade over starting from zero. You can always add more.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SECURITY.MD TEMPLATE
+     ═══════════════════════════════ -->
+<section>
+  <h2>Security.md Template</h2>
+  <div class="prose">
+    <p>The non-negotiable safety standard. This goes in every repository &mdash; personal and organisation. It tells AI what it must never do.</p>
+  </div>
+  <div class="copy-block">
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+    <div class="template"><span class="comment"># SECURITY.md &mdash; AI-Generated Code Standards</span>
+
+<span class="comment">## 1. Secrets &amp; Credentials</span>
+<span class="key">NEVER hardcode</span> secrets, API keys, tokens, or passwords in source code.
+<span class="key">Use environment variables</span> or .env files for all sensitive values.
+<span class="key">Never commit</span> .env files &mdash; ensure .gitignore excludes them.
+<span class="key">If a secret leaks:</span> revoke immediately, rotate the credential, audit the commit history.
+
+<span class="comment">## 2. What AI Must Never Generate</span>
+- Code that bypasses authentication or authorisation
+- Direct database queries without parameterisation (no raw SQL)
+- Code that disables security headers or CSRF protection
+- Hardcoded credentials in any file, including test files
+- Code that exposes internal APIs to unauthenticated users
+- Anything that modifies production data without explicit approval
+
+<span class="comment">## 3. Permissions &amp; Access Control</span>
+<span class="key">Every DocType</span> must have role-based permissions defined.
+<span class="key">Every API endpoint</span> must check user permissions before executing.
+<span class="key">Every whitelisted method</span> must validate that the caller has the right role.
+<span class="key">Default deny:</span> if no permission is defined, access is blocked.
+
+<span class="comment">## 4. Database &amp; Query Safety</span>
+<span class="key">Parameterised queries only</span> &mdash; never concatenate user input into SQL.
+<span class="key">Use Frappe ORM</span> (frappe.get_doc, frappe.get_list) instead of raw SQL.
+<span class="key">Validate all inputs</span> before using them in queries or logic.
+<span class="key">Never trust client-side data</span> &mdash; always re-validate on the server.
+
+<span class="comment">## 5. Quick Reference</span>
+
+<span class="key">Secrets in code?</span>              <span class="val">NEVER. Use .env or environment variables.</span>
+<span class="key">Raw SQL?</span>                      <span class="val">NEVER. Use parameterised queries or ORM.</span>
+<span class="key">Push to main/develop?</span>         <span class="val">NEVER. Always use a feature branch + PR.</span>
+<span class="key">Skip PR review?</span>               <span class="val">NEVER. All AI code requires developer review.</span>
+<span class="key">DocType without permissions?</span>   <span class="val">NEVER. Every DocType gets role-based access.</span>
+<span class="key">Disable CSRF?</span>                 <span class="val">NEVER. Security headers stay on.</span>
+<span class="key">Trust client input?</span>           <span class="val">NEVER. Validate on the server, always.</span>
+
+<span class="comment">## 6. Required Checks Before Merge</span>
+<span class="val">[ ]</span> No secrets, tokens, or API keys in any file
+<span class="val">[ ]</span> All database queries use parameterised inputs
+<span class="val">[ ]</span> Every new DocType has permissions defined
+<span class="val">[ ]</span> Every whitelisted method checks user roles
+<span class="val">[ ]</span> No code that bypasses authentication
+<span class="val">[ ]</span> .gitignore updated if new sensitive file types are introduced
+<span class="val">[ ]</span> Feature branch used (not main or develop)
+<span class="val">[ ]</span> PR raised and assigned to a developer for review
+<span class="val">[ ]</span> CLAUDE.md updated with what changed and why</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SKILLS TEMPLATE
+     ═══════════════════════════════ -->
+<section>
+  <h2>Skills Template <small>&mdash; SOPs for AI</small></h2>
+  <div class="prose">
+    <p>A skill is a cheat sheet you give your AI. Write it once, use it forever. It's your domain knowledge in a format AI can understand and follow every time.</p>
+  </div>
+  <div class="copy-block">
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+    <div class="template"><span class="comment"># Skill: [Your Area]</span>
+
+<span class="comment">## What This Covers</span>
+<span class="val">[One paragraph: what area does this skill address?]</span>
+
+<span class="comment">## Key Concepts</span>
+<span class="key">- [Concept 1]:</span> <span class="val">[Brief explanation]</span>
+<span class="key">- [Concept 2]:</span> <span class="val">[Brief explanation]</span>
+
+<span class="comment">## Rules and Constraints</span>
+<span class="val">- [What must always be true?]</span>
+<span class="val">- [Compliance requirements?]</span>
+<span class="val">- [Common mistakes to avoid?]</span>
+
+<span class="comment">## Common Tasks</span>
+<span class="key">- [Task 1]:</span> <span class="val">[How it should be done]</span>
+<span class="key">- [Task 2]:</span> <span class="val">[How it should be done]</span>
+
+<span class="comment">## Vocabulary</span>
+<span class="key">- [Term]</span> = <span class="val">[What it means in your context]</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     CHEATSHEET REFERENCE
+     ═══════════════════════════════ -->
+<section>
+  <h2>Quick References</h2>
+  <div class="r"><code>Cheatsheet</code><span><a href="https://prody-dris.github.io/claude-code-cheatsheet/" target="_blank">Claude Code Cheatsheet</a> &mdash; commands, shortcuts, and tips for daily CLI use</span></div>
+  <div class="r"><code>Session 3</code><span><a href="sessions/session-3.html">Hands On</a> &mdash; original templates with walkthroughs and screenshots</span></div>
+  <div class="r"><code>Session 4</code><span><a href="sessions/session-4.html">CLI &amp; Hooks</a> &mdash; detailed session guide for setup and hooks</span></div>
+  <div class="r"><code>Readings</code><span><a href="readings.html">Readings</a> &mdash; curated learning resources on Claude Code, GitHub, and AI</span></div>
+</section>
+
+<div class="main-footer">
+  <div><a href="index.html">Home</a> &middot; <a href="tools.html">Tools</a> &middot; <a href="readings.html">Readings</a></div>
+  <small>Dhwani RIS &middot; AI Playground &middot; 2026</small>
+</div>
+
+</div></div>
+
+<script>
+function copyBlock(btn) {
+  const block = btn.closest('.copy-block');
+  const template = block.querySelector('.template');
+  const text = template.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
