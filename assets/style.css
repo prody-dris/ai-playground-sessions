@@ -959,6 +959,73 @@ code {
   flex-shrink: 0;
 }
 
+/* ── Teaser / locked content ── */
+.teaser-section {
+  position: relative;
+  overflow: hidden;
+}
+.teaser-content {
+  position: relative;
+}
+.teaser-content::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--card-bg));
+  pointer-events: none;
+}
+.teaser-lock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(75, 75, 200, 0.06);
+  border: 1px dashed rgba(75, 75, 200, 0.2);
+  border-radius: 8px;
+  padding: 14px 20px;
+  margin-top: 8px;
+  position: relative;
+  z-index: 2;
+}
+.teaser-lock p {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b4bc8;
+  margin: 0;
+}
+.teaser-lock .lock-icon {
+  font-size: 14px;
+}
+
+/* ── Topic pill grid ── */
+.topic-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+.topic-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--rule);
+  background: var(--card-bg);
+  color: var(--text-mid);
+}
+.topic-pill.active {
+  background: var(--primary-bg);
+  border-color: rgba(139, 26, 26, 0.15);
+  color: var(--primary);
+}
+.topic-pill .pill-icon {
+  font-size: 14px;
+}
+
 @media (max-width: 900px) {
   .sidebar {
     transform: translateX(-100%);
