@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Builder Protocol — AI Playground</title>
+<meta name="description" content="The Builder Protocol — a new delivery methodology for the AI-native era. 3 personas, 8 phases, AI as execution partner. Replaces the traditional SDLC.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* ── Builder Protocol ── */
+
+  /* Hero */
+  .bp-hero {
+    background: linear-gradient(135deg, #1E1E1E 0%, #2a1010 50%, #3d1515 100%);
+    border-radius: 14px; padding: 44px 40px 36px; margin-bottom: 28px;
+    position: relative; overflow: hidden;
+  }
+  .bp-hero::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(212,132,42,0.10) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .bp-hero::after {
+    content: ''; position: absolute; bottom: -50px; left: -50px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(139,26,26,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .bp-hero .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); background: rgba(212,132,42,0.12);
+    padding: 4px 12px; border-radius: 20px; margin-bottom: 18px;
+  }
+  .bp-hero h2 {
+    font-size: 28px; font-weight: 700; color: #fff;
+    letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 14px;
+    text-transform: none; position: relative; z-index: 1;
+  }
+  .bp-hero h2 span { color: var(--accent); }
+  .bp-hero .hero-sub {
+    font-size: 14.5px; color: rgba(255,255,255,0.65); line-height: 1.7;
+    max-width: 580px; position: relative; z-index: 1; margin-bottom: 20px;
+  }
+  .bp-hero .hero-sub strong { color: rgba(255,255,255,0.9); }
+  .bp-hero-quote {
+    font-style: italic; font-size: 13.5px; color: rgba(255,255,255,0.45);
+    border-left: 2px solid rgba(212,132,42,0.4); padding-left: 14px;
+    position: relative; z-index: 1; line-height: 1.65; max-width: 500px;
+  }
+  .bp-hero-quote cite {
+    display: block; font-style: normal; font-size: 11px;
+    color: rgba(255,255,255,0.3); margin-top: 4px;
+  }
+
+  /* Spacer between dense sections */
+  .bp-spacer { height: 8px; }
+
+  /* Persona grid */
+  .persona-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .persona-card {
+    border-radius: 10px; padding: 22px 18px; text-align: center;
+    border: 1px solid var(--rule); transition: all 0.15s;
+  }
+  .persona-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .persona-card.builder { background: rgba(43,57,144,0.05); border-color: rgba(43,57,144,0.12); }
+  .persona-card.architect { background: rgba(208,74,2,0.05); border-color: rgba(208,74,2,0.12); }
+  .persona-card.account { background: rgba(26,122,76,0.05); border-color: rgba(26,122,76,0.12); }
+  .persona-card .persona-icon {
+    font-size: 28px; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace; font-weight: 700;
+  }
+  .persona-card.builder .persona-icon { color: #2B3990; }
+  .persona-card.architect .persona-icon { color: #D04A02; }
+  .persona-card.account .persona-icon { color: #1a7a4c; }
+  .persona-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .persona-card .persona-absorbs {
+    font-size: 10px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--text-light); margin-bottom: 6px;
+  }
+  .persona-card p { font-size: 12px; color: var(--text-mid); line-height: 1.55; }
+
+  /* Phase flow */
+  .phase-flow { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
+  .phase-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+    border: 1px solid var(--rule); background: var(--card-bg); color: var(--text-mid);
+    transition: all 0.12s;
+  }
+  .phase-pill:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .phase-pill.critical { background: var(--accent-bg); border-color: rgba(212,132,42,0.2); color: var(--accent); }
+  .phase-pill.build { background: var(--green-bg); border-color: rgba(34,139,34,0.15); color: var(--green); }
+  .phase-pill.test { background: rgba(75,75,200,0.06); border-color: rgba(75,75,200,0.15); color: #4b4bc8; }
+  .phase-pill.iterate { background: rgba(150,40,40,0.06); border-color: rgba(150,40,40,0.15); color: #8C3838; }
+  .phase-arrow { color: var(--text-light); font-size: 14px; flex-shrink: 0; }
+
+  /* Layer stack */
+  .layer-stack { margin: 14px 0; }
+  .layer-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 14px; border-bottom: 1px solid var(--rule);
+  }
+  .layer-row:last-child { border-bottom: none; }
+  .layer-num {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 11px;
+    min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; flex-shrink: 0;
+  }
+  .layer-row.safe .layer-num { background: var(--green-bg); color: var(--green); }
+  .layer-row.locked .layer-num { background: rgba(150,40,40,0.08); color: #8C3838; }
+  .layer-label { font-size: 13px; font-weight: 600; color: var(--text); }
+  .layer-desc { font-size: 12px; color: var(--text-mid); margin-left: auto; }
+  .layer-badge {
+    font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    padding: 2px 8px; border-radius: 3px; flex-shrink: 0;
+  }
+  .layer-badge.yes { background: var(--green-bg); color: var(--green); }
+  .layer-badge.never { background: rgba(150,40,40,0.08); color: #8C3838; }
+
+  /* Build order */
+  .build-order { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 14px 0; }
+  .build-step {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px; border-radius: 8px;
+    border: 1px solid var(--rule); background: var(--card-bg);
+    transition: all 0.12s;
+  }
+  .build-step:hover { border-color: var(--primary); background: var(--primary-bg); }
+  .build-step .bs-num {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 10px;
+    min-width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;
+    border-radius: 5px; flex-shrink: 0; background: var(--primary); color: #fff;
+  }
+  .build-step .bs-label { font-size: 12.5px; font-weight: 500; color: var(--text-mid); }
+
+  /* Rule cards */
+  .rule-card { padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .rule-card:last-child { border-bottom: none; }
+  .rule-card .rule-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+  .rule-card .rule-num {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 10px;
+    min-width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;
+    border-radius: 5px; flex-shrink: 0; background: rgba(150,40,40,0.08); color: #8C3838;
+  }
+  .rule-card .rule-title { font-size: 13.5px; font-weight: 600; color: var(--text); }
+  .rule-card .rule-story { font-size: 12.5px; color: var(--text-mid); line-height: 1.65; margin-bottom: 4px; }
+  .rule-card .rule-fix { font-size: 12.5px; color: var(--green); font-weight: 600; line-height: 1.6; }
+
+  /* Memory grid */
+  .memory-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+  .memory-card {
+    padding: 18px 18px; border-radius: 10px; border: 1px solid var(--rule);
+    transition: all 0.12s;
+  }
+  .memory-card:hover { transform: translateY(-1px); box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+  .memory-card h4 { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+  .memory-card.brain { border-color: rgba(212,132,42,0.2); background: var(--accent-bg); }
+  .memory-card.brain h4 { color: var(--accent); }
+  .memory-card.security { border-color: rgba(150,40,40,0.15); background: rgba(150,40,40,0.04); }
+  .memory-card.security h4 { color: #8C3838; }
+  .memory-card.heartbeat { border-color: rgba(75,75,200,0.15); background: rgba(75,75,200,0.04); }
+  .memory-card.heartbeat h4 { color: #4b4bc8; }
+  .memory-card.prd { border-color: rgba(34,139,34,0.15); background: var(--green-bg); }
+  .memory-card.prd h4 { color: var(--green); }
+  .memory-card p { font-size: 12.5px; color: var(--text-mid); line-height: 1.55; }
+
+  /* Skill phase grid */
+  .skill-phase-grid { margin: 12px 0; }
+  .skill-phase-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 9px 0; border-bottom: 1px solid var(--rule);
+  }
+  .skill-phase-row:last-child { border-bottom: none; }
+  .skill-phase-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600;
+    min-width: 60px; text-align: center; padding: 3px 8px; border-radius: 4px; flex-shrink: 0;
+  }
+  .skill-phase-tag.domain { background: #2B3990; color: #fff; }
+  .skill-phase-tag.flow { background: var(--accent-bg); color: var(--accent); }
+  .skill-phase-tag.util { background: var(--primary-bg); color: var(--primary); }
+  .skill-name { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; color: var(--text); min-width: 170px; }
+  .skill-desc { font-size: 12px; color: var(--text-mid); }
+
+  /* Compare grid */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .compare-card { padding: 20px 20px; border-radius: 10px; border: 1px solid var(--rule); }
+  .compare-card.old { background: rgba(150,40,40,0.03); border-color: rgba(150,40,40,0.12); }
+  .compare-card.new { background: rgba(34,139,34,0.03); border-color: rgba(34,139,34,0.12); }
+  .compare-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+  .compare-card.old h4 { color: #8C3838; }
+  .compare-card.new h4 { color: var(--green); }
+  .compare-card li {
+    font-size: 12.5px; color: var(--text-mid); line-height: 1.65;
+    padding: 3px 0 3px 18px; position: relative; list-style: none;
+  }
+  .compare-card.old li::before { content: '\2717'; color: #8C3838; font-weight: 700; position: absolute; left: 0; }
+  .compare-card.new li::before { content: '\2713'; color: var(--green); font-weight: 700; position: absolute; left: 0; }
+
+  /* Safety grid */
+  .safety-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0; }
+  .safety-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    padding: 10px 14px; border-radius: 8px;
+    background: rgba(150,40,40,0.04); border: 1px solid rgba(150,40,40,0.1);
+  }
+  .safety-item .safety-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; color: #8C3838; }
+  .safety-item p { font-size: 12px; color: var(--text-mid); line-height: 1.5; }
+  .safety-item strong { color: var(--text); }
+
+  /* Stat row override for this page */
+  .bp-stats { margin: 16px 0; }
+  .bp-stats .stat .stat-num { font-size: 20px; }
+
+  @media (max-width: 900px) {
+    .persona-grid { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .memory-grid { grid-template-columns: 1fr; }
+    .build-order { grid-template-columns: 1fr; }
+    .safety-grid { grid-template-columns: 1fr; }
+    .phase-flow { gap: 4px; }
+    .bp-hero { padding: 28px 20px 24px; }
+    .bp-hero h2 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mobile-header">
+  <img src="../assets/images/dhwani-logo.png" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="../assets/images/dhwani-logo.png" alt="Dhwani RIS">
+    <div class="sidebar-title">AI Playground</div>
+    <div class="sidebar-sub">Product &amp; Operations</div>
+  </div>
+  <div class="sidebar-section">
+    <a class="sidebar-link" href="../index.html"><span class="link-icon">~</span> Home</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sessions</div>
+    <a class="sidebar-link" href="../sessions/session-0.html"><span class="link-icon">0</span> Introduction</a>
+    <a class="sidebar-link" href="../sessions/session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
+    <a class="sidebar-link" href="../sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
+    <a class="sidebar-link" href="../sessions/session-3.html"><span class="link-icon">3</span> Hands On</a>
+    <a class="sidebar-link" href="../sessions/session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks <span class="badge-new">Next</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Frameworks</div>
+    <a class="sidebar-link active" href="builder-protocol.html"><span class="link-icon">B</span> The Builder Protocol <span class="badge-new">New</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Resources</div>
+    <a class="sidebar-link" href="../readings.html"><span class="link-icon">R</span> Readings</a>
+    <a class="sidebar-link" href="../tools.html"><span class="link-icon">T</span> Tools</a>
+    <a class="sidebar-link" href="../prompts.html"><span class="link-icon">P</span> Prompts</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="https://dhwaniris.com">dhwaniris.com</a>
+    <small>Built by Nihaan Mohammed</small>
+  </div>
+</aside>
+
+<div class="main"><div class="content">
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a> / Frameworks / The Builder Protocol</div>
+  <h1>The Builder Protocol<span>.</span></h1>
+  <div class="page-meta">A delivery methodology for the AI-native era</div>
+</div>
+
+<!-- ═══════════════════════════════
+     HERO
+     ═══════════════════════════════ -->
+<div class="bp-hero">
+  <div class="hero-badge"><span class="pulse"></span> Framework</div>
+  <h2>One builder with AI leverage<br>outperforms a team of six<span>.</span></h2>
+  <div class="hero-sub">
+    The traditional SDLC was built for a world where humans did all the work. That world is over. <strong>The Builder Protocol</strong> is a new methodology where 3 personas and an AI partner replace 6+ specialized roles &mdash; across planning, requirements, building, testing, documentation, and handoff.
+  </div>
+  <div class="bp-hero-quote">
+    &ldquo;A leveraged worker can out-produce a non-leveraged worker by a factor of one thousand or ten thousand. With leverage, judgment becomes far more important than hours put in.&rdquo;
+    <cite>&mdash; Naval Ravikant, The Almanack</cite>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     THE LEVERAGE THESIS
+     ═══════════════════════════════ -->
+<section>
+  <h2>The Leverage Thesis</h2>
+  <div class="prose">
+    <p>Naval Ravikant identified four types of leverage: labour, capital, media, and code. Code and media are <strong>permissionless</strong> &mdash; you don&rsquo;t need anyone&rsquo;s approval to use them. AI is the fifth form. It compounds all four.</p>
+    <p>The Builder Protocol is built on this insight. When AI assists across every phase of delivery &mdash; not just code generation &mdash; a single Product Builder with the right tools, skills, and discipline can deliver what previously required a full team.</p>
+  </div>
+  <div class="stat-row bp-stats">
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Personas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Phases</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Memory Files</div>
+    </div>
+  </div>
+  <div class="quote">
+    Code and media are permissionless leverage. They&rsquo;re the leverage behind the newly rich. You can create software and media that works for you while you sleep.
+    <cite>Naval Ravikant</cite>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     WHAT IT REPLACES
+     ═══════════════════════════════ -->
+<section>
+  <h2>What This Replaces</h2>
+  <div class="prose">
+    <p>The industry is moving fast. Microsoft, AWS, PwC, and GitHub are all publishing AI-driven SDLC frameworks. GitHub&rsquo;s Spec Driven Development follows the same pattern: Specify, Plan, Tasks, Implement. AWS replaced &ldquo;sprints&rdquo; with &ldquo;bolts&rdquo; &mdash; work cycles measured in hours, not weeks.</p>
+    <p><strong>The Builder Protocol</strong> was built independently from real delivery &mdash; not from theory. It converges with these frameworks because the underlying reality is the same: AI changes what one person can do.</p>
+  </div>
+  <div class="compare-grid">
+    <div class="compare-card old">
+      <h4>Traditional SDLC</h4>
+      <ul>
+        <li>6+ specialized roles with handoff friction</li>
+        <li>Knowledge lives in people&rsquo;s heads and meetings</li>
+        <li>Documentation is a bureaucratic afterthought</li>
+        <li>Testing is appended at the end</li>
+        <li>New team members need weeks of verbal briefings</li>
+        <li>Sprints measured in weeks</li>
+      </ul>
+    </div>
+    <div class="compare-card new">
+      <h4>The Builder Protocol</h4>
+      <ul>
+        <li>3 personas with AI filling execution gaps</li>
+        <li>Knowledge persists in GitHub markdown</li>
+        <li>Documentation is a runtime asset, not an artifact</li>
+        <li>Test design is a first-class deliverable</li>
+        <li>Anyone can onboard from the repo alone</li>
+        <li>Work cycles measured in hours</li>
+      </ul>
+    </div>
+  </div>
+  <div class="quote">
+    The organisations that thrive will treat AI not as a shortcut, but as a force multiplier reshaping delivery around speed, confidence, and continuous improvement.
+    <cite>CircleCI, The New AI-Driven SDLC (2025)</cite>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     THE THREE PERSONAS
+     ═══════════════════════════════ -->
+<section>
+  <h2>The Three Personas</h2>
+  <div class="prose">
+    <p>Where a traditional team has 6+ roles, the Builder Protocol operates with three. AI is the fourth member &mdash; silent, tireless, and leveraged.</p>
+  </div>
+  <div class="persona-grid">
+    <div class="persona-card builder">
+      <div class="persona-icon">B</div>
+      <h4>Product Builder</h4>
+      <div class="persona-absorbs">BA + Dev + QA + Tech Writer</div>
+      <p>Plans, configures, codes, tests, and documents. The primary operator of this framework. Uses CLI + skills.</p>
+    </div>
+    <div class="persona-card architect">
+      <div class="persona-icon">A</div>
+      <h4>System Architect</h4>
+      <div class="persona-absorbs">DevOps + Security + Sr. Dev</div>
+      <p>Stack decisions, security posture, infrastructure, deployment. Escalation point for core changes.</p>
+    </div>
+    <div class="persona-card account">
+      <div class="persona-icon">M</div>
+      <h4>Account Manager</h4>
+      <div class="persona-absorbs">PM + Client Lead</div>
+      <p>Client communication, scope management, timeline ownership, sign-off authority.</p>
+    </div>
+  </div>
+  <div class="callout accent">
+    <p><strong>If you are reading this to set up your AI,</strong> you are the Product Builder. This entire framework is built for you.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     TERMINOLOGY
+     ═══════════════════════════════ -->
+<section>
+  <h2>Terminology</h2>
+  <div class="r"><code>Builder Protocol</code><span>This methodology &mdash; 3 personas + AI partner, 8-phase lifecycle, GitHub memory</span></div>
+  <div class="r"><code>Product Builder</code><span>The primary delivery operator &mdash; plans, builds, tests, documents</span></div>
+  <div class="r"><code>Phase Build</code><span>Implementing in platform order, not random ticket order</span></div>
+  <div class="r"><code>Config-vs-Code</code><span>The critical decision: platform config or custom code?</span></div>
+  <div class="r"><code>Memory Layer</code><span>GitHub-stored MD files that persist knowledge across sessions and operators</span></div>
+  <div class="r"><code>Heartbeat</code><span>Daily handoff log &mdash; what changed, what&rsquo;s pending, what&rsquo;s blocked</span></div>
+  <div class="r"><code>Domain Skill</code><span>AI agent definition carrying product/domain context</span></div>
+  <div class="r"><code>Flow Skill</code><span>AI agent definition for process execution (testing, spec writing, coding)</span></div>
+  <div class="r"><code>Platform Order</code><span>The logical build sequence for your product stack</span></div>
+  <div class="r"><code>Safety Hooks</code><span>Pre-configured guardrails preventing AI from destructive mistakes</span></div>
+</section>
+
+<!-- ═══════════════════════════════
+     THE 8 PHASES — OVERVIEW
+     ═══════════════════════════════ -->
+<section>
+  <h2>The 8-Phase Lifecycle</h2>
+  <div class="phase-flow">
+    <span class="phase-pill">0 &middot; Intent</span>
+    <span class="phase-arrow">&rarr;</span>
+    <span class="phase-pill">1 &middot; Plan</span>
+    <span class="phase-arrow">&rarr;</span>
+    <span class="phase-pill">2 &middot; Requirements</span>
+    <span class="phase-arrow">&rarr;</span>
+    <span class="phase-pill">3 &middot; Tasks</span>
+    <span class="phase-arrow">&rarr;</span>
+    <span class="phase-pill critical">4 &middot; Dev Planning</span>
+    <span class="phase-arrow">&rarr;</span>
+    <span class="phase-pill build">5 &middot; Phase Build</span>
+    <span class="phase-arrow">&rarr;</span>
+    <span class="phase-pill test">6 &middot; E2E Testing</span>
+    <span class="phase-arrow">&rarr;</span>
+    <span class="phase-pill iterate">7 &middot; Iteration</span>
+    <span class="phase-arrow">&rarr;</span>
+    <span class="phase-pill build">8 &middot; Ship</span>
+  </div>
+  <div class="callout">
+    <p><strong>Phase 7 loops back:</strong> Bug fixes return to Phase 5. Structural issues return to Phase 4. The loop continues until the PRD is functionally satisfied.</p>
+  </div>
+  <div class="quote">
+    The first job after receiving a project is not development. It is understanding.
+    <cite>Builder Protocol, Rule Zero</cite>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     PHASE 0-3 — THINKING PHASES
+     ═══════════════════════════════ -->
+<section>
+  <h2>Phases 0&ndash;3 <small>Thinking &amp; Shaping</small></h2>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">0</div>
+      <div class="step-title">Intent Clarification</div>
+    </div>
+    <div class="step-body">
+      <p>Understand what is actually needed before touching anything. What stage is the project in? What already exists? What is the client expecting versus what is technically feasible?</p>
+      <ul>
+        <li>Confirm scope and starting point</li>
+        <li>Separate examples from actual requirements</li>
+        <li>Identify what already exists (repo, site, data, docs)</li>
+      </ul>
+      <div class="r"><code>Tool</code><span>UI (Claude UI / ChatGPT) &mdash; prompt quality matters more than brand</span></div>
+      <div class="r"><code>Output</code><span>Confirmed scope and starting point</span></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div class="step-title">Project Planning</div>
+    </div>
+    <div class="step-body">
+      <p>Define the delivery shape before touching configuration or code.</p>
+      <ul>
+        <li>Timeline or Gantt chart</li>
+        <li>Phase plan with expected outputs per phase</li>
+        <li>Capability map &mdash; what the platform already does vs what needs building</li>
+      </ul>
+      <div class="r"><code>Tool</code><span>UI</span></div>
+      <div class="r"><code>Output</code><span>Timeline document, phase plan</span></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div class="step-title">Requirement Gathering</div>
+    </div>
+    <div class="step-body">
+      <p>Capture the full product requirement &mdash; not loose notes. PRD preferred over BRD because it captures product behavior, not just business rules.</p>
+      <ul>
+        <li>Personas, workflows, edge cases, approval chains</li>
+        <li>Reporting and dashboard requirements</li>
+        <li>Reference existing implementations for patterns</li>
+      </ul>
+      <div class="r"><code>Tool</code><span>UI &mdash; best for long-form iterative clarification</span></div>
+      <div class="r"><code>Skill</code><span><code>business-analyst</code> &mdash; converts raw inputs into structured BRD/PRD</span></div>
+      <div class="r"><code>Output</code><span><code>PRD.md</code> stored in the repo root</span></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div class="step-title">Task Division</div>
+    </div>
+    <div class="step-body">
+      <p>Break the PRD into execution units. Task list with clear ownership, user stories per module, module-level execution buckets.</p>
+      <ul>
+        <li>Flag what is likely config vs code (refine in Phase 4)</li>
+        <li>Group tasks into logical modules</li>
+      </ul>
+      <div class="r"><code>Tool</code><span>CLI with read access to repos + domain references</span></div>
+      <div class="r"><code>Skill</code><span><code>feature-spec</code> &mdash; thorough task and user story creation</span></div>
+      <div class="r"><code>Output</code><span>Task list (GitHub Issues, spreadsheet, or markdown &mdash; pick one, stay consistent)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     PHASE 4 — CRITICAL
+     ═══════════════════════════════ -->
+<section>
+  <h2>Phase 4 <small>Development Planning &mdash; The Critical Phase</small></h2>
+  <div class="prose">
+    <p><strong>This is the most important judgment phase in the entire lifecycle.</strong> Decide what is configuration, what is setup, what is code, and what waits. Getting this wrong causes 80% of iteration waste.</p>
+  </div>
+  <div class="callout accent">
+    <p><strong>Config-vs-Code Decision Flow:</strong> Can the platform do it natively? &rarr; <strong>Config.</strong> Needs a property change? &rarr; <strong>Setup script.</strong> Needs a new field? &rarr; <strong>Fixture in client app.</strong> Needs custom logic? &rarr; <strong>Code in client app.</strong> Needs core product change? &rarr; <strong>STOP &mdash; escalate to the System Architect.</strong></p>
+  </div>
+  <div class="n"><i class="check">1</i><p><strong>Display-only rename</strong> (sidebar label, field label, option text users see) &rarr; <strong>Translation record</strong> (language=en). Changes what users see without touching stored values.</p></div>
+  <div class="n"><i class="check">2</i><p><strong>Field property change</strong> (required flag, hidden, depends_on) &rarr; <strong>Property Setter</strong> via idempotent setup script.</p></div>
+  <div class="n"><i class="check">3</i><p><strong>New field on existing form</strong> &rarr; <strong>Custom Field fixture</strong> in client app.</p></div>
+  <div class="n"><i class="check">4</i><p><strong>Conditional UI behavior</strong> &rarr; <strong>Client Script</strong> in client app.</p></div>
+  <div class="n"><i class="check">5</i><p><strong>Server-side business logic</strong> &rarr; <strong>Server Script or API</strong> in client app.</p></div>
+  <div class="n"><i class="check">6</i><p><strong>New entity type</strong> &rarr; <strong>DocType JSON fixture</strong> in client app.</p></div>
+  <div class="n"><i class="x">7</i><p><strong>Core product behavior change</strong> &rarr; <strong>STOP. Escalate to System Architect.</strong></p></div>
+  <div class="r"><code>Tool</code><span>CLI with write access to repo + GitHub CLI</span></div>
+  <div class="r"><code>Skill</code><span><code>technical-pm</code> + platform coding hygiene skill</span></div>
+  <div class="r"><code>Output</code><span>Module hierarchy, config/setup/code classification, test checkpoints</span></div>
+</section>
+
+<!-- ═══════════════════════════════
+     PHASE 5 — BUILD
+     ═══════════════════════════════ -->
+<section>
+  <h2>Phase 5 <small>Phase Build &mdash; Platform Order</small></h2>
+  <div class="prose">
+    <p><strong>Implement in platform order</strong> &mdash; not as a random ticket queue. Each layer must be stable before the next depends on it.</p>
+  </div>
+  <div class="build-order">
+    <div class="build-step"><span class="bs-num">1</span><span class="bs-label">Login &amp; Branding</span></div>
+    <div class="build-step"><span class="bs-num">2</span><span class="bs-label">Theme &amp; Navigation</span></div>
+    <div class="build-step"><span class="bs-num">3</span><span class="bs-label">Settings &amp; Setup</span></div>
+    <div class="build-step"><span class="bs-num">4</span><span class="bs-label">Users, Roles &amp; Permissions</span></div>
+    <div class="build-step"><span class="bs-num">5</span><span class="bs-label">Fields &amp; Form Hygiene</span></div>
+    <div class="build-step"><span class="bs-num">6</span><span class="bs-label">Approvals &amp; Workflows</span></div>
+    <div class="build-step"><span class="bs-num">7</span><span class="bs-label">Alerts &amp; Notifications</span></div>
+    <div class="build-step"><span class="bs-num">8</span><span class="bs-label">Dashboards &amp; Reports</span></div>
+  </div>
+  <div class="r"><code>Tool</code><span>CLI + domain skills + coding skills</span></div>
+  <div class="r"><code>Skill</code><span>Platform engineer skill + setup skill + relevant domain skill</span></div>
+  <div class="r"><code>Output</code><span>Working code on feature branch, PRs raised per phase</span></div>
+  <div class="quote">
+    Development should not start as a random ticket queue. It should move through the product in a stable functional order.
+    <cite>Builder Protocol, Phase 5 Principle</cite>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     PHASE 6-8 — TESTING, ITERATION, SHIP
+     ═══════════════════════════════ -->
+<section>
+  <h2>Phases 6&ndash;8 <small>Test, Iterate, Ship</small></h2>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num" style="background:#4b4bc8;">6</div>
+      <div class="step-title">E2E Testing</div>
+    </div>
+    <div class="step-body">
+      <p><strong>Test design is a deliverable, not a side effect.</strong></p>
+      <div class="n"><i>1</i><p><strong>Extract</strong> the test plan from PRD + roles + user flows</p></div>
+      <div class="n"><i>2</i><p><strong>Validate</strong> the test plan against actual field names and API schema (never guess)</p></div>
+      <div class="n"><i>3</i><p><strong>Execute</strong> testing persona by persona using Playwright</p></div>
+      <div class="n"><i>4</i><p><strong>Capture</strong> screenshots and defects</p></div>
+      <div class="r"><code>Tool</code><span>CLI + Playwright MCP</span></div>
+      <div class="r"><code>Skill</code><span><code>qa-tester</code> + <code>playwright-qa-engineer</code></span></div>
+      <div class="r"><code>Output</code><span>Test plan, test results with screenshots, defect list</span></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num" style="background:#8C3838;">7</div>
+      <div class="step-title">Iteration</div>
+    </div>
+    <div class="step-body">
+      <p>Bug fixes loop to Phase 5. Structural issues (wrong config-vs-code decision, missing fields, bad workflow) loop to Phase 4. Track defects in GitHub Issues or a structured spreadsheet.</p>
+      <div class="r"><code>Tool</code><span>Defect tracker + Playwright MCP + CLI</span></div>
+      <div class="r"><code>Skill</code><span><code>ticketing</code> &mdash; structured defect logging</span></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <div class="step-num" style="background:var(--green);">8</div>
+      <div class="step-title">Training, Documentation &amp; Go-Live</div>
+    </div>
+    <div class="step-body">
+      <p><strong>Create training material from validated flows, not from memory.</strong> Playwright screenshots as input source. Role-based journey documentation. Release readiness checklist.</p>
+      <div class="r"><code>Tool</code><span>CLI + Playwright (screenshots) + documentation tooling</span></div>
+      <div class="r"><code>Skill</code><span><code>product-docs</code> + <code>release-notes</code></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     THE MEMORY LAYER
+     ═══════════════════════════════ -->
+<section>
+  <h2>The Memory Layer</h2>
+  <div class="prose">
+    <p>Every project repo must have these 4 files at the root. They make handoff possible without spoken context. <strong>If the project can&rsquo;t be handed over through GitHub markdown alone, the delivery model is incomplete.</strong></p>
+  </div>
+  <div class="memory-grid">
+    <div class="memory-card brain">
+      <h4>CLAUDE.md</h4>
+      <p>The project brain. Persona, stack, repo structure, what&rsquo;s deployed, hard rules, mistakes made, session log. Your AI reads this at the start of every session.</p>
+    </div>
+    <div class="memory-card security">
+      <h4>SECURITY.md</h4>
+      <p>Safety guardrails. Parameterised queries only. No elevated permissions. Error suppression. Pentest findings. Not aspirational &mdash; prescriptive.</p>
+    </div>
+    <div class="memory-card heartbeat">
+      <h4>HEARTBEAT.md</h4>
+      <p>Daily shift handoff. What was built, what&rsquo;s pending, what&rsquo;s blocked, what to test next, what NOT to break. Update at end of every session.</p>
+    </div>
+    <div class="memory-card prd">
+      <h4>PRD.md</h4>
+      <p>Full requirements. Personas, user journeys, workflow states, edge cases, business rules, reporting needs. The single source of truth.</p>
+    </div>
+  </div>
+  <div class="quote">
+    Every great software developer has an army of robots working for him at nighttime while he sleeps, after they&rsquo;ve written the code, and it&rsquo;s cranking away.
+    <cite>Naval Ravikant</cite>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     THE LAYER STACK
+     ═══════════════════════════════ -->
+<section>
+  <h2>The Layer Stack</h2>
+  <div class="prose">
+    <p>This architecture governs what you can and cannot touch. All your work happens in Layer 4 &mdash; the client app. If something needs a change in Layers 1&ndash;3, escalate.</p>
+  </div>
+  <div class="layer-stack">
+    <div class="layer-row locked">
+      <span class="layer-num">1</span>
+      <span class="layer-label">Framework</span>
+      <span class="layer-desc">Core platform, ORM, permissions engine</span>
+      <span class="layer-badge never">Never</span>
+    </div>
+    <div class="layer-row locked">
+      <span class="layer-num">2</span>
+      <span class="layer-label">Shared Extensions</span>
+      <span class="layer-desc">Geo data, shared components, base theme</span>
+      <span class="layer-badge never">Never</span>
+    </div>
+    <div class="layer-row locked">
+      <span class="layer-num">3</span>
+      <span class="layer-label">Core Product</span>
+      <span class="layer-desc">Grant lifecycle, compliance, core workflows</span>
+      <span class="layer-badge never">Never</span>
+    </div>
+    <div class="layer-row safe">
+      <span class="layer-num">4</span>
+      <span class="layer-label">Client App</span>
+      <span class="layer-desc">All client-specific customizations</span>
+      <span class="layer-badge yes">Your work</span>
+    </div>
+  </div>
+  <div class="callout">
+    <p><strong>The golden rule of display renames:</strong> Never rename Select option <em>values</em> via Property Setter. Core code hardcodes option values. Use Translation records for display-only renames &mdash; they change what users see without touching what code references.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     TOOL SETUP
+     ═══════════════════════════════ -->
+<section>
+  <h2>Tool Setup</h2>
+  <div class="cols">
+    <div>
+      <h3>Required</h3>
+      <div class="n"><i class="accent">1</i><p><strong>AI CLI</strong> &mdash; Claude Code, Gemini CLI, Cursor, or Codex. Pick one.</p></div>
+      <div class="n"><i class="accent">2</i><p><strong>GitHub CLI</strong> (<code>gh</code>) &mdash; PR creation, issue tracking, repo operations.</p></div>
+      <div class="n"><i class="accent">3</i><p><strong>Playwright MCP</strong> &mdash; E2E testing, screenshot capture, functional validation.</p></div>
+      <div class="n"><i class="accent">4</i><p><strong>Git</strong> &mdash; version control, branching, PRs.</p></div>
+    </div>
+    <div>
+      <h3>Recommended</h3>
+      <div class="n"><i>1</i><p><strong>Cloud UI</strong> (Claude UI / ChatGPT) for Phases 0&ndash;2: thinking, planning, PRD drafting.</p></div>
+      <div class="n"><i>2</i><p><strong>Two separate AI contexts</strong> &mdash; one for thinking (UI), one for executing (CLI).</p></div>
+      <div class="n"><i>3</i><p><strong>Defect tracker</strong> &mdash; GitHub Issues or a spreadsheet for structured iteration.</p></div>
+    </div>
+  </div>
+  <div class="callout accent">
+    <p><strong>The split is deliberate:</strong> UI is for thinking well. CLI is for doing well. GitHub is the memory layer between them.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SKILLS
+     ═══════════════════════════════ -->
+<section>
+  <h2>Skills &mdash; What to Load and When</h2>
+  <div class="prose">
+    <p>Skills are specialized AI agent definitions carrying domain knowledge or process discipline. <strong>Load domain skills at project start.</strong> Load flow skills only when entering the relevant phase. This prevents context bloat &mdash; your AI has limited attention, and loading everything at once dilutes what matters.</p>
+  </div>
+
+  <h3>Domain Skills (Load at Project Start)</h3>
+  <div class="skill-phase-grid">
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag domain">Domain</span>
+      <span class="skill-name">mgrant-donor</span>
+      <span class="skill-desc">Grant flows, workflow states, fund disbursement, permissions</span>
+    </div>
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag domain">Domain</span>
+      <span class="skill-name">mgrant-csr</span>
+      <span class="skill-desc">Compliance lifecycle, budget attribution, statutory reports</span>
+    </div>
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag domain">Domain</span>
+      <span class="skill-name">mgrant-nuo</span>
+      <span class="skill-desc">NGO-facing grants, sub-grants, regulatory compliance, results framework</span>
+    </div>
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag domain">Domain</span>
+      <span class="skill-name">mgrant-coding-hygiene</span>
+      <span class="skill-desc">Layer stack discipline, Property Setter vs Translation, fixture rules &mdash; <strong>always load</strong></span>
+    </div>
+  </div>
+
+  <h3>Flow Skills (Load Per Phase)</h3>
+  <div class="skill-phase-grid">
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag flow">Ph 2</span>
+      <span class="skill-name">business-analyst</span>
+      <span class="skill-desc">Converts MOMs, transcripts, emails into structured BRD + Requirements Matrix</span>
+    </div>
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag flow">Ph 3</span>
+      <span class="skill-name">feature-spec</span>
+      <span class="skill-desc">Structured feature specs with thorough task and user story breakdown</span>
+    </div>
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag flow">Ph 4</span>
+      <span class="skill-name">technical-pm</span>
+      <span class="skill-desc">Architects features and modules &mdash; config-vs-code decisions, system design</span>
+    </div>
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag flow">Ph 5</span>
+      <span class="skill-name">frappe-engineer</span>
+      <span class="skill-desc">Production-ready platform code &mdash; acts as senior developer</span>
+    </div>
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag flow">Ph 5</span>
+      <span class="skill-name">mgrant-setup</span>
+      <span class="skill-desc">Deployment end-to-end &mdash; 11 phases from settings to portal</span>
+    </div>
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag flow">Ph 6</span>
+      <span class="skill-name">qa-tester</span>
+      <span class="skill-desc">Functional test plans &mdash; RBAC validation, workflow checks</span>
+    </div>
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag flow">Ph 6</span>
+      <span class="skill-name">playwright-qa-engineer</span>
+      <span class="skill-desc">Playwright E2E tests, reports with screenshots</span>
+    </div>
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag flow">Ph 7</span>
+      <span class="skill-name">ticketing</span>
+      <span class="skill-desc">Structured tickets (Feature/Bug/CR) from defect descriptions</span>
+    </div>
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag flow">Ph 8</span>
+      <span class="skill-name">product-docs</span>
+      <span class="skill-desc">Structured product documentation chapter-by-chapter</span>
+    </div>
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag flow">Ph 5&ndash;7</span>
+      <span class="skill-name">pr-raiser</span>
+      <span class="skill-desc">Clean GitHub PRs with description and test plan</span>
+    </div>
+    <div class="skill-phase-row">
+      <span class="skill-phase-tag flow">Ph 8</span>
+      <span class="skill-name">release-notes</span>
+      <span class="skill-desc">Release notes from git log and tickets</span>
+    </div>
+  </div>
+
+  <h3>How to Load Skills</h3>
+  <div class="r"><code>Claude Code</code><span>Place <code>.md</code> skill files in <code>~/.claude/agents/</code>. Invoke via Agent tool with <code>subagent_type</code>.</span></div>
+  <div class="r"><code>Gemini CLI</code><span>Reference in <code>GEMINI.md</code> or tool configs.</span></div>
+  <div class="r"><code>Cursor</code><span>Add as context rules or system prompts per workspace.</span></div>
+  <div class="r"><code>Codex</code><span>Load via <code>AGENTS.md</code> or equivalent context configuration.</span></div>
+</section>
+
+<!-- ═══════════════════════════════
+     HARD-WON RULES
+     ═══════════════════════════════ -->
+<section>
+  <h2>Hard-Won Rules <small>10 lessons from real delivery failures</small></h2>
+  <div class="prose">
+    <p>Every rule below comes from a real failure that cost real time. These are not best practices &mdash; they are scars. The rule exists because someone learned it the expensive way.</p>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-head"><span class="rule-num">1</span><span class="rule-title">Never rename Select option values via Property Setter</span></div>
+    <div class="rule-story">A Property Setter renamed an option value. The display changed, but core code hardcodes option values in depends_on, client scripts, and Python logic. A key button broke silently.</div>
+    <div class="rule-fix">Use Translation records (language=en) for display renames. They change what users see without touching stored values.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-head"><span class="rule-num">2</span><span class="rule-title">One source of truth per config item</span></div>
+    <div class="rule-story">Records were created by both a fixture AND a runtime patch. Result: duplicates and broken lookups.</div>
+    <div class="rule-fix">A config item is managed by a fixture OR by runtime. Never both.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-head"><span class="rule-num">3</span><span class="rule-title">Patches are for schema migrations only</span></div>
+    <div class="rule-story">Site config was put in a patch file. Patches run once and can&rsquo;t be re-run safely on new instances.</div>
+    <div class="rule-fix">Site config goes in an idempotent setup script. Patches are for one-time schema migrations only.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-head"><span class="rule-num">4</span><span class="rule-title">Decide the deployment mechanism BEFORE writing code</span></div>
+    <div class="rule-story">A config change was added, reverted, and re-added across 3 commits because no one decided upfront whether it should be a Property Setter, Translation, or fixture.</div>
+    <div class="rule-fix">Before writing a single line, decide the mechanism. Document it in the PR description.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-head"><span class="rule-num">5</span><span class="rule-title">Verify test selectors against live API schema</span></div>
+    <div class="rule-story">Playwright tests used wrong field names. 50+ failures were misdiagnosed as &ldquo;timeout&rdquo; when the real cause was selector mismatch.</div>
+    <div class="rule-fix">Before writing any test, check the API for actual field names, mandatory flags, and option values. Never guess.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-head"><span class="rule-num">6</span><span class="rule-title">Understand the request lifecycle before intercepting it</span></div>
+    <div class="rule-story">A request interception feature took 6+ failed branches because the hook fired at the wrong point in the lifecycle.</div>
+    <div class="rule-fix">Trace the platform&rsquo;s request lifecycle in source code before building interceptions.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-head"><span class="rule-num">7</span><span class="rule-title">Restart workers after Python monkey-patches</span></div>
+    <div class="rule-story">Code was deployed but didn&rsquo;t work. Build and migrate commands don&rsquo;t reload Python into running workers.</div>
+    <div class="rule-fix">If your code patches a framework function, restart the application server. Build alone won&rsquo;t load it.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-head"><span class="rule-num">8</span><span class="rule-title">Never swallow exceptions silently</span></div>
+    <div class="rule-story">Import errors were hidden by bare except-pass blocks. The feature appeared deployed but did nothing.</div>
+    <div class="rule-fix">Never hide errors with bare exception handlers. Verify all imports against framework source.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-head"><span class="rule-num">9</span><span class="rule-title">UAT before staging, always</span></div>
+    <div class="rule-story">Enforced across all delivery projects. Staging is client-facing.</div>
+    <div class="rule-fix">All changes go to UAT first. Only after verification, move to staging.</div>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-head"><span class="rule-num">10</span><span class="rule-title">Knowledge must outlive the current operator</span></div>
+    <div class="rule-story">Projects were structured so anyone opening the repo could continue from the Memory Layer alone.</div>
+    <div class="rule-fix">If the project can&rsquo;t be handed over through GitHub markdown alone, the delivery model is incomplete.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SAFETY HOOKS
+     ═══════════════════════════════ -->
+<section>
+  <h2>Safety Hooks</h2>
+  <div class="prose">
+    <p>Safety hooks are automated guardrails that run before AI tool calls. They catch destructive commands, credential leaks, and scope violations before they execute. <strong>Essential when the operator is non-technical.</strong></p>
+  </div>
+  <div class="safety-grid">
+    <div class="safety-item"><span class="safety-icon">&times;</span><p><strong>System:</strong> No sudo, no rm -rf outside project, no modifying system files</p></div>
+    <div class="safety-item"><span class="safety-icon">&times;</span><p><strong>Git:</strong> No force push, no push to main, no deleting remote branches</p></div>
+    <div class="safety-item"><span class="safety-icon">&times;</span><p><strong>Database:</strong> No DROP commands, no production migrations</p></div>
+    <div class="safety-item"><span class="safety-icon">&times;</span><p><strong>Core:</strong> No modifications to framework or core product for client work</p></div>
+    <div class="safety-item"><span class="safety-icon">&times;</span><p><strong>Credentials:</strong> No tokens or keys in output or memory files</p></div>
+    <div class="safety-item"><span class="safety-icon">&times;</span><p><strong>Files:</strong> No deleting files outside project directory</p></div>
+  </div>
+  <div class="callout green">
+    <p><strong>Allowed without asking:</strong> Read/search any file. Edit within project. Git add/commit/push to feature branches. Dev/test commands. Create files in project. Non-destructive shell commands.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     WORKING RULES
+     ═══════════════════════════════ -->
+<section>
+  <h2>Working Rules</h2>
+  <div class="n"><i>1</i><p><strong>Do not jump to code</strong> until config-vs-code has been explicitly decided for each requirement.</p></div>
+  <div class="n"><i>2</i><p><strong>Do not test without a written test plan</strong> tied to personas and flows from the PRD.</p></div>
+  <div class="n"><i>3</i><p><strong>Do not document from memory</strong> when screenshots from validated flows are available.</p></div>
+  <div class="n"><i>4</i><p><strong>Do not treat PR creation as mechanical</strong> &mdash; it is a release-control decision.</p></div>
+  <div class="n"><i>5</i><p><strong>Do not keep project memory in chat only</strong> &mdash; persist to GitHub.</p></div>
+  <div class="n"><i>6</i><p><strong>Do not start development as a random ticket queue</strong> &mdash; follow platform order.</p></div>
+  <div class="n"><i>7</i><p><strong>Do not modify core product apps</strong> for client-specific work.</p></div>
+  <div class="n"><i>8</i><p><strong>Do not rename Select option values via Property Setter</strong> &mdash; use Translation.</p></div>
+  <div class="n"><i>9</i><p><strong>After every PR, update the code journal</strong> &mdash; never merge without it.</p></div>
+  <div class="n"><i>10</i><p><strong>Update HEARTBEAT.md at end of every session</strong> &mdash; the next operator depends on it.</p></div>
+</section>
+
+<!-- ═══════════════════════════════
+     MASTER PROMPT
+     ═══════════════════════════════ -->
+<section class="prompt-featured">
+  <h2>Master Prompt &mdash; Project Kickoff</h2>
+  <div class="prose">
+    <p>Feed this to your CLI when starting a new project. Replace the placeholders with your project details. This is the single prompt that boots your AI into the Builder Protocol.</p>
+  </div>
+  <div class="copy-block">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+    <div class="template">I am starting a new project using the Builder Protocol.
+
+<span class="comment">## Context</span>
+<span class="key">Product:</span> <span class="val">{PRODUCT_NAME}</span>
+<span class="key">Client app repo:</span> <span class="val">{REPO_URL}</span>
+<span class="key">UAT site:</span> <span class="val">{UAT_URL}</span>
+<span class="key">Staging site:</span> <span class="val">{STAGING_URL}</span>
+<span class="key">Modules active:</span> <span class="val">{list what applies}</span>
+<span class="key">My role:</span> <span class="val">Product Builder</span>
+
+<span class="comment">## First Steps</span>
+1. Read CLAUDE.md in the repo root. If missing, help me create one.
+2. Read SECURITY.md, HEARTBEAT.md, and PRD.md if they exist.
+3. Tell me what phase this project is in.
+4. For the current phase, tell me the expected output and skills to load.
+
+<span class="comment">## Operating Rules (Non-Negotiable)</span>
+- Follow the layer stack: never modify layers 1-3 for client work
+- Translation for display renames, Property Setter for structural changes only
+- One source of truth per config item (fixture OR runtime, never both)
+- Platform order: branding &gt; theme &gt; settings &gt; roles &gt; fields &gt; approvals &gt; alerts &gt; dashboards
+- Test plan before testing, not after
+- Update HEARTBEAT.md at end of every session
+- Verify test selectors against live API schema before writing tests
+
+<span class="comment">## Safety Rules</span>
+- Never force push, push to main, or delete remote branches without approval
+- Never store credentials in output or memory files
+- Never modify files outside the project directory
+- Never run destructive database commands without approval
+- UAT before staging, always
+
+<span class="comment">## Available Skills</span>
+<span class="key">Domain:</span> <span class="val">mgrant-donor, mgrant-csr, mgrant-nuo, mgrant-coding-hygiene</span>
+<span class="key">Flow:</span> <span class="val">business-analyst, feature-spec, technical-pm, frappe-engineer,
+  frappe-doctype, mgrant-setup, qa-tester, playwright-qa-engineer,
+  ticketing, product-docs, pr-raiser, release-notes</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SESSION HANDOFF
+     ═══════════════════════════════ -->
+<section>
+  <h2>Session Handoff Checklist</h2>
+  <div class="prose">
+    <p>Before ending any working session, update these files. This is not optional.</p>
+  </div>
+  <div class="n"><i class="check">1</i><p><strong>CLAUDE.md</strong> &mdash; if project behavior or approach changed</p></div>
+  <div class="n"><i class="check">2</i><p><strong>HEARTBEAT.md</strong> &mdash; what&rsquo;s done, pending, blocked, next steps</p></div>
+  <div class="n"><i class="check">3</i><p><strong>PRD.md</strong> &mdash; if requirements or decisions shifted</p></div>
+  <div class="n"><i class="check">4</i><p><strong>Code journal</strong> &mdash; if any code was written or PRs raised</p></div>
+  <div class="n"><i class="check">5</i><p><strong>Test artifacts</strong> &mdash; if test results were generated</p></div>
+  <div class="n"><i class="check">6</i><p><strong>Defect tracker</strong> &mdash; if iteration findings were created</p></div>
+</section>
+
+<!-- ═══════════════════════════════
+     ADAPTING
+     ═══════════════════════════════ -->
+<section>
+  <h2>Adapting for Other Products</h2>
+  <div class="prose">
+    <p>The Builder Protocol is not product-specific at its core. The lifecycle, skill-loading strategy, memory layer, and UI/CLI split work for any structured delivery.</p>
+  </div>
+  <div class="cols">
+    <div>
+      <h3>What You Change</h3>
+      <div class="n"><i class="accent">1</i><p>Replace domain skills with your product&rsquo;s domain context</p></div>
+      <div class="n"><i class="accent">2</i><p>Replace the platform order with your product&rsquo;s logical build sequence</p></div>
+      <div class="n"><i class="accent">3</i><p>Replace the hard-won rules with your project&rsquo;s learned constraints</p></div>
+    </div>
+    <div>
+      <h3>What Stays the Same</h3>
+      <div class="n"><i class="check">1</i><p>The 8-phase lifecycle</p></div>
+      <div class="n"><i class="check">2</i><p>Config-vs-code decision discipline</p></div>
+      <div class="n"><i class="check">3</i><p>UI for thinking, CLI for executing, GitHub for memory</p></div>
+      <div class="n"><i class="check">4</i><p>Test plan before testing, handoff checklist, skill loading strategy</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     QUICK REFERENCE
+     ═══════════════════════════════ -->
+<section>
+  <h2>Quick Reference</h2>
+  <div class="template"><span class="key">The Builder Protocol</span>
+  <span class="val">3 Personas:</span> Product Builder | System Architect | Account Manager
+  <span class="val">8 Phases:</span>   Intent &gt; Plan &gt; Requirements &gt; Tasks &gt; DevPlan &gt; Build &gt; Test &gt; Iterate &gt; Ship
+
+<span class="key">Memory Layer:</span> CLAUDE.md + SECURITY.md + HEARTBEAT.md + PRD.md
+
+<span class="key">Stack:</span>        framework &gt; shared extensions &gt; core product &gt; client app
+              <span class="comment">NEVER       NEVER               NEVER          YES</span>
+
+<span class="key">Platform Order:</span> Branding &gt; Theme &gt; Settings &gt; Roles &gt; Fields &gt; Approvals &gt; Alerts &gt; Dashboards
+
+<span class="key">Tools:</span>        UI (think) + CLI (execute) + GitHub (remember) + Playwright (test)
+
+<span class="key">Skills:</span>       Domain at start. Flow per phase. Utility as needed.
+
+<span class="key">Golden Rule:</span>  If it can't be handed over through GitHub markdown alone, it's incomplete.</div>
+</section>
+
+<!-- ═══════════════════════════════
+     CLOSING QUOTE
+     ═══════════════════════════════ -->
+<section>
+  <h2>The Philosophy</h2>
+  <div class="quote">
+    Technology is not only the thing that moves the human race forward, but it&rsquo;s the only thing that ever has. The smart play is not to resist leverage &mdash; it&rsquo;s to architect how you use it.
+    <cite>Naval Ravikant</cite>
+  </div>
+  <div class="prose">
+    <p>The Builder Protocol is not about replacing people with AI. It is about giving one capable person the leverage to do what previously required a committee. The AI is the execution partner. GitHub is the memory. The protocol is the discipline that holds it all together.</p>
+    <p>The organisations that rebuild their delivery model around this reality will ship faster, onboard faster, and compound knowledge faster than those still running the six-role playbook. This is not a prediction. It is already happening.</p>
+  </div>
+  <div class="quote">
+    Fortunes require leverage. Business leverage comes from capital, people, and products with no marginal cost of replication &mdash; code and media. Code and media are permissionless leverage. You can create software that works for you while you sleep.
+    <cite>Naval Ravikant, How to Get Rich (Without Getting Lucky)</cite>
+  </div>
+</section>
+
+<div class="main-footer">
+  <div><a href="../index.html">Home</a> &middot; <a href="../prompts.html">Prompts</a> &middot; <a href="../readings.html">Readings</a></div>
+  <small>Dhwani RIS &middot; AI Playground &middot; Built by Nihaan Mohammed &middot; 2026</small>
+</div>
+
+</div></div>
+
+<script>
+function copyPrompt(btn) {
+  var block = btn.closest('.copy-block').querySelector('.template');
+  var text = block.innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
