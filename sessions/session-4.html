@@ -53,7 +53,7 @@
 <div class="page-header">
   <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html">Sessions</a> / Session 4</div>
   <h1>CLI, Hooks &amp; Real Products<span>.</span></h1>
-  <div class="page-meta">Session 4 &middot; Tuesday, 7 April 2026 &middot; 4:00 &ndash; 5:00 PM &middot; Amoebian Room</div>
+  <div class="page-meta">Session 4 &middot; Tuesday, 7 April 2026 &middot; 4:00 &ndash; 5:00 PM &middot; MEVN Room</div>
 </div>
 
 <!-- ═══════════════════════════════
@@ -78,8 +78,25 @@
       <li>Claude Code installed and running on your machine</li>
       <li>A clear picture of the four levels &mdash; and where you are now</li>
       <li>Understanding what hooks do and why they matter</li>
-      <li>Real stories from Sunchay, Sunita &amp; Aman on building in existing projects</li>
+      <li>The ground rules every builder should follow before writing a single line</li>
+      <li>Real stories from Sunchay, Sunita, Aman &amp; Akshat on building real things</li>
     </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     ACCOUNT ACCESS
+     ═══════════════════════════════ -->
+<section>
+  <h2>Account Access <span class="badge">Important</span></h2>
+  <div class="prose">
+    <p>Your Claude Team account is set up. <strong>You do not need a password.</strong> Here's how it works:</p>
+  </div>
+  <div class="n"><i class="accent">1</i><p><strong>Dhwani RIS owns the accounts.</strong> Team leaders have the login credentials.</p></div>
+  <div class="n"><i class="accent">2</i><p><strong>When you log in,</strong> Claude sends a magic link to the account email. Your team leader receives it and forwards it to you.</p></div>
+  <div class="n"><i class="accent">3</i><p><strong>Best setup:</strong> Ask your team leader to set a forwarding rule so login emails come to you automatically. No waiting, no chasing.</p></div>
+  <div class="callout green">
+    <p><strong>Check your access now:</strong> Visit <a href="https://prody-dris.github.io/ai-access/" target="_blank" style="color:var(--green);font-weight:600;">AI Access Portal</a> to see your team, your leader, and your status. Questions? Ask Ravi or Ankit on Teams.</p>
   </div>
 </section>
 
@@ -100,6 +117,51 @@
   <div class="prose" style="margin-top:12px;">
     <p>Andrej Karpathy coined the term <strong>vibe coding</strong> &mdash; describe what you want, AI builds it. But vibe coding without a knowledge base is like a brilliant new hire with no onboarding. They're smart, but they don't know your project, your rules, or your standards.</p>
     <p><strong>Your CLAUDE.md IS the onboarding.</strong> And CLI is how that onboarding actually gets used &mdash; automatically, every time.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     GROUND RULES
+     ═══════════════════════════════ -->
+<section>
+  <h2>Ground Rules Before You Build</h2>
+  <div class="prose">
+    <p>Here's something we've seen happen a lot &mdash; people get excited, open the terminal, and start building immediately. Folders go everywhere. Files pile up. Context gets messy. Then two weeks later, AI can't find anything and neither can you.</p>
+    <p><strong>The rule is simple: organise first, build second.</strong> This is not busywork. This is the foundation that makes everything else faster.</p>
+  </div>
+  <div class="n"><i class="accent">1</i><p><strong>Set up your folder structure</strong> before you write a single line. Where do docs go? Where does context go? Where does data go? Decide once, benefit forever.</p></div>
+  <div class="n"><i class="accent">2</i><p><strong>Write your CLAUDE.md first.</strong> This is your AI's onboarding document. If AI doesn't know what your project is, it can't help you well. Two paragraphs now saves two hours later.</p></div>
+  <div class="n"><i class="accent">3</i><p><strong>Add Security.md.</strong> Non-negotiable guardrails. What the AI must never do, what it must always check. This is your seatbelt &mdash; put it on before you drive.</p></div>
+  <div class="n"><i class="accent">4</i><p><strong>Then build.</strong> With structure in place, AI knows where to look, where to write, and what rules to follow. You spend time creating, not cleaning up.</p></div>
+  <div class="callout accent">
+    <p>Think of it like moving into a new office. You don't start working on a desk covered in random papers. You set up your drawers, label your folders, arrange your tools &mdash; then you get to work. <strong>Same idea, digital version.</strong></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     YOUR PROJECT FOLDER
+     ═══════════════════════════════ -->
+<section>
+  <h2>Your Project Folder</h2>
+  <div class="prose">
+    <p>Here's what a well-organised project looks like. This is the structure Nihaan uses across every project at Dhwani RIS &mdash; and it's how AI finds what it needs in one step, not ten.</p>
+  </div>
+
+  <div class="file-tree">
+<span class="folder">my-project/</span>
+  <span class="folder">context/</span>    <span class="desc">&larr; Source material: MOMs, emails, client docs, references</span>
+  <span class="folder">data/</span>       <span class="desc">&larr; Raw data: CSVs, exports, spreadsheets</span>
+  <span class="folder">docs/</span>       <span class="desc">&larr; Final deliverables: specs, reports, guides</span>
+  <span class="folder">media/</span>      <span class="desc">&larr; Visual assets: decks, diagrams, screenshots</span>
+  <span class="file">CLAUDE.md</span>   <span class="desc">&larr; AI onboarding: what this project is, how to work here</span>
+  <span class="file">ROUTE.md</span>    <span class="desc">&larr; Folder map: where everything lives, quick paths</span>
+  </div>
+
+  <div class="prose" style="margin-top:12px;">
+    <p><strong>Why this matters:</strong> When AI knows your structure, it goes directly to the right file. No searching. No guessing. One tool call instead of four. And when YOU come back to a project after two weeks, you know exactly where everything is too.</p>
+  </div>
+  <div class="callout">
+    <p><strong>The golden rule:</strong> Nothing at the project root except CLAUDE.md and ROUTE.md. Everything else goes into a subfolder. If a file doesn't have a home, it shouldn't exist yet.</p>
   </div>
 </section>
 
@@ -145,34 +207,41 @@
 </section>
 
 <!-- ═══════════════════════════════
-     CLI vs UI — COMPARISON
+     UI AND CLI — EACH HAS ITS PLACE
      ═══════════════════════════════ -->
 <section>
-  <h2>Why CLI?</h2>
+  <h2>UI and CLI &mdash; Each Has Its Place</h2>
   <div class="prose">
-    <p>CLI looks intimidating because someone in the 1980s decided blinking cursors were good design. Don't let that stop you &mdash; this is the single biggest upgrade in how you work with AI.</p>
+    <p>Some of you told us it's easier to work in the Claude chat window. <strong>You're right &mdash; for certain things.</strong> The chat UI is fantastic for thinking, brainstorming, drafting, and exploring ideas. That's its job.</p>
+    <p>CLI's job is different. It's where thinking becomes doing. <strong>They're not competing &mdash; they're a team.</strong></p>
   </div>
   <div class="cols">
     <div>
       <h3>Claude UI (Chat)</h3>
-      <div class="n"><i>1</i><p>Reads your repo via GitHub token</p></div>
-      <div class="n"><i>2</i><p>Great for thinking and writing</p></div>
-      <div class="n"><i>3</i><p>Cannot edit files or commit code</p></div>
-      <div class="n"><i>4</i><p>You copy-paste everything manually</p></div>
-      <div class="n"><i>5</i><p>No awareness of your project rules</p></div>
+      <div class="n"><i>1</i><p>Best for <strong>ideation</strong> &mdash; brainstorm, draft, explore</p></div>
+      <div class="n"><i>2</i><p>Easy to navigate, visual, friendly</p></div>
+      <div class="n"><i>3</i><p>Great for writing and thinking through problems</p></div>
+      <div class="n"><i>4</i><p>Reads your repo via GitHub token</p></div>
+      <div class="n"><i>5</i><p>Cannot edit files or commit code</p></div>
     </div>
     <div>
       <h3>Claude Code (CLI)</h3>
-      <div class="n"><i class="accent">1</i><p>Lives inside your project folder</p></div>
-      <div class="n"><i class="accent">2</i><p>Reads, writes, and edits your files directly</p></div>
-      <div class="n"><i class="accent">3</i><p>Commits code, pushes branches, raises PRs</p></div>
-      <div class="n"><i class="accent">4</i><p>Follows your CLAUDE.md rules automatically</p></div>
-      <div class="n"><i class="accent">5</i><p>Hooks enforce safety before every action</p></div>
+      <div class="n"><i class="accent">1</i><p>Best for <strong>execution</strong> &mdash; build, edit, ship</p></div>
+      <div class="n"><i class="accent">2</i><p>Lives inside your project folder</p></div>
+      <div class="n"><i class="accent">3</i><p>Reads, writes, and edits your files directly</p></div>
+      <div class="n"><i class="accent">4</i><p>Commits code, pushes branches, raises PRs</p></div>
+      <div class="n"><i class="accent">5</i><p>Follows your CLAUDE.md rules + hooks automatically</p></div>
     </div>
   </div>
+
   <div class="analogy" style="margin-top:12px;">
-    <div class="label">The real difference</div>
-    <p>Claude UI knows what you told it in the last hour. Claude Code knows your entire project &mdash; every file, every rule, every decision you've documented. It doesn't forget between sessions.</p>
+    <div class="label">The handoff flow</div>
+    <p><strong>Start in UI:</strong> Think through your idea, brainstorm with Claude, get clarity on what you want to build. When you're ready, ask Claude to summarise everything into a handoff markdown &mdash; a clear brief of what needs to happen.</p>
+    <p style="margin-top:6px;"><strong>Move to CLI:</strong> Open your project folder in Claude Code, paste that brief, and let it build. CLI remembers your project context (CLAUDE.md), follows your rules, and picks up right where the conversation left off &mdash; but now it can actually do the work.</p>
+  </div>
+
+  <div class="callout green" style="margin-top:12px;">
+    <p><strong>The real difference:</strong> Claude UI knows what you told it in the last hour. Claude Code knows your entire project &mdash; every file, every rule, every decision you've documented. Use UI to think. Use CLI to build. Together, they're more powerful than either one alone.</p>
   </div>
 </section>
 
@@ -237,7 +306,8 @@
         <div class="ps-label">Secrets Leaked</div>
       </div>
     </div>
-    <p style="margin-top:14px;font-size:12px;color:rgba(255,255,255,0.45);">Agents write feature specs, review code, generate test plans, draft client emails, and create tickets &mdash; all from the terminal. Each one follows the same CLAUDE.md rules and hooks you're learning today. We'll go deeper in future sessions.</p>
+    <p style="margin-top:14px;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.65;">It started with the same things you're learning today &mdash; a CLAUDE.md, a clean folder, a few hooks. Then we added credential guards that catch API keys before they hit GitHub. Safety gates that block destructive commands automatically. Status lines that show what the AI is doing in real time. <strong style="color:rgba(255,255,255,0.85);">Every layer builds on the one before it.</strong></p>
+    <p style="margin-top:10px;font-size:12px;color:rgba(255,255,255,0.45);">Agents write feature specs, review code, generate test plans, draft client emails, and create tickets &mdash; all from the terminal. Each one follows the same CLAUDE.md rules and hooks you're learning today. We'll go deeper in future sessions.</p>
   </div>
 </section>
 
@@ -247,7 +317,7 @@
 <section>
   <h2>Builder Spotlights <span class="badge-live">Live Stories</span></h2>
   <div class="prose">
-    <p>The best part of this program isn't the tools &mdash; it's what people do with them. These three are building in <strong>existing, live projects</strong>. Not demos. Not tutorials. Real code, real products, real impact.</p>
+    <p>The best part of this program isn't the tools &mdash; it's what people do with them. These four are building in <strong>existing, real projects</strong>. Not demos. Not tutorials. Real work, real products, real impact.</p>
   </div>
 
   <div class="builder-grid" style="grid-template-columns:repeat(2,1fr);">
@@ -269,7 +339,7 @@
     <div class="builder-card">
       <div class="builder-name">Akshat Verma</div>
       <div class="builder-project">Claude Tips &middot; <a href="https://akshatverma13.github.io/claude-tips/" target="_blank" style="color:var(--accent);text-decoration:none;">Live Site</a></div>
-      <div class="builder-desc">Built and published a complete guide on token efficiency &mdash; 10 habits to stop hitting Claude's limits, with a self-assessment prompt. Shipped it as a live GitHub Pages site.</div>
+      <div class="builder-desc">Built and published a complete guide on token efficiency &mdash; 10 habits, a self-assessment prompt, and a scoring system. Shipped as a live GitHub Pages site. <strong>This is what &ldquo;beyond code&rdquo; looks like</strong> &mdash; guides, client-facing content, public knowledge bases, all built and hosted for free.</div>
     </div>
   </div>
 
@@ -279,7 +349,25 @@
   </div>
 
   <div class="callout accent" style="margin-top:8px;">
-    <p><strong>All three will share their experience live.</strong> What worked, what broke, what surprised them. These aren't prepared talks &mdash; they're real stories from the last few weeks.</p>
+    <p><strong>All four will share their experience live.</strong> What worked, what broke, what surprised them. These aren't prepared talks &mdash; they're real stories from the last few weeks.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     CHALLENGE: GRADE YOURSELF
+     ═══════════════════════════════ -->
+<section>
+  <h2>Challenge: Grade Yourself <span class="badge-live">Try It Now</span></h2>
+  <div class="prose">
+    <p>Akshat built something clever into his Claude Tips site &mdash; a <strong>15-question self-assessment</strong> on your AI prompting habits. Copy the prompt, paste it into Claude (UI or CLI &mdash; both work), answer honestly, and get your score.</p>
+  </div>
+  <div class="n"><i class="accent">1</i><p>Go to <a href="https://akshatverma13.github.io/claude-tips/" target="_blank" style="color:var(--accent);font-weight:600;">Akshat's Claude Tips</a></p></div>
+  <div class="n"><i class="accent">2</i><p>Scroll to the <strong>Challenge</strong> section and copy the prompt</p></div>
+  <div class="n"><i class="accent">3</i><p>Paste it into Claude &mdash; the chat UI or the CLI, your choice</p></div>
+  <div class="n"><i class="accent">4</i><p>Answer 15 questions about how you use AI</p></div>
+  <div class="n"><i class="accent">5</i><p><strong>Share your score screenshot in the group.</strong> Can you get a perfect 15?</p></div>
+  <div class="callout accent" style="margin-top:12px;">
+    <p><strong>Why this matters beyond the score:</strong> Akshat didn't just write tips &mdash; he built a live website, published it on GitHub Pages, and made something anyone on the internet can use. That's the power of what you're learning here. Guides, client presentations, knowledge portals &mdash; <strong>GitHub Pages turns your ideas into public, shareable tools. For free.</strong></p>
   </div>
 </section>
 
