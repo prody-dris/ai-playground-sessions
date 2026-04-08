@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 5 — Skills, Protocol & Your First Full Build | AI Playground</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="mobile-header">
+  <img src="../assets/images/dhwani-logo.png" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="../assets/images/dhwani-logo.png" alt="Dhwani RIS">
+    <div class="sidebar-title">AI Playground</div>
+    <div class="sidebar-sub">Product &amp; Operations</div>
+  </div>
+  <div class="sidebar-section">
+    <a class="sidebar-link" href="../index.html"><span class="link-icon">~</span> Home</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sessions</div>
+    <a class="sidebar-link" href="session-0.html"><span class="link-icon">0</span> Introduction</a>
+    <a class="sidebar-link" href="session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
+    <a class="sidebar-link" href="session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
+    <a class="sidebar-link" href="session-3.html"><span class="link-icon">3</span> Hands On</a>
+    <a class="sidebar-link" href="session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks <span class="badge-new">Latest</span></a>
+    <a class="sidebar-link active" href="session-5.html"><span class="link-icon">5</span> Skills &amp; Protocol <span class="badge-new">Next</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Frameworks</div>
+    <a class="sidebar-link" href="../frameworks/builder-protocol.html"><span class="link-icon">B</span> The Builder Protocol <span class="badge-new">New</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Resources</div>
+    <a class="sidebar-link" href="../readings.html"><span class="link-icon">R</span> Readings</a>
+    <a class="sidebar-link" href="../tools.html"><span class="link-icon">T</span> Tools</a>
+    <a class="sidebar-link" href="../prompts.html"><span class="link-icon">P</span> Prompts</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="https://dhwaniris.com">dhwaniris.com</a>
+    <small>Built by Nihaan Mohammed</small>
+  </div>
+</aside>
+
+<div class="main"><div class="content">
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html">Sessions</a> / Session 5</div>
+  <h1>Skills, Protocol &amp; Your First Full Build<span>.</span></h1>
+  <div class="page-meta">Session 5 &middot; Thursday &middot; 5:00 &ndash; 6:00 PM &middot; Date TBD</div>
+</div>
+
+<section>
+  <h2>What This Session Covers</h2>
+  <div class="prose">
+    <p>Session 5 brings together everything we have learned so far. Your AI gives inconsistent outputs because it doesn't know your rules. We fix that &mdash; with shared skills, a structured build order, and a live walkthrough of someone building a full client setup end-to-end using AI.</p>
+    <p>Three pillars define this session:</p>
+  </div>
+</section>
+
+<section>
+  <h2>Pillar 1: Skills Repository</h2>
+  <div class="prose">
+    <p>Shared skills that make AI consistent across the team. Instead of everyone writing their own prompts from scratch, skills are reusable markdown files that carry domain knowledge and process discipline.</p>
+  </div>
+  <div class="n"><i class="accent">1</i><p><strong>CLI path:</strong> Skills live in a shared GitHub repository. Clone the repo, place skill files in <code>~/.claude/agents/</code>, and they load automatically when invoked.</p></div>
+  <div class="n"><i class="accent">2</i><p><strong>UI path:</strong> For those using Claude Chat, skills can be added as custom instructions or pasted as context at the start of a conversation. Same knowledge, different delivery mechanism.</p></div>
+  <div class="callout">
+    <p><strong>The goal:</strong> Write once, use everywhere. When a skill is updated in the shared repo, everyone benefits &mdash; no re-explaining, no drift, no inconsistency.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Pillar 2: Builder Protocol as SDLC</h2>
+  <div class="prose">
+    <p>The Builder Protocol is not just a framework page on this site &mdash; it is the actual build order for delivering client work. Session 5 walks through how to use it as your SDLC.</p>
+  </div>
+  <div class="n"><i class="accent">1</i><p><strong>Theme:</strong> Start with branding, login, and navigation. The client sees something real on day one.</p></div>
+  <div class="n"><i class="accent">2</i><p><strong>Form:</strong> Settings, roles, fields, workflows. The system works before the dashboard exists.</p></div>
+  <div class="n"><i class="accent">3</i><p><strong>Dashboard:</strong> Reports and dashboards come last &mdash; because they depend on everything below them being stable.</p></div>
+  <div class="callout accent">
+    <p><strong>Theme &rarr; Form &rarr; Dashboard.</strong> This is the build order. Follow it and each layer is stable before the next depends on it. Skip it and you spend more time fixing than building.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Pillar 3: Live Walkthrough</h2>
+  <div class="prose">
+    <p>Learn from someone building a full client setup end-to-end using AI. Not a demo. Not a tutorial. A real project with real constraints, walked through step by step &mdash; from folder setup to first PR.</p>
+  </div>
+  <div class="n"><i>1</i><p>Setting up the project folder structure and memory layer</p></div>
+  <div class="n"><i>2</i><p>Loading the right domain and flow skills for each phase</p></div>
+  <div class="n"><i>3</i><p>Making config-vs-code decisions in real time</p></div>
+  <div class="n"><i>4</i><p>Building in platform order with AI as execution partner</p></div>
+</section>
+
+<section>
+  <div class="callout green">
+    <p><strong>Date TBD.</strong> This session has not been scheduled yet. Check back for the confirmed date and time, or watch the AI Playground group for announcements.</p>
+  </div>
+</section>
+
+<div class="main-footer">
+  <div><a href="session-4.html">&larr; Session 4</a> &middot; <a href="../index.html">Home</a></div>
+  <small>Dhwani RIS &middot; AI Playground &middot; 2026</small>
+</div>
+
+</div></div>
+</body>
+</html>
