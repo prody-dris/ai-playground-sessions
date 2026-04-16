@@ -1218,7 +1218,7 @@ code {
   .cols { grid-template-columns: 1fr; }
   .step-body { padding-left: 0; }
   .hero-banner { padding: 24px 20px; }
-  .hero-banner h2 { font-size: 20px; }
+  .hero-banner h2 { font-size: 22px; }
   .momentum-grid { grid-template-columns: 1fr; }
   .cta-inline { flex-direction: column; text-align: center; gap: 8px; }
   .cta-inline .cta-arrow { display: none; }
@@ -1227,4 +1227,114 @@ code {
   .hook-flow { grid-template-columns: 1fr; gap: 4px; }
   .hook-arrow { transform: rotate(90deg); }
   .power-preview .power-stats { flex-wrap: wrap; }
+  .readings-grid { grid-template-columns: 1fr; }
 }
+
+/* ═══════════════════════════════
+   VISIBILITY POLISH PASS (v2)
+   — Layered overrides for existing components.
+     No restructuring; just crispness.
+   ═══════════════════════════════ */
+
+/* 1. Sidebar active state — unmistakable left accent bar */
+.sidebar-link.active {
+  position: relative;
+  padding-left: 13px;
+}
+.sidebar-link.active::before {
+  content: '';
+  position: absolute;
+  left: 2px; top: 5px; bottom: 5px;
+  width: 3px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+/* 2. Stat tiles — thin top accent + hover lift
+      Keeps the existing minimal feel but adds a "this is a card, not a paragraph" cue. */
+.stat {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(212, 132, 42, 0.10);
+  transition: all 0.15s ease;
+}
+.stat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0.45;
+}
+.stat:hover {
+  box-shadow: 0 3px 14px rgba(212, 132, 42, 0.10);
+  transform: translateY(-1px);
+  border-color: rgba(212, 132, 42, 0.22);
+}
+.stat:hover::before { opacity: 0.85; }
+.stat .stat-num { transition: color 0.15s; }
+
+/* 3. Session-card badges — make "Latest" / "Next" pop */
+.session-card .badge-new {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(212, 132, 42, 0.30);
+  vertical-align: 1px;
+}
+
+/* 4. Hero banner — bump the headline so it's clearly the focal point */
+.hero-banner h2 {
+  font-size: 34px;
+  line-height: 1.12;
+  letter-spacing: -0.8px;
+  margin-bottom: 10px;
+}
+
+/* 5. Section heading rhythm — breathing room between heading and content */
+section h2 { margin-bottom: 16px; }
+section h3 { margin-top: 22px; margin-bottom: 10px; }
+section h3:first-child { margin-top: 4px; }
+
+/* 6. Reading cards — 2-col grid on desktop (used in readings.html)
+      Keeps the existing .reading-card bordered look; adds density. */
+.readings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+  margin-top: 4px;
+}
+.readings-grid .reading-card {
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  align-items: flex-start;
+  transition: all 0.12s;
+  background: var(--card-bg);
+}
+.readings-grid .reading-card:hover {
+  border-color: rgba(212, 132, 42, 0.35);
+  background: var(--accent-bg);
+  transform: translateY(-1px);
+}
+.readings-grid .reading-card:last-child { border-bottom: 1px solid var(--rule); }
+
+/* 7. Quick hover polish on session cards — slightly stronger lift */
+.session-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.session-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 26, 26, 0.08);
+}
+
+/* 8. Tool-card — matching lift so interactive tiles feel consistent */
+.tool-card {
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.tool-card:hover { transform: translateY(-1px); }
