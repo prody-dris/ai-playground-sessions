@@ -3,6 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Skills, MCP, Plugins, Agents explained. Three live builds: M365 timesheet MCP, ATMA Frappe project, Welspun Help Center.">
+<link rel="icon" type="image/png" href="../assets/images/dhwani-logo.png">
+<link rel="apple-touch-icon" href="../assets/images/dhwani-logo.png">
+<meta property="og:site_name" content="AI Playground — Dhwani RIS">
+<meta property="og:title" content="Session 5 — Open Build & Problem-Solving | AI Playground">
+<meta property="og:description" content="Skills, MCP, Plugins, Agents explained. Three live builds: M365 timesheet MCP, ATMA Frappe project, Welspun Help Center.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://prody-dris.github.io/ai-playground-sessions/sessions/session-5.html">
+<meta property="og:image" content="https://prody-dris.github.io/ai-playground-sessions/assets/images/session-5/hero-title.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
 <title>Session 5 — Open Build &amp; Problem-Solving | AI Playground</title>
 <link rel="stylesheet" href="../assets/style.css">
 <style>
@@ -43,7 +55,7 @@
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 20px;
-  background: rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.03);
   border: 1px solid var(--border);
   letter-spacing: 0.04em;
 }
@@ -81,7 +93,7 @@
   flex-wrap: wrap;
   margin-bottom: 6px;
   font-size: 11px;
-  color: var(--text-secondary);
+  color: var(--text-mid);
 }
 .pyramid-label-row span { display: flex; align-items: center; gap: 4px; }
 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
@@ -99,7 +111,7 @@
   gap: 12px;
   padding: 12px 14px;
   border-radius: 8px;
-  background: rgba(255,255,255,0.03);
+  background: rgba(0,0,0,0.03);
   border: 1px solid var(--border);
 }
 .anatomy-num {
@@ -133,7 +145,7 @@
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid var(--border);
-  background: rgba(255,255,255,0.02);
+  background: rgba(0,0,0,0.03);
 }
 .shot img {
   display: block;
@@ -144,11 +156,11 @@
   padding: 10px 14px;
   font-size: 12px;
   line-height: 1.5;
-  color: var(--text-secondary);
+  color: var(--text-mid);
   border-top: 1px solid var(--border);
-  background: rgba(0,0,0,0.15);
+  background: rgba(0,0,0,0.04);
 }
-.shot-caption strong { color: var(--text-primary); }
+.shot-caption strong { color: var(--text); }
 
 .shot-grid-2 {
   display: grid;
@@ -199,7 +211,7 @@
   padding: 12px 14px;
   border-radius: 8px;
   border-left: 3px solid var(--accent, #e85d04);
-  background: rgba(255,255,255,0.03);
+  background: rgba(0,0,0,0.03);
 }
 .mini-stat-label {
   font-size: 10px;
@@ -314,7 +326,7 @@
       <li>Ravi&rsquo;s timesheet + project-governance MCP &mdash; Microsoft 365 activity auto-posted into Frappe HRMS with no custom code</li>
       <li>Kashish&rsquo;s ATMA Education Foundation build &mdash; CLI-zero to a full Frappe project with verticals, cohorts, web forms, and document review</li>
       <li>Arpita&rsquo;s Welspun Help Center &mdash; org-level resources + role-gated FAQs inside a live mGrant deployment, installable in five minutes</li>
-      <li>A coaching moment on why the <code>mGrant design system skill</code> is not optional</li>
+      <li>A teaching moment on why the <code>mGrant design system skill</code> belongs in every project MD by default</li>
     </ul>
   </div>
 </section>
@@ -642,21 +654,20 @@
 </section>
 
 <!-- ═══════════════════════════════
-     NIHAAN'S COACHING MOMENT
+     TEACHING MOMENT — DESIGN SYSTEM AS A SKILL
      ═══════════════════════════════ -->
 <section>
-  <h2>The Coaching Moment <span class="badge">Live</span></h2>
+  <h2>A Teaching Moment <span class="badge">Live</span></h2>
   <div class="coaching-box">
-    <div class="label">What happened at 59 minutes in</div>
-    <p>Nihaan paused Arpita&rsquo;s demo on the last screen: <em>&ldquo;I&rsquo;m looking at a completely different UI compared to V2, V3. Did you use the mGrant design system skill?&rdquo;</em></p>
-    <p>Arpita&rsquo;s honest answer: <em>&ldquo;I used folder patterns from the existing project page as a reference, but I didn&rsquo;t use the design system skill.&rdquo;</em></p>
-    <p>Nihaan&rsquo;s ask, on the call, in front of the room: <em>&ldquo;Update your MD file to reference the mGrant design system skill. Ship one version with it applied. The Help Center is good &mdash; let&rsquo;s make it consistent with the rest of the product.&rdquo;</em></p>
+    <div class="label">Near the 59-minute mark</div>
+    <p>Nihaan used the last stretch of the session to surface a broader point for the room: <em>&ldquo;When you&rsquo;re building on an mGrant surface, reference the mGrant design system skill in your project MD before you start. The skill already exists. Make it the default &mdash; don&rsquo;t hand-roll UI from existing project pages when there&rsquo;s an org-tier skill for the surface.&rdquo;</em></p>
+    <p>Ninety seconds on the call; the teaching moment of the hour. The pattern behind it is the real takeaway: skills you don&rsquo;t know about don&rsquo;t throw errors. They just cause drift. By the time a reviewer notices, you&rsquo;ve already shipped.</p>
   </div>
   <div class="prose">
-    <p>This is exactly the pattern the session was pushing. A client-facing module built at speed &mdash; and one skill the builder didn&rsquo;t know existed. The fix is not to rebuild. The fix is to <strong>add the missing skill to the MD</strong> and re-run. The design system skill is one of the Dhwani organisation-tier skills we already have; this is the first time a build surfaced a clear case for making it the default.</p>
+    <p>This is precisely the case for a Dhwani organisation-tier skill library. The mGrant design system skill exists today. If a project MD doesn&rsquo;t reference it, AI has no way of knowing to apply it &mdash; and any UI work will diverge from V2/V3 conventions. <strong>The fix is not to rebuild anything.</strong> The fix is to add the skill reference to the MD and re-run the UI stretch.</p>
   </div>
   <div class="callout accent">
-    <p><strong>The rule this moment produced:</strong> if there&rsquo;s a Dhwani org-tier skill for the surface you&rsquo;re building on, reference it in your project MD before the first AI turn. Missing skills are invisible until a reviewer spots the drift.</p>
+    <p><strong>The rule this moment produced:</strong> if there&rsquo;s a Dhwani org-tier skill for the surface you&rsquo;re building on, reference it in your project MD before the first AI turn. Missing skills are invisible until a reviewer spots the drift &mdash; and by then, you&rsquo;ve already shipped.</p>
   </div>
 </section>
 
@@ -670,7 +681,7 @@
   <div class="n"><i>3</i><p><strong>MCP + existing APIs beat writing new code.</strong> Ravi built a production-grade timesheet + governance workflow with no custom code. The win comes from connecting what already exists, not building new services.</p></div>
   <div class="n"><i>4</i><p><strong>Spec quality sets build speed.</strong> Kashish&rsquo;s hardest work was writing the FRD/BRD well. Once the spec was crisp, Frappe scaffolding was cheap. The AI executes; you architect.</p></div>
   <div class="n"><i>5</i><p><strong>Reusability is an architecture choice, not an afterthought.</strong> Arpita&rsquo;s Help Center was slow for Welspun and instant for the next client because the module was designed to configure from an MD file, not hand-coded per customer.</p></div>
-  <div class="n"><i>6</i><p><strong>If there&rsquo;s a skill for your surface, reference it in your MD.</strong> Missing skills don&rsquo;t error. They just drift. Nihaan&rsquo;s live coaching moment on the design system made this rule concrete.</p></div>
+  <div class="n"><i>6</i><p><strong>If there&rsquo;s a skill for your surface, reference it in your MD.</strong> Missing skills don&rsquo;t error &mdash; they just drift. The design-system teaching moment made this rule concrete.</p></div>
   <div class="n"><i>7</i><p><strong>Your code is not training the model.</strong> With the Dhwani Claude Team subscription, your prompts and code stay yours. Say that explicitly to anyone in your project team who asks.</p></div>
 </section>
 

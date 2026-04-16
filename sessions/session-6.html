@@ -4,16 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Session 6 — The Craft: Clean Code, Good Design, Real Skills | AI Playground</title>
-<meta name="description" content="Session 6 of the Dhwani RIS AI Playground. Abhijit Jamadagni &amp; Aditya Gore on clean AI-assisted coding. Abhinav on design as a skill. Plus a live skill-writing workshop.">
+<meta name="description" content="Session 6 of the Dhwani RIS AI Playground, Thursday 23 April 2026. Abhijit Jamadagni &amp; Aditya Gore on the coding craft, Abhinav on design, plus a live skill-writing workshop.">
+<link rel="icon" type="image/png" href="../assets/images/dhwani-logo.png">
+<link rel="apple-touch-icon" href="../assets/images/dhwani-logo.png">
+<meta property="og:site_name" content="AI Playground — Dhwani RIS">
 <meta property="og:title" content="Session 6 — The Craft: Clean Code, Good Design, Real Skills">
-<meta property="og:description" content="Abhijit Jamadagni &amp; Aditya Gore on clean AI-assisted coding. Abhinav on design as a skill. Plus a live skill-writing workshop.">
+<meta property="og:description" content="Thursday 23 April 2026. Abhijit Jamadagni &amp; Aditya Gore on the coding craft. Abhinav on design. Live skill-writing workshop.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://prody-dris.github.io/ai-playground-sessions/sessions/session-6.html">
+<meta property="og:image" content="https://prody-dris.github.io/ai-playground-sessions/assets/images/session-5/hero-title.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
-/* ── S6 Custom Visual Components ── */
-
-/* Agenda timeline */
+/* ── S6 Teaser Components ── */
 .agenda {
   display: flex;
   flex-direction: column;
@@ -22,7 +27,7 @@
 }
 .agenda-row {
   display: grid;
-  grid-template-columns: 80px 1fr auto;
+  grid-template-columns: 90px 1fr auto;
   align-items: center;
   gap: 14px;
   padding: 12px 16px;
@@ -40,12 +45,13 @@
   color: var(--primary);
 }
 .agenda-row.accent .agenda-time { color: var(--accent); }
-.agenda-row.green .agenda-time  { color: var(--green); }
+.agenda-row.green  .agenda-time { color: var(--green); }
 .agenda-body {
   font-size: 13.5px;
-  line-height: 1.5;
+  line-height: 1.45;
+  color: var(--text);
 }
-.agenda-body strong { display: block; margin-bottom: 2px; font-size: 14px; }
+.agenda-body strong { display: block; font-size: 14px; margin-bottom: 2px; color: var(--text); }
 .agenda-tag {
   font-size: 10px;
   font-weight: 700;
@@ -53,123 +59,66 @@
   letter-spacing: 0.1em;
   padding: 3px 10px;
   border-radius: 20px;
-  background: rgba(0,0,0,0.04);
+  background: rgba(0,0,0,0.05);
   color: var(--text-mid);
   white-space: nowrap;
 }
 
-/* Speaker cards */
-.speaker-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin: 16px 0;
-}
-@media (max-width: 720px) { .speaker-grid { grid-template-columns: 1fr; } }
-.speaker-card {
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  padding: 18px 20px;
-  background: var(--card-bg);
-  position: relative;
-}
-.speaker-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 4px; bottom: 0;
-  border-radius: 10px 0 0 10px;
-}
-.sc-1::before { background: var(--primary); }
-.sc-2::before { background: var(--accent); }
-.speaker-names {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--primary);
-  letter-spacing: 0.04em;
-  margin-bottom: 4px;
-}
-.sc-2 .speaker-names { color: var(--accent); }
-.speaker-title {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  line-height: 1.3;
-  color: var(--text);
-}
-.speaker-body {
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: var(--text-mid);
-}
-.speaker-body p { margin-bottom: 8px; }
-.speaker-body p:last-child { margin-bottom: 0; }
-.speaker-tags {
+.speaker-row {
   display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-top: 12px;
+  align-items: baseline;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
 }
-.speaker-tag {
-  font-size: 10px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 20px;
-  background: var(--primary-bg);
+.speaker-row:last-child { border-bottom: none; }
+.speaker-names {
+  min-width: 240px;
+  font-size: 15px;
+  font-weight: 700;
   color: var(--primary);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
-.sc-2 .speaker-tag { background: var(--accent-bg); color: var(--accent); }
+.speaker-hint {
+  font-size: 13.5px;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+@media (max-width: 640px) {
+  .speaker-row { flex-direction: column; gap: 4px; }
+  .speaker-names { min-width: 0; }
+}
 
-/* Homework checklist */
 .homework {
   background: var(--green-bg);
   border: 1px solid rgba(34, 139, 34, 0.18);
   border-radius: 10px;
-  padding: 20px 22px;
+  padding: 18px 22px;
   margin: 16px 0;
 }
 .homework h3 {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--green);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .homework-item {
   display: grid;
-  grid-template-columns: 24px 1fr;
+  grid-template-columns: 20px 1fr;
   gap: 10px;
-  padding: 8px 0;
+  padding: 7px 0;
   border-bottom: 1px solid rgba(34, 139, 34, 0.1);
   font-size: 13.5px;
-  line-height: 1.5;
+  line-height: 1.55;
+  color: var(--text);
 }
 .homework-item:last-child { border-bottom: none; }
 .homework-check {
-  width: 18px; height: 18px;
+  width: 16px; height: 16px;
   border: 2px solid var(--green);
   border-radius: 4px;
-  margin-top: 2px;
-}
-
-/* Arrow link CTA */
-.arrow-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  color: var(--primary);
-  text-decoration: none;
-  font-size: 13.5px;
-  transition: gap 0.15s;
-}
-.arrow-cta:hover { gap: 12px; }
-.arrow-cta::after {
-  content: '\2192';
-  font-size: 16px;
+  margin-top: 3px;
 }
 </style>
 </head>
@@ -223,26 +172,36 @@
   <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html">Sessions</a> / Session 6</div>
   <h1>The Craft &mdash; Clean Code, Good Design, Real Skills<span>.</span></h1>
   <div class="page-meta">Session 6 &middot; Thursday, 23 April 2026 &middot; 5:00 &ndash; 6:00 PM</div>
-  <div class="page-meta" style="margin-top:4px;font-size:12px;opacity:0.65;">Presented by Abhijit Jamadagni &amp; Aditya Gore (joint) &middot; Abhinav &middot; Hosted by Nihaan Mohammed</div>
+  <div class="page-meta" style="margin-top:4px;font-size:12px;opacity:0.65;">With Abhijit Jamadagni &amp; Aditya Gore &middot; Abhinav &middot; Hosted by Nihaan Mohammed</div>
 </div>
 
 <!-- ═══════════════════════════════
-     OBJECTIVE
+     THE THEME
      ═══════════════════════════════ -->
 <section>
-  <h2>Why This Session</h2>
+  <h2>The Theme</h2>
   <div class="prose">
-    <p>Session 5 left us with a coaching moment: Arpita&rsquo;s Welspun Help Center was a great build &mdash; but it missed the mGrant design system skill, and the UI diverged from V2/V3. That was not an Arpita problem. That was a <strong>we-don&rsquo;t-have-the-engineering-muscle-yet</strong> problem.</p>
-    <p>Session 6 is the answer. What does clean AI-assisted code actually look like? What does a skill need to contain for the next person not to repeat the mistake? How do we keep design consistency without a designer in every room? Three voices from the inside &mdash; Abhijit Jamadagni and Aditya Gore together on the coding craft, and Abhinav on the design craft &mdash; followed by a workshop where everyone writes a skill from a real correction they&rsquo;ve made.</p>
+    <p>Five sessions in, the team is shipping. Session 6 is about the craft underneath that &mdash; writing code that holds up, keeping design consistent without a designer in every room, and turning the lessons you&rsquo;ve already learned into skills the rest of the company can use.</p>
+    <p>Short talks. A workshop. No slides you can&rsquo;t read. Come with one real correction you&rsquo;ve had to give AI twice this month &mdash; that&rsquo;s your starting point.</p>
   </div>
-  <div class="outcomes">
-    <h3>You&rsquo;ll walk out with</h3>
-    <ul>
-      <li>A shared definition of &ldquo;clean&rdquo; AI-assisted code &mdash; review practices, hygiene rules, when to trust AI and when to push back</li>
-      <li>Battle-tested patterns from Abhijit &amp; Aditya Gore&rsquo;s last few months of daily use &mdash; what stuck, what failed, what they&rsquo;d never do again</li>
-      <li>Design consistency as a <em>skill</em>, not a style guide &mdash; why putting the mGrant design system in your MD is how it scales</li>
-      <li>One real skill you wrote in the room, committed to <code>dhwani-ris/skills</code> &mdash; the first contribution to the organisation tier</li>
-    </ul>
+</section>
+
+<!-- ═══════════════════════════════
+     SPEAKERS (teaser only)
+     ═══════════════════════════════ -->
+<section>
+  <h2>Who You&rsquo;ll Hear From</h2>
+  <div class="speaker-row">
+    <div class="speaker-names">Abhijit Jamadagni &amp; Aditya Gore</div>
+    <div class="speaker-hint">Joint conversation &mdash; clean AI-assisted coding, from months of daily use.</div>
+  </div>
+  <div class="speaker-row">
+    <div class="speaker-names">Abhinav</div>
+    <div class="speaker-hint">Design as a skill &mdash; not a style guide.</div>
+  </div>
+  <div class="speaker-row">
+    <div class="speaker-names">The Room</div>
+    <div class="speaker-hint">Ten-minute live workshop &mdash; everyone writes one skill.</div>
   </div>
 </section>
 
@@ -250,113 +209,48 @@
      AGENDA
      ═══════════════════════════════ -->
 <section>
-  <h2>The Hour, In Shape</h2>
-  <div class="prose" style="margin-bottom:10px;">
-    <p>Tight timeboxes. Two conversations plus a workshop. No slides you can&rsquo;t read. The clock is the discipline.</p>
-  </div>
-
+  <h2>The Hour</h2>
   <div class="agenda">
     <div class="agenda-row">
       <div class="agenda-time">5:00&ndash;5:10</div>
       <div class="agenda-body">
-        <strong>Opening &amp; Session 5 bridge</strong>
-        Nihaan recaps the three S5 builds and the design-system moment. Sets the stage for why this session exists.
+        <strong>Opening</strong>
+        Session 5 bridge. Why this session exists.
       </div>
       <div class="agenda-tag">10 min</div>
     </div>
     <div class="agenda-row accent">
       <div class="agenda-time">5:10&ndash;5:30</div>
       <div class="agenda-body">
-        <strong>The Coding Craft &mdash; Abhijit Jamadagni &amp; Aditya Gore (joint)</strong>
-        What does clean AI-assisted code look like at Dhwani? Review, hygiene, trust signals, and the patterns from months of daily use. One conversation, two voices.
+        <strong>Abhijit Jamadagni &amp; Aditya Gore &mdash; joint</strong>
+        The coding craft.
       </div>
       <div class="agenda-tag">20 min</div>
     </div>
     <div class="agenda-row accent">
       <div class="agenda-time">5:30&ndash;5:45</div>
       <div class="agenda-body">
-        <strong>Design as a Skill &mdash; Abhinav</strong>
-        The mGrant design system is not a document. It&rsquo;s a skill. What that means, why that matters, and how you wire it into every project MD from day one.
+        <strong>Abhinav</strong>
+        Design as a skill.
       </div>
       <div class="agenda-tag">15 min</div>
     </div>
     <div class="agenda-row green">
       <div class="agenda-time">5:45&ndash;5:55</div>
       <div class="agenda-body">
-        <strong>Live workshop &mdash; Write one skill</strong>
-        Everyone in the room picks one correction they&rsquo;ve made to AI twice. Writes it as a skill. Commits to <code>dhwani-ris/skills</code>. Ten minutes; first contributions of our organisation tier.
+        <strong>Live workshop</strong>
+        Everyone writes one skill. First commits to <code>dhwani-ris/skills</code>.
       </div>
       <div class="agenda-tag">10 min</div>
     </div>
     <div class="agenda-row">
       <div class="agenda-time">5:55&ndash;6:00</div>
       <div class="agenda-body">
-        <strong>Wrap &amp; what&rsquo;s next</strong>
-        Review the first skills committed. Announce S7. Close on time.
+        <strong>Wrap</strong>
+        Review the first skills. Announce S7. Close on time.
       </div>
       <div class="agenda-tag">5 min</div>
     </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════
-     THE SPEAKERS
-     ═══════════════════════════════ -->
-<section>
-  <h2>Who&rsquo;s Presenting</h2>
-  <div class="prose" style="margin-bottom:14px;">
-    <p>Three engineers. Not the people on camera &mdash; the people doing the work every day. Expect honesty, not polish.</p>
-  </div>
-
-  <div class="speaker-grid">
-    <div class="speaker-card sc-1">
-      <div class="speaker-names">Abhijit Jamadagni &amp; Aditya Gore</div>
-      <div class="speaker-title">The Coding Craft &mdash; Clean AI-Assisted Code, In Practice</div>
-      <div class="speaker-body">
-        <p>Abhijit and Aditya Gore go together here for a reason. Both have been using AI inside real Dhwani codebases for months &mdash; which means both have made every mistake worth learning from. Joint segment: no hand-off, one conversation.</p>
-        <p>Expect: the review pattern that catches hallucinated fields before merge. The hygiene rule that stops AI from leaking hardcoded IDs across deployments. The &ldquo;trust but verify&rdquo; default on anything that touches DocType permissions. And the honest list of things they don&rsquo;t let AI do yet.</p>
-      </div>
-      <div class="speaker-tags">
-        <span class="speaker-tag">Review</span>
-        <span class="speaker-tag">Hygiene</span>
-        <span class="speaker-tag">Trust signals</span>
-        <span class="speaker-tag">Lessons</span>
-      </div>
-    </div>
-
-    <div class="speaker-card sc-2">
-      <div class="speaker-names">Abhinav</div>
-      <div class="speaker-title">Design as a Skill, Not a Style Guide</div>
-      <div class="speaker-body">
-        <p>The S5 coaching moment &mdash; Arpita&rsquo;s Help Center shipped without the mGrant design system skill, and the UI drifted. The fix is not a PDF anyone can ignore. The fix is a <em>skill</em>.</p>
-        <p>Abhinav&rsquo;s 15 minutes: how the mGrant design system skill is structured, what a project MD should contain to auto-load it, and the before/after on a live screen &mdash; same build, one skill difference, two very different outcomes.</p>
-      </div>
-      <div class="speaker-tags">
-        <span class="speaker-tag">Design system</span>
-        <span class="speaker-tag">Skill-based</span>
-        <span class="speaker-tag">Consistency</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════
-     WORKSHOP
-     ═══════════════════════════════ -->
-<section>
-  <h2>The Workshop <span class="badge-live">10 min, live</span></h2>
-  <div class="prose">
-    <p>Nihaan asked the room at the end of S5: <em>&ldquo;Let&rsquo;s build common skills in one common place &mdash; GitHub &mdash; so Deepak&rsquo;s coding skill, Anup&rsquo;s coding skill, are all available to the rest of us.&rdquo;</em> The workshop is the commit moment.</p>
-  </div>
-
-  <div class="analogy">
-    <div class="label">The exercise</div>
-    <p>Pick one correction you&rsquo;ve made to AI twice this month. Not a one-off annoyance &mdash; a correction you&rsquo;ve given AI more than once on the same kind of task. That&rsquo;s your skill candidate.</p>
-    <p style="margin-top:6px;">Open the <a href="../prompts.html">Skills Template</a>. Fill the five blocks &mdash; name, description, context, procedure, example. Commit to <code>dhwani-ris/skills</code> with a PR. By 5:55 we&rsquo;ll review the first batch live.</p>
-  </div>
-
-  <div class="callout accent">
-    <p><strong>No perfection expected.</strong> First version of a skill is always wrong. The whole point of writing it is to find out <em>how</em> it&rsquo;s wrong, on real work, over the next week. Ankit said it on the S5 call: <em>&ldquo;Skill banana is not one-shot. You iterate. You train it.&rdquo;</em></p>
   </div>
 </section>
 
@@ -366,21 +260,21 @@
 <section>
   <h2>Before You Come</h2>
   <div class="prose">
-    <p>Three small things so the hour lands hard. None of them will take more than ten minutes.</p>
+    <p>Three small things so the hour lands. None of them takes more than ten minutes.</p>
   </div>
   <div class="homework">
     <h3>Pre-session homework</h3>
     <div class="homework-item">
       <div class="homework-check"></div>
-      <div><strong>List two corrections.</strong> Think of two times in the last month you had to tell AI the same thing twice. What was the correction? What was the context? That&rsquo;s the raw material for your skill.</div>
+      <div><strong>List two corrections.</strong> Two times in the last month you had to tell AI the same thing twice. What was it? On what kind of task? That&rsquo;s the raw material for your skill.</div>
     </div>
     <div class="homework-item">
       <div class="homework-check"></div>
-      <div><strong>Read your own CLAUDE.md.</strong> If you don&rsquo;t have one, write a first draft &mdash; the <a href="../prompts.html">CLAUDE.md template</a> takes five minutes. Skills work best when they sit on top of a project that already knows who you are.</div>
+      <div><strong>Read your own CLAUDE.md.</strong> If you don&rsquo;t have one yet, write a first draft &mdash; the <a href="../prompts.html">CLAUDE.md template</a> takes five minutes.</div>
     </div>
     <div class="homework-item">
       <div class="homework-check"></div>
-      <div><strong>Bring your laptop with CLI installed.</strong> If Claude Code CLI isn&rsquo;t installed yet, run the <a href="../prompts.html">CLI setup prompt</a> before Thursday. The workshop is CLI-first; we don&rsquo;t want anyone stuck on install while the rest are writing.</div>
+      <div><strong>Bring your laptop with CLI installed.</strong> If Claude Code CLI isn&rsquo;t installed yet, run the <a href="../prompts.html">CLI setup prompt</a> before Thursday. The workshop is CLI-first.</div>
     </div>
   </div>
 </section>
@@ -389,41 +283,27 @@
      PRE-READING
      ═══════════════════════════════ -->
 <section>
-  <h2>Pre-Reading <small>&mdash; optional, high-leverage</small></h2>
+  <h2>Pre-Reading <small>&mdash; optional</small></h2>
   <div class="reading-card">
     <span class="reading-type guide">Guide</span>
     <div class="reading-body">
       <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" target="_blank">Equipping Agents for the Real World with Agent Skills &mdash; Anthropic Engineering</a>
-      <p>The official architecture behind skills. Three-tier loading. Progressive disclosure. Read this first so the workshop makes sense.</p>
+      <p>The architecture behind skills. Read this first so the workshop makes sense.</p>
     </div>
   </div>
   <div class="reading-card">
     <span class="reading-type article">Article</span>
     <div class="reading-body">
-      <a href="https://github.com/shanraisshan/claude-code-best-practice/blob/main/tips/claude-thariq-tips-16-apr-26.md" target="_blank">Claude Code Session Management &amp; 1M Context &mdash; Thariq (16 Apr 2026)</a>
-      <p>What to do with your 1M context window on coding sessions that stretch across hours. Rewind vs compact vs subagent. Directly useful for anyone building real features in CLI.</p>
+      <a href="https://github.com/shanraisshan/claude-code-best-practice/blob/main/tips/claude-thariq-tips-16-apr-26.md" target="_blank">Claude Code Session Management &amp; 1M Context &mdash; Thariq</a>
+      <p>Five things to do after any Claude Code turn: continue, rewind, clear, compact, or spawn a subagent. Useful for anyone building real features in CLI.</p>
     </div>
   </div>
   <div class="reading-card">
     <span class="reading-type docs">Session</span>
     <div class="reading-body">
       <a href="session-5.html">Session 5 Recap &mdash; Open Build &amp; Problem-Solving</a>
-      <p>If you missed S5, start here. Skill / MCP / Plugin / Agent explained, three live builds, and the design-system moment this session picks up from.</p>
+      <p>If you missed S5, start here. Skill / MCP / Plugin / Agent explained, three live builds.</p>
     </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════
-     WHAT'S NEXT
-     ═══════════════════════════════ -->
-<section>
-  <h2>What&rsquo;s Next <span class="badge">After S6</span></h2>
-  <div class="prose">
-    <p>Session 6 ships the first skills. Session 7 runs them against real work. We&rsquo;ll bring back two or three of the people who committed a skill on Thursday and review what happened when they used it for a week. Skills that survived. Skills that got rewritten. Skills that should never have been written.</p>
-    <p>If your skill is going to be in that review, write it for Thursday &mdash; not after.</p>
-  </div>
-  <div style="margin-top:16px;">
-    <a href="../frameworks/builder-protocol.html" class="arrow-cta">Open the Builder Protocol</a>
   </div>
 </section>
 

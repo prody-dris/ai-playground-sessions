@@ -3,8 +3,8 @@
 :root {
   --bg: #FDFCFA;
   --card-bg: #FFFFFF;
-  --sidebar-bg: #F7F3EF;
-  --sidebar-border: rgba(0,0,0,0.06);
+  --sidebar-bg: #F2EDE7;
+  --sidebar-border: rgba(0,0,0,0.08);
   --text: #2C2C2C;
   --text-mid: #525250;
   --text-light: #96968E;
@@ -20,6 +20,12 @@
   --code-bg: #1E1E1E;
   --code-fg: #E8A435;
   --sidebar-w: 260px;
+  /* Aliases used by per-page custom CSS (kept so pre-existing rules keep working) */
+  --border: rgba(0,0,0,0.08);
+  --text-primary: #2C2C2C;
+  --text-secondary: #525250;
+  --surface-subtle: rgba(0,0,0,0.025);
+  --surface-muted:  rgba(0,0,0,0.04);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -42,6 +48,7 @@ body {
   width: var(--sidebar-w);
   background: var(--sidebar-bg);
   border-right: 1px solid var(--sidebar-border);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
   overflow-y: auto;
   z-index: 100;
   display: flex;
