@@ -331,28 +331,44 @@ Now start with Phase 1, Step 1. Ask me to confirm my GitHub status.</div>
   <div class="prose">
     <p>A skill is a cheat sheet you give your AI. Write it once, use it forever. It's your domain knowledge in a format AI can understand and follow every time.</p>
   </div>
+  <div class="prose" style="margin-top:8px;">
+    <p>A properly structured skill has <strong>three parts</strong>: frontmatter (Tier 1 &mdash; always loaded), instructions (Tier 2 &mdash; loads when relevant), and optionally a resources folder with scripts or reference docs (Tier 3 &mdash; zero token cost until accessed). The frontmatter trigger is the most important line &mdash; it decides when the skill activates.</p>
+  </div>
   <div class="copy-block">
     <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
-    <div class="template"><span class="comment"># Skill: [Your Area]</span>
+    <div class="template"><span class="comment">---</span>
+<span class="key">name:</span> <span class="val">[Short skill name, e.g. mgrant-csr-reporting]</span>
+<span class="key">description:</span> <span class="val">Use when [specific trigger: "creating MCA Section 135 CSR reports or quarterly utilisation statements"]. Be precise &mdash; this decides when the skill activates.</span>
+<span class="key">type:</span> <span class="val">[organisation / team / partner]</span>
+<span class="comment">---</span>
 
-<span class="comment">## What This Covers</span>
-<span class="val">[One paragraph: what area does this skill address?]</span>
+<span class="comment">## Context</span>
+<span class="val">[Why does this skill exist? What problem does it solve? What domain knowledge underpins it?]</span>
+<span class="val">Example: "Dhwani RIS operates under MCA Section 135 CSR compliance. All reporting must meet specific indicator, attribution, and apportionment rules that generic AI does not know."</span>
 
-<span class="comment">## Key Concepts</span>
-<span class="key">- [Concept 1]:</span> <span class="val">[Brief explanation]</span>
-<span class="key">- [Concept 2]:</span> <span class="val">[Brief explanation]</span>
+<span class="comment">## Procedure</span>
+<span class="val">Step-by-step. Include decision points explicitly. Don&rsquo;t leave judgment gaps.</span>
+1. <span class="val">[First step]</span>
+2. <span class="val">[Second step]</span>
+   <span class="val">- If [condition A]: do [X]</span>
+   <span class="val">- If [condition B]: ask the user before proceeding</span>
+3. <span class="val">[Continue...]</span>
 
-<span class="comment">## Rules and Constraints</span>
-<span class="val">- [What must always be true?]</span>
-<span class="val">- [Compliance requirements?]</span>
-<span class="val">- [Common mistakes to avoid?]</span>
+<span class="comment">## Constraints</span>
+<span class="val">- [What must AI never do in this skill&rsquo;s context?]</span>
+<span class="val">- Example: "Never submit a report without human review."</span>
+<span class="val">- Example: "Never use generic indicator templates &mdash; all indicators must map to the client&rsquo;s approved M&amp;E framework."</span>
 
-<span class="comment">## Common Tasks</span>
-<span class="key">- [Task 1]:</span> <span class="val">[How it should be done]</span>
-<span class="key">- [Task 2]:</span> <span class="val">[How it should be done]</span>
+<span class="comment">## Example Output</span>
+<span class="val">[Paste one real example of the correct output. AI calibrates quality against examples, not abstract descriptions.]</span>
 
-<span class="comment">## Vocabulary</span>
-<span class="key">- [Term]</span> = <span class="val">[What it means in your context]</span></div>
+<span class="comment">## Eval (Test This Skill)</span>
+<span class="val">Input: [A real task from your domain]</span>
+<span class="val">Expected output: [What correct output looks like]</span>
+<span class="val">Pass if: [The specific criterion that tells you the skill worked]</span></div>
+  </div>
+  <div class="callout green">
+    <p><strong>The one rule:</strong> If you correct AI for the same mistake twice on the same task type &mdash; that correction belongs in a skill, not in your next prompt. Write it once. Save it forever.</p>
   </div>
 </section>
 
@@ -362,6 +378,7 @@ Now start with Phase 1, Step 1. Ask me to confirm my GitHub status.</div>
 <section>
   <h2>Quick References</h2>
   <div class="r"><code>Cheatsheet</code><span><a href="https://prody-dris.github.io/claude-code-cheatsheet/" target="_blank">Claude Code Cheatsheet</a> &mdash; commands, shortcuts, and tips for daily CLI use</span></div>
+  <div class="r"><code>Session 5</code><span><a href="sessions/session-5.html">Skills &amp; Protocol</a> &mdash; Skills vs. Plugins vs. MCPs vs. Agents, Agent Skills architecture, skill file structure</span></div>
   <div class="r"><code>Session 3</code><span><a href="sessions/session-3.html">Hands On</a> &mdash; original templates with walkthroughs and screenshots</span></div>
   <div class="r"><code>Session 4</code><span><a href="sessions/session-4.html">CLI &amp; Hooks</a> &mdash; detailed session guide for setup and hooks</span></div>
   <div class="r"><code>Readings</code><span><a href="readings.html">Readings</a> &mdash; curated learning resources on Claude Code, GitHub, and AI</span></div>

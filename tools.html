@@ -185,6 +185,37 @@
   </div>
 </section>
 
+<!-- MCPs -->
+<section>
+  <h2>MCP Connectors <small>— give AI live access to your tools</small></h2>
+  <div class="prose"><p>MCPs (Model Context Protocol) let Claude read and act inside your real tools &mdash; email, calendar, databases, repos. Install only what you actually use; each MCP adds token overhead at startup.</p></div>
+  <div class="tool-grid">
+    <a class="tool-card" href="https://github.com/anthropics/anthropic-quickstarts/tree/main/computer-use-demo" target="_blank">
+      <h4>Office 365 MCP</h4>
+      <p>Connect Claude to Outlook, Teams, Calendar, and SharePoint. Read emails, draft replies, book meetings, access files. Demonstrated live by Ravi Jangir in Session 5.</p>
+      <span class="tool-tag core">MCP</span>
+    </a>
+    <a class="tool-card" href="https://github.com/github/github-mcp-server" target="_blank">
+      <h4>GitHub MCP</h4>
+      <p>Read repos, create PRs, manage issues, and search code &mdash; all from inside Claude. The foundation for any CLI-based build workflow.</p>
+      <span class="tool-tag core">MCP</span>
+    </a>
+    <a class="tool-card" href="https://github.com/linear/linear-mcp" target="_blank">
+      <h4>Linear MCP</h4>
+      <p>Create and update tickets, check project status, and manage cycles directly from Claude. No tab-switching for project management.</p>
+      <span class="tool-tag core">MCP</span>
+    </a>
+    <a class="tool-card" href="https://modelcontextprotocol.io/docs/concepts/servers" target="_blank">
+      <h4>MCP Server Directory</h4>
+      <p>Official list of available MCP servers. Covers Slack, Google Drive, databases, browser control, and more. Find the connector for your tool here.</p>
+      <span class="tool-tag core">MCP</span>
+    </a>
+  </div>
+  <div class="callout" style="margin-top:8px;">
+    <p><strong>Token cost warning:</strong> Each MCP server loads its tool schemas upfront &mdash; 1,000&ndash;10,000+ tokens per server before your conversation starts. Only connect MCPs you actively use in a session.</p>
+  </div>
+</section>
+
 <!-- Internal Tools -->
 <section>
   <h2>Dhwani Internal</h2>
