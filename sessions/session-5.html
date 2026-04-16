@@ -3,78 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Session 5 — Skills, Protocol & Your First Full Build | AI Playground</title>
+<title>Session 5 — Open Build &amp; Problem-Solving | AI Playground</title>
 <link rel="stylesheet" href="../assets/style.css">
 <style>
 /* ── S5 Custom Visual Components ── */
-
-/* Skill Pyramid */
-.skill-pyramid {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  gap: 4px;
-  margin: 24px auto;
-  max-width: 560px;
-}
-.pyramid-layer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 6px;
-  padding: 10px 18px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  transition: opacity 0.15s;
-}
-.pyramid-layer:hover { opacity: 0.9; }
-.pyramid-layer .pyr-label { font-weight: 700; letter-spacing: 0.02em; }
-.pyramid-layer .pyr-tag  { font-size: 11px; font-weight: 500; opacity: 0.75; text-align: right; }
-.pyramid-layer .pyr-eg   { font-size: 11px; font-weight: 400; opacity: 0.65; font-style: italic; max-width: 260px; }
-.pl-1 { width: 100%; background: #1a6b3c; } /* Team    - base, widest, darkest green */
-.pl-2 { width: 84%;  background: #2d7d46; } /* Org     */
-.pl-3 { width: 68%;  background: #3a9157; } /* Partner */
-.pl-4 { width: 52%;  background: #4caf50; } /* Found   */
-.pyramid-cap {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-secondary);
-  text-align: center;
-  margin-top: 4px;
-}
-
-/* Agent Skills Tier Stack */
-.tier-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin: 20px 0;
-}
-.tier-block {
-  display: grid;
-  grid-template-columns: 120px 1fr auto;
-  align-items: center;
-  gap: 12px;
-  border-radius: 8px;
-  padding: 14px 18px;
-  border-left: 4px solid transparent;
-}
-.tier-block.t1 { background: rgba(76,175,80,0.08); border-color: #4caf50; }
-.tier-block.t2 { background: rgba(255,180,0,0.07); border-color: #ffb400; }
-.tier-block.t3 { background: rgba(99,102,241,0.08); border-color: #6366f1; }
-.tier-num  { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
-.tier-body { font-size: 13px; line-height: 1.5; }
-.tier-body strong { display: block; margin-bottom: 2px; }
-.tier-cost {
-  font-size: 22px;
-  font-weight: 800;
-  text-align: right;
-  white-space: nowrap;
-  line-height: 1;
-}
-.tier-cost small { display: block; font-size: 10px; font-weight: 500; opacity: 0.6; }
 
 /* Concept Cards */
 .concept-grid {
@@ -103,7 +35,8 @@
 .cc-agent::before  { background: #8b5cf6; }
 .cc-icon { font-size: 26px; margin-bottom: 8px; display: block; }
 .cc-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-.cc-what { font-size: 12px; line-height: 1.5; opacity: 0.8; margin-bottom: 8px; }
+.cc-what { font-size: 12px; line-height: 1.5; opacity: 0.85; margin-bottom: 8px; }
+.cc-eg   { font-size: 11px; line-height: 1.5; opacity: 0.65; font-style: italic; margin-bottom: 8px; }
 .cc-meta { display: flex; gap: 6px; flex-wrap: wrap; }
 .cc-pill {
   font-size: 10px;
@@ -115,20 +48,43 @@
   letter-spacing: 0.04em;
 }
 
-/* Demo featured badge */
-.demo-featured {
-  display: inline-block;
-  background: var(--accent, #e85d04);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 2px 10px;
-  border-radius: 20px;
-  margin-left: 8px;
-  vertical-align: middle;
+/* Skill Pyramid */
+.skill-pyramid {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 4px;
+  margin: 24px auto 8px;
+  max-width: 560px;
 }
+.pyramid-layer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+.pyramid-layer .pyr-label { font-weight: 700; letter-spacing: 0.02em; }
+.pyramid-layer .pyr-tag  { font-size: 11px; font-weight: 500; opacity: 0.75; text-align: right; }
+.pyramid-layer .pyr-eg   { font-size: 11px; font-weight: 400; opacity: 0.7; font-style: italic; max-width: 280px; }
+.pl-1 { width: 100%; background: #1a6b3c; }
+.pl-2 { width: 84%;  background: #2d7d46; }
+.pl-3 { width: 68%;  background: #3a9157; }
+.pl-4 { width: 52%;  background: #4caf50; }
+.pyramid-label-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.pyramid-label-row span { display: flex; align-items: center; gap: 4px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
 
 /* Skill anatomy list */
 .anatomy-list {
@@ -156,73 +112,127 @@
 .anatomy-body { font-size: 13px; line-height: 1.5; }
 .anatomy-body strong { color: var(--accent, #e85d04); }
 
-/* Big stat callout */
-.big-stat-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin: 20px 0;
+/* Demo featured badge */
+.demo-featured {
+  display: inline-block;
+  background: var(--accent, #e85d04);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-left: 8px;
+  vertical-align: middle;
 }
-@media (max-width: 560px) { .big-stat-row { grid-template-columns: repeat(2, 1fr); } }
-.big-stat {
-  text-align: center;
-  padding: 16px 10px;
+
+/* ── Screenshot shots ── */
+.shot {
+  margin: 18px 0;
   border-radius: 10px;
+  overflow: hidden;
   border: 1px solid var(--border);
   background: rgba(255,255,255,0.02);
 }
-.big-stat-num {
-  font-size: 28px;
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: 4px;
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
-.big-stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.55; }
+.shot-caption {
+  padding: 10px 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border);
+  background: rgba(0,0,0,0.15);
+}
+.shot-caption strong { color: var(--text-primary); }
 
-/* Domain comparison */
-.domain-split {
+.shot-grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 16px 0;
-  border: 1px solid var(--border);
+  gap: 14px;
+  margin: 18px 0;
 }
-@media (max-width: 560px) { .domain-split { grid-template-columns: 1fr; } }
-.ds-before, .ds-after {
-  padding: 18px 20px;
-}
-.ds-before { background: rgba(255,255,255,0.02); }
-.ds-after  { background: rgba(76,175,80,0.07); }
-.ds-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  margin-bottom: 12px;
-  opacity: 0.5;
-}
-.ds-item {
-  font-size: 12px;
-  line-height: 1.6;
-  padding: 3px 0;
-  border-bottom: 1px solid var(--border);
-}
-.ds-item:last-child { border-bottom: none; }
+@media (max-width: 720px) { .shot-grid-2 { grid-template-columns: 1fr; } }
 
-/* Pyramid caption block */
-.pyramid-label-row {
+/* Spotlight header */
+.spotlight-header {
   display: flex;
-  justify-content: center;
-  gap: 16px;
+  align-items: center;
+  gap: 14px;
+  margin: 28px 0 4px;
   flex-wrap: wrap;
-  margin-bottom: 6px;
-  font-size: 11px;
-  color: var(--text-secondary);
 }
-.pyramid-label-row span { display: flex; align-items: center; gap: 4px; }
-.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.spotlight-num {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--accent, #e85d04);
+  opacity: 0.45;
+}
+.spotlight-title {
+  flex: 1;
+  min-width: 200px;
+}
+.spotlight-title h2 {
+  margin: 0 0 4px 0;
+}
+.spotlight-title .subtitle {
+  font-size: 12px;
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Stat mini row */
+.mini-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 14px 0;
+}
+@media (max-width: 560px) { .mini-stat-row { grid-template-columns: 1fr; } }
+.mini-stat {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border-left: 3px solid var(--accent, #e85d04);
+  background: rgba(255,255,255,0.03);
+}
+.mini-stat-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: 2px;
+}
+.mini-stat-val {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Coaching box */
+.coaching-box {
+  border-radius: 10px;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, rgba(232,93,4,0.08), rgba(232,93,4,0.02));
+  border: 1px solid rgba(232,93,4,0.3);
+  border-left: 4px solid #e85d04;
+  margin: 18px 0;
+}
+.coaching-box .label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #e85d04;
+  margin-bottom: 8px;
+}
+.coaching-box p { margin: 0 0 8px; font-size: 13px; line-height: 1.6; }
+.coaching-box p:last-child { margin-bottom: 0; }
 </style>
 </head>
 <body>
@@ -250,7 +260,7 @@
     <a class="sidebar-link" href="session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
     <a class="sidebar-link" href="session-3.html"><span class="link-icon">3</span> Hands On</a>
     <a class="sidebar-link" href="session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks</a>
-    <a class="sidebar-link active" href="session-5.html"><span class="link-icon">5</span> Skills &amp; Protocol <span class="badge-new">Latest</span></a>
+    <a class="sidebar-link active" href="session-5.html"><span class="link-icon">5</span> Open Build <span class="badge-new">Latest</span></a>
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">Frameworks</div>
@@ -272,98 +282,132 @@
 
 <div class="page-header">
   <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html">Sessions</a> / Session 5</div>
-  <h1>Skills, Protocol &amp; Your First Full Build<span>.</span></h1>
-  <div class="page-meta">Session 5 &middot; Thursday, 16 April 2026 &middot; 5:00 &ndash; 6:00 PM</div>
-  <div class="page-meta" style="margin-top:4px;font-size:12px;opacity:0.55;">Presented by Ankit Jangir &middot; DevSecOps PoC</div>
+  <h1>Open Build &amp; Problem-Solving<span>.</span></h1>
+  <div class="page-meta">Session 5 &middot; Thursday, 16 April 2026 &middot; 5:00 &ndash; 6:00 PM &middot; 1h 1m recorded</div>
+  <div class="page-meta" style="margin-top:4px;font-size:12px;opacity:0.65;">Hosted by Nihaan Mohammed &middot; Concepts by Ankit Jangir &middot; Live demos by Ravi Jangir, Kashish Talwani &amp; Arpita Jain</div>
 </div>
 
 <!-- ═══════════════════════════════
-     OBJECTIVE
+     HERO
      ═══════════════════════════════ -->
 <section>
-  <h2>What We&rsquo;re Covering</h2>
+  <div class="shot">
+    <img src="../assets/images/session-5/hero-title.jpg" alt="Session 5 opening — the S5 page on screen, 20+ attendees in gallery view">
+    <div class="shot-caption"><strong>The room, live.</strong> 20+ teammates in the MEVN room and remote, the S5 page on screen, Nihaan opening with the week&rsquo;s recap and today&rsquo;s agenda.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     WHAT HAPPENED
+     ═══════════════════════════════ -->
+<section>
+  <h2>What Actually Happened</h2>
   <div class="prose">
-    <p>Your AI gives inconsistent output because it starts blank every session. <strong>Session 5 installs the operating system.</strong> Four concepts &mdash; Skills, Plugins, MCPs, Agents &mdash; plus the newest Anthropic release: Agent Skills. Then three live builds.</p>
+    <p>Five sessions in, and this one was the proof. Ankit walked the room through four concepts that run the AI stack &mdash; <strong>Skills, MCP, Plugins, Agents</strong> &mdash; in roughly seven minutes. Then three builders showed what they&rsquo;d made with them. No slides of theory. No highlight reels. Real client work, real screens, real answers to the tough questions. Plus one live coaching moment from Nihaan that no one saw coming.</p>
   </div>
   <div class="outcomes">
-    <h3>Walk out with</h3>
+    <h3>You&rsquo;ll walk away with</h3>
     <ul>
-      <li>A clear mental model of Skills vs. Plugins vs. MCPs vs. Agents</li>
-      <li>Why Agent Skills is the step-change for teams (three-tier loading, 70&ndash;90% fewer baseline tokens)</li>
-      <li>The domain argument: why AI at 300 IQ still needs your M&amp;E expert</li>
-      <li>A recipe for writing and evaluating your own skills</li>
-      <li>Three live demos: MCP superpower, Builder Protocol in action, FAQ in a live product</li>
+      <li>A plain-language mental model of Skill vs. MCP vs. Plugin vs. Agent &mdash; and when to reach for each</li>
+      <li>The four skill tiers (Foundation &rarr; Partner &rarr; Organisation &rarr; Team) and why Dhwani needs to build its own layer now</li>
+      <li>Ravi&rsquo;s timesheet + project-governance MCP &mdash; Microsoft 365 activity auto-posted into Frappe HRMS with no custom code</li>
+      <li>Kashish&rsquo;s ATMA Education Foundation build &mdash; CLI-zero to a full Frappe project with verticals, cohorts, web forms, and document review</li>
+      <li>Arpita&rsquo;s Welspun Help Center &mdash; org-level resources + role-gated FAQs inside a live mGrant deployment, installable in five minutes</li>
+      <li>A coaching moment on why the <code>mGrant design system skill</code> is not optional</li>
     </ul>
   </div>
 </section>
 
 <!-- ═══════════════════════════════
-     FOUR CONCEPTS
+     OPENING
      ═══════════════════════════════ -->
 <section>
-  <h2>Four Concepts, One Operating System</h2>
-  <div class="prose" style="margin-bottom:16px;">
-    <p>These aren&rsquo;t alternatives. They&rsquo;re layers. Together they turn general-purpose AI into an org-aware, domain-specific, context-persistent system.</p>
+  <h2>Opening &mdash; Why This Session</h2>
+  <div class="prose">
+    <p>Nihaan opened with a candid recap. The first four sessions were about lowering the barrier &mdash; what is vibe coding, why GitHub matters, how to set up CLI, hooks, and security. The pattern he&rsquo;d noticed: people were solving real problems in isolation. <strong>The point of this program is to drag those wins into the open.</strong></p>
+    <p>This week&rsquo;s shift: from &ldquo;AI use&rdquo; to <strong>&ldquo;best AI use&rdquo;</strong>. Most of the company uses Claude or ChatGPT through the UI. Far fewer use the CLI. And within the CLI, the difference between an average operator and a great one is <em>the four concepts covered today</em>.</p>
+  </div>
+  <div class="quote">
+    &ldquo;This is not a talk, it is a discussion. Stop us. Ask. Engage.&rdquo;
+    <cite>&mdash; Nihaan, opening the session</cite>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     FOUR CONCEPTS (ANKIT)
+     ═══════════════════════════════ -->
+<section>
+  <h2>The Four Concepts <span class="badge">Ankit&rsquo;s Explainer</span></h2>
+  <div class="prose" style="margin-bottom:12px;">
+    <p>Ankit&rsquo;s framing, in plain language: AI is a smart assistant. The four concepts are four ways you extend that assistant. They are <strong>not alternatives &mdash; they are layers.</strong> Each one does one job, and together they turn a generic chatbot into an org-aware teammate.</p>
+  </div>
+
+  <div class="shot">
+    <img src="../assets/images/session-5/concepts-4-grid.jpg" alt="Four Concepts framework: Skill, MCP, Plugin, Agent — shown on screen during Ankit&rsquo;s explainer">
+    <div class="shot-caption"><strong>Four Concepts, One Operating System.</strong> On screen during Ankit&rsquo;s explainer. Each card lists what the concept is, what it does, and how it differs from the others.</div>
   </div>
 
   <div class="concept-grid">
     <div class="concept-card cc-skill">
       <span class="cc-icon">&#128196;</span>
       <div class="cc-title">Skill</div>
-      <div class="cc-what">A markdown file that teaches AI <em>how your org works</em>. Procedural knowledge, domain rules, workflows.</div>
+      <div class="cc-what">A prepared knowledge base. AI&rsquo;s &ldquo;how to&rdquo; for a specific task &mdash; written once, used every time the trigger matches.</div>
+      <div class="cc-eg">Ankit&rsquo;s example: <em>&ldquo;Pooja&rsquo;s email-signature skill.&rdquo;</em> When Pooja writes a mail, the skill makes sure her signature and tone are right without her having to retype it.</div>
       <div class="cc-meta">
-        <span class="cc-pill">Procedural knowledge</span>
-        <span class="cc-pill">Persists across sessions</span>
-        <span class="cc-pill">Selective loading</span>
+        <span class="cc-pill">Knowledge</span>
+        <span class="cc-pill">Procedural</span>
+        <span class="cc-pill">Reusable</span>
       </div>
     </div>
     <div class="concept-card cc-mcp">
       <span class="cc-icon">&#128274;</span>
-      <div class="cc-title">MCP &mdash; Model Context Protocol</div>
-      <div class="cc-what">Open standard connector. Gives AI live access to your tools &mdash; email, calendar, database, HRMS, GitHub.</div>
+      <div class="cc-title">MCP</div>
+      <div class="cc-what">An action connector. Gives AI live access to a system &mdash; mail, calendar, HRMS, a database. The skill knows <em>how</em>; the MCP gives the <em>reach</em>.</div>
+      <div class="cc-eg">Ankit&rsquo;s example: <em>&ldquo;A skill tells AI how to write a mail. MCP is what connects it to your inbox so it can actually send it.&rdquo;</em></div>
       <div class="cc-meta">
-        <span class="cc-pill">Live data access</span>
+        <span class="cc-pill">Access</span>
         <span class="cc-pill">External systems</span>
-        <span class="cc-pill">Open standard</span>
+        <span class="cc-pill">Live data</span>
       </div>
     </div>
     <div class="concept-card cc-plugin">
       <span class="cc-icon">&#128230;</span>
       <div class="cc-title">Plugin</div>
-      <div class="cc-what">A distributable package bundling skills + MCP configs + hooks. Admin installs once &mdash; team gets the capability.</div>
+      <div class="cc-what">A bundle of MCPs and skills, packaged so an admin can install it once and the whole team gets the capability. Removes the manual setup.</div>
+      <div class="cc-eg">Ankit&rsquo;s example: <em>&ldquo;Instead of everyone wiring up Office 365 MCP + the email-signature skill themselves, one plugin does it.&rdquo;</em></div>
       <div class="cc-meta">
-        <span class="cc-pill">Bundled distribution</span>
-        <span class="cc-pill">Org-wide deployment</span>
+        <span class="cc-pill">Bundled</span>
+        <span class="cc-pill">Admin-deployed</span>
         <span class="cc-pill">Turnkey</span>
       </div>
     </div>
     <div class="concept-card cc-agent">
       <span class="cc-icon">&#129302;</span>
       <div class="cc-title">Agent</div>
-      <div class="cc-what">A specialised AI worker with its own context window, tools, and task. Multiple agents run in parallel simultaneously.</div>
+      <div class="cc-what">A smart worker that picks the right skills, uses the right MCPs, and runs the task end-to-end. Not a chat &mdash; a delegation.</div>
+      <div class="cc-eg">Ankit&rsquo;s example: <em>&ldquo;Give the agent a task: send a mail. It picks the email-signature skill, the MCP for your inbox, writes it in Dhwani brand voice, and sends.&rdquo;</em></div>
       <div class="cc-meta">
-        <span class="cc-pill">Isolated context</span>
-        <span class="cc-pill">Parallel execution</span>
+        <span class="cc-pill">Autonomous</span>
+        <span class="cc-pill">Orchestrates</span>
         <span class="cc-pill">Delegation model</span>
       </div>
     </div>
   </div>
 
-  <div class="callout accent" style="margin-top:4px;">
-    <p><strong>MCPs</strong> give AI access to your systems. <strong>Skills</strong> give AI your knowledge. <strong>Plugins</strong> distribute both across the team. <strong>Agents</strong> run them in parallel. They are complementary, not competing.</p>
+  <div class="callout accent">
+    <p><strong>Nihaan&rsquo;s one-liner to close the segment:</strong> &ldquo;MCP gives access to your system. Skills give AI knowledge. You need both. Neither is better &mdash; they are complementary.&rdquo;</p>
   </div>
 </section>
 
 <!-- ═══════════════════════════════
-     SKILLS DEEP DIVE + PYRAMID
+     SKILL LAYERS + WHY DHWANI NEEDS ITS OWN
      ═══════════════════════════════ -->
 <section>
-  <h2>What Is a Skill &mdash; and the Four Layers</h2>
-  <div class="prose" style="margin-bottom:20px;">
-    <p>A skill is a markdown file that encodes your org&rsquo;s knowledge so AI arrives knowing your rules &mdash; without being told every session. Skills exist at four layers. You stack them. <strong>The more layers active, the more context-aware your AI becomes.</strong></p>
+  <h2>The Four Skill Tiers &mdash; and Why Dhwani Needs Its Own</h2>
+  <div class="prose" style="margin-bottom:14px;">
+    <p>Ankit laid out three types of skills in the call; the fourth layer is the one that ties the stack together. A skill you stack at the top inherits everything below it. <strong>The more tiers active, the more context-aware your AI becomes on day one.</strong></p>
   </div>
 
-  <!-- Pyramid: Foundation at top (narrowest), Team at bottom (widest/base) -->
   <div class="pyramid-label-row">
     <span><span class="dot" style="background:#4caf50;"></span>Foundation</span>
     <span><span class="dot" style="background:#3a9157;"></span>Partner</span>
@@ -371,25 +415,24 @@
     <span><span class="dot" style="background:#1a6b3c;"></span>Team</span>
   </div>
   <div class="skill-pyramid">
-    <!-- Rendered bottom-up via flex column-reverse: pl-1 is visually at bottom -->
     <div class="pyramid-layer pl-1">
       <div>
         <div class="pyr-label">Team Skills</div>
-        <div class="pyr-eg">e.g. how-to-email-ankit-properly.md &mdash; your team&rsquo;s norms</div>
+        <div class="pyr-eg">e.g. &ldquo;how we write release notes on our team&rdquo;</div>
       </div>
       <div class="pyr-tag">Most Specific<br>Your Team</div>
     </div>
     <div class="pyramid-layer pl-2">
       <div>
         <div class="pyr-label">Organisation Skills</div>
-        <div class="pyr-eg">e.g. mGrant CSR domain, mgrant-coding-hygiene</div>
+        <div class="pyr-eg">e.g. mGrant coding hygiene, design system, CSR testing standards</div>
       </div>
       <div class="pyr-tag">Dhwani RIS<br>All teams</div>
     </div>
     <div class="pyramid-layer pl-3">
       <div>
         <div class="pyr-label">Partner Skills</div>
-        <div class="pyr-eg">e.g. Superpowers: brainstorming, TDD, systematic-debugging</div>
+        <div class="pyr-eg">e.g. Microsoft, Superpowers, Notion partner skills</div>
       </div>
       <div class="pyr-tag">Ecosystem<br>Any org</div>
     </div>
@@ -401,273 +444,218 @@
       <div class="pyr-tag">Anthropic<br>Universal</div>
     </div>
   </div>
-  <p class="pyramid-cap">Read from top down: Foundation is universal. Team is most specific. You stack all four simultaneously.</p>
 
-  <div class="callout green" style="margin-top:20px;">
-    <p><strong>A Dhwani RIS PM on mGrant CSR</strong> has Foundation + Partner + Org + Team skills all active. AI shows up knowing Anthropic&rsquo;s best practices, the Superpowers workflow discipline, mGrant CSR domain rules, and how to communicate with your team &mdash; before the first message.</p>
+  <div class="coaching-box">
+    <div class="label">Nihaan&rsquo;s ask to the room</div>
+    <p>&ldquo;Today as an organisation we don&rsquo;t have Dhwani-level engineering skills. We need them. Coding practices. Testing practices. The ask from this session is: let&rsquo;s go back and build common skills, in one common place &mdash; GitHub &mdash; so Deepak&rsquo;s coding skill, Anup&rsquo;s coding skill, are all available to the rest of us.&rdquo;</p>
+    <p><strong>The invitation is explicit:</strong> if you&rsquo;ve solved something with a skill, contribute it. The organisation tier of this pyramid is ours to fill.</p>
   </div>
 
-  <h3 style="margin-top:28px;">What a Skill Folder Actually Looks Like</h3>
-  <div class="prose" style="margin-bottom:12px;">
-    <p>A skill is not just a single markdown file. It&rsquo;s a <strong>folder</strong>. The SKILL.md carries the metadata and instructions. Everything else &mdash; scripts, templates, reference docs &mdash; lives alongside it as Tier 3 resources: bundled but never loaded into context until Claude actually needs them.</p>
+  <h3 style="margin-top:24px;">Anatomy of a Skill</h3>
+  <div class="prose" style="margin-bottom:10px;">
+    <p>Ankit walked through what actually goes in a skill file. This matches the format Anthropic documents and what the Superpowers partner skills use.</p>
   </div>
-
-  <div class="file-tree">
-<span class="folder">~/.claude/skills/</span>
-  <span class="folder">mgrant-csr/</span>           <span class="desc">&larr; Organisation skill</span>
-    <span class="file">SKILL.md</span>              <span class="desc">&larr; Tier 1 metadata + Tier 2 instructions</span>
-    <span class="file">validate_budget.py</span>    <span class="desc">&larr; Tier 3: runs on demand, 0 token cost until called</span>
-    <span class="file">generate_report.py</span>    <span class="desc">&larr; Tier 3: deterministic script, not in context</span>
-    <span class="file">REFERENCE.md</span>          <span class="desc">&larr; Tier 3: MCA 135 rules, loaded only if relevant</span>
-    <span class="folder">templates/</span>
-      <span class="file">quarterly-report.md</span>  <span class="desc">&larr; Tier 3: template, copied when needed</span>
-  <span class="folder">coding-hygiene/</span>         <span class="desc">&larr; Organisation skill</span>
-    <span class="file">SKILL.md</span>
-  <span class="file">how-to-email-ankit.md</span>  <span class="desc">&larr; Team skill (flat single-file, no folder needed)</span>
-  </div>
-
-  <div class="prose" style="margin-top:12px;">
-    <p>The <strong>.py scripts</strong> are the key unlock. Instead of pasting a 200-row CSV into context (expensive), Claude calls <code>validate_budget.py</code> and gets back a clean result. The script runs; the data stays outside the context window.</p>
-  </div>
-
-  <h3 style="margin-top:24px;">Why Solo Skills Don&rsquo;t Help &mdash; Skills Complement Each Other</h3>
-  <div class="prose">
-    <p>A skill in isolation has limited power. The <code>mgrant-csr</code> skill knows domain rules but has no idea how to write clean code. The <code>coding-hygiene</code> skill enforces code standards but knows nothing about MCA 135 reporting. Together, they produce code that is both domain-correct and production-quality.</p>
-  </div>
-  <div class="analogy">
-    <div class="label">The compound effect</div>
-    <p>Solo skill → AI follows one set of rules well.<br>
-    Two complementary skills → AI applies both simultaneously without you having to remind it.<br>
-    Full stack (Foundation + Partner + Org + Team) → AI behaves like someone who has been at Dhwani RIS for two years, knows the product, knows the coding standards, and knows how the team communicates.</p>
-  </div>
-  <div class="callout accent" style="margin-top:12px;">
-    <p><strong>Design skills to complement, not duplicate.</strong> If two skills have overlapping instructions, they create conflicting signals. Each skill should own one domain. Overlap is a signal to merge or split differently.</p>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════
-     AGENT SKILLS — THE NEW FRONTIER
-     ═══════════════════════════════ -->
-<section>
-  <h2>Agent Skills &mdash; The New Frontier <span class="badge-live">Dec 2025</span></h2>
-  <div class="prose" style="margin-bottom:16px;">
-    <p>In December 2025, Anthropic released Agent Skills as an open standard. Partners &mdash; Atlassian, Figma, Canva, Stripe, Notion, Zapier &mdash; adopted immediately. The core innovation: <strong>skills that load only what&rsquo;s needed, when it&rsquo;s needed.</strong> Three tiers. Progressive disclosure.</p>
-  </div>
-
-  <div class="tier-stack">
-    <div class="tier-block t1">
-      <div class="tier-num" style="color:#4caf50;">Tier 1<br>Always Loaded</div>
-      <div class="tier-body">
-        <strong>Metadata &mdash; Name &amp; Description only</strong>
-        Loaded at startup. Claude reads these to know what skills exist. No content, no procedures &mdash; just enough to decide relevance.
-      </div>
-      <div class="tier-cost" style="color:#4caf50;">~100<small>tokens/skill</small></div>
-    </div>
-    <div class="tier-block t2">
-      <div class="tier-num" style="color:#ffb400;">Tier 2<br>On Relevance</div>
-      <div class="tier-body">
-        <strong>Instructions &mdash; Workflows, domain rules, procedures</strong>
-        Loads only when Claude determines the skill applies to the current task. An M&amp;E skill doesn&rsquo;t load when you&rsquo;re writing code.
-      </div>
-      <div class="tier-cost" style="color:#ffb400;">~5k<small>tokens if triggered</small></div>
-    </div>
-    <div class="tier-block t3">
-      <div class="tier-num" style="color:#6366f1;">Tier 3<br>On Demand</div>
-      <div class="tier-body">
-        <strong>Resources &mdash; Templates, scripts, reference files</strong>
-        Never loaded into context. Accessed on demand via file reads. Bundle 50+ reference documents with zero additional token cost.
-      </div>
-      <div class="tier-cost" style="color:#6366f1;">0<small>tokens unless accessed</small></div>
-    </div>
-  </div>
-
-  <div class="big-stat-row">
-    <div class="big-stat">
-      <div class="big-stat-num" style="color:#4caf50;">~100</div>
-      <div class="big-stat-label">tokens per skill at startup</div>
-    </div>
-    <div class="big-stat">
-      <div class="big-stat-num" style="color:#ffb400;">5k</div>
-      <div class="big-stat-label">max when triggered</div>
-    </div>
-    <div class="big-stat">
-      <div class="big-stat-num" style="color:#6366f1;">0</div>
-      <div class="big-stat-label">tokens for unused resources</div>
-    </div>
-    <div class="big-stat">
-      <div class="big-stat-num">50+</div>
-      <div class="big-stat-label">skills available, minimal overhead</div>
-    </div>
-  </div>
-
-  <div class="callout accent">
-    <p><strong>70&ndash;90% reduction</strong> in baseline context consumption vs. static custom instructions. Admins provision skills org-wide. New hires arrive with full Dhwani RIS context from day one &mdash; zero individual setup.</p>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════
-     DOMAIN ARGUMENT
-     ═══════════════════════════════ -->
-<section>
-  <h2>Why AI Still Needs Aastha</h2>
-  <div class="quote">
-    &ldquo;AI at 300 IQ still knows nothing about your domain. Skills are how Aastha&rsquo;s M&amp;E expertise becomes available to every session, every team member, every time.&rdquo;
-  </div>
-
-  <div class="domain-split">
-    <div class="ds-before">
-      <div class="ds-label">Without Domain Skills</div>
-      <div class="ds-item">Generic output every session</div>
-      <div class="ds-item">Re-explain domain context each time</div>
-      <div class="ds-item">Aastha reviews everything manually</div>
-      <div class="ds-item">Inconsistency across team members</div>
-      <div class="ds-item">Expert knowledge locked in one person</div>
-    </div>
-    <div class="ds-after">
-      <div class="ds-label" style="color:#4caf50;">With Domain Skills</div>
-      <div class="ds-item">AI starts with Aastha&rsquo;s context already loaded</div>
-      <div class="ds-item">Zero re-explanation &mdash; skill carries the context</div>
-      <div class="ds-item">Aastha reviews output, not every step</div>
-      <div class="ds-item">Every PM produces consistent, domain-aware output</div>
-      <div class="ds-item">Expert knowledge scales across the entire team</div>
-    </div>
-  </div>
-
-  <div class="callout green">
-    <p><strong>This is not replacement.</strong> Aastha writes the skill. Her judgment is encoded once and amplified across the whole team. She becomes the author of the intelligence, not a bottleneck in the workflow.</p>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════
-     HOW TO WRITE & MAINTAIN A SKILL
-     ═══════════════════════════════ -->
-<section>
-  <h2>How to Write and Maintain a Skill</h2>
-
   <div class="anatomy-list">
     <div class="anatomy-item">
       <div class="anatomy-num">01</div>
-      <div class="anatomy-body"><strong>Frontmatter</strong> &mdash; Name, description, trigger conditions. The description must be specific: &ldquo;Use when creating MCA Section 135 CSR reports&rdquo; beats &ldquo;CSR skill.&rdquo; This is the only part that always loads.</div>
+      <div class="anatomy-body"><strong>Name &amp; description</strong> &mdash; short label plus a precise trigger. &ldquo;Use when drafting a client release-note email.&rdquo; This one line decides when the skill activates.</div>
     </div>
     <div class="anatomy-item">
       <div class="anatomy-num">02</div>
-      <div class="anatomy-body"><strong>Context block</strong> &mdash; Why this skill exists and what domain knowledge underpins it. Written for AI to understand purpose, not just procedure.</div>
+      <div class="anatomy-body"><strong>Trigger condition</strong> &mdash; the signal that the skill applies to the current task. Keep it specific; generic triggers cause noisy activations.</div>
     </div>
     <div class="anatomy-item">
       <div class="anatomy-num">03</div>
-      <div class="anatomy-body"><strong>Procedure</strong> &mdash; Step-by-step, with explicit decision points. Don&rsquo;t leave judgment gaps. &ldquo;If X, then Y. If Z, then ask.&rdquo;</div>
+      <div class="anatomy-body"><strong>Context</strong> &mdash; why this skill exists and the domain knowledge behind it. AI needs the purpose, not just the procedure.</div>
     </div>
     <div class="anatomy-item">
       <div class="anatomy-num">04</div>
-      <div class="anatomy-body"><strong>Constraints</strong> &mdash; What AI must never do in this skill&rsquo;s context. Explicit limits beat hoping AI infers them. &ldquo;Never send without human review.&rdquo;</div>
+      <div class="anatomy-body"><strong>Procedure</strong> &mdash; step by step, with decision points explicit. &ldquo;If X, do Y. If Z, ask first.&rdquo;</div>
     </div>
     <div class="anatomy-item">
       <div class="anatomy-num">05</div>
-      <div class="anatomy-body"><strong>Example</strong> &mdash; At least one real example of the correct output. AI calibrates quality against examples, not abstract descriptions.</div>
+      <div class="anatomy-body"><strong>Examples</strong> &mdash; at least one real sample of the correct output. AI calibrates quality against examples, not descriptions.</div>
     </div>
   </div>
-
-  <h3 style="margin-top:20px;">Evaluating a Skill</h3>
-  <div class="n"><i>1</i><p><strong>Define the baseline first.</strong> What should AI produce when this skill is active? Write it before writing the skill. This is your pass/fail.</p></div>
-  <div class="n"><i>2</i><p><strong>Test on real work.</strong> Not a toy example. The M&amp;E skill gets tested on an actual grant reporting scenario.</p></div>
-  <div class="n"><i>3</i><p><strong>Gap = next iteration.</strong> Where AI deviated is where the skill needs more specificity.</p></div>
-  <div class="n"><i>4</i><p><strong>Version and review quarterly.</strong> Stale skills are worse than no skills &mdash; they give AI confident, outdated instructions.</p></div>
-
-  <div class="callout accent" style="margin-top:12px;">
-    <p><strong>The rule:</strong> If you correct AI for the same mistake twice on the same task type, that correction belongs in a skill &mdash; not in your next prompt.</p>
+  <div class="callout">
+    <p><strong>Ankit&rsquo;s honest note:</strong> &ldquo;Skill <em>banana</em> is not a one-shot. You iterate. You train it. The first version will be wrong &mdash; that&rsquo;s the point.&rdquo;</p>
   </div>
 </section>
 
 <!-- ═══════════════════════════════
-     BUILDER PROTOCOL
+     LIVE BUILDS — HEADER
      ═══════════════════════════════ -->
 <section>
-  <h2>The Builder Protocol &mdash; Skills as SDLC</h2>
-  <div class="prose" style="margin-bottom:16px;">
-    <p>Skills are not standalone. The Builder Protocol is the system that sequences them into a repeatable build process. Three phases. Each has its skills. You don&rsquo;t skip ahead.</p>
-  </div>
-
-  <div class="hook-flow">
-    <div class="hook-step">
-      <div class="hook-icon">&#127912;</div>
-      <div class="hook-title">Theme</div>
-      <div class="hook-desc">Design language, brand rules, component standards. The visual contract. Skills: frontend-design, brand guidelines.</div>
-    </div>
-    <div class="hook-arrow">&rarr;</div>
-    <div class="hook-step check">
-      <div class="hook-icon">&#128203;</div>
-      <div class="hook-title">Form</div>
-      <div class="hook-desc">Data capture, workflow logic, validation rules. Skills: domain skill, coding-hygiene, security.</div>
-    </div>
-    <div class="hook-arrow">&rarr;</div>
-    <div class="hook-step safe">
-      <div class="hook-icon">&#128202;</div>
-      <div class="hook-title">Dashboard</div>
-      <div class="hook-desc">Reporting, insight, decision support. Skills: domain skill, security, output standards.</div>
-    </div>
-  </div>
-
-  <div style="margin-top:16px;text-align:center;">
-    <a href="../frameworks/builder-protocol.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent,#e85d04);color:#fff;font-weight:700;font-size:14px;padding:12px 28px;border-radius:8px;text-decoration:none;letter-spacing:0.02em;transition:opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-      &#128196; Open the Builder Protocol &nbsp;&rarr;
-    </a>
-    <p style="margin-top:10px;font-size:12px;opacity:0.55;">Kashish has lived this on a real engagement. You&rsquo;ll hear it directly from her.</p>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════
-     LIVE SESSIONS — RAVI MAIN
-     ═══════════════════════════════ -->
-<section>
-  <h2>Live Sessions <span class="badge-live">Three Builders</span></h2>
+  <h2>Live Builds <span class="badge-live">Three Spotlights</span></h2>
   <div class="prose">
-    <p>Three builders. Real builds. Real constraints. Ravi leads today.</p>
+    <p>Three builders, three very different shapes of the same idea &mdash; AI + skills + MCPs, applied to real client work already shipping. Watch for how each one used <em>different</em> parts of the stack.</p>
   </div>
 </section>
 
+<!-- ═══════════════════════════════
+     SPOTLIGHT 1 — RAVI
+     ═══════════════════════════════ -->
 <section>
-  <h2>Ravi Jangir <span class="demo-featured">Main Session</span> <span class="badge">HRMS &amp; Office MCP Superpower</span></h2>
+  <div class="spotlight-header">
+    <div class="spotlight-num">01</div>
+    <div class="spotlight-title">
+      <h2>Ravi Jangir <span class="demo-featured">Flagship MCP Demo</span></h2>
+      <div class="subtitle">Timesheet automation &amp; project governance &mdash; M365 &rarr; Claude Code &rarr; Frappe HRMS</div>
+    </div>
+  </div>
+
   <div class="team-callout">
     <div class="team-names">Ravi Jangir</div>
-    <p>Live demo: connecting Claude to Office 365 via MCP and layering HRMS workflows on top. Not a hypothetical &mdash; a live superpower session where AI reads your inbox, checks availability, and coordinates across systems from a single interface.</p>
+    <p>The brief: stop hand-entering timesheets and stop pulling monthly project reviews by hand. Ravi wired Microsoft 365 (Outlook, Calendar, Teams chat) to Claude Code to the Frappe HRMS REST API &mdash; no custom code, just Claude Code + MCP tools + existing APIs &mdash; and let it read the day&rsquo;s activity and fill the timesheet automatically.</p>
   </div>
-  <div class="prose">
-    <p>The Office 365 MCP is one of the most immediately useful connectors for operations and HR teams. Claude reads live email, drafts replies with context, checks calendar, and coordinates scheduling &mdash; without switching windows or losing thread.</p>
-    <p><strong>What to watch for:</strong> How the MCP provides live data access and the skill provides the workflow logic for what to do with that data. Neither is useful without the other.</p>
+
+  <div class="shot">
+    <img src="../assets/images/session-5/ravi-architecture.jpg" alt="Architecture diagram: Microsoft 365 via MCP, Claude Code as orchestrator, Frappe HRMS via REST API">
+    <div class="shot-caption"><strong>The architecture, on screen.</strong> Microsoft 365 (Outlook, Calendar, Teams chat, Directory) connects via MCP to Claude Code as the orchestrator, which then calls Frappe HRMS via its REST API. <em>No custom code was written. No scripts.</em> Just Claude Code + MCP tools + Frappe REST API.</div>
   </div>
+
+  <div class="shot">
+    <img src="../assets/images/session-5/ravi-timesheet.jpg" alt="Ravi&rsquo;s auto-filled Frappe HRMS timesheet with 6 line items">
+    <div class="shot-caption"><strong>The output, six minutes later.</strong> Six timesheet lines, 8.5 total hours &mdash; each one mapped from a real meeting, task or mail that day. Projects auto-matched (Office Admin, Piramal-ESIC, Dhwani Operations, HR Human Resource). Descriptions written from the underlying source.</div>
+  </div>
+
+  <div class="shot">
+    <img src="../assets/images/session-5/ravi-governance.jpg" alt="Ravi&rsquo;s Project Governance Review page — April review, auto-populated project snapshot">
+    <div class="shot-caption"><strong>Extension &mdash; monthly project governance.</strong> Same pattern, different surface. Review Month, POC, Tech Lead, Team Involved, contracted FY revenue, invoiced amount, payment received, collection rate &mdash; all auto-populated from the underlying systems. What used to be a manual monthly grind is now a review, not a build.</div>
+  </div>
+
+  <h3>The Q&amp;A that mattered</h3>
+  <div class="n"><i class="accent">Q</i><p><strong>&ldquo;Is our code being used to train the model if we log in with a personal account?&rdquo;</strong> Ravi clarified: with the correct account setup &mdash; Dhwani&rsquo;s Claude Team subscription &mdash; your code and prompts are not used for training. The CLI does not process your project data into a training pipeline by default. This is the right answer to give stakeholders who will ask the same thing.</p></div>
+
   <div class="callout green">
-    <p><strong>The pairing:</strong> MCP without a skill is a connected but undirected tool. Skill without MCP is knowledgeable but blind. Ravi&rsquo;s demo shows them working as a unit.</p>
+    <p><strong>What to steal from this build:</strong> the pattern is portable. If you have an internal system with a REST API and you live in Microsoft 365, you can collapse a recurring ops workflow into a two-minute Claude Code conversation. Timesheets is the hook. The real prize is any repeating admin task where the data already exists in two different systems.</p>
   </div>
 </section>
 
+<!-- ═══════════════════════════════
+     SPOTLIGHT 2 — KASHISH
+     ═══════════════════════════════ -->
 <section>
-  <h2>Kashish <span class="badge">Builder Protocol &mdash; Aatma Projects</span></h2>
+  <div class="spotlight-header">
+    <div class="spotlight-num">02</div>
+    <div class="spotlight-title">
+      <h2>Kashish Talwani <span class="badge">Builder Protocol &mdash; ATMA</span></h2>
+      <div class="subtitle">From never having opened a CLI to shipping an end-to-end Frappe project for ATMA Education Foundation</div>
+    </div>
+  </div>
+
   <div class="team-callout">
-    <div class="team-names">Kashish</div>
-    <p>End-to-end client setup on Frappe for Aatma Projects, following the Builder Protocol: Theme &rarr; Form &rarr; Dashboard. Real client, real constraints, real timeline.</p>
+    <div class="team-names">Kashish Talwani</div>
+    <p>The honest version of &ldquo;starting from zero.&rdquo; Kashish had never used CLI before this engagement. She asked Ankit and Nihaan for a push; they handed her the API keys, the dependency list, and a login page to build. She then went away and built the rest of the project end-to-end &mdash; verticals, programmes, cohorts, NGO partners, MIS admin, web forms for external registration, workflows, and document review. From FRD/BRD markdown files straight into a live Frappe deployment.</p>
   </div>
-  <div class="prose">
-    <p>Not a highlight reel &mdash; a real playback. Every decision, where AI accelerated, where it got in the way, which skills she used and which were missing. The Builder Protocol lived, not theorised.</p>
+
+  <div class="mini-stat-row">
+    <div class="mini-stat">
+      <div class="mini-stat-label">Starting point</div>
+      <div class="mini-stat-val">Zero CLI experience</div>
+    </div>
+    <div class="mini-stat">
+      <div class="mini-stat-label">Shipped</div>
+      <div class="mini-stat-val">Full ATMA project on staging</div>
+    </div>
+    <div class="mini-stat">
+      <div class="mini-stat-label">Approach</div>
+      <div class="mini-stat-val">FRD/BRD in markdown &rarr; Frappe DocTypes</div>
+    </div>
   </div>
-  <div class="n"><i>1</i><p>What does following the protocol actually feel like on a real engagement?</p></div>
-  <div class="n"><i>2</i><p>Which skills made the biggest difference? Which ones were missing?</p></div>
-  <div class="n"><i>3</i><p>What would you tell someone starting their first client build with AI?</p></div>
+
+  <div class="shot-grid-2">
+    <div class="shot">
+      <img src="../assets/images/session-5/kashish-frd-inputs.jpg" alt="The Requirements folder showing Atma MIS FRD v1, Verticals &amp; Programme Processes, and supporting references">
+      <div class="shot-caption"><strong>The input side.</strong> A <code>Requirements/</code> folder with the FRD in markdown and Word, reference images, and reference spreadsheets. Kashish gave AI the context before asking it to build.</div>
+    </div>
+    <div class="shot">
+      <img src="../assets/images/session-5/kashish-flowchart.jpg" alt="ATMA Level-by-Level Programme Flowchart — Organisation to Verticals to Programmes to Cohorts to NGO Partners to Projects">
+      <div class="shot-caption"><strong>The mental model, first.</strong> Before typing a DocType, she mapped the whole hierarchy: Organisation &rarr; Verticals (5) &rarr; Programmes &rarr; Cohorts &rarr; NGO Partners &rarr; Projects &rarr; Process steps.</div>
+    </div>
+  </div>
+
+  <div class="shot-grid-2">
+    <div class="shot">
+      <img src="../assets/images/session-5/kashish-mis-admin.jpg" alt="ATMA MIS Administration on stg.atma.dhwaniris.in — Programmes, Sub-Programmes, Cohorts, Consultants, Web Forms">
+      <div class="shot-caption"><strong>The live MIS Administration.</strong> Master Data with 11 Programmes, 7 Sub-Programmes, 12 Cohorts, 5 Consultants. Web Forms exposed for 22 public links &mdash; external NGO registration flows.</div>
+    </div>
+    <div class="shot">
+      <img src="../assets/images/session-5/kashish-webform.jpg" alt="ATMA Document Review — Detailed Checklist web form in the live deployment">
+      <div class="shot-caption"><strong>Web Forms for external users.</strong> A live Document Review detailed checklist &mdash; the kind of form NGOs fill without needing an internal account. Spec&rsquo;d in FRD, built via CLI, deployed straight to staging.</div>
+    </div>
+  </div>
+
+  <h3>What changed between the start and the end</h3>
+  <div class="n"><i class="accent">1</i><p><strong>Memory as a folder, not a conversation.</strong> She used a <code>HEARTBEAT.md</code> + a memory store + a <code>Requirements/</code> folder with the BRD and FRD in both markdown and Word. Module-wise fields, data types, options, doc references &mdash; all there before she asked AI to do anything.</p></div>
+  <div class="n"><i class="accent">2</i><p><strong>Builder Protocol, lived.</strong> Not admired. She followed it. Theme &rarr; Form &rarr; Dashboard, with the FRD as the spec and the CLI as the builder.</p></div>
+  <div class="n"><i class="accent">3</i><p><strong>Direct-to-staging deploys.</strong> API keys in the terminal, reference to staging, small iterative changes. No handoff to a dev for minor updates.</p></div>
+  <div class="n"><i class="accent">4</i><p><strong>Credit given:</strong> Devang&rsquo;s shared skill library was the reference that unblocked her. Skills as a library &mdash; the organisation tier &mdash; actually works when it exists.</p></div>
+
   <div class="callout accent">
-    <p>Her mistakes are as valuable as her wins. This is the most honest learning you&rsquo;ll get today.</p>
+    <p><strong>The takeaway no one expected:</strong> the hard part was <em>not</em> the Frappe code. The hard part was writing the FRD well enough that AI could build from it. Once the spec is crisp, the build is cheap.</p>
   </div>
 </section>
 
+<!-- ═══════════════════════════════
+     SPOTLIGHT 3 — ARPITA
+     ═══════════════════════════════ -->
 <section>
-  <h2>Arpita <span class="badge">FAQ in Existing Projects &mdash; Welspun</span></h2>
+  <div class="spotlight-header">
+    <div class="spotlight-num">03</div>
+    <div class="spotlight-title">
+      <h2>Arpita Jain <span class="badge">Help Center &mdash; Welspun</span></h2>
+      <div class="subtitle">Org-level resources + role-gated FAQs inside a live mGrant deployment &mdash; installable in five minutes</div>
+    </div>
+  </div>
+
   <div class="team-callout">
-    <div class="team-names">Arpita</div>
-    <p>FAQ system built inside a live Welspun deployment &mdash; not a new project, an existing codebase. AI navigating legacy code and extending it without breaking what&rsquo;s working.</p>
+    <div class="team-names">Arpita Jain</div>
+    <p>The problem: clients have an org-level knowledge base need, but mGrant only had <em>project-level</em> file storage. Everything &mdash; manuals, field photos, social creatives, FAQs &mdash; was trapped inside individual projects. Arpita built the Help Center as a new module with two tabs (Resources + FAQs), role-level visibility on both folders and individual files, and external link support (YouTube, LinkedIn, Drive). Delivered for Welspun first. Five-minute install for any other client.</p>
+  </div>
+
+  <div class="shot">
+    <img src="../assets/images/session-5/arpita-help-center.jpg" alt="Welspun Help Center — Resources tab with Field Images, Social Media, User Manuals folders">
+    <div class="shot-caption"><strong>The Help Center home.</strong> Two tabs: Resources and FAQs. Three starting folders &mdash; Field Images, Social Media, User Manuals. &ldquo;+ New Folder&rdquo; with role assignment, &ldquo;+ Add Resource&rdquo; for content. The whole surface is new; none of this existed in mGrant before.</div>
+  </div>
+
+  <div class="shot">
+    <img src="../assets/images/session-5/arpita-resources.jpg" alt="Help Center Resources tab with Add Resource button highlighted">
+    <div class="shot-caption"><strong>Role-level visibility on every folder and every file.</strong> When Arpita creates a folder &mdash; say CSR &mdash; she assigns it to CSR Donor Admin only. NGO users, vendor users don&rsquo;t see it. Same rule on individual resources inside a folder. This was a direct client ask; it landed in the module.</div>
+  </div>
+
+  <div class="shot">
+    <img src="../assets/images/session-5/arpita-field-image.jpg" alt="WelPrakruti field image — a vermicomposting project photo from the Welspun CSR programme">
+    <div class="shot-caption"><strong>Real content, not placeholder.</strong> A WelPrakruti field image from the Welspun CSR programme, uploaded into the Field Images folder. The module handles images, PDFs, Word, plus external links &mdash; YouTube, LinkedIn, Drive &mdash; so clients can centralise creative and event content alongside documents.</div>
+  </div>
+
+  <h3>FAQs &mdash; the bit ticketing teams will love</h3>
+  <div class="n"><i class="accent">1</i><p><strong>User manuals drafted with Claude.</strong> Arpita generated the first pass of user manuals with Claude, then hand-edited. Those became the seed FAQs, each with screenshots.</p></div>
+  <div class="n"><i class="accent">2</i><p><strong>Inter-page redirection baked in.</strong> An FAQ that mentions &ldquo;My Organization&rdquo; links straight into that page. &ldquo;How do I navigate to projects?&rdquo; goes to the Projects page. FAQs are a navigation layer, not just text.</p></div>
+  <div class="n"><i class="accent">3</i><p><strong>Role-gated FAQs.</strong> &ldquo;How do I delete a user&rdquo; is visible only to Donor Admins &mdash; not to NGO or partner users. Same role model as Resources.</p></div>
+  <div class="n"><i class="accent">4</i><p><strong>Ticketing future.</strong> When mGrant ticketing goes live, a raised ticket will first redirect the user to the related FAQs. Self-serve before human.</p></div>
+
+  <div class="callout green">
+    <p><strong>The deployment story:</strong> Welspun took the long way &mdash; real build, real iteration. The second client will take five minutes. All of it driven by an MD file that describes the organisation. This is what reusability looks like when the architecture is right from the start.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     NIHAAN'S COACHING MOMENT
+     ═══════════════════════════════ -->
+<section>
+  <h2>The Coaching Moment <span class="badge">Live</span></h2>
+  <div class="coaching-box">
+    <div class="label">What happened at 59 minutes in</div>
+    <p>Nihaan paused Arpita&rsquo;s demo on the last screen: <em>&ldquo;I&rsquo;m looking at a completely different UI compared to V2, V3. Did you use the mGrant design system skill?&rdquo;</em></p>
+    <p>Arpita&rsquo;s honest answer: <em>&ldquo;I used folder patterns from the existing project page as a reference, but I didn&rsquo;t use the design system skill.&rdquo;</em></p>
+    <p>Nihaan&rsquo;s ask, on the call, in front of the room: <em>&ldquo;Update your MD file to reference the mGrant design system skill. Ship one version with it applied. The Help Center is good &mdash; let&rsquo;s make it consistent with the rest of the product.&rdquo;</em></p>
   </div>
   <div class="prose">
-    <p>This is the scenario most of us are actually in. We&rsquo;re not starting from scratch. We&rsquo;re extending things that already exist and already matter. AI working inside existing products &mdash; without breaking them &mdash; is the real test of the workflow.</p>
+    <p>This is exactly the pattern the session was pushing. A client-facing module built at speed &mdash; and one skill the builder didn&rsquo;t know existed. The fix is not to rebuild. The fix is to <strong>add the missing skill to the MD</strong> and re-run. The design system skill is one of the Dhwani organisation-tier skills we already have; this is the first time a build surfaced a clear case for making it the default.</p>
   </div>
-  <div class="callout green">
-    <p><strong>Watch for:</strong> How she gave AI the right context to work inside an existing codebase &mdash; and what role her skill setup played in keeping it from going off-track.</p>
+  <div class="callout accent">
+    <p><strong>The rule this moment produced:</strong> if there&rsquo;s a Dhwani org-tier skill for the surface you&rsquo;re building on, reference it in your project MD before the first AI turn. Missing skills are invisible until a reviewer spots the drift.</p>
   </div>
 </section>
 
@@ -676,12 +664,13 @@
      ═══════════════════════════════ -->
 <section>
   <h2>Key Takeaways</h2>
-  <div class="n"><i>1</i><p><strong>Skills are the OS, not a feature.</strong> Without them, every session starts blank. With them, AI arrives knowing your rules.</p></div>
-  <div class="n"><i>2</i><p><strong>MCPs give access. Skills give knowledge.</strong> You need both. They&rsquo;re complementary.</p></div>
-  <div class="n"><i>3</i><p><strong>Agent Skills changes token economics.</strong> 50+ skills available with ~5,000 tokens of overhead. The skill library can grow without the context window becoming a bottleneck.</p></div>
-  <div class="n"><i>4</i><p><strong>Domain expertise belongs in skills, not prompts.</strong> If you re-explain the same context twice, write a skill.</p></div>
-  <div class="n"><i>5</i><p><strong>A skill without an eval is a hope.</strong> Write the pass/fail before you write the skill. Test on real work. Update quarterly.</p></div>
-  <div class="n"><i>6</i><p><strong>The Builder Protocol is Theme &rarr; Form &rarr; Dashboard.</strong> Not a framework to admire &mdash; a sequence to follow. Kashish has lived it.</p></div>
+  <div class="n"><i>1</i><p><strong>Four concepts, one stack.</strong> Skill = knowledge. MCP = access. Plugin = bundled install. Agent = orchestration. Ship them together, not separately.</p></div>
+  <div class="n"><i>2</i><p><strong>Dhwani needs its own organisation-tier skill library on GitHub.</strong> Coding hygiene, testing standards, design system, domain rules. If you solved it once &mdash; contribute the skill. This was the single biggest ask from the room.</p></div>
+  <div class="n"><i>3</i><p><strong>MCP + existing APIs beat writing new code.</strong> Ravi built a production-grade timesheet + governance workflow with no custom code. The win comes from connecting what already exists, not building new services.</p></div>
+  <div class="n"><i>4</i><p><strong>Spec quality sets build speed.</strong> Kashish&rsquo;s hardest work was writing the FRD/BRD well. Once the spec was crisp, Frappe scaffolding was cheap. The AI executes; you architect.</p></div>
+  <div class="n"><i>5</i><p><strong>Reusability is an architecture choice, not an afterthought.</strong> Arpita&rsquo;s Help Center was slow for Welspun and instant for the next client because the module was designed to configure from an MD file, not hand-coded per customer.</p></div>
+  <div class="n"><i>6</i><p><strong>If there&rsquo;s a skill for your surface, reference it in your MD.</strong> Missing skills don&rsquo;t error. They just drift. Nihaan&rsquo;s live coaching moment on the design system made this rule concrete.</p></div>
+  <div class="n"><i>7</i><p><strong>Your code is not training the model.</strong> With the Dhwani Claude Team subscription, your prompts and code stay yours. Say that explicitly to anyone in your project team who asks.</p></div>
 </section>
 
 <!-- ═══════════════════════════════
@@ -690,31 +679,38 @@
 <section>
   <h2>Further Reading</h2>
   <div class="reading-card">
+    <span class="reading-type guide">Bonus</span>
+    <div class="reading-body">
+      <a href="https://github.com/shanraisshan/claude-code-best-practice/blob/main/tips/claude-thariq-tips-16-apr-26.md" target="_blank">Claude Code Session Management &amp; 1M Context &mdash; Thariq (16 Apr 2026)</a>
+      <p>Published the same day as this session. Practical guide to <code>/rewind</code>, <code>/compact</code>, fresh sessions, and subagents now that Claude Code has a 1M token context window. Directly useful for anyone now using CLI long-running sessions &mdash; which, after this week, is most of you.</p>
+    </div>
+  </div>
+  <div class="reading-card">
     <span class="reading-type guide">Guide</span>
     <div class="reading-body">
       <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" target="_blank">Equipping Agents for the Real World with Agent Skills &mdash; Anthropic Engineering</a>
-      <p>Official announcement and technical rationale behind Agent Skills.</p>
+      <p>The official post on Agent Skills. Three-tier progressive loading, why it changes token economics at org scale.</p>
     </div>
   </div>
   <div class="reading-card">
     <span class="reading-type docs">Docs</span>
     <div class="reading-body">
       <a href="https://modelcontextprotocol.io" target="_blank">Model Context Protocol &mdash; Official Spec</a>
-      <p>The open standard for connecting AI to your tools. Adopted by Anthropic, Microsoft, OpenAI, GitHub, and Cursor.</p>
+      <p>The open standard that made Ravi&rsquo;s Microsoft 365 &harr; Claude Code &harr; Frappe HRMS wiring possible. Read the <em>servers</em> section to see what&rsquo;s already available.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type course">Course</span>
+    <div class="reading-body">
+      <a href="https://anthropic.skilljar.com/introduction-to-agent-skills" target="_blank">Introduction to Agent Skills &mdash; Anthropic Skilljar</a>
+      <p>Free course from Anthropic on writing your first skill. Start here if the anatomy section above was the part that clicked for you.</p>
     </div>
   </div>
   <div class="reading-card">
     <span class="reading-type article">Article</span>
     <div class="reading-body">
       <a href="https://danielmiessler.com/blog/when-to-use-skills-vs-commands-vs-agents" target="_blank">When to Use Skills vs. Commands vs. Agents &mdash; Daniel Miessler</a>
-      <p>Practical decision framework for choosing between skills, MCPs, and agents.</p>
-    </div>
-  </div>
-  <div class="reading-card">
-    <span class="reading-type docs">Docs</span>
-    <div class="reading-body">
-      <a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank">Claude Code Overview &mdash; Anthropic Docs</a>
-      <p>Full reference for Claude Code: skills, hooks, MCP configuration, agents.</p>
+      <p>Practical decision framework when you&rsquo;re unsure which of the four concepts to reach for. Short. Concrete.</p>
     </div>
   </div>
 </section>

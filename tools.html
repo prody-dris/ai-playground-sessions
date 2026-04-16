@@ -31,7 +31,7 @@
     <a class="sidebar-link" href="sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
     <a class="sidebar-link" href="sessions/session-3.html"><span class="link-icon">3</span> Hands On</a>
     <a class="sidebar-link" href="sessions/session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks</a>
-    <a class="sidebar-link" href="sessions/session-5.html"><span class="link-icon">5</span> Skills &amp; Protocol <span class="badge-new">Latest</span></a>
+    <a class="sidebar-link" href="sessions/session-5.html"><span class="link-icon">5</span> Open Build <span class="badge-new">Latest</span></a>
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">Frameworks</div>
@@ -190,10 +190,15 @@
   <h2>MCP Connectors <small>— give AI live access to your tools</small></h2>
   <div class="prose"><p>MCPs (Model Context Protocol) let Claude read and act inside your real tools &mdash; email, calendar, databases, repos. Install only what you actually use; each MCP adds token overhead at startup.</p></div>
   <div class="tool-grid">
-    <a class="tool-card" href="https://github.com/anthropics/anthropic-quickstarts/tree/main/computer-use-demo" target="_blank">
-      <h4>Office 365 MCP</h4>
-      <p>Connect Claude to Outlook, Teams, Calendar, and SharePoint. Read emails, draft replies, book meetings, access files. Demonstrated live by Ravi Jangir in Session 5.</p>
+    <a class="tool-card" href="https://github.com/softeria/ms-365-mcp-server" target="_blank">
+      <h4>Microsoft 365 MCP</h4>
+      <p>Connect Claude to Outlook, Teams, Calendar, and SharePoint. The backbone of Ravi Jangir&rsquo;s Session 5 demo &mdash; Claude pulled the day&rsquo;s activity from M365 and auto-posted it into Frappe HRMS as a filled timesheet. No custom code.</p>
       <span class="tool-tag core">MCP</span>
+    </a>
+    <a class="tool-card" href="https://frappeframework.com/docs/user/en/api/rest" target="_blank">
+      <h4>Frappe REST API</h4>
+      <p>Not an MCP, but the other half of the pattern Session 5 proved. Every Frappe DocType is a REST endpoint &mdash; which means anything in mGrant, HRMS, or your staging site is one API call away for Claude. Pair with an MCP for the source system and you have an end-to-end automation.</p>
+      <span class="tool-tag core">API</span>
     </a>
     <a class="tool-card" href="https://github.com/github/github-mcp-server" target="_blank">
       <h4>GitHub MCP</h4>

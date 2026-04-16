@@ -31,7 +31,7 @@
     <a class="sidebar-link" href="sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
     <a class="sidebar-link" href="sessions/session-3.html"><span class="link-icon">3</span> Hands On</a>
     <a class="sidebar-link" href="sessions/session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks</a>
-    <a class="sidebar-link" href="sessions/session-5.html"><span class="link-icon">5</span> Skills &amp; Protocol <span class="badge-new">Latest</span></a>
+    <a class="sidebar-link" href="sessions/session-5.html"><span class="link-icon">5</span> Open Build <span class="badge-new">Latest</span></a>
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">Frameworks</div>
@@ -324,6 +324,68 @@ Now start with Phase 1, Step 1. Ask me to confirm my GitHub status.</div>
 </section>
 
 <!-- ═══════════════════════════════
+     S5 BONUS — BUILDER PROTOCOL FRD
+     ═══════════════════════════════ -->
+<section>
+  <h2>Builder Protocol &mdash; FRD-First Project Setup <small>&mdash; Session 5 pattern</small></h2>
+  <div class="prose">
+    <p>Kashish&rsquo;s ATMA build in Session 5 proved one rule: <strong>the FRD is the build.</strong> If your functional requirements are crisp in markdown, Claude Code can scaffold a Frappe project end-to-end &mdash; doc types, workflows, web forms, roles, permissions &mdash; straight to staging. This is the prompt skeleton she started from.</p>
+  </div>
+  <div class="copy-block">
+    <button class="copy-btn" onclick="copyBlock(this)">Copy</button>
+    <div class="template">You are helping me set up a new Frappe project end-to-end on staging, following the Builder Protocol (Theme &rarr; Form &rarr; Dashboard). I am a PM, not a developer. Go one phase at a time. Do NOT move forward until I confirm the current phase works.
+
+<span class="comment"># My Setup</span>
+<span class="key">- Project:</span> <span class="val">[Client / product name, e.g. ATMA Education Foundation]</span>
+<span class="key">- Frappe site:</span> <span class="val">[staging URL, e.g. stg.atma.dhwaniris.in]</span>
+<span class="key">- Source of truth:</span> <span class="val">./Requirements/FRD.md (you will read this, not guess)</span>
+<span class="key">- Builder Protocol doc:</span> <span class="val">https://prody-dris.github.io/ai-playground-sessions/frameworks/builder-protocol.html</span>
+
+<span class="comment"># Inputs you will read before building</span>
+1. <span class="val">./Requirements/FRD.md</span> &mdash; functional requirements, module-by-module
+2. <span class="val">./Requirements/BRD.md</span> &mdash; business rules, roles, personas
+3. <span class="val">./Requirements/*.png / *.pdf</span> &mdash; reference screens and flowcharts
+4. <span class="val">./HEARTBEAT.md</span> &mdash; where we are in the build
+5. <span class="val">./memory/</span> &mdash; persistent notes across sessions
+
+<span class="comment"># What I need you to do (in this exact order)</span>
+
+<span class="comment">## Phase 1 &mdash; Read and summarise</span>
+1. Read the FRD and BRD in full. Summarise in your own words: entities, relationships, workflows, roles.
+2. List every DocType you think we need, with fields, options, and relationships.
+3. Stop. Wait for my approval on the DocType list before creating anything.
+
+<span class="comment">## Phase 2 &mdash; Theme</span>
+4. Apply the mGrant design system skill if we&rsquo;re on an mGrant surface.
+5. Confirm the sidebar, workspace, and branding align with the existing product.
+
+<span class="comment">## Phase 3 &mdash; Form (DocTypes, workflows, permissions)</span>
+6. Create DocTypes one module at a time. After each: show me the Frappe doctype list URL to verify.
+7. Define roles and permissions per DocType. Default deny; only assign what&rsquo;s explicitly in the BRD.
+8. Set up workflows with explicit states and transitions. Match the FRD exactly.
+9. If the FRD calls for external NGO / vendor / partner forms &mdash; build Web Forms with the right guest-user access.
+
+<span class="comment">## Phase 4 &mdash; Dashboard</span>
+10. Build admin / MIS views using the existing product&rsquo;s dashboard patterns. Role-gate where specified.
+
+<span class="comment">## Phase 5 &mdash; Verification</span>
+11. For each module: give me a checklist of URLs to click and data to enter so I can verify live on staging.
+12. Update HEARTBEAT.md with what was built, what&rsquo;s pending, and any FRD gaps.
+
+<span class="comment"># Rules</span>
+- Never guess what&rsquo;s in the FRD. If it&rsquo;s ambiguous, ask me.
+- Reference the mGrant design system skill on any UI-facing work.
+- Small commits, labelled by module. Never a single &ldquo;set up project&rdquo; commit.
+- If you find a gap in the FRD, flag it in HEARTBEAT.md &mdash; don&rsquo;t silently decide.
+
+Start with Phase 1, Step 1. Read the FRD and summarise.</div>
+  </div>
+  <div class="callout green">
+    <p><strong>What this unlocks:</strong> the same thing Kashish unlocked &mdash; a full Frappe project, built by a PM, deployed direct to staging, with the FRD as the spec. Customise the phases for your project. The discipline (stop-and-verify between phases) is the part that keeps it from running away.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
      SKILLS TEMPLATE
      ═══════════════════════════════ -->
 <section>
@@ -378,7 +440,7 @@ Now start with Phase 1, Step 1. Ask me to confirm my GitHub status.</div>
 <section>
   <h2>Quick References</h2>
   <div class="r"><code>Cheatsheet</code><span><a href="https://prody-dris.github.io/claude-code-cheatsheet/" target="_blank">Claude Code Cheatsheet</a> &mdash; commands, shortcuts, and tips for daily CLI use</span></div>
-  <div class="r"><code>Session 5</code><span><a href="sessions/session-5.html">Skills &amp; Protocol</a> &mdash; Skills vs. Plugins vs. MCPs vs. Agents, Agent Skills architecture, skill file structure</span></div>
+  <div class="r"><code>Session 5</code><span><a href="sessions/session-5.html">Open Build &amp; Problem-Solving</a> &mdash; Skills vs. MCP vs. Plugin vs. Agent explained, three live builder spotlights, skill anatomy, mGrant design system coaching moment</span></div>
   <div class="r"><code>Session 3</code><span><a href="sessions/session-3.html">Hands On</a> &mdash; original templates with walkthroughs and screenshots</span></div>
   <div class="r"><code>Session 4</code><span><a href="sessions/session-4.html">CLI &amp; Hooks</a> &mdash; detailed session guide for setup and hooks</span></div>
   <div class="r"><code>Readings</code><span><a href="readings.html">Readings</a> &mdash; curated learning resources on Claude Code, GitHub, and AI</span></div>
