@@ -273,7 +273,8 @@
 <div class="page-header">
   <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html">Sessions</a> / Session 5</div>
   <h1>Skills, Protocol &amp; Your First Full Build<span>.</span></h1>
-  <div class="page-meta">Session 5 &middot; Thursday, 16 April 2026 &middot; 5:00 &ndash; 6:00 PM &middot; Ankit Jangir &amp; Nihaan</div>
+  <div class="page-meta">Session 5 &middot; Thursday, 16 April 2026 &middot; 5:00 &ndash; 6:00 PM</div>
+  <div class="page-meta" style="margin-top:4px;font-size:12px;opacity:0.55;">Presented by Ankit Jangir &middot; DevSecOps PoC</div>
 </div>
 
 <!-- ═══════════════════════════════
@@ -293,23 +294,6 @@
       <li>A recipe for writing and evaluating your own skills</li>
       <li>Three live demos: MCP superpower, Builder Protocol in action, FAQ in a live product</li>
     </ul>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════
-     HOSTS
-     ═══════════════════════════════ -->
-<section>
-  <h2>Your Hosts</h2>
-  <div class="cols">
-    <div class="team-callout" style="margin:0;">
-      <div class="team-names">Ankit Jangir <span style="font-size:12px;font-weight:500;opacity:0.6;margin-left:6px;">DevSecOps PoC</span></div>
-      <p>Built the credential guards, safety gates, and hooks that keep AI from going rogue. The security angle on every protocol question.</p>
-    </div>
-    <div class="team-callout" style="margin:0;">
-      <div class="team-names">Nihaan <span style="font-size:12px;font-weight:500;opacity:0.6;margin-left:6px;">Group PM</span></div>
-      <p>Architect of the AI Playground program and the Builder Protocol. The consistency and scale angle.</p>
-    </div>
   </div>
 </section>
 
@@ -422,6 +406,43 @@
   <div class="callout green" style="margin-top:20px;">
     <p><strong>A Dhwani RIS PM on mGrant CSR</strong> has Foundation + Partner + Org + Team skills all active. AI shows up knowing Anthropic&rsquo;s best practices, the Superpowers workflow discipline, mGrant CSR domain rules, and how to communicate with your team &mdash; before the first message.</p>
   </div>
+
+  <h3 style="margin-top:28px;">What a Skill Folder Actually Looks Like</h3>
+  <div class="prose" style="margin-bottom:12px;">
+    <p>A skill is not just a single markdown file. It&rsquo;s a <strong>folder</strong>. The SKILL.md carries the metadata and instructions. Everything else &mdash; scripts, templates, reference docs &mdash; lives alongside it as Tier 3 resources: bundled but never loaded into context until Claude actually needs them.</p>
+  </div>
+
+  <div class="file-tree">
+<span class="folder">~/.claude/skills/</span>
+  <span class="folder">mgrant-csr/</span>           <span class="desc">&larr; Organisation skill</span>
+    <span class="file">SKILL.md</span>              <span class="desc">&larr; Tier 1 metadata + Tier 2 instructions</span>
+    <span class="file">validate_budget.py</span>    <span class="desc">&larr; Tier 3: runs on demand, 0 token cost until called</span>
+    <span class="file">generate_report.py</span>    <span class="desc">&larr; Tier 3: deterministic script, not in context</span>
+    <span class="file">REFERENCE.md</span>          <span class="desc">&larr; Tier 3: MCA 135 rules, loaded only if relevant</span>
+    <span class="folder">templates/</span>
+      <span class="file">quarterly-report.md</span>  <span class="desc">&larr; Tier 3: template, copied when needed</span>
+  <span class="folder">coding-hygiene/</span>         <span class="desc">&larr; Organisation skill</span>
+    <span class="file">SKILL.md</span>
+  <span class="file">how-to-email-ankit.md</span>  <span class="desc">&larr; Team skill (flat single-file, no folder needed)</span>
+  </div>
+
+  <div class="prose" style="margin-top:12px;">
+    <p>The <strong>.py scripts</strong> are the key unlock. Instead of pasting a 200-row CSV into context (expensive), Claude calls <code>validate_budget.py</code> and gets back a clean result. The script runs; the data stays outside the context window.</p>
+  </div>
+
+  <h3 style="margin-top:24px;">Why Solo Skills Don&rsquo;t Help &mdash; Skills Complement Each Other</h3>
+  <div class="prose">
+    <p>A skill in isolation has limited power. The <code>mgrant-csr</code> skill knows domain rules but has no idea how to write clean code. The <code>coding-hygiene</code> skill enforces code standards but knows nothing about MCA 135 reporting. Together, they produce code that is both domain-correct and production-quality.</p>
+  </div>
+  <div class="analogy">
+    <div class="label">The compound effect</div>
+    <p>Solo skill → AI follows one set of rules well.<br>
+    Two complementary skills → AI applies both simultaneously without you having to remind it.<br>
+    Full stack (Foundation + Partner + Org + Team) → AI behaves like someone who has been at Dhwani RIS for two years, knows the product, knows the coding standards, and knows how the team communicates.</p>
+  </div>
+  <div class="callout accent" style="margin-top:12px;">
+    <p><strong>Design skills to complement, not duplicate.</strong> If two skills have overlapping instructions, they create conflicting signals. Each skill should own one domain. Overlap is a signal to merge or split differently.</p>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════
@@ -488,9 +509,9 @@
      DOMAIN ARGUMENT
      ═══════════════════════════════ -->
 <section>
-  <h2>Why AI Still Needs Astha</h2>
+  <h2>Why AI Still Needs Aastha</h2>
   <div class="quote">
-    &ldquo;AI at 300 IQ still knows nothing about your domain. Skills are how Astha&rsquo;s M&amp;E expertise becomes available to every session, every team member, every time.&rdquo;
+    &ldquo;AI at 300 IQ still knows nothing about your domain. Skills are how Aastha&rsquo;s M&amp;E expertise becomes available to every session, every team member, every time.&rdquo;
   </div>
 
   <div class="domain-split">
@@ -498,22 +519,22 @@
       <div class="ds-label">Without Domain Skills</div>
       <div class="ds-item">Generic output every session</div>
       <div class="ds-item">Re-explain domain context each time</div>
-      <div class="ds-item">Astha reviews everything manually</div>
+      <div class="ds-item">Aastha reviews everything manually</div>
       <div class="ds-item">Inconsistency across team members</div>
       <div class="ds-item">Expert knowledge locked in one person</div>
     </div>
     <div class="ds-after">
       <div class="ds-label" style="color:#4caf50;">With Domain Skills</div>
-      <div class="ds-item">AI starts with Astha&rsquo;s context already loaded</div>
+      <div class="ds-item">AI starts with Aastha&rsquo;s context already loaded</div>
       <div class="ds-item">Zero re-explanation &mdash; skill carries the context</div>
-      <div class="ds-item">Astha reviews output, not every step</div>
+      <div class="ds-item">Aastha reviews output, not every step</div>
       <div class="ds-item">Every PM produces consistent, domain-aware output</div>
       <div class="ds-item">Expert knowledge scales across the entire team</div>
     </div>
   </div>
 
   <div class="callout green">
-    <p><strong>This is not replacement.</strong> Astha writes the skill. Her judgment is encoded once and amplified across the whole team. She becomes the author of the intelligence, not a bottleneck in the workflow.</p>
+    <p><strong>This is not replacement.</strong> Aastha writes the skill. Her judgment is encoded once and amplified across the whole team. She becomes the author of the intelligence, not a bottleneck in the workflow.</p>
   </div>
 </section>
 
