@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Session 6 — The Craft | AI Playground</title>
-<meta name="description" content="Session 6 of the Dhwani RIS AI Playground, Thursday 23 April 2026. Abhijit Nair &amp; Aditya Gore on the coding craft, Abhinav on design as a skill.">
+<title>Session 6 — Of Chaos and Craft | AI Playground</title>
+<meta name="description" content="Session 6 of the Dhwani RIS AI Playground, Thursday 23 April 2026. Ankit on Safe to Ship, Aditya Gore on organizing AI for the team, Abhinav on design as psychology, science, structure.">
 <link rel="icon" type="image/png" href="../assets/images/dhwani-logo.png?v=2">
 <link rel="apple-touch-icon" href="../assets/images/dhwani-logo.png?v=2">
 <meta property="og:site_name" content="AI Playground — Dhwani RIS">
-<meta property="og:title" content="Session 6 — The Craft">
-<meta property="og:description" content="Thursday 23 April 2026, 5–6 PM. Abhijit Nair &amp; Aditya Gore on the coding craft. Abhinav on design as a skill.">
+<meta property="og:title" content="Session 6 — Of Chaos and Craft">
+<meta property="og:description" content="Thursday 23 April 2026, 5–6 PM. The Collective Craft — when ten people build one way, not ten.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://prody-dris.github.io/ai-playground-sessions/sessions/session-6.html">
 <meta property="og:image" content="https://prody-dris.github.io/ai-playground-sessions/assets/images/session-5/hero-title.jpg">
@@ -18,14 +18,24 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/style.css?v=2">
 <style>
-/* ── S6 Teaser ── */
+/* ── S6 pre-session ── */
 .teaser-hero {
-  padding: 40px 32px;
+  padding: 44px 32px 38px;
   border-radius: 14px;
   background: linear-gradient(135deg, var(--primary-bg), var(--accent-bg));
   border: 1px solid var(--rule);
-  margin: 20px 0 28px;
+  margin: 20px 0 24px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.teaser-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(212,132,42,0.08) 0%, transparent 70%);
+  border-radius: 50%;
 }
 .teaser-eyebrow {
   font-size: 11px;
@@ -33,68 +43,167 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
 }
 .teaser-title {
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.1;
   color: var(--text);
-  letter-spacing: -0.5px;
+  letter-spacing: -0.8px;
   margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
 }
 .teaser-when {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-mid);
   letter-spacing: 0.02em;
+  position: relative;
+  z-index: 1;
 }
 
 .teaser-hook {
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.6;
   color: var(--text);
   text-align: center;
-  max-width: 640px;
-  margin: 0 auto 32px;
+  max-width: 680px;
+  margin: 0 auto 36px;
+  font-style: italic;
+}
+.teaser-hook strong { font-style: normal; color: var(--accent); }
+
+/* Stack of Shared Craft */
+.craft-stack {
+  margin: 18px 0 12px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.craft-layer {
+  display: grid;
+  grid-template-columns: 46px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--card-bg);
+  transition: background 0.15s;
+}
+.craft-layer:last-child { border-bottom: none; }
+.craft-layer:hover { background: var(--accent-bg); }
+.craft-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 12px;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+}
+.craft-body h4 {
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 0 0 3px;
+  color: var(--text);
+  letter-spacing: -0.2px;
+}
+.craft-body p {
+  font-size: 12.5px;
+  color: var(--text-mid);
+  margin: 0;
+  line-height: 1.5;
+}
+.craft-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+  background: var(--primary-bg);
+  padding: 4px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
 }
 
+@media (max-width: 560px) {
+  .teaser-title { font-size: 32px; }
+  .craft-layer { grid-template-columns: 40px 1fr; gap: 12px; padding: 14px; }
+  .craft-tag { grid-column: 2; justify-self: start; margin-top: 4px; }
+}
+
+/* Line-up */
 .line-up {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 620px;
-  margin: 0 auto 20px;
+  gap: 0;
+  margin: 16px 0 12px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
 }
 .line-up-row {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: baseline;
-  padding: 14px 0;
+  gap: 16px;
+  padding: 16px 20px;
   border-bottom: 1px solid var(--rule);
+  background: var(--card-bg);
 }
 .line-up-row:last-child { border-bottom: none; }
 .line-up-names {
-  font-size: 17px;
+  font-size: 15.5px;
   font-weight: 700;
   color: var(--primary);
   letter-spacing: -0.2px;
 }
+.line-up-names small {
+  display: block;
+  font-weight: 500;
+  font-size: 11.5px;
+  color: var(--text-light);
+  margin-top: 2px;
+  letter-spacing: 0;
+}
 .line-up-topic {
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--text-mid);
   font-style: italic;
+  text-align: right;
+  max-width: 320px;
 }
 @media (max-width: 560px) {
-  .line-up-row { grid-template-columns: 1fr; gap: 4px; }
+  .line-up-row { grid-template-columns: 1fr; gap: 6px; }
+  .line-up-topic { text-align: left; max-width: none; }
 }
+
+/* Story tree strip */
+.story-tree {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-mid);
+  background: var(--primary-bg);
+  padding: 14px 18px;
+  border-radius: 8px;
+  line-height: 1.75;
+  border: 1px solid var(--rule);
+  margin: 16px 0;
+}
+.story-tree strong { color: var(--accent); font-family: inherit; }
 
 .teaser-footer-line {
   text-align: center;
   font-size: 13px;
   color: var(--text-light);
   font-style: italic;
-  margin-top: 36px;
+  margin: 30px 0 10px;
 }
 </style>
 </head>
@@ -124,7 +233,7 @@
     <a class="sidebar-link" href="session-3.html"><span class="link-icon">3</span> Hands On</a>
     <a class="sidebar-link" href="session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks</a>
     <a class="sidebar-link" href="session-5.html"><span class="link-icon">5</span> Open Build <span class="badge-new">Latest</span></a>
-    <a class="sidebar-link active" href="session-6.html"><span class="link-icon">6</span> The Craft <span class="badge-new">Next</span></a>
+    <a class="sidebar-link active" href="session-6.html"><span class="link-icon">6</span> Chaos &amp; Craft <span class="badge-new">Next</span></a>
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">Frameworks</div>
@@ -148,29 +257,144 @@
   <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html">Sessions</a> / Session 6</div>
 </div>
 
+<!-- HERO -->
 <div class="teaser-hero">
-  <div class="teaser-eyebrow">Session 6 &middot; Coming up</div>
-  <div class="teaser-title">The Craft.</div>
-  <div class="teaser-when">Thursday, 23 April 2026 &middot; 5:00&ndash;6:00 PM</div>
+  <div class="teaser-eyebrow">Session 6 &middot; The Collective Craft</div>
+  <div class="teaser-title">Of Chaos and Craft.</div>
+  <div class="teaser-when">Thursday, 23 April 2026 &middot; 5:00&ndash;6:00 PM &middot; 5MEVNground</div>
 </div>
 
+<!-- HOOK -->
 <p class="teaser-hook">
-  One hour on the craft that sits underneath everything we&rsquo;ve shipped so far.
+  <strong>Chaos</strong> when ten people build their own way. <strong>Craft</strong> when a team builds one way. Thursday, we learn how to get there.
 </p>
 
-<div class="line-up">
-  <div class="line-up-row">
-    <div class="line-up-names">Abhijit Nair &amp; Aditya Gore</div>
-    <div class="line-up-topic">the coding craft</div>
+<!-- WHY THIS SESSION -->
+<section>
+  <h2>Why this session</h2>
+  <div class="prose">
+    <p>Five sessions got each of us independently good at AI. Individual craft is solved. But individual craft does not compose &mdash; ten people building ten different ways is chaos, not output. S6 is where <strong>individual craft becomes collective craft</strong>.</p>
   </div>
-  <div class="line-up-row">
-    <div class="line-up-names">Abhinav</div>
-    <div class="line-up-topic">design as a skill</div>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="stat-num">33%</div>
+      <div class="stat-label">Unguided Claude attempts that succeed <span style="opacity:0.55;">&mdash; Anthropic, internal</span></div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">41%</div>
+      <div class="stat-label">Higher revert rate for AI code vs human code <span style="opacity:0.55;">&mdash; GitClear 2024, 150M LoC</span></div>
+    </div>
   </div>
+
+  <div class="prose">
+    <p>The fix isn&rsquo;t more prompting practice. It&rsquo;s <strong>shared standards</strong>. Plugins, skills, conventions, guardrails. Not documentation to read &mdash; infrastructure the team runs on. 2026 has converged on this: Martin Fowler, Stack Overflow, Sourcegraph, JetBrains, CodeRabbit all landed on the same sentence &mdash; <em>treat AI instructions as infrastructure: versioned, reviewed, shared artifacts that encode tacit team knowledge into executable instructions.</em></p>
+  </div>
+</section>
+
+<!-- STACK OF SHARED CRAFT -->
+<section>
+  <h2>The Stack of Shared Craft</h2>
+  <div class="prose">
+    <p>Four layers a team needs. Every layer we have already taught &mdash; Thursday we connect them.</p>
+  </div>
+
+  <div class="craft-stack">
+    <div class="craft-layer">
+      <div class="craft-num">1</div>
+      <div class="craft-body">
+        <h4>Shared CLAUDE.md &middot; agents.md</h4>
+        <p>The base instructions everyone aligns to. One source, many builders.</p>
+      </div>
+      <div class="craft-tag">S1</div>
+    </div>
+    <div class="craft-layer">
+      <div class="craft-num">2</div>
+      <div class="craft-body">
+        <h4>Shared Skills</h4>
+        <p>Repeatable workflows captured as <code>SKILL.md</code>, loaded automatically when relevant. The team&rsquo;s muscle memory, in markdown.</p>
+      </div>
+      <div class="craft-tag">S5</div>
+    </div>
+    <div class="craft-layer">
+      <div class="craft-num">3</div>
+      <div class="craft-body">
+        <h4>Shared Plugins</h4>
+        <p>Bundled skills + MCP + slash commands + sub-agents. Install once, the whole team is wired up.</p>
+      </div>
+      <div class="craft-tag">S5 &rarr; S6</div>
+    </div>
+    <div class="craft-layer">
+      <div class="craft-num">4</div>
+      <div class="craft-body">
+        <h4>Shared Guardrails</h4>
+        <p>Hooks, review gates, the Safe-to-Ship discipline. What catches bad output before it leaves the machine.</p>
+      </div>
+      <div class="craft-tag">S4 + today</div>
+    </div>
+  </div>
+</section>
+
+<!-- SESSION FLOW -->
+<section>
+  <h2>What we&rsquo;ll cover</h2>
+  <div class="n"><i>1</i><p><strong>Why team AI needs structure.</strong> Why plugins matter. Why standards matter. Why uniformity matters. The opening &mdash; short, blunt, grounded in 2026 evidence. You can&rsquo;t scale individual AI by adding more people; you scale it by encoding the standard.</p></div>
+  <div class="n"><i>2</i><p><strong>Safe to Ship &mdash; brief.</strong> Ankit Jangir carries over from today&rsquo;s Safe to Ship session. How we ship faster <em>and</em> safer at Dhwani. This is the guardrail layer, live.</p></div>
+  <div class="n"><i>3</i><p><strong>Anthropic &amp; the learning path.</strong> Dhwani begins a structured push through Anthropic&rsquo;s official learning. We&rsquo;ve moved from tinkering &rarr; structured &rarr; uniform &rarr; <strong>formal</strong>. Details on the call.</p></div>
+  <div class="n"><i>4</i><p><strong>The Collective Craft in practice.</strong> Aditya Gore &mdash; how he organizes AI through his development pipeline, how he enforces discipline, how he keeps the setup clean. Hands to Abhinav &mdash; design as <strong>psychology, science, structure</strong>. Not &ldquo;what looks good.&rdquo;</p></div>
+</section>
+
+<!-- ANTHROPIC CALLOUT -->
+<div class="callout accent" style="margin: 24px 0;">
+  <p><strong>We&rsquo;re taking this formal.</strong> This week Dhwani begins enrolment on the official <a href="https://anthropic.skilljar.com/" target="_blank" rel="noopener">Anthropic Academy</a> &mdash; working the <a href="https://anthropic.skilljar.com/page/claude-partner-network-learning-path" target="_blank" rel="noopener">Claude Partner Network Learning Path</a>, with the <strong>Claude Certified Architect &mdash; Foundations (CCA-F)</strong> as the capstone certification. We have gone from tinkering, to structured, to uniform, to becoming official. It is not a game anymore. More on the call.</p>
 </div>
 
+<!-- SPEAKERS -->
+<section>
+  <h2>On the mic</h2>
+  <div class="line-up">
+    <div class="line-up-row">
+      <div class="line-up-names">
+        Ankit Jangir
+        <small>DevSecOps PoC</small>
+      </div>
+      <div class="line-up-topic">Safe to Ship &mdash; brief carryover from today</div>
+    </div>
+    <div class="line-up-row">
+      <div class="line-up-names">
+        Aditya Gore &middot; with Abhijit Nair
+        <small>One of the longest Claude users at Dhwani</small>
+      </div>
+      <div class="line-up-topic">Organizing AI through the development pipeline &mdash; the discipline and cleanliness of setup that makes team output compose</div>
+    </div>
+    <div class="line-up-row">
+      <div class="line-up-names">
+        Abhinav
+        <small>Design</small>
+      </div>
+      <div class="line-up-topic">Design as a skill &mdash; psychology, science, structure. Using the organization&rsquo;s full resources to produce a standard design language</div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILDER PROTOCOL REDIRECT -->
+<div class="callout" style="margin: 24px 0;">
+  <p><strong>Going deeper &rarr;</strong> The plugins, the heartbeat, the security discipline &mdash; they all live inside the <a href="../frameworks/builder-protocol.html" style="color:var(--accent);font-weight:600;">Builder Protocol</a>. If tonight&rsquo;s thesis lands and you want the full framework view behind it, start there.</p>
+</div>
+
+<!-- STORY TREE -->
+<section>
+  <h2>Where this sits in the arc</h2>
+  <div class="story-tree">
+    S0 Tools &nbsp;&rarr;&nbsp; S1 Vibe &nbsp;&rarr;&nbsp; S2 GitHub &nbsp;&rarr;&nbsp; S3 Knowledge Base &nbsp;&rarr;&nbsp; S4 CLI + Hooks &nbsp;&rarr;&nbsp; S5 First Full Build &nbsp;&rarr;&nbsp; <strong>S6 The Collective Craft</strong>
+  </div>
+  <div class="prose">
+    <p>Every session has been one more layer on the same stack. Tools, knowledge, CLI, hooks, skills, protocol, build &mdash; all prerequisites for the one thing we have not yet done as a group: <strong>work the same way</strong>. That is S6.</p>
+  </div>
+</section>
+
 <p class="teaser-footer-line">
-  Full page after Thursday. If you missed S5, start <a href="session-5.html">here</a>.
+  Full recap replaces this page after Thursday. If you missed S5, start <a href="session-5.html">here</a>.
 </p>
 
 <div class="main-footer">
