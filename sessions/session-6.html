@@ -4,382 +4,436 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Session 6 — Of Chaos and Craft | AI Playground</title>
-<meta name="description" content="Session 6 of the Dhwani RIS AI Playground, Thursday 23 April 2026. Ankit on AI-SDLC and the Plugin Guardians. Aditya Gore on organizing AI for the team. Abhinav on design as psychology, science, structure. Plus — Dhwani joins Anthropic Academy.">
+<meta name="description" content="Session 6 of the Dhwani RIS AI Playground, 23 April 2026. Aditya Gore on the four-layer AI pipeline. Abhinav Tyagi on the skills portal and design library MCP. Ankit on Safe-to-Ship. Plus — the last of the monologue sessions.">
 <link rel="icon" type="image/png" href="../assets/images/dhwani-logo.png?v=2">
 <link rel="apple-touch-icon" href="../assets/images/dhwani-logo.png?v=2">
 <meta property="og:site_name" content="AI Playground — Dhwani RIS">
 <meta property="og:title" content="Session 6 — Of Chaos and Craft">
-<meta property="og:description" content="Thursday 23 April 2026, 5–6 PM. Chaos when ten people build their own way; craft when the team builds one way. Plus — Dhwani joins Anthropic Academy.">
+<meta property="og:description" content="Thursday 23 April 2026, 5–6 PM. The last of the monologue sessions — the playground becomes a playground. Four-layer pipeline. Design library MCP. Bring a problem, every Thursday.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://prody-dris.github.io/ai-playground-sessions/sessions/session-6.html">
-<meta property="og:image" content="https://prody-dris.github.io/ai-playground-sessions/assets/images/session-5/hero-title.jpg">
+<meta property="og:image" content="https://prody-dris.github.io/ai-playground-sessions/assets/images/session-6/aditya-four-layers.jpg">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="720">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="../assets/style.css?v=2">
+<link rel="stylesheet" href="../assets/style.css?v=3">
 <style>
-/* ── S6 pre-session ── */
-.teaser-hero {
-  padding: 44px 32px 38px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--primary-bg), var(--accent-bg));
-  border: 1px solid var(--rule);
-  margin: 20px 0 24px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.teaser-hero::before {
-  content: '';
-  position: absolute;
-  top: -60px; right: -60px;
-  width: 220px; height: 220px;
-  background: radial-gradient(circle, rgba(212,132,42,0.08) 0%, transparent 70%);
-  border-radius: 50%;
-}
-.teaser-eyebrow {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 14px;
-  position: relative;
-  z-index: 1;
-}
-.teaser-title {
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--text);
-  letter-spacing: -0.8px;
-  margin-bottom: 14px;
-  position: relative;
-  z-index: 1;
-}
-.teaser-when {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  color: var(--text-mid);
-  letter-spacing: 0.02em;
-  position: relative;
-  z-index: 1;
-}
+/* ── S6 Post-Session Components ── */
 
-.teaser-hook {
-  font-size: 18px;
-  line-height: 1.6;
-  color: var(--text);
-  text-align: center;
-  max-width: 680px;
-  margin: 0 auto 36px;
-  font-style: italic;
-}
-.teaser-hook strong { font-style: normal; color: var(--accent); }
-
-/* Stack of Shared Craft */
+/* Stack of Shared Craft (kept from teaser) */
 .craft-stack {
-  margin: 18px 0 12px;
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0 8px;
 }
 .craft-layer {
   display: grid;
-  grid-template-columns: 46px 1fr auto;
+  grid-template-columns: 36px 1fr auto;
   align-items: center;
-  gap: 16px;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--rule);
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
   background: var(--card-bg);
-  transition: background 0.15s;
+  transition: background 0.15s, border-color 0.15s;
 }
-.craft-layer:last-child { border-bottom: none; }
-.craft-layer:hover { background: var(--accent-bg); }
+.craft-layer:hover { background: var(--primary-bg); border-color: var(--accent); }
 .craft-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
-  font-size: 12px;
-  width: 32px; height: 32px;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--accent);
-  color: #fff;
-  border-radius: 50%;
-}
-.craft-body h4 {
-  font-size: 14.5px;
-  font-weight: 700;
-  margin: 0 0 3px;
-  color: var(--text);
-  letter-spacing: -0.2px;
-}
-.craft-body p {
-  font-size: 12.5px;
-  color: var(--text-mid);
-  margin: 0;
-  line-height: 1.5;
-}
-.craft-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 26px;
   font-weight: 600;
-  text-transform: uppercase;
+  color: var(--accent);
+  text-align: center;
+  line-height: 1;
+}
+.craft-body h4 { margin: 0 0 2px; font-size: 14px; font-weight: 700; color: var(--primary); letter-spacing: -0.1px; }
+.craft-body p { margin: 0; font-size: 12.5px; line-height: 1.55; color: var(--text-mid); }
+.craft-tag {
+  font-size: 10px;
+  font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--text-light);
   background: var(--primary-bg);
-  padding: 4px 8px;
-  border-radius: 4px;
-  flex-shrink: 0;
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--rule);
 }
 
-@media (max-width: 560px) {
-  .teaser-title { font-size: 32px; }
-  .craft-layer { grid-template-columns: 40px 1fr; gap: 12px; padding: 14px; }
-  .craft-tag { grid-column: 2; justify-self: start; margin-top: 4px; }
+/* Aditya's four-layer table */
+.layer-table {
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0 10px;
+}
+.layer-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 220px;
+  border-top: 1px solid var(--rule);
+  align-items: center;
+}
+.layer-row:first-child { border-top: none; background: var(--primary-bg); }
+.layer-row.header { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 700; }
+.layer-row.header > div { padding: 10px 16px; }
+.layer-row:not(.header) { font-size: 13.5px; }
+.layer-row:not(.header) > div { padding: 14px 16px; }
+.layer-name {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-left: 4px solid var(--accent);
+}
+.layer-name .num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  color: var(--accent);
+  line-height: 1;
+}
+.layer-l1 .layer-name { border-left-color: #d85d2a; }
+.layer-l2 .layer-name { border-left-color: #c9a227; }
+.layer-l3 .layer-name { border-left-color: #2e8b57; }
+.layer-l4 .layer-name { border-left-color: #1f6aa5; }
+.layer-catches { color: var(--text-mid); line-height: 1.55; }
+.layer-delivers {
+  font-style: italic;
+  color: var(--text-mid);
+  font-size: 13px;
+  line-height: 1.5;
+  border-left: 1px solid var(--rule);
+}
+.layer-foot {
+  font-style: italic;
+  color: var(--text-light);
+  font-size: 13px;
+  margin: 6px 2px 0;
+}
+@media (max-width: 720px) {
+  .layer-row { grid-template-columns: 1fr; }
+  .layer-delivers { border-left: none; border-top: 1px dashed var(--rule); }
 }
 
-/* First Question block */
+/* Rollout stages */
+.rollout-stages {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  margin: 18px 0 6px;
+}
+.rollout-stage {
+  border-radius: 8px;
+  padding: 12px 10px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 11.5px;
+  line-height: 1.4;
+  position: relative;
+}
+.rollout-stage .r-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 2px;
+  opacity: 0.9;
+}
+.rollout-stage .r-sub { display: block; font-size: 10px; font-weight: 500; opacity: 0.85; margin-top: 4px; font-style: italic; }
+.rs-0 { background: #8a8a8a; }
+.rs-1 { background: #d85d2a; }
+.rs-2 { background: #c04b1e; }
+.rs-3 { background: #b8911f; }
+.rs-4 { background: #948528; }
+.rs-5 { background: #2e8b57; }
+@media (max-width: 720px) {
+  .rollout-stages { grid-template-columns: repeat(3, 1fr); }
+}
+.rollout-note {
+  font-style: italic;
+  color: var(--text-light);
+  font-size: 13px;
+  margin: 4px 2px 0;
+  text-align: center;
+}
+
+/* Takeaway grid */
+.takeaway-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 16px 0 6px;
+}
+.takeaway-card {
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 16px 18px;
+  background: var(--card-bg);
+}
+.takeaway-card .t-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 4px;
+}
+.takeaway-card .t-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 14.5px;
+  margin-bottom: 6px;
+  letter-spacing: -0.2px;
+}
+.takeaway-card .t-body {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-mid);
+  margin: 0;
+}
+@media (max-width: 640px) { .takeaway-grid { grid-template-columns: 1fr; } }
+
+/* Builder spotlight header */
+.builder-spotlight-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 10px 0 6px;
+}
+.builder-spotlight-head .bs-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: -0.4px;
+}
+.builder-spotlight-head .bs-role {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+.builder-spotlight-head .bs-topic {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-mid);
+}
+
+/* First-question card (kept from teaser) */
 .first-q-box {
-  background: linear-gradient(135deg, #fff8ef 0%, #fff2e0 100%);
-  border: 1px solid rgba(212, 132, 42, 0.28);
-  border-radius: 14px;
-  padding: 30px 34px;
-  margin: 18px 0 12px;
+  background: linear-gradient(135deg, var(--primary-bg), var(--accent-bg));
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 28px 28px 26px;
+  margin: 16px 0;
   position: relative;
   overflow: hidden;
 }
-.first-q-box::before {
+.first-q-box::after {
   content: '?';
   position: absolute;
-  top: -30px; right: 16px;
-  font-family: 'Georgia', serif;
-  font-size: 180px;
-  color: rgba(212, 132, 42, 0.09);
+  bottom: -40px; right: -10px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 220px;
+  color: var(--accent);
+  opacity: 0.08;
   line-height: 1;
-  font-weight: 700;
-  pointer-events: none;
 }
 .first-q-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
   color: var(--accent);
-  margin-bottom: 8px;
-  position: relative;
-  z-index: 1;
+  margin-bottom: 10px;
 }
 .first-q-title {
-  font-size: 30px;
-  font-weight: 700;
-  color: var(--text);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--primary);
   line-height: 1.15;
-  letter-spacing: -0.6px;
-  margin-bottom: 18px;
-  position: relative;
-  z-index: 1;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
 }
-.first-q-body p {
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--text-mid);
-  margin: 0 0 10px;
-  position: relative;
-  z-index: 1;
-}
-.first-q-body p:last-child { margin-bottom: 0; }
-.first-q-body strong { color: var(--text); }
+.first-q-body p { font-size: 14px; line-height: 1.6; margin: 8px 0; color: var(--text-mid); }
 
-/* Anthropic branded box */
-.anthropic-box {
-  background: linear-gradient(135deg, #1a1815 0%, #0d0c0a 100%);
-  border: 1px solid #2d2926;
-  border-radius: 16px;
-  padding: 40px 44px;
-  margin: 28px 0;
-  color: #fff;
+/* Pivot card — the closing hero */
+.pivot-card {
+  background: linear-gradient(135deg, #1a2a38, #0f1d28);
+  color: #f4ece0;
+  border-radius: 14px;
+  padding: 44px 36px 40px;
+  margin: 28px 0 10px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
-.anthropic-box:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 24px 70px -20px rgba(217, 119, 87, 0.35);
-  border-color: rgba(217, 119, 87, 0.3);
-}
-.anthropic-box::before {
+.pivot-card::before {
   content: '';
   position: absolute;
-  top: -140px; right: -140px;
-  width: 420px; height: 420px;
-  background: radial-gradient(circle, rgba(217, 119, 87, 0.18) 0%, transparent 65%);
+  top: -80px; left: -80px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(216,93,42,0.18) 0%, transparent 70%);
   border-radius: 50%;
-  pointer-events: none;
-  transition: transform 0.6s ease;
 }
-.anthropic-box:hover::before { transform: scale(1.1); }
-.anthropic-mark {
-  display: inline-flex;
-  align-items: center;
-  gap: 11px;
-  margin-bottom: 22px;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 26px;
-  font-weight: 400;
-  letter-spacing: -0.4px;
-  color: rgba(255, 255, 255, 0.96);
-  position: relative;
-  z-index: 1;
-}
-.anthropic-mark svg {
-  width: 26px;
-  height: 26px;
-  color: #D97757;
-  flex-shrink: 0;
-}
-.anthropic-eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
+.pivot-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
   letter-spacing: 0.22em;
-  color: #D97757;
+  text-transform: uppercase;
+  color: #f5a15f;
   margin-bottom: 14px;
   position: relative;
   z-index: 1;
 }
-.anthropic-box h3 {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 1.18;
-  letter-spacing: -0.5px;
-  margin: 0 0 18px;
-  color: #fff;
-  max-width: 620px;
-  position: relative;
-  z-index: 1;
-}
-.anthropic-box p {
-  font-size: 14.5px;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.72);
-  margin: 0 0 12px;
-  max-width: 640px;
-  position: relative;
-  z-index: 1;
-}
-.anthropic-box p:last-of-type { margin-bottom: 0; }
-.anthropic-box p strong { color: rgba(255, 255, 255, 0.95); font-weight: 600; }
-.anthropic-box p em {
-  color: #D97757;
-  font-style: normal;
-  font-weight: 500;
-}
-.anthropic-inline-link {
-  color: #D97757;
-  text-decoration: underline;
-  text-decoration-color: rgba(217, 119, 87, 0.45);
-  text-underline-offset: 3px;
-  transition: text-decoration-color 0.15s;
-}
-.anthropic-inline-link:hover { text-decoration-color: #D97757; }
-.anthropic-ctas {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 24px;
-  position: relative;
-  z-index: 1;
-}
-.anthropic-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-size: 13px;
+.pivot-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 38px;
   font-weight: 600;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  margin: 0 0 14px;
+  position: relative; z-index: 1;
+}
+.pivot-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(244,236,224,0.88);
+  position: relative; z-index: 1;
+  max-width: 720px;
+}
+.pivot-body p { margin: 0 0 10px; }
+.pivot-body strong { color: #ffd8b1; font-weight: 600; }
+.pivot-ctas {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-top: 18px;
+  position: relative; z-index: 1;
+}
+.pivot-btn {
+  display: inline-block;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-decoration: none;
-  letter-spacing: -0.1px;
-  transition: all 0.18s ease;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
-.anthropic-btn.primary {
-  background: #D97757;
-  color: #fff;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-.anthropic-btn.primary:hover {
-  background: #C96847;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(217, 119, 87, 0.35);
-}
-.anthropic-btn.secondary {
-  background: transparent;
-  color: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-.anthropic-btn.secondary:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #fff;
-}
+.pivot-btn.primary { background: #d85d2a; color: #fff; }
+.pivot-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(216,93,42,0.35); }
+.pivot-btn.secondary { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+.pivot-btn.secondary:hover { background: rgba(255,255,255,0.08); border-color: #fff; }
 
-/* Line-up */
-.line-up {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin: 16px 0 12px;
+/* Partnership teaser — generic, no vendor name */
+.partnership-card {
   border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
   border-radius: 10px;
-  overflow: hidden;
-}
-.line-up-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: baseline;
-  gap: 16px;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--rule);
+  padding: 22px 24px;
+  margin: 20px 0;
   background: var(--card-bg);
-  transition: background 0.15s;
 }
-.line-up-row:last-child { border-bottom: none; }
-.line-up-row:hover { background: var(--primary-bg); }
-.line-up-names {
-  font-size: 15.5px;
+.partnership-card .p-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.partnership-card h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--primary);
   letter-spacing: -0.2px;
 }
-.line-up-names small {
-  display: block;
-  font-weight: 500;
-  font-size: 11.5px;
-  color: var(--text-light);
-  margin-top: 2px;
-  letter-spacing: 0;
+.partnership-card p {
+  margin: 0 0 6px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-mid);
 }
-.line-up-topic {
+.partnership-card p:last-child { margin-bottom: 0; }
+
+/* Skill portal pill list */
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 6px;
+}
+.skill-pill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--rule);
+  background: var(--primary-bg);
+  color: var(--text-mid);
+  letter-spacing: 0.02em;
+}
+.skill-pill.prod { background: rgba(46,139,87,0.08); border-color: rgba(46,139,87,0.3); color: #2e6a4a; }
+.skill-pill.beta { background: rgba(201,162,39,0.08); border-color: rgba(201,162,39,0.3); color: #8a6f1e; }
+
+/* Named list block */
+.named-list {
   font-size: 12.5px;
   color: var(--text-mid);
-  font-style: italic;
-  text-align: right;
-  max-width: 340px;
-  line-height: 1.55;
+  line-height: 1.8;
+  margin: 8px 0;
 }
-@media (max-width: 560px) {
-  .line-up-row { grid-template-columns: 1fr; gap: 6px; }
-  .line-up-topic { text-align: left; max-width: none; }
-  .anthropic-box { padding: 30px 24px; }
-  .anthropic-box h3 { font-size: 24px; }
-  .first-q-box { padding: 24px 22px; }
-  .first-q-title { font-size: 24px; }
-}
+.named-list strong { color: var(--primary); }
 
-/* Story tree strip */
+/* Screenshot frame */
+.shot {
+  margin: 18px 0;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--card-bg);
+}
+.shot img { display: block; width: 100%; height: auto; }
+.shot-caption {
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  background: var(--primary-bg);
+  border-top: 1px solid var(--rule);
+}
+.shot-caption strong { color: var(--primary); }
+
+/* Coaching box */
+.coaching-box {
+  border-radius: 10px;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, rgba(232,93,4,0.08), rgba(232,93,4,0.02));
+  border: 1px solid rgba(232,93,4,0.3);
+  border-left: 4px solid #e85d04;
+  margin: 18px 0;
+}
+.coaching-box .label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #e85d04;
+  margin-bottom: 8px;
+}
+.coaching-box p { margin: 0 0 8px; font-size: 13px; line-height: 1.6; }
+.coaching-box p:last-child { margin-bottom: 0; }
+
+/* Story tree */
 .story-tree {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
@@ -392,14 +446,6 @@
   margin: 16px 0;
 }
 .story-tree strong { color: var(--accent); font-family: inherit; }
-
-.teaser-footer-line {
-  text-align: center;
-  font-size: 13px;
-  color: var(--text-light);
-  font-style: italic;
-  margin: 30px 0 10px;
-}
 </style>
 </head>
 <body>
@@ -428,11 +474,15 @@
     <a class="sidebar-link" href="session-3.html"><span class="link-icon">3</span> Hands On</a>
     <a class="sidebar-link" href="session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks</a>
     <a class="sidebar-link" href="session-5.html"><span class="link-icon">5</span> Open Build</a>
-    <a class="sidebar-link active" href="session-6.html"><span class="link-icon">6</span> Chaos &amp; Craft <span class="badge-new">This Thursday</span></a>
+    <a class="sidebar-link active" href="session-6.html"><span class="link-icon">6</span> Chaos &amp; Craft <span class="badge-new">Latest</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Program</div>
+    <a class="sidebar-link" href="../program/how-we-play.html"><span class="link-icon">&#9679;</span> How We Play <span class="badge-new">New</span></a>
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">Frameworks</div>
-    <a class="sidebar-link" href="../frameworks/builder-protocol.html"><span class="link-icon">B</span> The Builder Protocol <span class="badge-new">New</span></a>
+    <a class="sidebar-link" href="../frameworks/builder-protocol.html"><span class="link-icon">B</span> The Builder Protocol</a>
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">Resources</div>
@@ -450,25 +500,50 @@
 
 <div class="page-header">
   <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html">Sessions</a> / Session 6</div>
+  <h1>Of Chaos and Craft<span>.</span></h1>
+  <div class="page-meta">Session 6 &middot; Thursday, 23 April 2026 &middot; 5:00&ndash;6:00 PM &middot; 59m recorded</div>
+  <div class="page-meta" style="margin-top:4px;font-size:12px;opacity:0.65;">Hosted by Nihaan Mohammed &middot; Pipeline by Aditya Gore &middot; Design craft by Abhinav Tyagi &middot; Safe-to-Ship preview by Ankit Jangir</div>
 </div>
 
-<!-- HERO -->
-<div class="teaser-hero">
-  <div class="teaser-eyebrow">Session 6 &middot; The Collective Craft</div>
-  <div class="teaser-title">Of Chaos and Craft.</div>
-  <div class="teaser-when">Thursday, 23 April 2026 &middot; 5:00&ndash;6:00 PM &middot; 5MEVNground</div>
-</div>
-
-<!-- HOOK -->
-<p class="teaser-hook">
-  <strong>Chaos</strong> when ten people build their own way. <strong>Craft</strong> when a team builds one way. Thursday &mdash; how we get there.
-</p>
-
-<!-- WHY THIS SESSION -->
+<!-- ═══════════════════════════════
+     HERO
+     ═══════════════════════════════ -->
 <section>
-  <h2>Why this session</h2>
+  <div class="shot">
+    <img src="../assets/images/session-6/aditya-four-layers.jpg" alt="Aditya Gore presenting the four-layer AI pipeline during Session 6">
+    <div class="shot-caption"><strong>Four layers, each catching what the last one missed.</strong> From Aditya&rsquo;s deck — the image that anchored the room for twenty minutes. Rules file → local hooks → CI blockers → human gates. Most violations die at layer 1 or 2. That&rsquo;s the goal.</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     WHAT HAPPENED
+     ═══════════════════════════════ -->
+<section>
+  <h2>What Actually Happened</h2>
   <div class="prose">
-    <p>Five sessions made each of us good at AI on our own. But good-on-your-own does not add up to a good team. Ten people building ten different ways is chaos &mdash; not output. Session 6 is the bridge. Individual craft &rarr; <strong>collective craft.</strong></p>
+    <p>Six sessions in. Nihaan opened with a line the room had been waiting for: <em>&ldquo;This is one of the last of the monologue sessions.&rdquo;</em> The first five were about getting each of us good at AI on our own. That work is done. From here the sessions convert into workshops &mdash; come with a problem, build it in the room.</p>
+    <p>But first, one more dense hour. Aditya Gore on how to stop treating AI like a magic trick and start treating it like infrastructure. Abhinav Tyagi on the skill marketplace and design library that stops each of us from shipping our own idea of &ldquo;what looks right.&rdquo; Ankit with a preview of Safe-to-Ship. Closing on the one question that turns ten people&rsquo;s work into one team&rsquo;s output: <strong>did someone already solve this?</strong></p>
+  </div>
+  <div class="outcomes">
+    <h3>You&rsquo;ll walk away with</h3>
+    <ul>
+      <li>A real development pipeline for AI-assisted code &mdash; rules file, local hooks, CI blockers, human gates</li>
+      <li>How to roll that pipeline out without tanking a legacy codebase &mdash; warn first, block later, never weaken a rule</li>
+      <li>Dhwani&rsquo;s internal Skills Portal &mdash; where design, domain and delivery skills live, filterable by role and product</li>
+      <li>The Design Library MCP &mdash; every HTML mock pushed to a shared library, filterable and downloadable as HTML or MD</li>
+      <li>The one psychology shift: before you build, ask who already built it. Then use theirs, or contribute a PR</li>
+      <li>Where the program goes next &mdash; Thursday 5&ndash;6 PM stays, but the room is now yours to bring problems into</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     THE THESIS
+     ═══════════════════════════════ -->
+<section>
+  <h2>The Thesis &mdash; Individual Craft → Collective Craft</h2>
+  <div class="prose">
+    <p>Five sessions made each of us good at AI on our own. But good-on-your-own does not add up to a good team. Ten people building ten different ways is <strong>chaos</strong> &mdash; not output. One person building it well and nine using it is <strong>craft</strong>.</p>
   </div>
 
   <div class="stat-row">
@@ -483,24 +558,24 @@
   </div>
 
   <div class="prose">
-    <p>The fix is not more prompting practice. It is <strong>shared standards</strong> &mdash; plugins, skills, conventions, guardrails. Not documents to read. Infrastructure the team runs on.</p>
-    <p>In 2026, the whole industry has said the same thing. Treat your AI instructions the way you treat your code. Version them. Review them. Share them.</p>
+    <p>The fix is not more prompting practice. It is <strong>shared standards</strong> &mdash; plugins, skills, conventions, guardrails. Not documents to read. Infrastructure the team runs on. Treat your AI instructions the way you treat your code. Version them. Review them. Share them.</p>
   </div>
 </section>
 
-<!-- STACK OF SHARED CRAFT -->
+<!-- ═══════════════════════════════
+     STACK OF SHARED CRAFT
+     ═══════════════════════════════ -->
 <section>
   <h2>The Stack of Shared Craft</h2>
   <div class="prose">
-    <p>Four layers a team needs. We have taught each layer already. Thursday, we connect them.</p>
+    <p>Four layers a team needs. We had taught each one already. Thursday was about connecting them.</p>
   </div>
-
   <div class="craft-stack">
     <div class="craft-layer">
       <div class="craft-num">1</div>
       <div class="craft-body">
         <h4>Shared CLAUDE.md &middot; agents.md</h4>
-        <p>One set of rules everyone follows. The base instructions.</p>
+        <p>One set of rules everyone follows. The brain of the project. Loaded by every AI tool, automatically.</p>
       </div>
       <div class="craft-tag">S1</div>
     </div>
@@ -516,7 +591,7 @@
       <div class="craft-num">3</div>
       <div class="craft-body">
         <h4>Shared Plugins</h4>
-        <p>A plugin bundles skills, MCP, slash commands, and sub-agents into one install. One person builds it &mdash; the whole team uses it.</p>
+        <p>A plugin bundles skills, MCP, slash commands, and sub-agents into one install. One person builds it &mdash; the whole team uses it. Harshdeep&rsquo;s team is shaping Dhwani&rsquo;s first org-wide plugin now.</p>
       </div>
       <div class="craft-tag">S5 &rarr; S6</div>
     </div>
@@ -524,104 +599,293 @@
       <div class="craft-num">4</div>
       <div class="craft-body">
         <h4>Shared Guardrails</h4>
-        <p>Hooks, review gates, AI-SDLC. What catches bad output before it leaves your machine.</p>
+        <p>Hooks, review gates, AI-SDLC. What catches bad output before it leaves your machine. Safe-to-Ship lives here.</p>
       </div>
       <div class="craft-tag">S4 + now</div>
     </div>
   </div>
 </section>
 
-<!-- THE FIRST QUESTION -->
+<!-- ═══════════════════════════════
+     ADITYA GORE SPOTLIGHT
+     ═══════════════════════════════ -->
+<section>
+  <h2>From Demo-ware to Production <span class="badge">Aditya Gore</span></h2>
+  <div class="builder-spotlight-head">
+    <span class="bs-name">Aditya Gore</span>
+    <span class="bs-role">Engineering &middot; longest Claude user at Dhwani</span>
+    <span class="bs-topic">&ldquo;The bottleneck is no longer producing code. The bottleneck is not breaking under a spike.&rdquo;</span>
+  </div>
+  <div class="prose">
+    <p>Aditya opened with a frame the room felt immediately. 2023 was gimmicky. 2024 was gimmicky-with-benefits. 2025 flipped. In 2026 the bottleneck moved &mdash; producing code is easy, producing code that is <em>secure, standard, and holds up under load</em> is the work. The fix is not a better prompt. It is a pipeline.</p>
+  </div>
+
+  <div class="shot">
+    <img src="../assets/images/session-6/aditya-opener.jpg" alt="Aditya Gore opening slide — From Demo-ware to Production">
+    <div class="shot-caption"><strong>The framing.</strong> &ldquo;Organising AI through a real development pipeline &mdash; the setup that lets a team&rsquo;s output compound.&rdquo; The difference between a demo that lands in a meeting and a product that lands in a client&rsquo;s hands.</div>
+  </div>
+
+  <h3 style="margin-top:28px;">The drawbacks of raw prompting</h3>
+  <div class="prose">
+    <p>Three drag forces every team without a pipeline will feel &mdash;</p>
+    <ul>
+      <li><strong>Rework tax.</strong> You publish. It breaks. You redo. It breaks differently. Senior dev review fatigue sets in.</li>
+      <li><strong>Drift toward average.</strong> Without set standards, a year in your code looks like every other average codebase in the world. AI trained on the average will produce the average, forever.</li>
+      <li><strong>Senior review burnout.</strong> Seniors spend their review cycles on naming, layering, library choices &mdash; things a rule file should catch in eight seconds.</li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top:24px;">The four-layer setup</h3>
+  <div class="layer-table">
+    <div class="layer-row header">
+      <div>Layer</div>
+      <div>What it catches</div>
+      <div>What it delivers</div>
+    </div>
+    <div class="layer-row layer-l1">
+      <div class="layer-name"><span class="num">01</span>Rules file</div>
+      <div class="layer-catches">Stack, naming, architecture, security rules &mdash; loaded by every AI tool automatically.</div>
+      <div class="layer-delivers">Every AI-written change starts on-brand.</div>
+    </div>
+    <div class="layer-row layer-l2">
+      <div class="layer-name"><span class="num">02</span>Local hooks</div>
+      <div class="layer-catches">Format, lint, commit hygiene. Violations caught at commit &mdash; 8 seconds, not 8 minutes.</div>
+      <div class="layer-delivers">Engineer fixes before pushing.</div>
+    </div>
+    <div class="layer-row layer-l3">
+      <div class="layer-name"><span class="num">03</span>CI blockers</div>
+      <div class="layer-catches">Tests, security scan, secret detection, PR hygiene. Nothing merges red.</div>
+      <div class="layer-delivers">No one waves through red builds.</div>
+    </div>
+    <div class="layer-row layer-l4">
+      <div class="layer-name"><span class="num">04</span>Human gates</div>
+      <div class="layer-catches">Seniors sign off on auth, crypto, migrations &mdash; the blast-radius paths.</div>
+      <div class="layer-delivers">AI fast everywhere. Humans own the risk.</div>
+    </div>
+  </div>
+  <p class="layer-foot">Most violations die at layer 1 or 2 &mdash; which is the goal. Fail fast, fail cheap.</p>
+
+  <h3 style="margin-top:26px;">The rollout &mdash; warn first, block later</h3>
+  <div class="prose">
+    <p>Rules are the easy part. The rollout is the product. Six stages &mdash;</p>
+  </div>
+  <div class="rollout-stages">
+    <div class="rollout-stage rs-0"><span class="r-num">0</span>Baseline<span class="r-sub">Measure current state</span></div>
+    <div class="rollout-stage rs-1"><span class="r-num">1</span>Warn<span class="r-sub">Non-blocking signals</span></div>
+    <div class="rollout-stage rs-2"><span class="r-num">2</span>Block new<span class="r-sub">Hard-stop for new code</span></div>
+    <div class="rollout-stage rs-3"><span class="r-num">3</span>Block all<span class="r-sub">Hard-stop everywhere</span></div>
+    <div class="rollout-stage rs-4"><span class="r-num">4</span>Tighten<span class="r-sub">Add the next rule</span></div>
+    <div class="rollout-stage rs-5"><span class="r-num">5</span>Compound<span class="r-sub">Copy to next stack</span></div>
+  </div>
+  <p class="rollout-note">Baseline the legacy. Grandfather old code. Burn down the baseline over a quarter. Never weaken a rule &mdash; when a red build fires, fix the code, not the rule.</p>
+
+  <h3 style="margin-top:26px;">Four things to take home</h3>
+  <div class="takeaway-grid">
+    <div class="takeaway-card">
+      <span class="t-num">01</span>
+      <div class="t-title">One dense rules file beats ten great prompts.</div>
+      <p class="t-body">The rules file is the lever. Versioned, pointed to by every tool, thin enough to fit every context window.</p>
+    </div>
+    <div class="takeaway-card">
+      <span class="t-num">02</span>
+      <div class="t-title">Mechanical enforcement beats reminders.</div>
+      <p class="t-body">Linters, scans, and owners don&rsquo;t get tired, don&rsquo;t get busy on sprint end. They catch what humans miss.</p>
+    </div>
+    <div class="takeaway-card">
+      <span class="t-num">03</span>
+      <div class="t-title">Warn first. Block later. Never weaken a rule.</div>
+      <p class="t-body">Legacy baseline beats a loosened rule every time. Protect the ratchet so the bar never slips back.</p>
+    </div>
+    <div class="takeaway-card">
+      <span class="t-num">04</span>
+      <div class="t-title">Treat AI as infrastructure, not tooling.</div>
+      <p class="t-body">Infrastructure gets owners, SLOs, rollouts and rollbacks. Tooling gets abandoned on a Friday.</p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:20px;">
+    <p><strong>The follow-up.</strong> Aditya&rsquo;s deck and checklist are being converted into a shared skill &mdash; landing in the Skills Portal so every project can pull the same pipeline without re-reading the slides.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     ABHINAV TYAGI SPOTLIGHT
+     ═══════════════════════════════ -->
+<section>
+  <h2>Design as Psychology, Science, Structure <span class="badge">Abhinav Tyagi</span></h2>
+  <div class="builder-spotlight-head">
+    <span class="bs-name">Abhinav Tyagi</span>
+    <span class="bs-role">Design &middot; Dhwani&rsquo;s one-man design department</span>
+    <span class="bs-topic">&ldquo;We can&rsquo;t push designs on emojis and vibes. Design hygiene is now a skill.&rdquo;</span>
+  </div>
+  <div class="prose">
+    <p>Everyone in the room has become a creative person this year &mdash; because Claude made UI production trivial. Abhinav&rsquo;s point was the hard one that follows: <em>trivial production doesn&rsquo;t mean good design</em>. He showed two tools he has built to keep the standard up as the volume scales.</p>
+  </div>
+
+  <h3 style="margin-top:24px;">1 &middot; The Skills Portal</h3>
+  <div class="prose">
+    <p>A filterable marketplace of design, domain, and delivery skills. Filter by product (<em>mGrant, service-based, both, product-agnostic</em>) or by task (<em>Design UI, Dashboard, Form, Domain knowledge, Workflow, Compliance</em>). Each skill has a version, status, preview, and a one-click install path into your Claude Code session.</p>
+  </div>
+
+  <div class="shot">
+    <img src="../assets/images/session-6/abhinav-skills-portal.jpg" alt="Abhinav Tyagi&rsquo;s Dhwani Skills Portal — a filterable marketplace of design, domain and delivery skills">
+    <div class="shot-caption"><strong>Dhwani Skills Portal.</strong> Five skills live at launch: mGrant Design System, Service-Based Design, and the three Domain Knowledge skills (Donor, NuO, CSR). Aditya&rsquo;s workflow skill joins next.</div>
+  </div>
+
+  <h4 style="margin-top:18px;margin-bottom:6px;font-size:14px;">Skills live at launch</h4>
+  <div class="named-list">
+    &bull; <strong>mGrant Design System</strong> v2.0 <span class="skill-pill beta">Beta</span> &mdash; tokens, Frappe rules, Indian formatting, ECharts, brand extraction for all mGrant products<br>
+    &bull; <strong>Service-Based Design</strong> v1.0 <span class="skill-pill beta">Beta</span> &mdash; same DNA as mGrant with brand extraction on every client<br>
+    &bull; <strong>mGrant Donor Domain Knowledge</strong> v1.0 <span class="skill-pill prod">Production</span> &mdash; 40+ DocTypes, 5 grant flows, permissions, integrations<br>
+    &bull; <strong>mGrant NuO Domain Knowledge</strong> v1.0 <span class="skill-pill prod">Production</span> &mdash; NGO-side features, sub-grant, FCRA, results framework<br>
+    &bull; <strong>mGrant CSR Domain Knowledge</strong> v1.1 <span class="skill-pill prod">Production</span> &mdash; MCA Section 135, Schedule VII, freeze lifecycle, 11 MCA reports
+  </div>
+
+  <h3 style="margin-top:28px;">2 &middot; The Design Library MCP</h3>
+  <div class="prose">
+    <p>The Skills Portal governs how new UI is built. The Design Library MCP preserves what has been built. Every HTML mock you produce can be pushed to a shared library, with Claude fetching project ID, client, and metadata for you. Later, anyone on the team filters the library by project or creator, previews full-screen, and downloads as HTML or MD to re-build something similar.</p>
+  </div>
+
+  <div class="shot">
+    <img src="../assets/images/session-6/abhinav-design-library.jpg" alt="Abhinav&rsquo;s Design Library MCP setup guide — push HTML mocks to a shared design library via Claude">
+    <div class="shot-caption"><strong>Two channels to plug in.</strong> Claude Code via a local hook, or Claude Desktop via the built-in connector. Takes about a minute to set up. Then from any session: <code>&ldquo;Push this to the Dhwani Design Library.&rdquo;</code></div>
+  </div>
+
+  <div class="coaching-box" style="margin-top:20px;">
+    <div class="label">The quiet rule</div>
+    <p>Create a preview before you push. Get it reviewed. Then ship. The design-system skill + the library are there so &ldquo;looks good in my head&rdquo; becomes &ldquo;tested against a standard.&rdquo;</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     ANKIT — SAFE-TO-SHIP PREVIEW
+     ═══════════════════════════════ -->
+<section>
+  <h2>Safe-to-Ship &mdash; The Preview <span class="badge">Ankit Jangir</span></h2>
+  <div class="prose">
+    <p>Ankit took a minute to trail what ships next. Now that we&rsquo;re all writing code with AI more than ever, Safe-to-Ship is the guarantee that <em>what leaves a laptop is what we committed to</em>. It is how Security.md, the guardrail skills, and the hooks from S4 all come to life at the CI layer. A full walkthrough lands in next week&rsquo;s session.</p>
+  </div>
+  <div class="quote">
+    &ldquo;Safe-to-Ship is a promise to everyone who finally gets to see the version of the code that we put out &mdash; that the code is actually healthy, safe, and there&rsquo;s nothing to worry about there.&rdquo;
+    <cite>&mdash; Ankit, on Safe-to-Ship</cite>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     PARTNERSHIP TEASER — GENERIC
+     ═══════════════════════════════ -->
+<section>
+  <h2>A partnership in motion</h2>
+  <div class="partnership-card">
+    <div class="p-eyebrow">Internal &middot; more soon</div>
+    <h4>Dhwani is formalising an AI partnership.</h4>
+    <p>We&rsquo;re in the middle of a partnership conversation with a major AI platform &mdash; including a structured learning path and a certification route for the team. Early access is internal for now, with more to share once it&rsquo;s official.</p>
+    <p>If you&rsquo;re on the internal list, keep an eye on the PM awareness + task force channels for the enrolment form.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     THE FIRST QUESTION — THE RULE OF THE YEAR
+     ═══════════════════════════════ -->
 <section>
   <h2>The first question to carry in</h2>
   <div class="first-q-box">
     <div class="first-q-label">Before you build anything &mdash; ask</div>
     <div class="first-q-title">Did someone already solve this?</div>
     <div class="first-q-body">
-      <p>Plugins and skills are shared craft. Someone on the team, someone in the community, someone at Anthropic may have already done the work. Your first move is not to build &mdash; it is to look.</p>
+      <p>Plugins and skills are shared craft. Someone on the team, someone in the community may already have done the work. Your first move is not to build &mdash; it is to look.</p>
       <p>Ten people each building the same thing three different ways &rarr; <strong>chaos.</strong> &nbsp;One person building it well, nine using it &rarr; <strong>craft.</strong></p>
+      <p>If nothing exists, build one and share it. If something exists and doesn&rsquo;t hit the mark, <strong>contribute a PR</strong>. The one behaviour this program wants you to unlearn is forking a skill in silence.</p>
     </div>
+  </div>
+  <div class="named-list" style="margin-top:14px;">
+    <strong>Where to ask</strong> &middot; AI PM Awareness &middot; AI Task Force &middot; Safe-to-Ship (Harshdeep&rsquo;s team &mdash; launching shortly). If you don&rsquo;t have access, ask your team lead.
   </div>
 </section>
 
-<!-- WHAT WE'LL COVER -->
+<!-- ═══════════════════════════════
+     THE PIVOT — CLOSING HERO
+     ═══════════════════════════════ -->
 <section>
-  <h2>What we&rsquo;ll cover</h2>
-  <div class="n"><i>1</i><p><strong>Why team AI needs structure.</strong> Why plugins. Why standards. Why uniformity. Short and blunt. You don&rsquo;t scale individual AI by adding more people &mdash; you scale it by sharing the standard.</p></div>
-  <div class="n"><i>2</i><p><strong>Reuse first.</strong> The one question to ask before you build anything &mdash; &ldquo;did someone already solve this?&rdquo; The psychology that turns chaos into craft.</p></div>
-  <div class="n"><i>3</i><p><strong>AI-SDLC &amp; the Plugin Guardians.</strong> Ankit. Team AI is a system, not a pile of individual setups. Plugins, the guardians who maintain them, PR discipline, review gates &mdash; the full lifecycle. A related session covered this ground earlier this week; Thursday a short carry-over.</p></div>
-  <div class="n"><i>4</i><p><strong>Anthropic &amp; the learning path.</strong> Dhwani begins Anthropic Academy. Structured learning, straight from the team that builds Claude. Open to everyone.</p></div>
-  <div class="n"><i>5</i><p><strong>The Collective Craft in practice.</strong> Aditya Gore &mdash; how he organises AI through his development pipeline, how he enforces discipline, the clean setup that makes team output add up. Abhinav &mdash; design as <strong>psychology, science, structure.</strong> Not &ldquo;what looks good.&rdquo;</p></div>
+  <h2>The pivot &mdash; what &ldquo;Playground&rdquo; means from here</h2>
+  <div class="pivot-card">
+    <div class="pivot-eyebrow">This was the last of the monologue sessions</div>
+    <h3 class="pivot-title">The playground becomes a playground.</h3>
+    <div class="pivot-body">
+      <p>Six sessions were enough to get everyone to basecamp. From here, the Thursday hour is not a lecture. It is an <strong>open build room.</strong> Bring a problem, bring a use case, or just bring curiosity.</p>
+      <p>Nihaan will be there. Ankit will be there. Most weeks, Abhinav, Aditya or Harshdeep will be in the room too &mdash; problem-solvers and problem-creators, together. One hour, one problem, solved or started.</p>
+      <p>Next Thursday, Nihaan and Ankit are working on the <strong>ticketing paradigm + agent elements</strong>. Come contribute to that, or come pull someone into your own problem. The invitation is open either way.</p>
+    </div>
+    <div class="pivot-ctas">
+      <a href="../program/how-we-play.html" class="pivot-btn primary">How we play now &rarr;</a>
+      <a href="../frameworks/builder-protocol.html" class="pivot-btn secondary">The Builder Protocol</a>
+    </div>
+  </div>
 </section>
 
-<!-- ANTHROPIC BRANDED BOX -->
-<div class="anthropic-box">
-  <div class="anthropic-mark">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 1.5 L13.3 10.7 L22.5 12 L13.3 13.3 L12 22.5 L10.7 13.3 L1.5 12 L10.7 10.7 Z"/>
-    </svg>
-    <span>Anthropic</span>
-  </div>
-  <div class="anthropic-eyebrow">Structured learning &middot; open to everyone</div>
-  <h3>We&rsquo;re going formal. Dhwani joins Anthropic Academy.</h3>
-  <p>This week Dhwani begins working through the <strong>Claude Partner Network Learning Path</strong> on <a href="https://anthropic.skilljar.com/" target="_blank" rel="noopener" class="anthropic-inline-link">Anthropic Academy</a> &mdash; structured courses from the team that builds Claude, with <strong>Claude Certified Architect &mdash; Foundations (CCA-F)</strong> as the capstone.</p>
-  <p>In this era, no one fully knows what they&rsquo;re doing. It makes sense to learn from the people who built the thing. <em>Tinkering, to structured, to uniform, to formal. It is not a game anymore.</em></p>
-  <div class="anthropic-ctas">
-    <a href="https://anthropic.skilljar.com/" target="_blank" rel="noopener" class="anthropic-btn primary">Anthropic Academy &rarr;</a>
-    <a href="https://anthropic.skilljar.com/page/claude-partner-network-learning-path" target="_blank" rel="noopener" class="anthropic-btn secondary">CPN Learning Path &rarr;</a>
-  </div>
-</div>
-
-<!-- ON THE MIC -->
+<!-- ═══════════════════════════════
+     KEY TAKEAWAYS
+     ═══════════════════════════════ -->
 <section>
-  <h2>On the mic</h2>
-  <div class="line-up">
-    <div class="line-up-row">
-      <div class="line-up-names">
-        Ankit Jangir
-        <small>DevSecOps PoC</small>
-      </div>
-      <div class="line-up-topic">AI-SDLC &mdash; Plugins, the Guardians who maintain them, and the lifecycle that keeps team AI working</div>
-    </div>
-    <div class="line-up-row">
-      <div class="line-up-names">
-        Aditya Gore &middot; with Abhijit Nair
-        <small>One of Dhwani&rsquo;s longest Claude users</small>
-      </div>
-      <div class="line-up-topic">How he organises AI through his development pipeline &mdash; the discipline and clean setup that lets team output add up</div>
-    </div>
-    <div class="line-up-row">
-      <div class="line-up-names">
-        Abhinav
-        <small>Design</small>
-      </div>
-      <div class="line-up-topic">Design as a skill &mdash; psychology, science, structure. Using Dhwani&rsquo;s full resources to build a standard design language</div>
-    </div>
-  </div>
+  <h2>Key takeaways</h2>
+  <div class="n"><i>1</i><p><strong>The bottleneck moved.</strong> It is no longer producing code. It is producing code that is secure and holds up under load. The answer is a pipeline, not a better prompt.</p></div>
+  <div class="n"><i>2</i><p><strong>Four layers, not one.</strong> Rules file, local hooks, CI blockers, human gates. Each one is designed to catch what the last one missed. Most violations die at layer 1 or 2. That is the goal.</p></div>
+  <div class="n"><i>3</i><p><strong>Rules are easy. Rollout is the product.</strong> Warn before you block. Baseline the legacy. Never weaken a rule &mdash; when a red build fires, fix the code, not the rule.</p></div>
+  <div class="n"><i>4</i><p><strong>Design is a skill, not a taste.</strong> Psychology, science, structure &mdash; not &ldquo;what looks good.&rdquo; The Skills Portal + Design Library MCP replace &ldquo;ship it if it feels right&rdquo; with &ldquo;ship it if the standard says so.&rdquo;</p></div>
+  <div class="n"><i>5</i><p><strong>Before you build, ask.</strong> The AI group channels exist so you don&rsquo;t build something that already exists. Use them. Contribute PRs over forks. This is the psychological shift.</p></div>
+  <div class="n"><i>6</i><p><strong>Sessions change shape from here.</strong> Every Thursday 5&ndash;6 PM stays. The lecture goes. Bring a problem; leave with someone working on it with you.</p></div>
 </section>
 
-<!-- BUILDER PROTOCOL REDIRECT -->
-<div class="callout" style="margin: 24px 0;">
-  <p><strong>Going deeper &rarr;</strong> The plugins, the heartbeat, the security discipline &mdash; they all live inside the <a href="../frameworks/builder-protocol.html" style="color:var(--accent);font-weight:600;">Builder Protocol</a>. If the thesis lands and you want the framework behind it, start there.</p>
-</div>
-
-<!-- STORY TREE -->
+<!-- ═══════════════════════════════
+     STORY TREE
+     ═══════════════════════════════ -->
 <section>
   <h2>Where this sits in the arc</h2>
   <div class="story-tree">
-    S0 Tools &nbsp;&rarr;&nbsp; S1 Vibe &nbsp;&rarr;&nbsp; S2 GitHub &nbsp;&rarr;&nbsp; S3 Knowledge Base &nbsp;&rarr;&nbsp; S4 CLI + Hooks &nbsp;&rarr;&nbsp; S5 First Full Build &nbsp;&rarr;&nbsp; <strong>S6 The Collective Craft</strong>
+    S0 Tools &nbsp;&rarr;&nbsp; S1 Vibe &nbsp;&rarr;&nbsp; S2 GitHub &nbsp;&rarr;&nbsp; S3 Knowledge Base &nbsp;&rarr;&nbsp; S4 CLI + Hooks &nbsp;&rarr;&nbsp; S5 First Full Build &nbsp;&rarr;&nbsp; <strong>S6 The Collective Craft</strong> &nbsp;&rarr;&nbsp; S7+ Open Build
   </div>
   <div class="prose">
-    <p>Every session has added one more layer to the same stack. Tools, knowledge, CLI, hooks, skills, protocol, build &mdash; all prerequisites for the one thing we have not yet done as a group: <strong>work the same way</strong>. That is S6.</p>
+    <p>S0&ndash;S5 taught the stack. S6 connects the stack. S7 and onward, the room uses the stack together &mdash; on real problems, live. The lecture arc closes. The workshop arc opens.</p>
   </div>
 </section>
 
-<p class="teaser-footer-line">
-  Full recap replaces this page after Thursday. If you missed S5, start <a href="session-5.html">here</a>.
-</p>
+<!-- ═══════════════════════════════
+     FURTHER READING
+     ═══════════════════════════════ -->
+<section>
+  <h2>Further Reading</h2>
+  <div class="reading-card">
+    <span class="reading-type guide">Guide</span>
+    <div class="reading-body">
+      <a href="https://martinfowler.com/articles/exploring-gen-ai.html" target="_blank" rel="noopener">Exploring Gen AI &mdash; Martin Fowler</a>
+      <p>Ongoing memo series from Thoughtworks on building with AI in production. The &ldquo;rework tax&rdquo; Aditya described shows up repeatedly &mdash; and so does the pipeline fix.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type article">Article</span>
+    <div class="reading-body">
+      <a href="https://www.gitclear.com/ai_assistant_code_quality_2025_research" target="_blank" rel="noopener">GitClear &mdash; AI Code Quality Research 2025</a>
+      <p>The 150M lines-of-code study behind the 41% revert-rate stat. Churn and duplication metrics on AI-assisted code. Worth reading if you want to cite numbers in an internal pitch.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type docs">Docs</span>
+    <div class="reading-body">
+      <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">Model Context Protocol &mdash; Official Spec</a>
+      <p>The substrate under Abhinav&rsquo;s Design Library MCP. Read the <em>servers</em> section to understand why it was a one-afternoon build rather than a one-quarter project.</p>
+    </div>
+  </div>
+  <div class="reading-card">
+    <span class="reading-type guide">Guide</span>
+    <div class="reading-body">
+      <a href="https://docs.anthropic.com/en/docs/claude-code/hooks" target="_blank" rel="noopener">Claude Code Hooks &mdash; Official</a>
+      <p>The hook system Aditya anchored layer 2 on. Pre-commit, pre-push, post-session &mdash; the same primitives Safe-to-Ship will lean on. If you skipped S4, this is the catch-up.</p>
+    </div>
+  </div>
+</section>
 
 <div class="main-footer">
-  <div><a href="session-5.html">&larr; Session 5</a> &middot; <a href="../index.html">Home</a></div>
+  <div><a href="session-5.html">&larr; Session 5</a> &middot; <a href="../program/how-we-play.html">How We Play</a> &middot; <a href="../index.html">Home</a></div>
   <small>Dhwani RIS &middot; AI Playground &middot; 2026</small>
 </div>
 

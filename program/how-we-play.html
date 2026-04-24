@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How We Play | AI Playground</title>
+<meta name="description" content="The Playground becomes a playground. After six scaffolding sessions, every Thursday 5–6 PM is an open build room — bring a problem, leave with it in motion. Problem-solvers and problem-creators, together.">
+<link rel="icon" type="image/png" href="../assets/images/dhwani-logo.png?v=2">
+<link rel="apple-touch-icon" href="../assets/images/dhwani-logo.png?v=2">
+<meta property="og:site_name" content="AI Playground — Dhwani RIS">
+<meta property="og:title" content="How We Play — AI Playground">
+<meta property="og:description" content="The Playground becomes a playground. Thursday 5–6 PM, open build room. Bring a problem. Problem-solvers and problem-creators, together.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://prody-dris.github.io/ai-playground-sessions/program/how-we-play.html">
+<meta property="og:image" content="https://prody-dris.github.io/ai-playground-sessions/assets/images/session-6/aditya-four-layers.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/style.css?v=3">
+<style>
+/* ── How We Play ── */
+
+.hero-pivot {
+  background: linear-gradient(135deg, #1a2a38, #0f1d28);
+  color: #f4ece0;
+  border-radius: 14px;
+  padding: 56px 44px 52px;
+  margin: 20px 0 28px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-pivot::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: -100px;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(216,93,42,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-pivot::after {
+  content: '';
+  position: absolute;
+  bottom: -120px; right: -80px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(94,146,176,0.14) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #f5a15f;
+  margin-bottom: 18px;
+  position: relative; z-index: 1;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 52px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin: 0 0 18px;
+  position: relative; z-index: 1;
+}
+.hero-title em {
+  font-style: italic;
+  color: #ffd8b1;
+  font-weight: 500;
+}
+.hero-sub {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(244,236,224,0.88);
+  max-width: 720px;
+  margin: 0;
+  position: relative; z-index: 1;
+}
+@media (max-width: 640px) {
+  .hero-pivot { padding: 40px 28px 36px; }
+  .hero-title { font-size: 36px; }
+}
+
+/* Split — then / now */
+.then-now {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 24px 0 6px;
+}
+.then-now-card {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 22px 24px;
+  background: var(--card-bg);
+}
+.then-now-card.now {
+  border-color: var(--accent);
+  border-left: 4px solid var(--accent);
+  background: linear-gradient(135deg, var(--primary-bg), var(--accent-bg));
+}
+.tn-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+.then-now-card.now .tn-label { color: var(--accent); }
+.tn-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: -0.2px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.tn-body {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .then-now { grid-template-columns: 1fr; }
+}
+
+/* The three room roles */
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0 6px;
+}
+.role-card {
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 20px 22px;
+  background: var(--card-bg);
+  transition: border-color 0.15s, transform 0.15s;
+}
+.role-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+.role-icon {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.role-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.1px;
+}
+.role-body {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-mid);
+  margin: 0;
+}
+@media (max-width: 720px) {
+  .role-grid { grid-template-columns: 1fr; }
+}
+
+/* How a Thursday runs */
+.thursday-steps {
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0 6px;
+}
+.t-step {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 16px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--rule);
+  align-items: start;
+}
+.t-step:first-child { border-top: none; }
+.t-when {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding-top: 2px;
+}
+.t-what {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-mid);
+}
+.t-what strong { color: var(--primary); font-weight: 700; }
+
+/* Next Thursday callout */
+.next-thursday {
+  border: 1px solid var(--rule);
+  border-left: 4px solid #2e8b57;
+  border-radius: 10px;
+  padding: 22px 24px;
+  margin: 20px 0 6px;
+  background: linear-gradient(135deg, rgba(46,139,87,0.04), rgba(46,139,87,0.01));
+}
+.nt-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #2e8b57;
+  margin-bottom: 8px;
+}
+.nt-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+  letter-spacing: -0.2px;
+}
+.nt-body {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  margin: 0 0 4px;
+}
+
+/* Bring-a-problem card */
+.bring-card {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 28px 28px 24px;
+  margin: 20px 0 6px;
+  background: linear-gradient(135deg, var(--primary-bg), var(--accent-bg));
+}
+.bring-card h3 {
+  margin: 0 0 8px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: -0.4px;
+  line-height: 1.1;
+}
+.bring-card p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  margin: 0 0 10px;
+}
+.bring-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+.bring-list li {
+  font-size: 13.5px;
+  line-height: 1.7;
+  padding-left: 22px;
+  position: relative;
+  color: var(--text-mid);
+}
+.bring-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* CTA strip */
+.cta-strip {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 18px 0 6px;
+}
+.cta-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.cta-btn.primary { background: var(--accent); color: #fff; }
+.cta-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 14px rgba(216,93,42,0.3); }
+.cta-btn.secondary { background: transparent; color: var(--primary); border: 1px solid var(--rule); }
+.cta-btn.secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Scoreboard */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 20px 0 6px;
+}
+.stat-item {
+  padding: 16px 14px;
+  text-align: center;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--card-bg);
+}
+.stat-item .n {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 4px;
+  display: block;
+}
+.stat-item .l {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-mid);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+@media (max-width: 640px) {
+  .stat-strip { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-header">
+  <img src="../assets/images/dhwani-logo.png?v=2" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="../assets/images/dhwani-logo.png?v=2" alt="Dhwani RIS">
+    <div class="sidebar-title">AI Playground</div>
+    <div class="sidebar-sub">Product &amp; Operations</div>
+  </div>
+  <div class="sidebar-section">
+    <a class="sidebar-link" href="../index.html"><span class="link-icon">~</span> Home</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sessions</div>
+    <a class="sidebar-link" href="../sessions/session-0.html"><span class="link-icon">0</span> Introduction</a>
+    <a class="sidebar-link" href="../sessions/session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
+    <a class="sidebar-link" href="../sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
+    <a class="sidebar-link" href="../sessions/session-3.html"><span class="link-icon">3</span> Hands On</a>
+    <a class="sidebar-link" href="../sessions/session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks</a>
+    <a class="sidebar-link" href="../sessions/session-5.html"><span class="link-icon">5</span> Open Build</a>
+    <a class="sidebar-link" href="../sessions/session-6.html"><span class="link-icon">6</span> Chaos &amp; Craft <span class="badge-new">Latest</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Program</div>
+    <a class="sidebar-link active" href="how-we-play.html"><span class="link-icon">&#9679;</span> How We Play <span class="badge-new">New</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Frameworks</div>
+    <a class="sidebar-link" href="../frameworks/builder-protocol.html"><span class="link-icon">B</span> The Builder Protocol</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Resources</div>
+    <a class="sidebar-link" href="../readings.html"><span class="link-icon">R</span> Readings</a>
+    <a class="sidebar-link" href="../tools.html"><span class="link-icon">T</span> Tools</a>
+    <a class="sidebar-link" href="../prompts.html"><span class="link-icon">P</span> Prompts</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="https://dhwaniris.com">dhwaniris.com</a>
+    <small>Built by Nihaan Mohammed</small>
+  </div>
+</aside>
+
+<div class="main"><div class="content">
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a> / Program / How We Play</div>
+</div>
+
+<!-- HERO -->
+<div class="hero-pivot">
+  <div class="hero-eyebrow">The Program &middot; Version 2</div>
+  <h1 class="hero-title">The Playground<br>becomes <em>a playground.</em></h1>
+  <p class="hero-sub">
+    Six sessions taught the stack. Starting now, the Thursday hour is not a lecture &mdash; it is an open build room. Bring a problem. Bring a use case. Bring a half-broken idea. Problem-solvers and problem-creators, together. One hour. One problem. Solved, started, or scoped.
+  </p>
+</div>
+
+<!-- THE SHIFT -->
+<section>
+  <h2>The shift</h2>
+  <div class="prose">
+    <p>The first six sessions were scaffolding. Vibe coding, GitHub, knowledge bases, CLI, hooks, skills, protocol, build, and &mdash; in S6 &mdash; the collective craft. Enough. From here on, the scaffolding stops being the subject and becomes the <em>substrate</em>. We build on top of it, together, on real problems.</p>
+  </div>
+  <div class="then-now">
+    <div class="then-now-card">
+      <div class="tn-label">S0 &rarr; S6</div>
+      <div class="tn-title">The curriculum years.</div>
+      <p class="tn-body">Each Thursday introduced a concept &mdash; tools, CLI, skills, plugins, protocol. One host, one topic, a room that mostly listened. It got everyone to basecamp.</p>
+    </div>
+    <div class="then-now-card now">
+      <div class="tn-label">S7 onward</div>
+      <div class="tn-title">The open build years.</div>
+      <p class="tn-body">Thursdays are now working sessions. People bring real problems from real projects. The room works them out together. If a session turns up a concept worth teaching, we teach it &mdash; but only when the room needs it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT STAYS, WHAT CHANGES -->
+<section>
+  <h2>What stays. What changes.</h2>
+  <div class="prose">
+    <ul>
+      <li><strong>What stays:</strong> Thursday, 5:00&ndash;6:00 PM. The room. The recordings. The site. The readings. The willingness to be wrong in public.</li>
+      <li><strong>What changes:</strong> There is no default speaker. No pre-written agenda. The content is whatever the room brings. A session exists only if someone walks in with a problem or an interest.</li>
+      <li><strong>What grows:</strong> The Skills Portal, the Design Library, the shared guardrails, the AI groups. Every working session produces reusable output that gets pushed back into these.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- THE ROOM — THREE ROLES -->
+<section>
+  <h2>Three kinds of people in the room</h2>
+  <div class="role-grid">
+    <div class="role-card">
+      <div class="role-icon">&#9733;</div>
+      <div class="role-title">Problem-bringers</div>
+      <p class="role-body">You walk in with a real thing you&rsquo;re trying to solve &mdash; a build, a bug, a client ask, a half-idea. The room works it with you. Your problem becomes the session.</p>
+    </div>
+    <div class="role-card">
+      <div class="role-icon">&#10551;</div>
+      <div class="role-title">Problem-solvers</div>
+      <p class="role-body">You&rsquo;ve done the thing before. You jump in, unblock the bringer, share the skill or the trick, and move on. Nihaan, Ankit, Aditya, Abhinav, Harshdeep &mdash; most weeks, at least one is in the room.</p>
+    </div>
+    <div class="role-card">
+      <div class="role-icon">&#9679;</div>
+      <div class="role-title">Problem-creators</div>
+      <p class="role-body">You&rsquo;re curious, not stuck. You come to get inspired, to learn by watching, or to spot a problem worth solving that nobody has named yet. Silent is welcome. Curious is welcome.</p>
+    </div>
+  </div>
+  <div class="prose" style="margin-top:12px;">
+    <p>You don&rsquo;t need to pick a role in advance. Walk in as one, leave as another.</p>
+  </div>
+</section>
+
+<!-- THE HOUR -->
+<section>
+  <h2>How a Thursday runs</h2>
+  <div class="thursday-steps">
+    <div class="t-step">
+      <div class="t-when">5:00</div>
+      <div class="t-what"><strong>Round-up.</strong> Who&rsquo;s in the room. What did anyone ship this week that the rest of us should know. Two minutes a person, max.</div>
+    </div>
+    <div class="t-step">
+      <div class="t-when">5:05</div>
+      <div class="t-what"><strong>Problems on the table.</strong> Anyone with a problem puts it out &mdash; one line each. Room picks one or two. No hands raised means no session &mdash; we go home.</div>
+    </div>
+    <div class="t-step">
+      <div class="t-when">5:10</div>
+      <div class="t-what"><strong>Open build.</strong> We work the problem live. Code, whiteboard, prompts, pipeline, design &mdash; whatever it needs. Whoever knows the thing does the thing.</div>
+    </div>
+    <div class="t-step">
+      <div class="t-when">5:50</div>
+      <div class="t-what"><strong>Closeout.</strong> What did we learn. What should go into a skill, a PR, the Skills Portal, the Design Library. Who owns what by next Thursday.</div>
+    </div>
+    <div class="t-step">
+      <div class="t-when">6:00</div>
+      <div class="t-what"><strong>Done.</strong> The recording goes up. The artifacts land in the portals. The problem-bringer owns the follow-through.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BRING A PROBLEM -->
+<section>
+  <h2>Bring a problem</h2>
+  <div class="bring-card">
+    <h3>What counts as a problem.</h3>
+    <p>Anything you&rsquo;re stuck on, curious about, or half-building. Don&rsquo;t pre-polish it. The messy ones are the best ones.</p>
+    <ul class="bring-list">
+      <li>A Claude Code flow that doesn&rsquo;t quite work yet.</li>
+      <li>A Frappe DocType pattern you&rsquo;re not sure is the right one.</li>
+      <li>A client ask that sounds like three smaller asks in a trench coat.</li>
+      <li>A skill you want to write but keep postponing.</li>
+      <li>A piece of the mGrant or mForm codebase that nobody has looked at in two quarters.</li>
+      <li>A question about security, design, or data that keeps coming up and never gets answered.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- NEXT THURSDAY -->
+<section>
+  <h2>Next Thursday</h2>
+  <div class="next-thursday">
+    <div class="nt-eyebrow">S7 &middot; 30 April 2026 &middot; 5&ndash;6 PM</div>
+    <div class="nt-title">Ankit + Nihaan &middot; Ticketing paradigm &amp; agent elements</div>
+    <p class="nt-body">Ankit and Nihaan will be building a ticketing paradigm and the agent elements that sit under it &mdash; live in the room. Come contribute to that. Or come pull someone into <em>your</em> problem while the rest of the room is working on theirs. Both are welcome.</p>
+    <p class="nt-body" style="margin-top:6px;">Plus: Ankit&rsquo;s full Safe-to-Ship walkthrough for those who missed the preview in S6.</p>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section>
+  <h2>Six sessions in, the scoreboard</h2>
+  <div class="stat-strip">
+    <div class="stat-item"><span class="n">6</span><div class="l">Sessions shipped</div></div>
+    <div class="stat-item"><span class="n">20+</span><div class="l">Regulars in the room</div></div>
+    <div class="stat-item"><span class="n">5</span><div class="l">Skills live in the portal</div></div>
+    <div class="stat-item"><span class="n">1</span><div class="l">Design Library MCP</div></div>
+  </div>
+</section>
+
+<!-- THE RULES OF THE ROOM -->
+<section>
+  <h2>The rules of the room</h2>
+  <div class="n"><i>1</i><p><strong>Come if you can. Leave when you must.</strong> No attendance register. No guilt. The sessions are optional and meant to be valuable because of that.</p></div>
+  <div class="n"><i>2</i><p><strong>Problems beat presentations.</strong> If you have a problem, it outranks anyone&rsquo;s prepared deck. The room&rsquo;s time is for the real thing, not the rehearsed thing.</p></div>
+  <div class="n"><i>3</i><p><strong>Did someone already solve this?</strong> First question, every time. Check the AI groups, the Skills Portal, the Design Library. Use theirs, or contribute a PR.</p></div>
+  <div class="n"><i>4</i><p><strong>No stupid questions. Stupid answers, sometimes.</strong> If you don&rsquo;t know, don&rsquo;t pretend. If someone else doesn&rsquo;t know, don&rsquo;t make them feel it.</p></div>
+  <div class="n"><i>5</i><p><strong>The artifact is the point.</strong> Every session should leave behind something reusable &mdash; a skill, a PR, a checklist, an MCP, a note. If nothing gets pushed, nothing happened.</p></div>
+  <div class="n"><i>6</i><p><strong>Problem-creators are welcome to sit silent.</strong> You don&rsquo;t have to speak to be in the room. Curiosity is a contribution.</p></div>
+</section>
+
+<!-- CTA STRIP -->
+<section>
+  <h2>Start here</h2>
+  <div class="cta-strip">
+    <a href="../sessions/session-6.html" class="cta-btn primary">Read the S6 recap &rarr;</a>
+    <a href="../frameworks/builder-protocol.html" class="cta-btn secondary">The Builder Protocol</a>
+    <a href="../index.html" class="cta-btn secondary">Session archive</a>
+  </div>
+</section>
+
+<div class="main-footer">
+  <div><a href="../index.html">&larr; Home</a> &middot; <a href="../sessions/session-6.html">Session 6</a></div>
+  <small>Dhwani RIS &middot; AI Playground &middot; 2026</small>
+</div>
+
+</div></div>
+</body>
+</html>
