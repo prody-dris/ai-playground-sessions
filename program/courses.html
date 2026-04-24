@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courses — The Learning Path | AI Playground</title>
+<meta name="description" content="The four Claude Partner Network courses on Anthropic Academy. Free, accessible, ~6–8 hours total. Finish them and check in for the Dhwani cohort.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../assets/images/dhwani-logo.png?v=2">
+<link rel="apple-touch-icon" href="../assets/images/dhwani-logo.png?v=2">
+<link rel="stylesheet" href="../assets/style.css?v=3">
+<style>
+/* ── Courses page ── */
+
+.courses-hero {
+  background: linear-gradient(135deg, #1a2a38, #0f1d28);
+  color: #f4ece0;
+  border-radius: 14px;
+  padding: 40px 36px 32px;
+  margin: 20px 0 24px;
+  position: relative;
+  overflow: hidden;
+}
+.courses-hero::before {
+  content: '';
+  position: absolute;
+  top: -70px; right: -70px;
+  width: 260px; height: 260px;
+  background: radial-gradient(circle, rgba(216,93,42,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.courses-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #f5a15f;
+  margin-bottom: 12px;
+  position: relative; z-index: 1;
+}
+.courses-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 38px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.6px;
+  margin: 0 0 14px;
+  position: relative; z-index: 1;
+}
+.courses-sub {
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(244,236,224,0.9);
+  max-width: 660px;
+  margin: 0 0 22px;
+  position: relative; z-index: 1;
+}
+.courses-sub strong { color: #ffd8b1; }
+
+/* Progress shelf inside hero */
+.progress-shelf {
+  position: relative; z-index: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.progress-copy {
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: rgba(244,236,224,0.88);
+}
+.progress-copy strong {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  display: inline-block;
+  margin-right: 4px;
+}
+.progress-bar-wrap {
+  flex: 1;
+  min-width: 200px;
+  height: 8px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #d85d2a, #f5a15f);
+  width: 0%;
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 100px;
+}
+.progress-reset {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(244,236,224,0.8);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, color 0.15s;
+}
+.progress-reset:hover { border-color: rgba(255,216,177,0.5); color: #ffd8b1; }
+
+@media (max-width: 640px) {
+  .courses-hero { padding: 30px 22px 26px; }
+  .courses-title { font-size: 28px; }
+  .progress-shelf { flex-direction: column; align-items: stretch; }
+}
+
+/* Course cards */
+.course-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 18px 0 28px;
+}
+@media (min-width: 760px) {
+  .course-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.course-card {
+  position: relative;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 22px 22px 18px;
+  background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.18s, background 0.18s, transform 0.18s;
+}
+.course-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.course-card.done {
+  border-color: #2e8b57;
+  background: linear-gradient(180deg, rgba(46,139,87,0.05) 0%, var(--card-bg) 100%);
+}
+.course-card.done::after {
+  content: '✓';
+  position: absolute;
+  top: 18px; right: 22px;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: #2e8b57;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.course-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+  margin: 0 0 6px;
+}
+.course-topic {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.55;
+  margin: 0 0 14px;
+  flex: 1;
+}
+.course-meta {
+  display: flex;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-light);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.course-meta span {
+  padding: 3px 9px;
+  background: var(--primary-bg);
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+}
+
+.course-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.course-open {
+  flex: 1;
+  min-width: 140px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+.course-open:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(216,93,42,0.3);
+}
+.mark-done {
+  padding: 9px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-mid);
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.mark-done:hover { border-color: var(--primary); color: var(--primary); }
+.course-card.done .mark-done {
+  background: #2e8b57;
+  color: #fff;
+  border-color: #2e8b57;
+}
+
+/* Finisher CTA */
+.finisher {
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 26px 28px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin: 20px 0 22px;
+  background: var(--card-bg);
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+}
+.finisher.active {
+  border-color: #2e8b57;
+  background: linear-gradient(135deg, rgba(46,139,87,0.08), var(--card-bg));
+  box-shadow: 0 10px 28px rgba(46,139,87,0.14);
+}
+.finisher-emoji {
+  font-size: 32px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.finisher-body { flex: 1; }
+.finisher-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 4px;
+}
+.finisher-sub {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.55;
+  margin: 0;
+}
+.finisher-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.25s;
+  flex-shrink: 0;
+}
+.finisher .finisher-cta {
+  background: var(--rule);
+  color: var(--text-light);
+  pointer-events: none;
+}
+.finisher.active .finisher-cta {
+  background: #2e8b57;
+  color: #fff;
+  pointer-events: auto;
+}
+.finisher.active .finisher-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(46,139,87,0.35);
+}
+@media (max-width: 640px) {
+  .finisher { flex-direction: column; align-items: flex-start; text-align: left; padding: 22px; }
+  .finisher-cta { align-self: stretch; justify-content: center; }
+}
+
+/* Info footer */
+.course-footer {
+  font-size: 12px;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-top: 18px;
+}
+.prody-sign {
+  display: inline-block;
+  font-style: italic;
+  margin-top: 12px;
+  color: var(--text-light);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-header">
+  <img src="../assets/images/dhwani-logo.png?v=2" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="../assets/images/dhwani-logo.png?v=2" alt="Dhwani RIS">
+    <div class="sidebar-title">AI Playground</div>
+    <div class="sidebar-sub">Product &amp; Operations</div>
+  </div>
+  <div class="sidebar-section">
+    <a class="sidebar-link" href="../index.html"><span class="link-icon">~</span> Home</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sessions</div>
+    <a class="sidebar-link" href="../sessions/session-0.html"><span class="link-icon">0</span> Introduction</a>
+    <a class="sidebar-link" href="../sessions/session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
+    <a class="sidebar-link" href="../sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
+    <a class="sidebar-link" href="../sessions/session-3.html"><span class="link-icon">3</span> Hands On</a>
+    <a class="sidebar-link" href="../sessions/session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks</a>
+    <a class="sidebar-link" href="../sessions/session-5.html"><span class="link-icon">5</span> Open Build</a>
+    <a class="sidebar-link" href="../sessions/session-6.html"><span class="link-icon">6</span> Chaos &amp; Craft <span class="badge-new">Latest</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Program</div>
+    <a class="sidebar-link" href="how-we-play.html"><span class="link-icon">&#9679;</span> How We Play</a>
+    <a class="sidebar-link" href="courses.html"><span class="link-icon">C</span> Courses <span class="badge-new">New</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Frameworks</div>
+    <a class="sidebar-link" href="../frameworks/builder-protocol.html"><span class="link-icon">B</span> The Builder Protocol</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Resources</div>
+    <a class="sidebar-link" href="../readings.html"><span class="link-icon">R</span> Readings</a>
+    <a class="sidebar-link" href="../tools.html"><span class="link-icon">T</span> Tools</a>
+    <a class="sidebar-link" href="../prompts.html"><span class="link-icon">P</span> Prompts</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="https://dhwaniris.com">dhwaniris.com</a>
+    <small>Built by Nihaan Mohammed</small>
+  </div>
+</aside>
+
+<div class="main"><div class="content">
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a> / Program / Courses</div>
+</div>
+
+<!-- HERO -->
+<div class="courses-hero">
+  <div class="courses-eyebrow">Dhwani Internal &middot; Claude Partner Network</div>
+  <h1 class="courses-title">The four courses. Free. Self-paced.</h1>
+  <p class="courses-sub">
+    The Learning Path on Anthropic Academy. Four courses, ~6&ndash;8 hours total, all free. <strong>10 completions unlocks the Claude Certified Architect exam path</strong> for Dhwani. Click through, sign in with your <code>@dhwaniris.com</code> email, finish one at a time.
+  </p>
+  <div class="progress-shelf">
+    <div class="progress-copy"><strong id="done-count">0</strong>/4 marked done on this device</div>
+    <div class="progress-bar-wrap"><div id="progress-bar-fill" class="progress-bar-fill"></div></div>
+    <button type="button" class="progress-reset" onclick="window.CoursesApp.reset()">Reset</button>
+  </div>
+</div>
+
+<!-- COURSE GRID -->
+<div class="course-grid">
+
+  <div class="course-card" data-course="agent-skills">
+    <div class="course-num">1</div>
+    <h2 class="course-title">Introduction to Agent Skills</h2>
+    <p class="course-topic">What Agent Skills are, how they extend Claude without retraining, and how to author your first skill. This is the one that makes everything else on the Playground click.</p>
+    <div class="course-meta"><span>~90 min</span><span>Beginner</span></div>
+    <div class="course-actions">
+      <a class="course-open" href="https://anthropic.skilljar.com/introduction-to-agent-skills" target="_blank" rel="noopener">Open on Academy &rarr;</a>
+      <button class="mark-done" type="button" onclick="window.CoursesApp.toggle('agent-skills', this)">Mark done</button>
+    </div>
+  </div>
+
+  <div class="course-card" data-course="claude-api">
+    <div class="course-num">2</div>
+    <h2 class="course-title">Building with Claude APIs</h2>
+    <p class="course-topic">The Anthropic API end-to-end: messages, tools, streaming, and prompt design patterns for production features. Grounding for anyone shipping Claude into a product.</p>
+    <div class="course-meta"><span>~2 hrs</span><span>Intermediate</span></div>
+    <div class="course-actions">
+      <a class="course-open" href="https://anthropic.skilljar.com/claude-with-the-anthropic-api" target="_blank" rel="noopener">Open on Academy &rarr;</a>
+      <button class="mark-done" type="button" onclick="window.CoursesApp.toggle('claude-api', this)">Mark done</button>
+    </div>
+  </div>
+
+  <div class="course-card" data-course="mcp">
+    <div class="course-num">3</div>
+    <h2 class="course-title">Introduction to MCP</h2>
+    <p class="course-topic">Model Context Protocol: why MCP exists, how servers plug capabilities into Claude, and what it takes to wire your own tools in. This is the substrate under Abhinav&rsquo;s Design Library MCP.</p>
+    <div class="course-meta"><span>~75 min</span><span>Beginner</span></div>
+    <div class="course-actions">
+      <a class="course-open" href="https://anthropic.skilljar.com/introduction-to-model-context-protocol" target="_blank" rel="noopener">Open on Academy &rarr;</a>
+      <button class="mark-done" type="button" onclick="window.CoursesApp.toggle('mcp', this)">Mark done</button>
+    </div>
+  </div>
+
+  <div class="course-card" data-course="claude-code">
+    <div class="course-num">4</div>
+    <h2 class="course-title">Claude Code in Action</h2>
+    <p class="course-topic">The CLI, hooks, skills, slash commands, sub-agents, and plugins. A guided tour of the tool most of the Playground is built around. Worth doing last so everything lands at once.</p>
+    <div class="course-meta"><span>~2.5 hrs</span><span>Hands-on</span></div>
+    <div class="course-actions">
+      <a class="course-open" href="https://anthropic.skilljar.com/claude-code-in-action" target="_blank" rel="noopener">Open on Academy &rarr;</a>
+      <button class="mark-done" type="button" onclick="window.CoursesApp.toggle('claude-code', this)">Mark done</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- FINISHER -->
+<div id="finisher" class="finisher">
+  <div class="finisher-emoji">🎯</div>
+  <div class="finisher-body">
+    <p class="finisher-title"><span id="finisher-headline">Done all four? Check in next.</span></p>
+    <p class="finisher-sub" id="finisher-sub">Mark them done above as you finish. When you&rsquo;re at 4 of 4, the button activates and takes you to the cohort check-in.</p>
+  </div>
+  <a class="finisher-cta" href="learning-checkin.html" id="finisher-cta">Go to check-in &rarr;</a>
+</div>
+
+<!-- CONTEXT -->
+<div class="callout" style="margin: 18px 0;">
+  <p><strong>Why this matters.</strong> We&rsquo;re on a Claude Partner Network track with Anthropic. Dhwani hits 10 completions, the Certified Architect exam opens up for the team &mdash; we ship more like Anthropic, less like freelancers. Not everyone has to do it, but everyone&rsquo;s invited.</p>
+</div>
+
+<div class="callout green" style="margin: 18px 0;">
+  <p><strong>Confused about the path?</strong> Start with course 1. The order on this page is the order we&rsquo;d recommend. <a href="../sessions/session-6.html" style="color:var(--accent);font-weight:600;">Session 6</a> set the context if you missed it.</p>
+</div>
+
+<p class="course-footer">
+  Your progress is stored locally on this device only &mdash; nothing leaves your browser. Clear it anytime with the Reset button. Certificates get uploaded in the <a href="learning-checkin.html" style="color:var(--accent);font-weight:600;">check-in form</a>, which is where the official record lives.
+  <br><span class="prody-sign">&mdash; Made by Prody &middot; Dhwani RIS AI Playground</span>
+</p>
+
+<div class="main-footer">
+  <div><a href="../index.html">&larr; Home</a> &middot; <a href="how-we-play.html">How We Play</a> &middot; <a href="learning-checkin.html">Check-in</a></div>
+  <small>Dhwani RIS &middot; AI Playground &middot; 2026</small>
+</div>
+
+</div></div>
+
+<script>
+(function () {
+  var STORAGE_KEY = 'dhwani-courses-done-v1';
+  var COURSES = ['agent-skills', 'claude-api', 'mcp', 'claude-code'];
+
+  function readState() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return {};
+      var parsed = JSON.parse(raw);
+      return (parsed && typeof parsed === 'object') ? parsed : {};
+    } catch (e) { return {}; }
+  }
+
+  function writeState(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  function countDone(state) {
+    var n = 0;
+    COURSES.forEach(function (c) { if (state[c]) n++; });
+    return n;
+  }
+
+  function render() {
+    var state = readState();
+    var done = countDone(state);
+    var pct = (done / COURSES.length) * 100;
+
+    COURSES.forEach(function (c) {
+      var card = document.querySelector('.course-card[data-course="' + c + '"]');
+      if (!card) return;
+      var btn = card.querySelector('.mark-done');
+      if (state[c]) {
+        card.classList.add('done');
+        if (btn) btn.textContent = 'Done ✓';
+      } else {
+        card.classList.remove('done');
+        if (btn) btn.textContent = 'Mark done';
+      }
+    });
+
+    var countEl = document.getElementById('done-count');
+    if (countEl) countEl.textContent = done;
+    var bar = document.getElementById('progress-bar-fill');
+    if (bar) bar.style.width = pct + '%';
+
+    var finisher = document.getElementById('finisher');
+    var headline = document.getElementById('finisher-headline');
+    var sub = document.getElementById('finisher-sub');
+    if (done >= COURSES.length) {
+      finisher.classList.add('active');
+      headline.textContent = 'All four done. Time to check in.';
+      sub.textContent = 'Bring your four certificates. The form walks you through upload + identity — takes about 90 seconds.';
+    } else {
+      finisher.classList.remove('active');
+      headline.textContent = 'Done all four? Check in next.';
+      sub.textContent = 'Mark them done above as you finish. When you’re at 4 of 4, the button activates and takes you to the cohort check-in.';
+    }
+  }
+
+  window.CoursesApp = {
+    toggle: function (course, _btn) {
+      var state = readState();
+      state[course] = !state[course];
+      writeState(state);
+      render();
+    },
+    reset: function () {
+      writeState({});
+      render();
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', render);
+})();
+</script>
+
+</body>
+</html>

@@ -245,7 +245,8 @@
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">Program</div>
-    <a class="sidebar-link" href="how-we-play.html"><span class="link-icon">&#9679;</span> How We Play <span class="badge-new">New</span></a>
+    <a class="sidebar-link" href="how-we-play.html"><span class="link-icon">&#9679;</span> How We Play</a>
+    <a class="sidebar-link" href="courses.html"><span class="link-icon">C</span> Courses <span class="badge-new">New</span></a>
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">Frameworks</div>
@@ -287,80 +288,31 @@
     <li><strong>Introduction to MCP</strong></li>
     <li><strong>Claude Code in Action</strong></li>
   </ol>
+  <p style="font-size:12.5px;color:var(--text-mid);margin:12px 0 0;line-height:1.55;">
+    Haven&rsquo;t started yet? <a href="courses.html" style="color:var(--accent);font-weight:600;">See the Courses page</a> for direct links, time estimates, and a local progress tracker.
+  </p>
 </div>
 
-<!-- FORM -->
-<form class="form-card" action="https://formsubmit.co/doot.workspace@gmail.com" method="POST">
-
-  <!-- FormSubmit config -->
-  <input type="hidden" name="_subject" value="AI Playground — Learning Path Check-in">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_next" value="https://prody-dris.github.io/ai-playground-sessions/program/learning-checkin-thanks.html">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_autoresponse" value="Thanks for checking in. Your completion has been logged. We will be in touch once the Certified Architect track unlocks.">
-
-  <!-- Honeypot — bots fill this, humans don't -->
-  <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off">
-
-  <div class="form-field">
-    <label for="f-name">Your full name<span class="req">*</span></label>
-    <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="First Last">
-  </div>
-
-  <div class="form-field">
-    <label for="f-email">Work email<span class="req">*</span></label>
-    <div class="hint">Must end in <code>@dhwaniris.com</code> — Anthropic verifies cohort membership by company domain.</div>
-    <input type="email" id="f-email" name="email" required autocomplete="email" pattern=".*@dhwaniris\.com$" title="Please use your @dhwaniris.com email" placeholder="you@dhwaniris.com">
-  </div>
-
-  <div class="form-field">
-    <label>Have you completed all four courses?<span class="req">*</span></label>
-    <div class="radio-group">
-      <label class="radio-opt">
-        <input type="radio" name="completion_status" value="All four done" required>
-        <span>
-          <span class="opt-title">Yes &mdash; all four done</span>
-          <span class="opt-sub">Ready to be counted toward the 10-person threshold.</span>
-        </span>
-      </label>
-      <label class="radio-opt">
-        <input type="radio" name="completion_status" value="Three of four done">
-        <span>
-          <span class="opt-title">Three of four</span>
-          <span class="opt-sub">One course left &mdash; checking in early so I&rsquo;m on the radar.</span>
-        </span>
-      </label>
-      <label class="radio-opt">
-        <input type="radio" name="completion_status" value="In progress">
-        <span>
-          <span class="opt-title">Still in progress</span>
-          <span class="opt-sub">Will come back to fill this when all four are done.</span>
-        </span>
-      </label>
-    </div>
-  </div>
-
-  <div class="form-field">
-    <label for="f-date">Approximate completion date</label>
-    <div class="hint">Rough is fine &mdash; we just need a timeline.</div>
-    <input type="date" id="f-date" name="completion_date">
-  </div>
-
-  <div class="form-field">
-    <label for="f-note">One thing worth the team knowing</label>
-    <div class="hint">Optional &mdash; a concept that clicked, a course you&rsquo;d recommend doing first, anything useful for the next person starting.</div>
-    <textarea id="f-note" name="note" rows="3" placeholder="Optional"></textarea>
-  </div>
-
-  <button type="submit" class="form-submit">Check me in &rarr;</button>
-  <p class="form-footer">
-    Internal to Dhwani RIS only. Don&rsquo;t share this link in public channels &mdash; the partnership announcement is embargoed until we&rsquo;re officially listed.
-  </p>
-</form>
+<!-- FORM — Tally embed (responses flow to product@ / nihaan@ Tally dashboard) -->
+<div class="form-card" style="padding: 10px 6px;">
+  <iframe data-tally-src="https://tally.so/embed/6817Mo?alignLeft=1&amp;hideTitle=0&amp;transparentBackground=1&amp;dynamicHeight=1"
+          loading="lazy"
+          width="100%"
+          height="520"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="AI Learning Path — Completion Check-in"
+          style="display:block; border:0;"></iframe>
+</div>
+<script async src="https://tally.so/widgets/embed.js"></script>
+<p class="form-footer" style="margin-top: 12px;">
+  Internal to Dhwani RIS only. Don&rsquo;t share this link in public channels &mdash; the partnership announcement is embargoed until we&rsquo;re officially listed.
+</p>
 
 <!-- Context for people who arrived here without reading -->
 <div class="callout" style="margin: 20px 0;">
-  <p><strong>New to the learning path?</strong> The four Anthropic courses, enrolment instructions, and the reasoning behind them are covered in detail in the Session 6 WhatsApp broadcast and in the <a href="../sessions/session-6.html" style="color:var(--accent);font-weight:600;">Session 6 recap</a>. Ping Nihaan in the AI PM Awareness group if you need the course links.</p>
+  <p><strong>New to the learning path?</strong> Start on the <a href="courses.html" style="color:var(--accent);font-weight:600;">Courses page</a> &mdash; direct Academy links, time estimates, and a local progress tracker. The <a href="../sessions/session-6.html" style="color:var(--accent);font-weight:600;">Session 6 recap</a> has the full backstory of why this learning path matters.</p>
 </div>
 
 <div class="main-footer">
