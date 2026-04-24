@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Learning Path — Check-in | AI Playground</title>
+<meta name="description" content="Check-in form for Dhwani RIS team members who've completed the AI Learning Path courses.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../assets/images/dhwani-logo.png?v=2">
+<link rel="apple-touch-icon" href="../assets/images/dhwani-logo.png?v=2">
+<link rel="stylesheet" href="../assets/style.css?v=3">
+<style>
+/* ── Learning check-in form ── */
+
+.form-hero {
+  background: linear-gradient(135deg, #1a2a38, #0f1d28);
+  color: #f4ece0;
+  border-radius: 14px;
+  padding: 40px 36px 36px;
+  margin: 20px 0 22px;
+  position: relative;
+  overflow: hidden;
+}
+.form-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, rgba(216,93,42,0.16) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.form-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #f5a15f;
+  margin-bottom: 12px;
+  position: relative; z-index: 1;
+}
+.form-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 34px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.6px;
+  margin: 0 0 12px;
+  position: relative; z-index: 1;
+}
+.form-sub {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: rgba(244,236,224,0.88);
+  max-width: 640px;
+  margin: 0;
+  position: relative; z-index: 1;
+}
+.form-sub strong { color: #ffd8b1; }
+@media (max-width: 640px) {
+  .form-hero { padding: 30px 24px 26px; }
+  .form-title { font-size: 26px; }
+}
+
+.form-card {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 28px 30px;
+  margin: 16px 0 24px;
+  background: var(--card-bg);
+}
+@media (max-width: 640px) {
+  .form-card { padding: 22px 20px; }
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+.form-field:last-child { margin-bottom: 0; }
+.form-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.1px;
+}
+.form-field label .req { color: #d85d2a; margin-left: 2px; }
+.form-field .hint {
+  font-size: 12px;
+  color: var(--text-light);
+  font-style: italic;
+  margin: 4px 0 8px;
+  line-height: 1.5;
+}
+.form-field input[type=text],
+.form-field input[type=email],
+.form-field input[type=date],
+.form-field textarea {
+  width: 100%;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--card-bg);
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+}
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(216,93,42,0.12);
+}
+.form-field textarea {
+  resize: vertical;
+  min-height: 84px;
+  line-height: 1.55;
+}
+.form-field .radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+.form-field .radio-opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.form-field .radio-opt:hover { border-color: var(--accent); background: var(--primary-bg); }
+.form-field .radio-opt input[type=radio] {
+  margin: 3px 0 0;
+  accent-color: var(--accent);
+}
+.form-field .radio-opt .opt-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--primary);
+  display: block;
+  margin-bottom: 2px;
+}
+.form-field .radio-opt .opt-sub {
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+
+/* Honeypot — hidden from humans, visible to bots */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  visibility: hidden;
+}
+
+.form-submit {
+  display: inline-block;
+  padding: 13px 28px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  font-family: inherit;
+}
+.form-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(216,93,42,0.35);
+}
+.form-submit:active { transform: translateY(0); }
+
+.form-footer {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 14px;
+  line-height: 1.6;
+}
+
+.courses-list {
+  margin: 14px 0 18px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 16px 20px;
+  background: var(--primary-bg);
+}
+.courses-list .cl-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.courses-list ol {
+  margin: 0;
+  padding-left: 22px;
+}
+.courses-list li {
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--text-mid);
+}
+.courses-list li strong { color: var(--primary); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="mobile-header">
+  <img src="../assets/images/dhwani-logo.png?v=2" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="../assets/images/dhwani-logo.png?v=2" alt="Dhwani RIS">
+    <div class="sidebar-title">AI Playground</div>
+    <div class="sidebar-sub">Product &amp; Operations</div>
+  </div>
+  <div class="sidebar-section">
+    <a class="sidebar-link" href="../index.html"><span class="link-icon">~</span> Home</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sessions</div>
+    <a class="sidebar-link" href="../sessions/session-0.html"><span class="link-icon">0</span> Introduction</a>
+    <a class="sidebar-link" href="../sessions/session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
+    <a class="sidebar-link" href="../sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
+    <a class="sidebar-link" href="../sessions/session-3.html"><span class="link-icon">3</span> Hands On</a>
+    <a class="sidebar-link" href="../sessions/session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks</a>
+    <a class="sidebar-link" href="../sessions/session-5.html"><span class="link-icon">5</span> Open Build</a>
+    <a class="sidebar-link" href="../sessions/session-6.html"><span class="link-icon">6</span> Chaos &amp; Craft <span class="badge-new">Latest</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Program</div>
+    <a class="sidebar-link" href="how-we-play.html"><span class="link-icon">&#9679;</span> How We Play <span class="badge-new">New</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Frameworks</div>
+    <a class="sidebar-link" href="../frameworks/builder-protocol.html"><span class="link-icon">B</span> The Builder Protocol</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Resources</div>
+    <a class="sidebar-link" href="../readings.html"><span class="link-icon">R</span> Readings</a>
+    <a class="sidebar-link" href="../tools.html"><span class="link-icon">T</span> Tools</a>
+    <a class="sidebar-link" href="../prompts.html"><span class="link-icon">P</span> Prompts</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="https://dhwaniris.com">dhwaniris.com</a>
+    <small>Built by Nihaan Mohammed</small>
+  </div>
+</aside>
+
+<div class="main"><div class="content">
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a> / Program / Learning Check-in</div>
+</div>
+
+<!-- HERO -->
+<div class="form-hero">
+  <div class="form-eyebrow">Dhwani Internal &middot; AI Learning Path</div>
+  <h1 class="form-title">Check in when you&rsquo;ve finished all four courses.</h1>
+  <p class="form-sub">
+    Once you&rsquo;ve completed the four Claude Partner Network Learning Path courses on Anthropic Academy, fill this in. We&rsquo;re tracking the cohort &mdash; <strong>10 completions unlocks the Claude Certified Architect exam path for Dhwani</strong>. If you&rsquo;re mid-way, come back when the four are done.
+  </p>
+</div>
+
+<!-- COURSES REFERENCE -->
+<div class="courses-list">
+  <div class="cl-eyebrow">The four courses</div>
+  <ol>
+    <li><strong>Introduction to Agent Skills</strong></li>
+    <li><strong>Building with Claude APIs</strong></li>
+    <li><strong>Introduction to MCP</strong></li>
+    <li><strong>Claude Code in Action</strong></li>
+  </ol>
+</div>
+
+<!-- FORM -->
+<form class="form-card" action="https://formsubmit.co/doot.workspace@gmail.com" method="POST">
+
+  <!-- FormSubmit config -->
+  <input type="hidden" name="_subject" value="AI Playground — Learning Path Check-in">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="https://prody-dris.github.io/ai-playground-sessions/program/learning-checkin-thanks.html">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_autoresponse" value="Thanks for checking in. Your completion has been logged. We will be in touch once the Certified Architect track unlocks.">
+
+  <!-- Honeypot — bots fill this, humans don't -->
+  <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off">
+
+  <div class="form-field">
+    <label for="f-name">Your full name<span class="req">*</span></label>
+    <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="First Last">
+  </div>
+
+  <div class="form-field">
+    <label for="f-email">Work email<span class="req">*</span></label>
+    <div class="hint">Must end in <code>@dhwaniris.com</code> — Anthropic verifies cohort membership by company domain.</div>
+    <input type="email" id="f-email" name="email" required autocomplete="email" pattern=".*@dhwaniris\.com$" title="Please use your @dhwaniris.com email" placeholder="you@dhwaniris.com">
+  </div>
+
+  <div class="form-field">
+    <label>Have you completed all four courses?<span class="req">*</span></label>
+    <div class="radio-group">
+      <label class="radio-opt">
+        <input type="radio" name="completion_status" value="All four done" required>
+        <span>
+          <span class="opt-title">Yes &mdash; all four done</span>
+          <span class="opt-sub">Ready to be counted toward the 10-person threshold.</span>
+        </span>
+      </label>
+      <label class="radio-opt">
+        <input type="radio" name="completion_status" value="Three of four done">
+        <span>
+          <span class="opt-title">Three of four</span>
+          <span class="opt-sub">One course left &mdash; checking in early so I&rsquo;m on the radar.</span>
+        </span>
+      </label>
+      <label class="radio-opt">
+        <input type="radio" name="completion_status" value="In progress">
+        <span>
+          <span class="opt-title">Still in progress</span>
+          <span class="opt-sub">Will come back to fill this when all four are done.</span>
+        </span>
+      </label>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label for="f-date">Approximate completion date</label>
+    <div class="hint">Rough is fine &mdash; we just need a timeline.</div>
+    <input type="date" id="f-date" name="completion_date">
+  </div>
+
+  <div class="form-field">
+    <label for="f-note">One thing worth the team knowing</label>
+    <div class="hint">Optional &mdash; a concept that clicked, a course you&rsquo;d recommend doing first, anything useful for the next person starting.</div>
+    <textarea id="f-note" name="note" rows="3" placeholder="Optional"></textarea>
+  </div>
+
+  <button type="submit" class="form-submit">Check me in &rarr;</button>
+  <p class="form-footer">
+    Internal to Dhwani RIS only. Don&rsquo;t share this link in public channels &mdash; the partnership announcement is embargoed until we&rsquo;re officially listed.
+  </p>
+</form>
+
+<!-- Context for people who arrived here without reading -->
+<div class="callout" style="margin: 20px 0;">
+  <p><strong>New to the learning path?</strong> The four Anthropic courses, enrolment instructions, and the reasoning behind them are covered in detail in the Session 6 WhatsApp broadcast and in the <a href="../sessions/session-6.html" style="color:var(--accent);font-weight:600;">Session 6 recap</a>. Ping Nihaan in the AI PM Awareness group if you need the course links.</p>
+</div>
+
+<div class="main-footer">
+  <div><a href="../sessions/session-6.html">&larr; Session 6</a> &middot; <a href="how-we-play.html">How We Play</a> &middot; <a href="../index.html">Home</a></div>
+  <small>Dhwani RIS &middot; AI Playground &middot; 2026</small>
+</div>
+
+</div></div>
+</body>
+</html>
