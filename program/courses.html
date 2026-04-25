@@ -91,42 +91,65 @@
   .courses-title { font-size: 28px; }
 }
 
-/* How-it-works strip */
-.how-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin: 0 0 26px;
-}
-@media (max-width: 760px) { .how-row { grid-template-columns: 1fr; } }
-
-.how-step {
+/* Dhwani-only check-in band */
+.dhwani-band {
   border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
   border-radius: 10px;
-  padding: 16px 18px;
+  padding: 16px 20px;
+  margin: 18px 0;
   background: var(--card-bg);
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
 }
-.how-step .step-num {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.how-step h4 {
-  font-size: 13.5px;
+.dhwani-band-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10.5px;
   font-weight: 700;
-  color: var(--primary);
-  margin: 0 0 4px;
-  letter-spacing: -0.1px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 5px 10px;
+  background: rgba(216,93,42,0.08);
+  border: 1px solid rgba(216,93,42,0.22);
+  border-radius: 100px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
-.how-step p {
-  font-size: 12.5px;
+.dhwani-band-text {
+  flex: 1;
+  font-size: 13.5px;
   color: var(--text-mid);
-  line-height: 1.55;
+  line-height: 1.5;
   margin: 0;
+  min-width: 220px;
+}
+.dhwani-band-text strong { color: var(--primary); }
+.dhwani-band-link {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 16px;
+  background: transparent;
+  color: var(--accent);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.dhwani-band-link:hover {
+  background: var(--accent);
+  color: #fff;
+}
+@media (max-width: 640px) {
+  .dhwani-band { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px; }
+  .dhwani-band-link { align-self: stretch; justify-content: center; }
 }
 
 /* Course cards */
@@ -221,59 +244,6 @@
   box-shadow: 0 6px 16px rgba(216,93,42,0.3);
 }
 
-/* Check-in CTA */
-.checkin-cta {
-  border: 1px solid #2e8b57;
-  border-radius: 14px;
-  padding: 28px 30px;
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  margin: 8px 0 22px;
-  background: linear-gradient(135deg, rgba(46,139,87,0.08), var(--card-bg));
-}
-.checkin-emoji {
-  font-size: 34px;
-  line-height: 1;
-  flex-shrink: 0;
-}
-.checkin-body { flex: 1; }
-.checkin-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--primary);
-  margin: 0 0 4px;
-  letter-spacing: -0.2px;
-}
-.checkin-sub {
-  font-size: 13px;
-  color: var(--text-mid);
-  line-height: 1.55;
-  margin: 0;
-}
-.checkin-link {
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 24px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  border-radius: 8px;
-  text-decoration: none;
-  background: #2e8b57;
-  color: #fff;
-  transition: transform 0.15s, box-shadow 0.15s;
-  flex-shrink: 0;
-}
-.checkin-link:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(46,139,87,0.35);
-}
-@media (max-width: 640px) {
-  .checkin-cta { flex-direction: column; align-items: flex-start; padding: 22px; }
-  .checkin-link { align-self: stretch; justify-content: center; }
-}
-
 .prody-sign {
   display: block;
   font-style: italic;
@@ -353,24 +323,11 @@
   </div>
 </div>
 
-<!-- HOW IT WORKS -->
-<h3 style="margin: 2px 0 12px; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); font-weight: 700;">How to do it</h3>
-<div class="how-row">
-  <div class="how-step">
-    <div class="step-num">1</div>
-    <h4>Open a course</h4>
-    <p>Click &ldquo;Open on Academy&rdquo; on any card below. Sign in with <code>@dhwaniris.com</code>.</p>
-  </div>
-  <div class="how-step">
-    <div class="step-num">2</div>
-    <h4>Finish &amp; get the certificate</h4>
-    <p>Complete the lessons. Anthropic emails you a PDF certificate for each course.</p>
-  </div>
-  <div class="how-step">
-    <div class="step-num">3</div>
-    <h4>Dhwani folks: log it</h4>
-    <p>If you&rsquo;re at Dhwani, fill the short internal <a href="learning-checkin.html" style="color:var(--accent);font-weight:600;">check-in form</a> once you&rsquo;re done. Everyone else &mdash; enjoy the learning.</p>
-  </div>
+<!-- DHWANI-ONLY CHECK-IN BAND (TOP) -->
+<div class="dhwani-band">
+  <span class="dhwani-band-tag">Dhwani Employees Only</span>
+  <p class="dhwani-band-text"><strong>Finished a course?</strong> Log it in our internal check-in &mdash; takes about 90 seconds. Not at Dhwani? Skip this and enjoy the courses.</p>
+  <a class="dhwani-band-link" href="learning-checkin.html">Submit check-in &rarr;</a>
 </div>
 
 <!-- COURSE GRID -->
@@ -424,19 +381,11 @@
 
 </div>
 
-<!-- CHECK-IN CTA — Dhwani only -->
-<div class="checkin-cta">
-  <div class="checkin-emoji">🎯</div>
-  <div class="checkin-body">
-    <p class="checkin-title">Dhwani folks: fill the form once you&rsquo;re done.</p>
-    <p class="checkin-sub">Short internal check-in for the Dhwani team &mdash; upload your certificates, takes about 90 seconds. Not at Dhwani? You&rsquo;re welcome to do the courses anyway, the form is just for us.</p>
-  </div>
-  <a class="checkin-link" href="learning-checkin.html">Go to check-in &rarr;</a>
-</div>
-
-<!-- CONTEXT -->
-<div class="callout green" style="margin: 18px 0;">
-  <p><strong>Suggested order:</strong> 1 → 2 → 3 → 4. Each course stands alone, but the sequence builds on itself. If you missed the session where we walked through why these matter, see the <a href="../sessions/session-6.html" style="color:var(--accent);font-weight:600;">Session 6 recap</a>.</p>
+<!-- DHWANI-ONLY CHECK-IN BAND (BOTTOM) -->
+<div class="dhwani-band">
+  <span class="dhwani-band-tag">Dhwani Employees Only</span>
+  <p class="dhwani-band-text"><strong>Done with one or more?</strong> Log your completion in the internal check-in form. The form is for the Dhwani team only.</p>
+  <a class="dhwani-band-link" href="learning-checkin.html">Submit check-in &rarr;</a>
 </div>
 
 <span class="prody-sign">&mdash; Made by Prody &middot; Dhwani RIS AI Playground</span>

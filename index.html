@@ -17,6 +17,68 @@
 <meta name="twitter:card" content="summary_large_image">
 <title>AI Playground — Dhwani RIS</title>
 <link rel="stylesheet" href="assets/style.css?v=2">
+<style>
+/* Dhwani-only check-in band */
+.dhwani-band {
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 18px 0 22px;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.dhwani-band-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 5px 10px;
+  background: rgba(216,93,42,0.08);
+  border: 1px solid rgba(216,93,42,0.22);
+  border-radius: 100px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.dhwani-band-text {
+  flex: 1;
+  font-size: 13.5px;
+  color: var(--text-mid);
+  line-height: 1.5;
+  margin: 0;
+  min-width: 220px;
+}
+.dhwani-band-text strong { color: var(--primary); }
+.dhwani-band-link {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 16px;
+  background: transparent;
+  color: var(--accent);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.dhwani-band-link:hover {
+  background: var(--accent);
+  color: #fff;
+}
+@media (max-width: 640px) {
+  .dhwani-band { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px; }
+  .dhwani-band-link { align-self: stretch; justify-content: center; }
+}
+</style>
 </head>
 <body>
 
@@ -252,6 +314,13 @@
   <div class="r"><code>Cheatsheet</code><span><a href="https://prody-dris.github.io/claude-code-cheatsheet/" target="_blank">Claude Code Cheatsheet</a> &mdash; commands, shortcuts, daily reference</span></div>
   <div class="r"><code>Source</code><span><a href="https://github.com/prody-dris/ai-playground-sessions">This site's repo</a> &mdash; everything here is open</span></div>
 </section>
+
+<!-- DHWANI-ONLY CHECK-IN BAND -->
+<div class="dhwani-band">
+  <span class="dhwani-band-tag">Dhwani Employees Only</span>
+  <p class="dhwani-band-text"><strong>Finished an Anthropic Academy course?</strong> Log it in our internal check-in &mdash; takes about 90 seconds. The form is for the Dhwani team only.</p>
+  <a class="dhwani-band-link" href="program/learning-checkin.html">Submit check-in &rarr;</a>
+</div>
 
 <div class="main-footer">
   <div><a href="https://dhwaniris.com">Dhwani RIS</a> &middot; <a href="https://github.com/prody-dris/ai-playground-sessions">Source</a></div>
