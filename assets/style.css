@@ -195,7 +195,8 @@ body {
   padding: 32px 40px 60px;
 }
 .content {
-  max-width: 780px;
+  max-width: clamp(720px, 82vw, 1280px);
+  margin: 0 auto;
 }
 
 /* ── Page header ── */
@@ -310,6 +311,7 @@ code {
   border-left: 3px solid var(--primary);
   padding: 12px 16px; border-radius: 0 6px 6px 0;
   margin: 8px 0;
+  max-width: 720px;
 }
 .callout p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
 .callout strong { color: var(--text); }
@@ -331,6 +333,7 @@ code {
   color: var(--text-mid);
   font-size: 13.5px;
   line-height: 1.7;
+  max-width: 720px;
 }
 .quote cite {
   display: block;
@@ -400,6 +403,7 @@ code {
   border-radius: 8px;
   padding: 16px 20px;
   margin: 8px 0;
+  max-width: 720px;
 }
 .outcomes h3 {
   font-size: 10px; font-weight: 700;
@@ -425,6 +429,7 @@ code {
   border-radius: 8px;
   padding: 14px 18px;
   margin: 10px 0;
+  max-width: 720px;
 }
 .analogy .label {
   font-size: 9px; font-weight: 700;
@@ -436,7 +441,7 @@ code {
 }
 
 /* ── Prose ── */
-.prose { margin-bottom: 8px; }
+.prose { margin-bottom: 8px; max-width: 720px; }
 .prose p {
   font-size: 14px; color: var(--text-mid);
   line-height: 1.7; margin-bottom: 8px;
