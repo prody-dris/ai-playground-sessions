@@ -78,6 +78,46 @@
   .dhwani-band { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px; }
   .dhwani-band-link { align-self: stretch; justify-content: center; }
 }
+
+/* Recording pill strip */
+.recording-strip-heading {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin: 0 0 10px;
+}
+.recording-pill-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.recording-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.recording-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(216,93,42,0.04);
+}
+.recording-pill .pill-icon {
+  font-size: 10px;
+  color: var(--accent);
+}
 </style>
 </head>
 <body>
@@ -102,6 +142,7 @@
   </div>
   <div class="sidebar-section">
     <div class="sidebar-section-title">Sessions</div>
+    <a class="sidebar-link" href="program/recordings.html"><span class="link-icon">&#9654;</span> All Recordings <span class="badge-new">New</span></a>
     <a class="sidebar-link" href="sessions/session-0.html"><span class="link-icon">0</span> Introduction</a>
     <a class="sidebar-link" href="sessions/session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
     <a class="sidebar-link" href="sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
@@ -153,6 +194,19 @@
     <a href="sessions/session-6.html" class="hero-btn primary">Session 6 Recap &rarr;</a>
     <a href="program/how-we-play.html" class="hero-btn secondary">How We Play Now</a>
   </div>
+</div>
+
+<!-- ═══════════════════════════════
+     RECORDING STRIP
+     ═══════════════════════════════ -->
+<div class="recording-strip-heading">Session Recordings &mdash; jump straight to the videos</div>
+<div class="recording-pill-row">
+  <a class="recording-pill" href="https://teams.microsoft.com/l/meetingrecap?driveId=b%210oNJhLI4AUGjp5W7veorxP0T_1iayIFNvc7RjHGGTgU1MqUx1wnZTpykcXyQDC51&driveItemId=01BMCH33YWMMRX6RJ4RNBYI533JRG4NDAU&sitePath=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQAWYyN_RTyLQ4R3e0xNxowUAU_ph9B34FXH6JzjbmecuOI&fileUrl=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQAWYyN_RTyLQ4R3e0xNxowUAU_ph9B34FXH6JzjbmecuOI&iCalUid=040000008200E00074C5B7101A82E00807EA041743EF20DC72CDDC0100000000000000001000000092BBAE672D38C847A652B74BC83D40B9&masterICalUid=040000008200E00074C5B7101A82E0080000000043EF20DC72CDDC0100000000000000001000000092BBAE672D38C847A652B74BC83D40B9&threadId=19%3Ameeting_NjkxOGRmMTYtOWI5My00NjU1LWJhOWItNDM3MWQ1YzhmZjFj%40thread.v2&organizerId=163ae90d-7d16-41da-8079-2a1879f5e3a6&tenantId=6be9876d-2470-42cb-9f42-060454fab53d&callId=6dbeb882-bb9e-4827-ba30-39493fd3f1e5&threadType=Meeting&meetingType=Recurring&subType=RecapSharingLink_RecapChiclet" target="_blank"><span class="pill-icon">&#9654;</span> S6 &middot; Chaos &amp; Craft</a>
+  <a class="recording-pill" href="https://dhwaniris1-my.sharepoint.com/:v:/g/personal/nihaan_mohammed_dhwaniris_com/IQDlPeunAL2uQKOGtOpyliPiAaU2ZVZFhgOPPvJ0_Oyv3QM?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=fIebba" target="_blank"><span class="pill-icon">&#9654;</span> S5 &middot; Open Build</a>
+  <a class="recording-pill" href="https://dhwaniris1-my.sharepoint.com/:v:/g/personal/nihaan_mohammed_dhwaniris_com/IQBJRQ2stCXuS7QWYhQREoesAVJIR5W2rjgGLcxXYobc9n8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=hpDCID" target="_blank"><span class="pill-icon">&#9654;</span> S4 &middot; CLI &amp; Hooks</a>
+  <a class="recording-pill" href="https://dhwaniris1-my.sharepoint.com/:v:/g/personal/nihaan_mohammed_dhwaniris_com/IQButXa5sSq0QaOnLFfXtbCeASbzn-13s23eBjj1EMzArY8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=1byJ1B" target="_blank"><span class="pill-icon">&#9654;</span> S3 &middot; Hands On</a>
+  <a class="recording-pill" href="https://teams.microsoft.com/l/meetingrecap?driveId=b%210oNJhLI4AUGjp5W7veorxP0T_1iayIFNvc7RjHGGTgU1MqUx1wnZTpykcXyQDC51&driveItemId=01BMCH33YEDVMNPLAVJBF2XKB44ONF2OTY&sitePath=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQAEHVjXrBVIS6uoPOOaXTp4AZ0WOhm-QdUnNzgEHwhQWXk&fileUrl=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQAEHVjXrBVIS6uoPOOaXTp4AZ0WOhm-QdUnNzgEHwhQWXk&iCalUid=040000008200E00074C5B7101A82E00807EA03133EF80A0AB0ACDC01000000000000000010000000BF88594600842543B848855EBE777156&masterICalUid=040000008200E00074C5B7101A82E008000000003EF80A0AB0ACDC01000000000000000010000000BF88594600842543B848855EBE777156&threadId=19%3Ameeting_NjkxOGRmMTYtOWI5My00NjU1LWJhOWItNDM3MWQ1YzhmZjFj%40thread.v2&organizerId=163ae90d-7d16-41da-8079-2a1879f5e3a6&tenantId=6be9876d-2470-42cb-9f42-060454fab53d&callId=7d13aaee-3444-48d4-9291-ee8b4e6ad1ec&threadType=Meeting&meetingType=Recurring&subType=RecapSharingLink_RecapChiclet" target="_blank"><span class="pill-icon">&#9654;</span> S2 &middot; GitHub Knowledge</a>
+  <a class="recording-pill" href="https://teams.microsoft.com/l/meetingrecap?driveId=b%210oNJhLI4AUGjp5W7veorxP0T_1iayIFNvc7RjHGGTgU1MqUx1wnZTpykcXyQDC51&driveItemId=01BMCH332QSTKPGAG55NDLWADXHBIORBLC&sitePath=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQBQlNTzAN3rRrsAdzhQ6IViAcJuHMT2IeRXd8Bri94oRUs&fileUrl=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQBQlNTzAN3rRrsAdzhQ6IViAcJuHMT2IeRXd8Bri94oRUs&iCalUid=040000008200E00074C5B7101A82E00807EA03063EF80A0AB0ACDC01000000000000000010000000BF88594600842543B848855EBE777156&masterICalUid=040000008200E00074C5B7101A82E008000000003EF80A0AB0ACDC01000000000000000010000000BF88594600842543B848855EBE777156&threadId=19%3Ameeting_NjkxOGRmMTYtOWI5My00NjU1LWJhOWItNDM3MWQ1YzhmZjFj%40thread.v2&organizerId=163ae90d-7d16-41da-8079-2a1879f5e3a6&tenantId=6be9876d-2470-42cb-9f42-060454fab53d&callId=5e6444de-01a7-4c54-b663-fd66f2c29224&threadType=Meeting&meetingType=Recurring&subType=RecapSharingLink_RecapChiclet" target="_blank"><span class="pill-icon">&#9654;</span> S1 &middot; Vibe Coding</a>
 </div>
 
 <!-- ═══════════════════════════════

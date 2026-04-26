@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session Recordings | AI Playground</title>
+<meta name="description" content="Every Thursday AI Playground session recording. Dhwani RIS members only. Jump straight to a session.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../assets/images/dhwani-logo.png?v=2">
+<link rel="apple-touch-icon" href="../assets/images/dhwani-logo.png?v=2">
+<link rel="stylesheet" href="../assets/style.css?v=3">
+<style>
+/* ── Recordings page ── */
+
+.recordings-hero {
+  background: linear-gradient(135deg, #1a2a38, #0f1d28);
+  color: #f4ece0;
+  border-radius: 14px;
+  padding: 44px 36px 38px;
+  margin: 20px 0 26px;
+  position: relative;
+  overflow: hidden;
+}
+.recordings-hero::before {
+  content: '';
+  position: absolute;
+  top: -70px; right: -70px;
+  width: 260px; height: 260px;
+  background: radial-gradient(circle, rgba(216,93,42,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.recordings-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #f5a15f;
+  margin-bottom: 14px;
+  position: relative; z-index: 1;
+}
+.recordings-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.08;
+  letter-spacing: -0.7px;
+  margin: 0 0 14px;
+  position: relative; z-index: 1;
+}
+.recordings-sub {
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(244,236,224,0.88);
+  max-width: 580px;
+  margin: 0 0 22px;
+  position: relative; z-index: 1;
+}
+.recordings-chips {
+  position: relative; z-index: 1;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.recordings-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(244,236,224,0.92);
+}
+@media (max-width: 640px) {
+  .recordings-hero { padding: 32px 22px 28px; }
+  .recordings-title { font-size: 28px; }
+}
+
+/* Recording cards grid */
+.recording-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 0 0 32px;
+}
+
+.recording-card {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 24px 24px 20px;
+  background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+}
+.recording-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(28, 24, 22, 0.08);
+}
+
+.recording-card-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.recording-session-badge {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.recording-title-block {
+  flex: 1;
+}
+.recording-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+  margin: 0 0 4px;
+}
+.recording-meta {
+  font-size: 12px;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.recording-play-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  align-self: flex-start;
+}
+.recording-play-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(216,93,42,0.3);
+}
+.recording-play-btn .play-arrow {
+  font-size: 15px;
+}
+
+.recording-recap-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.recording-recap-link:hover { text-decoration: underline; }
+
+.recording-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--rule);
+  padding-top: 14px;
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-header">
+  <img src="../assets/images/dhwani-logo.png?v=2" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="../assets/images/dhwani-logo.png?v=2" alt="Dhwani RIS">
+    <div class="sidebar-title">AI Playground</div>
+    <div class="sidebar-sub">Product &amp; Operations</div>
+  </div>
+  <div class="sidebar-section">
+    <a class="sidebar-link" href="../index.html"><span class="link-icon">~</span> Home</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sessions</div>
+    <a class="sidebar-link active" href="recordings.html"><span class="link-icon">&#9654;</span> All Recordings <span class="badge-new">New</span></a>
+    <a class="sidebar-link" href="../sessions/session-0.html"><span class="link-icon">0</span> Introduction</a>
+    <a class="sidebar-link" href="../sessions/session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
+    <a class="sidebar-link" href="../sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
+    <a class="sidebar-link" href="../sessions/session-3.html"><span class="link-icon">3</span> Hands On</a>
+    <a class="sidebar-link" href="../sessions/session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks</a>
+    <a class="sidebar-link" href="../sessions/session-5.html"><span class="link-icon">5</span> Open Build</a>
+    <a class="sidebar-link" href="../sessions/session-6.html"><span class="link-icon">6</span> Chaos &amp; Craft <span class="badge-new">Latest</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Program</div>
+    <a class="sidebar-link" href="how-we-play.html"><span class="link-icon">&#9679;</span> How We Play</a>
+    <a class="sidebar-link" href="courses.html"><span class="link-icon">C</span> Courses <span class="badge-new">New</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Frameworks</div>
+    <a class="sidebar-link" href="../frameworks/builder-protocol.html"><span class="link-icon">B</span> The Builder Protocol</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Resources</div>
+    <a class="sidebar-link" href="../readings.html"><span class="link-icon">R</span> Readings</a>
+    <a class="sidebar-link" href="../tools.html"><span class="link-icon">T</span> Tools</a>
+    <a class="sidebar-link" href="../prompts.html"><span class="link-icon">P</span> Prompts</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="https://dhwaniris.com">dhwaniris.com</a>
+    <small>Built by Nihaan Mohammed</small>
+  </div>
+</aside>
+
+<div class="main"><div class="content">
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a> / Program / Recordings</div>
+</div>
+
+<!-- HERO -->
+<div class="recordings-hero">
+  <div class="recordings-eyebrow">Every Thursday session &middot; Dhwani RIS members only</div>
+  <h1 class="recordings-title">Session Recordings.</h1>
+  <p class="recordings-sub">All recordings in one place. Jump straight to a session.</p>
+  <div class="recordings-chips">
+    <span class="recordings-chip"><strong>6</strong> sessions</span>
+    <span class="recordings-chip">SharePoint &middot; Members only</span>
+  </div>
+</div>
+
+<!-- RECORDING CARDS — reverse chronological -->
+<div class="recording-grid">
+
+  <!-- S6 -->
+  <div class="recording-card">
+    <div class="recording-card-header">
+      <div class="recording-session-badge">S6</div>
+      <div class="recording-title-block">
+        <div class="recording-title">Of Chaos and Craft</div>
+        <div class="recording-meta">Thursday, 23 April 2026 &middot; 59m &middot; Nihaan Mohammed, Aditya Gore, Abhinav Tyagi, Harshdeep</div>
+      </div>
+    </div>
+    <a class="recording-play-btn" href="https://teams.microsoft.com/l/meetingrecap?driveId=b%210oNJhLI4AUGjp5W7veorxP0T_1iayIFNvc7RjHGGTgU1MqUx1wnZTpykcXyQDC51&driveItemId=01BMCH33YWMMRX6RJ4RNBYI533JRG4NDAU&sitePath=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQAWYyN_RTyLQ4R3e0xNxowUAU_ph9B34FXH6JzjbmecuOI&fileUrl=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQAWYyN_RTyLQ4R3e0xNxowUAU_ph9B34FXH6JzjbmecuOI&iCalUid=040000008200E00074C5B7101A82E00807EA041743EF20DC72CDDC0100000000000000001000000092BBAE672D38C847A652B74BC83D40B9&masterICalUid=040000008200E00074C5B7101A82E0080000000043EF20DC72CDDC0100000000000000001000000092BBAE672D38C847A652B74BC83D40B9&threadId=19%3Ameeting_NjkxOGRmMTYtOWI5My00NjU1LWJhOWItNDM3MWQ1YzhmZjFj%40thread.v2&organizerId=163ae90d-7d16-41da-8079-2a1879f5e3a6&tenantId=6be9876d-2470-42cb-9f42-060454fab53d&callId=6dbeb882-bb9e-4827-ba30-39493fd3f1e5&threadType=Meeting&meetingType=Recurring&subType=RecapSharingLink_RecapChiclet" target="_blank"><span class="play-arrow">&#9654;</span> Watch Recording</a>
+    <div class="recording-card-footer">
+      <a class="recording-recap-link" href="../sessions/session-6.html">Read the recap &rarr;</a>
+    </div>
+  </div>
+
+  <!-- S5 -->
+  <div class="recording-card">
+    <div class="recording-card-header">
+      <div class="recording-session-badge">S5</div>
+      <div class="recording-title-block">
+        <div class="recording-title">Open Build &amp; Problem-Solving</div>
+        <div class="recording-meta">Thursday, 16 April 2026 &middot; ~60m &middot; Nihaan Mohammed, Ankit Jangir, Ravi Jangir, Kashish Talwani, Arpita Jain, Abhinav Tyagi</div>
+      </div>
+    </div>
+    <a class="recording-play-btn" href="https://dhwaniris1-my.sharepoint.com/:v:/g/personal/nihaan_mohammed_dhwaniris_com/IQDlPeunAL2uQKOGtOpyliPiAaU2ZVZFhgOPPvJ0_Oyv3QM?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=fIebba" target="_blank"><span class="play-arrow">&#9654;</span> Watch Recording</a>
+    <div class="recording-card-footer">
+      <a class="recording-recap-link" href="../sessions/session-5.html">Read the recap &rarr;</a>
+    </div>
+  </div>
+
+  <!-- S4 -->
+  <div class="recording-card">
+    <div class="recording-card-header">
+      <div class="recording-session-badge">S4</div>
+      <div class="recording-title-block">
+        <div class="recording-title">CLI, Hooks &amp; Real Products</div>
+        <div class="recording-meta">Tuesday, 7 April 2026 &middot; ~65m &middot; Nihaan Mohammed, Aman Sharma, Sunita, Sunchay, Akshat Verma</div>
+      </div>
+    </div>
+    <a class="recording-play-btn" href="https://dhwaniris1-my.sharepoint.com/:v:/g/personal/nihaan_mohammed_dhwaniris_com/IQBJRQ2stCXuS7QWYhQREoesAVJIR5W2rjgGLcxXYobc9n8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=hpDCID" target="_blank"><span class="play-arrow">&#9654;</span> Watch Recording</a>
+    <div class="recording-card-footer">
+      <a class="recording-recap-link" href="../sessions/session-4.html">Read the recap &rarr;</a>
+    </div>
+  </div>
+
+  <!-- S3 -->
+  <div class="recording-card">
+    <div class="recording-card-header">
+      <div class="recording-session-badge">S3</div>
+      <div class="recording-title-block">
+        <div class="recording-title">Hands On</div>
+        <div class="recording-meta">Thursday, 26 March 2026 &middot; 5:00&ndash;6:15 PM &middot; Nihaan Mohammed, Shweta Singh, Samarth</div>
+      </div>
+    </div>
+    <a class="recording-play-btn" href="https://dhwaniris1-my.sharepoint.com/:v:/g/personal/nihaan_mohammed_dhwaniris_com/IQButXa5sSq0QaOnLFfXtbCeASbzn-13s23eBjj1EMzArY8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=1byJ1B" target="_blank"><span class="play-arrow">&#9654;</span> Watch Recording</a>
+    <div class="recording-card-footer">
+      <a class="recording-recap-link" href="../sessions/session-3.html">Read the recap &rarr;</a>
+    </div>
+  </div>
+
+  <!-- S2 -->
+  <div class="recording-card">
+    <div class="recording-card-header">
+      <div class="recording-session-badge">S2</div>
+      <div class="recording-title-block">
+        <div class="recording-title">GitHub Knowledge Base</div>
+        <div class="recording-meta">Thursday, 13 March 2026 &middot; Nihaan Mohammed</div>
+      </div>
+    </div>
+    <a class="recording-play-btn" href="https://teams.microsoft.com/l/meetingrecap?driveId=b%210oNJhLI4AUGjp5W7veorxP0T_1iayIFNvc7RjHGGTgU1MqUx1wnZTpykcXyQDC51&driveItemId=01BMCH33YEDVMNPLAVJBF2XKB44ONF2OTY&sitePath=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQAEHVjXrBVIS6uoPOOaXTp4AZ0WOhm-QdUnNzgEHwhQWXk&fileUrl=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQAEHVjXrBVIS6uoPOOaXTp4AZ0WOhm-QdUnNzgEHwhQWXk&iCalUid=040000008200E00074C5B7101A82E00807EA03133EF80A0AB0ACDC01000000000000000010000000BF88594600842543B848855EBE777156&masterICalUid=040000008200E00074C5B7101A82E008000000003EF80A0AB0ACDC01000000000000000010000000BF88594600842543B848855EBE777156&threadId=19%3Ameeting_NjkxOGRmMTYtOWI5My00NjU1LWJhOWItNDM3MWQ1YzhmZjFj%40thread.v2&organizerId=163ae90d-7d16-41da-8079-2a1879f5e3a6&tenantId=6be9876d-2470-42cb-9f42-060454fab53d&callId=7d13aaee-3444-48d4-9291-ee8b4e6ad1ec&threadType=Meeting&meetingType=Recurring&subType=RecapSharingLink_RecapChiclet" target="_blank"><span class="play-arrow">&#9654;</span> Watch Recording</a>
+    <div class="recording-card-footer">
+      <a class="recording-recap-link" href="../sessions/session-2.html">Read the recap &rarr;</a>
+    </div>
+  </div>
+
+  <!-- S1 -->
+  <div class="recording-card">
+    <div class="recording-card-header">
+      <div class="recording-session-badge">S1</div>
+      <div class="recording-title-block">
+        <div class="recording-title">Vibe Coding</div>
+        <div class="recording-meta">Thursday, 6 March 2026 &middot; Nihaan Mohammed</div>
+      </div>
+    </div>
+    <a class="recording-play-btn" href="https://teams.microsoft.com/l/meetingrecap?driveId=b%210oNJhLI4AUGjp5W7veorxP0T_1iayIFNvc7RjHGGTgU1MqUx1wnZTpykcXyQDC51&driveItemId=01BMCH332QSTKPGAG55NDLWADXHBIORBLC&sitePath=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQBQlNTzAN3rRrsAdzhQ6IViAcJuHMT2IeRXd8Bri94oRUs&fileUrl=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQBQlNTzAN3rRrsAdzhQ6IViAcJuHMT2IeRXd8Bri94oRUs&iCalUid=040000008200E00074C5B7101A82E00807EA03063EF80A0AB0ACDC01000000000000000010000000BF88594600842543B848855EBE777156&masterICalUid=040000008200E00074C5B7101A82E008000000003EF80A0AB0ACDC01000000000000000010000000BF88594600842543B848855EBE777156&threadId=19%3Ameeting_NjkxOGRmMTYtOWI5My00NjU1LWJhOWItNDM3MWQ1YzhmZjFj%40thread.v2&organizerId=163ae90d-7d16-41da-8079-2a1879f5e3a6&tenantId=6be9876d-2470-42cb-9f42-060454fab53d&callId=5e6444de-01a7-4c54-b663-fd66f2c29224&threadType=Meeting&meetingType=Recurring&subType=RecapSharingLink_RecapChiclet" target="_blank"><span class="play-arrow">&#9654;</span> Watch Recording</a>
+    <div class="recording-card-footer">
+      <a class="recording-recap-link" href="../sessions/session-1.html">Read the recap &rarr;</a>
+    </div>
+  </div>
+
+</div>
+
+</div></div>
+
+</body>
+</html>
