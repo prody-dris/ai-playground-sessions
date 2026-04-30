@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Every Thursday 5–6 PM at Dhwani RIS — an open build room. Bring a problem. Sit down. Leave with someone working on it with you.">
+<link rel="icon" type="image/png" href="assets/images/dhwani-logo.png?v=2">
+<link rel="apple-touch-icon" href="assets/images/dhwani-logo.png?v=2">
+<meta property="og:site_name" content="AI Playground — Dhwani RIS">
+<meta property="og:title" content="The Playground — This Week's Open Problems | AI Playground">
+<meta property="og:description" content="Thursday 5–6 PM at Dhwani RIS. Open build room. Bring a problem. Leave with someone working on it with you. This week's problems on the floor — refreshes every Thursday.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://prody-dris.github.io/ai-playground-sessions/playground.html">
+<meta property="og:image" content="https://prody-dris.github.io/ai-playground-sessions/assets/images/session-6/aditya-four-layers.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<title>The Playground — This Week's Open Problems | AI Playground</title>
+<link rel="stylesheet" href="assets/style.css?v=4">
+<style>
+/* ── Playground rolling page ── */
+
+/* Hero — distinct from index hero. Cream-on-deep, serif title. */
+.pg-hero {
+  background: linear-gradient(135deg, #1a2a38, #0f1d28);
+  color: #f4ece0;
+  border-radius: 14px;
+  padding: 44px 44px 40px;
+  margin: 16px 0 28px;
+  position: relative;
+  overflow: hidden;
+}
+.pg-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: -80px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(216,93,42,0.22) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.pg-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -120px; right: -90px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(94,146,176,0.16) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.pg-hero > * { position: relative; z-index: 1; }
+
+.pg-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #f5a15f;
+  padding: 6px 12px;
+  border: 1px solid rgba(245,161,95,0.4);
+  border-radius: 100px;
+  background: rgba(245,161,95,0.08);
+  margin-bottom: 22px;
+}
+.pg-live-pill .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #f5a15f;
+  box-shadow: 0 0 0 0 rgba(245,161,95,0.6);
+  animation: pg-pulse 2s infinite;
+}
+@keyframes pg-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(245,161,95,0.55); }
+  70%  { box-shadow: 0 0 0 10px rgba(245,161,95,0); }
+  100% { box-shadow: 0 0 0 0 rgba(245,161,95,0); }
+}
+
+.pg-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -0.8px;
+  margin: 0 0 16px;
+}
+.pg-hero h1 em {
+  font-style: italic;
+  color: #ffd8b1;
+  font-weight: 500;
+}
+.pg-hero-sub {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(244,236,224,0.86);
+  max-width: 680px;
+  margin: 0 0 22px;
+}
+.pg-hero-sub strong { color: #fff; font-weight: 600; }
+
+.pg-hero-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pg-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 22px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.pg-hero-btn.primary {
+  background: var(--accent);
+  color: #fff;
+}
+.pg-hero-btn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(216,93,42,0.35);
+}
+.pg-hero-btn.secondary {
+  background: transparent;
+  color: #f4ece0;
+  border: 1px solid rgba(244,236,224,0.3);
+}
+.pg-hero-btn.secondary:hover {
+  border-color: #f5a15f;
+  color: #f5a15f;
+}
+
+@media (max-width: 640px) {
+  .pg-hero { padding: 32px 24px 28px; }
+  .pg-hero h1 { font-size: 34px; }
+}
+
+/* Section header eyebrow */
+.pg-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin: 0 0 8px;
+}
+
+/* Problem grid — 2 problem cards + 1 ghost */
+.pg-problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  margin: 16px 0 4px;
+}
+.pg-card {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 24px 24px 22px;
+  background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+.pg-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+.pg-card.accent {
+  border-left: 4px solid var(--accent);
+  background: linear-gradient(180deg, var(--accent-bg) 0%, var(--card-bg) 38%);
+}
+.pg-card.accent:hover { border-color: var(--accent); border-left-color: var(--accent); }
+.pg-card.green {
+  border-left: 4px solid var(--green);
+  background: linear-gradient(180deg, var(--green-bg) 0%, var(--card-bg) 38%);
+}
+.pg-card.green:hover { border-color: var(--green); border-left-color: var(--green); }
+.pg-card.ghost {
+  border-style: dashed;
+  border-color: rgba(0,0,0,0.12);
+  background: repeating-linear-gradient(135deg, transparent, transparent 12px, rgba(0,0,0,0.012) 12px, rgba(0,0,0,0.012) 24px);
+}
+.pg-card.ghost:hover {
+  border-color: var(--accent);
+  border-style: dashed;
+}
+
+.pg-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  align-self: flex-start;
+  margin-bottom: 14px;
+}
+.pg-tag.accent {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent-light);
+}
+.pg-tag.green {
+  background: var(--green-bg);
+  color: var(--green);
+  border: 1px solid rgba(26,122,26,0.18);
+}
+.pg-tag.ghost {
+  background: transparent;
+  color: var(--text-light);
+  border: 1px dashed rgba(0,0,0,0.18);
+}
+
+.pg-card h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: -0.4px;
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+.pg-card.ghost h3 { color: var(--text-mid); font-style: italic; }
+
+.pg-builders {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-light);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.pg-builders strong { color: var(--text-mid); font-weight: 700; }
+
+.pg-problem-line {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  margin: 0 0 16px;
+}
+
+.pg-card-block {
+  border-top: 1px solid var(--rule);
+  padding-top: 12px;
+  margin-top: auto;
+}
+.pg-block-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 6px;
+}
+.pg-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+.pg-bullets li {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-mid);
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 4px;
+}
+.pg-bullets li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  font-size: 11px;
+}
+.pg-card.accent .pg-bullets li::before { color: var(--accent); }
+.pg-card.green .pg-bullets li::before { color: var(--green); }
+.pg-card.ghost .pg-bullets li::before { color: var(--text-light); }
+
+.pg-ghost-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: 8px;
+  letter-spacing: 0.02em;
+}
+.pg-ghost-cta:hover { text-decoration: underline; }
+
+@media (max-width: 980px) {
+  .pg-problem-grid { grid-template-columns: 1fr; }
+}
+
+/* How the room runs — 4-step horizontal */
+.pg-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 16px 0 4px;
+}
+.pg-flow-step {
+  padding: 22px 22px 20px;
+  border-right: 1px solid var(--rule);
+  background: var(--card-bg);
+  position: relative;
+}
+.pg-flow-step:last-child { border-right: none; }
+.pg-flow-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.pg-flow-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.1px;
+  margin-bottom: 6px;
+}
+.pg-flow-body {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-mid);
+  margin: 0;
+}
+@media (max-width: 820px) {
+  .pg-flow { grid-template-columns: repeat(2, 1fr); }
+  .pg-flow-step:nth-child(2) { border-right: none; }
+  .pg-flow-step:nth-child(1), .pg-flow-step:nth-child(2) { border-bottom: 1px solid var(--rule); }
+}
+@media (max-width: 480px) {
+  .pg-flow { grid-template-columns: 1fr; }
+  .pg-flow-step { border-right: none; border-bottom: 1px solid var(--rule); }
+  .pg-flow-step:last-child { border-bottom: none; }
+}
+
+/* Recap empty state */
+.pg-recap {
+  border: 1px dashed rgba(0,0,0,0.14);
+  border-radius: 12px;
+  padding: 28px 28px 26px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.012), transparent);
+  margin: 16px 0 4px;
+}
+.pg-recap-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+.pg-recap h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: -0.3px;
+  margin: 0 0 8px;
+}
+.pg-recap p {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  margin: 0;
+}
+
+/* Archive row */
+.pg-archive {
+  border-top: 1px solid var(--rule);
+  padding-top: 22px;
+  margin-top: 8px;
+}
+.pg-archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+.pg-archive-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--card-bg);
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+.pg-archive-link:hover {
+  border-color: var(--accent);
+}
+.pg-archive-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  min-width: 22px;
+}
+.pg-archive-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--primary);
+  line-height: 1.3;
+}
+.pg-archive-link:hover .pg-archive-title { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- Mobile header -->
+<div class="mobile-header">
+  <img src="assets/images/dhwani-logo.png?v=2" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="assets/images/dhwani-logo.png?v=2" alt="Dhwani RIS">
+    <div class="sidebar-title">AI Playground</div>
+    <div class="sidebar-sub">Product &amp; Operations</div>
+  </div>
+  <div class="sidebar-section">
+    <a class="sidebar-link" href="index.html"><span class="link-icon">~</span> Home</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sessions</div>
+    <a class="sidebar-link active" href="playground.html"><span class="link-icon">&#9650;</span> The Playground <span class="badge-new">Live</span></a>
+    <a class="sidebar-link" href="program/recordings.html"><span class="link-icon">&#9654;</span> All Recordings <span class="badge-new">New</span></a>
+    <a class="sidebar-link" href="sessions/session-0.html"><span class="link-icon">0</span> Introduction</a>
+    <a class="sidebar-link" href="sessions/session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
+    <a class="sidebar-link" href="sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
+    <a class="sidebar-link" href="sessions/session-3.html"><span class="link-icon">3</span> Hands On</a>
+    <a class="sidebar-link" href="sessions/session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks</a>
+    <a class="sidebar-link" href="sessions/session-5.html"><span class="link-icon">5</span> Open Build</a>
+    <a class="sidebar-link" href="sessions/session-6.html"><span class="link-icon">6</span> Chaos &amp; Craft <span class="badge-new">Latest</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Program</div>
+    <a class="sidebar-link" href="program/how-we-play.html"><span class="link-icon">&#9679;</span> How We Play</a>
+    <a class="sidebar-link" href="program/courses.html"><span class="link-icon">C</span> Courses <span class="badge-new">New</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Frameworks</div>
+    <a class="sidebar-link" href="frameworks/builder-protocol.html"><span class="link-icon">B</span> The Builder Protocol <span class="badge-new">New</span></a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Resources</div>
+    <a class="sidebar-link" href="readings.html"><span class="link-icon">R</span> Readings</a>
+    <a class="sidebar-link" href="tools.html"><span class="link-icon">T</span> Tools</a>
+    <a class="sidebar-link" href="prompts.html"><span class="link-icon">P</span> Prompts</a>
+  </div>
+  <div class="sidebar-footer">
+    <a href="https://dhwaniris.com">dhwaniris.com</a>
+    <small>Built by Prody &mdash; an agent managed by Nihaan, Product Team @ DRIS</small>
+  </div>
+</aside>
+
+<!-- Main content -->
+<div class="main"><div class="content">
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> / The Playground</div>
+</div>
+
+<!-- HERO -->
+<div class="pg-hero">
+  <div class="pg-live-pill"><span class="dot"></span> Live this Thursday</div>
+  <h1>Two problems on the floor.<br><em>Bring a third.</em></h1>
+  <p class="pg-hero-sub">
+    Thursday 5&ndash;6 PM at Dhwani RIS. <strong>An open build room</strong> &mdash; not a lecture, not a demo. Bring a real problem from a real project. Walk through what's stuck. Pair off. Leave with someone working on it with you.
+  </p>
+  <div class="pg-hero-actions">
+    <a href="https://teams.microsoft.com/" class="pg-hero-btn primary" target="_blank" rel="noopener">Join the meeting &rarr;</a>
+    <a href="program/how-we-play.html" class="pg-hero-btn secondary">How we play</a>
+  </div>
+</div>
+
+<!-- ON THE FLOOR THIS WEEK -->
+<section>
+  <div class="pg-eyebrow">On the floor this week</div>
+  <h2>What we're solving Thursday<span>.</span></h2>
+  <div class="prose" style="margin-bottom:8px;">
+    <p>Two problems are up before the room opens. A third slot is yours &mdash; whoever brings it. We refresh this page every Thursday with whatever's actually being worked on.</p>
+  </div>
+
+  <div class="pg-problem-grid">
+
+    <!-- Card 1: A2A Architecture -->
+    <div class="pg-card accent">
+      <span class="pg-tag accent">Architecture</span>
+      <h3>A2A Architecture</h3>
+      <div class="pg-builders"><strong>Ankit Jangir</strong> &middot; <strong>Nihaan Mohammed</strong></div>
+      <p class="pg-problem-line">How do agents talk to each other without becoming a tangle? We're mapping the protocol layer underneath multi-agent systems &mdash; handoffs, state, context boundaries.</p>
+      <div class="pg-card-block">
+        <div class="pg-block-label">What we're solving</div>
+        <ul class="pg-bullets">
+          <li>The contract for an agent-to-agent call &mdash; request, context, return</li>
+          <li>Where one agent owns context vs. delegates it cleanly</li>
+          <li>What a registry of agents looks like &mdash; and what shouldn't go in it</li>
+        </ul>
+        <div class="pg-block-label">Where you'd plug in</div>
+        <ul class="pg-bullets">
+          <li>You've felt agents stepping on each other in your own work</li>
+          <li>You want a say in what the protocol enforces vs. leaves loose</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 2: HRMS Ticketing MVP -->
+    <div class="pg-card green">
+      <span class="pg-tag green">Product</span>
+      <h3>HRMS Ticketing MVP</h3>
+      <div class="pg-builders"><strong>Akshat Verma</strong> &middot; <strong>Kashish Talwani</strong></div>
+      <p class="pg-problem-line">Internal HR queries are scattered across DMs and email. We're building the first working slice of an in-house ticketing flow on HRMS &mdash; minimal, real, shippable this sprint.</p>
+      <div class="pg-card-block">
+        <div class="pg-block-label">What we're solving</div>
+        <ul class="pg-bullets">
+          <li>The thinnest ticket lifecycle that's still useful &mdash; raise, triage, resolve</li>
+          <li>Where it lives in HRMS without bloating the form</li>
+          <li>What HR actually needs to see vs. what's nice-to-have</li>
+        </ul>
+        <div class="pg-block-label">Where you'd plug in</div>
+        <ul class="pg-bullets">
+          <li>You've raised an HR ticket recently and have opinions about what hurt</li>
+          <li>You've shipped MVPs before and know how to keep one small</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Card 3: Bring your own (ghost) -->
+    <div class="pg-card ghost">
+      <span class="pg-tag ghost">Open slot</span>
+      <h3>Bring your own.</h3>
+      <div class="pg-builders" style="visibility:hidden;">.</div>
+      <p class="pg-problem-line">Stuck on something? Walk in with it. Take five minutes to frame it. Someone in the room picks it up with you. Two on the floor today is just where we start &mdash; the third one is whoever shows up with a problem.</p>
+      <div class="pg-card-block">
+        <div class="pg-block-label">How to bring one</div>
+        <ul class="pg-bullets">
+          <li>One paragraph: what you're stuck on, what you've tried, what good looks like</li>
+          <li>Drop it in the WhatsApp group, or just say it when the room opens</li>
+        </ul>
+        <a class="pg-ghost-cta" href="program/how-we-play.html">Read how the room runs &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW THE ROOM RUNS -->
+<section>
+  <div class="pg-eyebrow">The hour</div>
+  <h2>How the room runs<span>.</span></h2>
+  <div class="pg-flow">
+    <div class="pg-flow-step">
+      <div class="pg-flow-num">1</div>
+      <div class="pg-flow-title">Bring it</div>
+      <p class="pg-flow-body">Drop your problem in the meeting or in the WhatsApp group. Forward-looking, half-broken, fully stuck &mdash; all welcome.</p>
+    </div>
+    <div class="pg-flow-step">
+      <div class="pg-flow-num">2</div>
+      <div class="pg-flow-title">Frame it</div>
+      <p class="pg-flow-body">Five minutes to walk us through what's stuck and what good looks like. The room asks the questions you forgot to ask yourself.</p>
+    </div>
+    <div class="pg-flow-step">
+      <div class="pg-flow-num">3</div>
+      <div class="pg-flow-title">Build it</div>
+      <p class="pg-flow-body">Pair off. Attack it for the rest of the hour. Tools out, screens shared, real progress &mdash; not theory.</p>
+    </div>
+    <div class="pg-flow-step">
+      <div class="pg-flow-num">4</div>
+      <div class="pg-flow-title">Leave with it</div>
+      <p class="pg-flow-body">Someone owns the next step. A short recap drops by Tuesday on this page. Next Thursday, fresh problems.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THIS WEEK'S RECAP (empty state until post-session) -->
+<section>
+  <div class="pg-eyebrow">This week's recap</div>
+  <div class="pg-recap">
+    <div class="pg-recap-eyebrow">Drops by Tuesday</div>
+    <h3>What we cracked, what's still open.</h3>
+    <p>This space updates after Thursday with what each problem actually moved to &mdash; what got built, what got scoped, who's carrying which thread next. It stays here until next Thursday's problems take its place.</p>
+  </div>
+</section>
+
+<!-- ARCHIVE -->
+<section>
+  <div class="pg-eyebrow">The lecture archive</div>
+  <h2>S0&ndash;S6 &mdash; the curriculum years<span>.</span></h2>
+  <div class="prose" style="margin-bottom:6px;">
+    <p>Six sessions of scaffolding got us here &mdash; vibe coding, GitHub, knowledge bases, CLI, hooks, skills, protocol. They're preserved as an archive. New here? Start at S0 and walk forward.</p>
+  </div>
+  <div class="pg-archive">
+    <div class="pg-archive-grid">
+      <a class="pg-archive-link" href="sessions/session-0.html">
+        <span class="pg-archive-num">0</span>
+        <span class="pg-archive-title">Introduction &amp; Open Build</span>
+      </a>
+      <a class="pg-archive-link" href="sessions/session-1.html">
+        <span class="pg-archive-num">1</span>
+        <span class="pg-archive-title">Vibe Coding</span>
+      </a>
+      <a class="pg-archive-link" href="sessions/session-2.html">
+        <span class="pg-archive-num">2</span>
+        <span class="pg-archive-title">GitHub Knowledge Base</span>
+      </a>
+      <a class="pg-archive-link" href="sessions/session-3.html">
+        <span class="pg-archive-num">3</span>
+        <span class="pg-archive-title">Hands On</span>
+      </a>
+      <a class="pg-archive-link" href="sessions/session-4.html">
+        <span class="pg-archive-num">4</span>
+        <span class="pg-archive-title">CLI &amp; Hooks</span>
+      </a>
+      <a class="pg-archive-link" href="sessions/session-5.html">
+        <span class="pg-archive-num">5</span>
+        <span class="pg-archive-title">Open Build</span>
+      </a>
+      <a class="pg-archive-link" href="sessions/session-6.html">
+        <span class="pg-archive-num">6</span>
+        <span class="pg-archive-title">Chaos &amp; Craft</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="main-footer">
+  <div><a href="https://dhwaniris.com">Dhwani RIS</a> &middot; <a href="https://github.com/prody-dris/ai-playground-sessions">Source</a></div>
+  <small>Built by Prody &mdash; an agent managed by Nihaan, Product Team @ DRIS &middot; 2026</small>
+</div>
+
+</div></div>
+</body>
+</html>
