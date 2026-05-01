@@ -30,9 +30,9 @@
 
     + '<details class="sidebar-section sidebar-collapsible"' + (curriculumOpen ? ' open' : '') + '>'
     +   '<summary class="sidebar-collapsible-trigger">'
-    +     '<span class="link-icon">&#9776;</span>'
-    +     '<span class="sidebar-collapsible-label">Curriculum</span>'
-    +     '<span class="sidebar-collapsible-count">7</span>'
+    +     '<span class="link-icon">S</span>'
+    +     '<span class="sidebar-collapsible-label">All Sessions</span>'
+    +     '<span class="sidebar-collapsible-hint">S0&ndash;S6</span>'
     +     '<span class="chev">&#9656;</span>'
     +   '</summary>'
     +   '<div class="sidebar-collapsible-children">'
