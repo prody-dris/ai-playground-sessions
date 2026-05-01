@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="AI Playground">
+  <title>AI Playground</title>
+  <desc>A simple slide curve descending into an orange dot — the playground rule: arrive, land, build.</desc>
+  <!-- Slide: deep red bezier, round caps, gentle descent -->
+  <path d="M 15 18 Q 65 24 76 75"
+        stroke="#8B1A1A"
+        stroke-width="9"
+        stroke-linecap="round"
+        fill="none"/>
+  <!-- Landing dot: warm orange, sits at the slide endpoint -->
+  <circle cx="78" cy="78" r="13" fill="#D4842A"/>
+</svg>

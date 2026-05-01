@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="AI Playground — Dhwani RIS. A working room for people building with AI. Come, build, share, grow. The way you played at 7, with grown-up tools.">
-<link rel="icon" type="image/png" href="assets/images/dhwani-logo.png?v=2">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg?v=1">
 <link rel="apple-touch-icon" href="assets/images/dhwani-logo.png?v=2">
 <meta property="og:site_name" content="AI Playground — Dhwani RIS">
 <meta property="og:title" content="AI Playground — Dhwani RIS">
@@ -14,14 +14,58 @@
 <title>AI Playground &mdash; Dhwani RIS</title>
 <link rel="stylesheet" href="assets/style.css?v=7">
 <style>
-/* Home — mission + simple navigate */
+/* Home — logo-led, insider-first */
 
-/* Hero */
+/* Hero — logo + title side by side */
 .home-hero {
-  margin: 12px 0 36px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: center;
+  margin: 16px 0 28px;
   padding: 0 0 28px;
   border-bottom: 1px solid var(--rule);
 }
+@media (max-width: 720px) {
+  .home-hero { grid-template-columns: 1fr; gap: 16px; padding-top: 8px; }
+}
+
+/* Inline logo — animated entrance */
+.home-logo {
+  width: 156px;
+  height: 156px;
+  display: block;
+  flex-shrink: 0;
+  animation: logo-arrive 0.9s cubic-bezier(0.2, 0.8, 0.3, 1.2) both;
+}
+.home-logo .home-logo-slide {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: slide-draw 0.8s ease-out 0.1s forwards;
+}
+.home-logo .home-logo-dot {
+  transform-origin: 78px 78px;
+  transform: scale(0);
+  animation: dot-land 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s forwards;
+}
+@keyframes logo-arrive {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes slide-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes dot-land {
+  to { transform: scale(1); }
+}
+@media (max-width: 720px) {
+  .home-logo { width: 112px; height: 112px; }
+}
+@media (max-width: 480px) {
+  .home-logo { width: 88px; height: 88px; }
+}
+
+.home-hero-body { min-width: 0; }
 .home-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -51,12 +95,12 @@
 
 .home-hero h1 {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 76px;
+  font-size: 64px;
   font-weight: 600;
   line-height: 0.98;
-  letter-spacing: -1.6px;
+  letter-spacing: -1.4px;
   color: var(--primary);
-  margin: 0 0 18px;
+  margin: 0 0 14px;
 }
 .home-hero h1 em {
   font-style: italic;
@@ -109,14 +153,61 @@
 }
 
 @media (max-width: 720px) {
-  .home-hero h1 { font-size: 52px; letter-spacing: -1px; }
-  .home-mantra { font-size: 22px; }
+  .home-hero h1 { font-size: 44px; letter-spacing: -0.8px; }
+  .home-mantra { font-size: 20px; }
 }
 @media (max-width: 480px) {
-  .home-hero h1 { font-size: 44px; }
-  .home-mantra { font-size: 19px; }
+  .home-hero h1 { font-size: 36px; }
+  .home-mantra { font-size: 17px; }
   .home-mantra .mtr + .mtr { margin-left: 10px; }
   .home-mantra .mtr + .mtr::before { margin-right: 10px; }
+}
+
+/* Last Thursday — maintained weekly one-liner */
+.home-last {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 4px 0 30px;
+  padding: 16px 22px;
+  background: linear-gradient(90deg, rgba(212,132,42,0.05), rgba(212,132,42,0.01) 70%, transparent);
+  border: 1px solid rgba(212,132,42,0.18);
+  border-radius: 10px;
+}
+.home-last-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+  padding-right: 18px;
+  border-right: 1px solid rgba(212,132,42,0.22);
+  flex-shrink: 0;
+}
+.home-last-text {
+  font-size: 13.5px;
+  color: var(--text-mid);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+  min-width: 220px;
+}
+.home-last-text strong { color: var(--text); font-weight: 700; }
+.home-last-text em { font-style: italic; color: var(--text-mid); }
+.home-last-cta {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.home-last-cta:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  .home-last-label { border-right: none; padding-right: 0; padding-bottom: 6px; width: 100%; }
 }
 
 /* Navigate grid — 4 cards */
@@ -338,19 +429,40 @@
 
 <div class="main"><div class="content">
 
-<!-- HERO — mission + mantra -->
+<!-- HERO — logo + title side by side -->
 <div class="home-hero">
-  <div class="home-eyebrow"><span class="dot"></span> Live every Thursday &middot; 5&ndash;6 PM</div>
-  <h1>AI <em>Playground</em>.</h1>
-  <div class="home-mantra">
-    <span class="mtr">Come</span><span class="mtr">build</span><span class="mtr">share</span><span class="mtr"><em>play</em></span>
+
+  <svg class="home-logo" viewBox="0 0 100 100" role="img" aria-label="AI Playground logo">
+    <title>AI Playground</title>
+    <path class="home-logo-slide"
+          d="M 15 18 Q 65 24 76 75"
+          stroke="#8B1A1A" stroke-width="9"
+          stroke-linecap="round" fill="none"/>
+    <circle class="home-logo-dot"
+            cx="78" cy="78" r="13" fill="#D4842A"/>
+  </svg>
+
+  <div class="home-hero-body">
+    <div class="home-eyebrow"><span class="dot"></span> Live every Thursday &middot; 5&ndash;6 PM</div>
+    <h1>AI <em>Playground</em>.</h1>
+    <div class="home-mantra">
+      <span class="mtr">Come</span><span class="mtr">build</span><span class="mtr">share</span><span class="mtr"><em>play</em></span>
+    </div>
+    <p class="home-hero-sub">The working room for Dhwani RIS &mdash; where we build with AI on real client work, every Thursday. Show up with a problem, pair with someone, ship something. <strong>Low stakes, real play, mutual learning</strong> &mdash; the spirit of a playground, applied to the craft.</p>
+    <div class="home-hero-meta">
+      <span><strong>Where:</strong> MEVN room + Teams</span>
+      <span><strong>When:</strong> Thursdays, 5&ndash;6 PM</span>
+      <span><strong>Who:</strong> PMs &middot; ops &middot; domain experts</span>
+    </div>
   </div>
-  <p class="home-hero-sub">A working room for people at Dhwani RIS who want to build with AI &mdash; not just talk about it. Show up with a real problem, pair with someone, ship something. <strong>The way you played at 7</strong> &mdash; low stakes, real play, mutual learning &mdash; with grown-up tools.</p>
-  <div class="home-hero-meta">
-    <span><strong>Where:</strong> MEVN room + Teams</span>
-    <span><strong>When:</strong> Thursdays, 5&ndash;6 PM</span>
-    <span><strong>Who:</strong> PMs &middot; ops &middot; domain experts</span>
-  </div>
+
+</div>
+
+<!-- LAST THURSDAY — one-liner, maintained weekly -->
+<div class="home-last">
+  <span class="home-last-label">Last Thursday &middot; 30 Apr</span>
+  <p class="home-last-text"><strong>Playground #1.</strong> Three threads ran &mdash; <em>A2A reframed as routing</em>, <em>Ticketing PRD scoped</em>, <em>generic stack push</em>.</p>
+  <a class="home-last-cta" href="program/log.html">Read the Log &rarr;</a>
 </div>
 
 <!-- NAVIGATE -->
