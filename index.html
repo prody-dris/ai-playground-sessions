@@ -3,127 +3,330 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Weekly AI sessions for Product & Operations at Dhwani RIS. Learn to build with AI, no coding required.">
+<meta name="description" content="AI Playground — Dhwani RIS. A working room for people building with AI. Come, build, share, grow. The way you played at 7, with grown-up tools.">
 <link rel="icon" type="image/png" href="assets/images/dhwani-logo.png?v=2">
 <link rel="apple-touch-icon" href="assets/images/dhwani-logo.png?v=2">
 <meta property="og:site_name" content="AI Playground — Dhwani RIS">
 <meta property="og:title" content="AI Playground — Dhwani RIS">
-<meta property="og:description" content="Weekly AI sessions for Product & Operations at Dhwani RIS. Learn to build with AI, no coding required.">
+<meta property="og:description" content="A working room for people building with AI. Come, build, share, grow. Every Thursday at Dhwani RIS.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://prody-dris.github.io/ai-playground-sessions/index.html">
-<meta property="og:image" content="https://prody-dris.github.io/ai-playground-sessions/assets/images/session-6/aditya-four-layers.jpg">
-<meta property="og:image:width" content="1280">
-<meta property="og:image:height" content="720">
-<meta name="twitter:card" content="summary_large_image">
-<title>AI Playground — Dhwani RIS</title>
-<link rel="stylesheet" href="assets/style.css?v=4">
+<meta property="og:url" content="https://prody-dris.github.io/ai-playground-sessions/">
+<title>AI Playground &mdash; Dhwani RIS</title>
+<link rel="stylesheet" href="assets/style.css?v=5">
 <style>
-/* Dhwani-only check-in band */
-.dhwani-band {
-  border: 1px solid var(--rule);
-  border-left: 3px solid var(--accent);
-  border-radius: 10px;
-  padding: 16px 20px;
-  margin: 18px 0 22px;
-  background: var(--card-bg);
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
+/* Home — mission + simple navigate */
+
+/* Hero */
+.home-hero {
+  margin: 12px 0 36px;
+  padding: 0 0 28px;
+  border-bottom: 1px solid var(--rule);
 }
-.dhwani-band-tag {
+.home-eyebrow {
   display: inline-flex;
   align-items: center;
-  font-size: 10.5px;
+  gap: 8px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
-  padding: 5px 10px;
-  background: rgba(216,93,42,0.08);
-  border: 1px solid rgba(216,93,42,0.22);
+  padding: 6px 12px;
+  border: 1px solid rgba(212,132,42,0.32);
   border-radius: 100px;
-  flex-shrink: 0;
-  white-space: nowrap;
+  background: rgba(212,132,42,0.05);
+  margin-bottom: 22px;
 }
-.dhwani-band-text {
-  flex: 1;
-  font-size: 13.5px;
-  color: var(--text-mid);
-  line-height: 1.5;
-  margin: 0;
-  min-width: 220px;
-}
-.dhwani-band-text strong { color: var(--primary); }
-.dhwani-band-link {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  padding: 9px 16px;
-  background: transparent;
-  color: var(--accent);
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  border: 1px solid var(--accent);
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.15s, color 0.15s;
-}
-.dhwani-band-link:hover {
+.home-eyebrow .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
   background: var(--accent);
-  color: #fff;
+  animation: home-pulse 2.4s infinite;
 }
-@media (max-width: 640px) {
-  .dhwani-band { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px; }
-  .dhwani-band-link { align-self: stretch; justify-content: center; }
+@keyframes home-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(212,132,42,0.45); }
+  70%  { box-shadow: 0 0 0 9px rgba(212,132,42,0); }
+  100% { box-shadow: 0 0 0 0 rgba(212,132,42,0); }
 }
 
-/* Recording pill strip */
-.recording-strip-heading {
-  font-size: 13px;
+.home-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 76px;
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -1.6px;
+  color: var(--primary);
+  margin: 0 0 18px;
+}
+.home-hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.home-mantra {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+  color: var(--text-mid);
+  margin: 0 0 18px;
+}
+.home-mantra .mtr {
+  display: inline-block;
+  position: relative;
+}
+.home-mantra .mtr + .mtr { margin-left: 14px; }
+.home-mantra .mtr + .mtr::before {
+  content: '·';
+  margin-right: 14px;
+  color: var(--accent);
+  opacity: 0.6;
+}
+.home-mantra em { font-style: italic; color: var(--accent); }
+
+.home-hero-sub {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  max-width: 620px;
+  margin: 0 0 22px;
+}
+.home-hero-sub strong { color: var(--text); font-weight: 600; }
+
+.home-hero-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--text-light);
+}
+.home-hero-meta strong {
+  color: var(--text-mid);
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+@media (max-width: 720px) {
+  .home-hero h1 { font-size: 52px; letter-spacing: -1px; }
+  .home-mantra { font-size: 22px; }
+}
+@media (max-width: 480px) {
+  .home-hero h1 { font-size: 44px; }
+  .home-mantra { font-size: 19px; }
+  .home-mantra .mtr + .mtr { margin-left: 10px; }
+  .home-mantra .mtr + .mtr::before { margin-right: 10px; }
+}
+
+/* Navigate grid — 4 cards */
+.home-nav-eyebrow {
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-light);
-  margin: 0 0 10px;
+  margin: 0 0 14px;
 }
-.recording-pill-row {
+.home-nav {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 8px;
-  margin-bottom: 28px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 4px 0 36px;
 }
-.recording-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 8px 14px;
-  background: var(--card-bg);
+@media (max-width: 720px) { .home-nav { grid-template-columns: 1fr; } }
+
+.home-nav-card {
+  display: block;
+  position: relative;
+  padding: 26px 28px 24px;
   border: 1px solid var(--rule);
-  border-radius: 100px;
-  font-size: 12.5px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  background: var(--card-bg);
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+  overflow: hidden;
+}
+.home-nav-card::after {
+  content: '\2192';
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  font-size: 22px;
+  color: var(--text-light);
+  transition: color 0.15s, transform 0.15s;
+}
+.home-nav-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+  border-color: rgba(212,132,42,0.4);
+}
+.home-nav-card:hover::after { color: var(--accent); transform: translateX(3px); }
+.home-nav-card:hover h3 { color: var(--accent); }
+
+.home-nav-card.live::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), rgba(212,132,42,0.3));
+}
+
+.home-nav-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+.home-nav-card.live .home-nav-tag {
+  color: var(--accent);
+}
+
+.home-nav-card h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 30px;
   font-weight: 600;
   color: var(--primary);
+  letter-spacing: -0.4px;
+  line-height: 1.1;
+  margin: 0 0 8px;
+  transition: color 0.15s;
+}
+.home-nav-card h3 em { font-style: italic; color: var(--accent); }
+.home-nav-card p {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-mid);
+  margin: 0;
+}
+
+/* Mission triad */
+.home-mission {
+  margin: 8px 0 32px;
+  padding: 28px 32px;
+  background: linear-gradient(135deg, #fafaf6 0%, #faf6ee 100%);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+}
+.home-mission-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin: 0 0 6px;
+}
+.home-mission-lede {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 24px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--text-mid);
+  margin: 0 0 22px;
+  max-width: 640px;
+  letter-spacing: -0.2px;
+}
+.home-mission-lede em { color: var(--accent); }
+
+.home-mission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+@media (max-width: 720px) { .home-mission-grid { grid-template-columns: 1fr; gap: 14px; } }
+
+.home-mission-block { padding: 0; }
+.home-mission-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -0.6px;
+}
+.home-mission-block h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: -0.2px;
+  margin: 0 0 6px;
+}
+.home-mission-block p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-mid);
+  margin: 0;
+}
+
+/* Resources strip */
+.home-res {
+  margin: 8px 0 24px;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--rule);
+}
+.home-res-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin: 0 0 14px;
+}
+.home-res-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+}
+.home-res-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--card-bg);
   text-decoration: none;
-  transition: border-color 0.15s, background 0.15s, color 0.15s;
-  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s;
 }
-.recording-pill:hover {
-  border-color: var(--accent);
+.home-res-link:hover { border-color: var(--accent); }
+.home-res-link:hover .home-res-title { color: var(--accent); }
+.home-res-key {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
   color: var(--accent);
-  background: rgba(216,93,42,0.04);
+  line-height: 1;
+  min-width: 22px;
 }
-.recording-pill .pill-icon {
-  font-size: 10px;
-  color: var(--accent);
+.home-res-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  transition: color 0.15s;
 }
+
+/* Closing line */
+.home-close {
+  margin: 8px 0 28px;
+  font-size: 14px;
+  color: var(--text-light);
+  font-style: italic;
+  text-align: left;
+}
+.home-close strong { color: var(--text-mid); font-style: normal; font-weight: 600; }
+.home-close a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.home-close a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
-<!-- Mobile header -->
 <div class="mobile-header">
   <img src="assets/images/dhwani-logo.png?v=2" alt="Dhwani">
   <span>AI Playground</span>
@@ -131,255 +334,93 @@
 </div>
 <div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
 
-<!-- Sidebar -->
-<aside class="sidebar">
-  <div class="sidebar-logo">
-    <img src="assets/images/dhwani-logo.png?v=2" alt="Dhwani RIS">
-    <div class="sidebar-title">AI Playground</div>
-    <div class="sidebar-sub">Product &amp; Operations</div>
-  </div>
-  <div class="sidebar-section">
-    <a class="sidebar-link active" href="index.html"><span class="link-icon">~</span> Home</a>
-  </div>
-  <div class="sidebar-section">
-    <a class="sidebar-link" href="playground.html"><span class="link-icon">&#9650;</span> The Playground <span class="badge-new">Live</span></a>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-section-title">Sessions</div>
-    <a class="sidebar-link" href="program/recordings.html"><span class="link-icon">&#9654;</span> All Recordings <span class="badge-new">New</span></a>
-    <a class="sidebar-link" href="sessions/session-0.html"><span class="link-icon">0</span> Introduction</a>
-    <a class="sidebar-link" href="sessions/session-1.html"><span class="link-icon">1</span> Vibe Coding</a>
-    <a class="sidebar-link" href="sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>
-    <a class="sidebar-link" href="sessions/session-3.html"><span class="link-icon">3</span> Hands On</a>
-    <a class="sidebar-link" href="sessions/session-4.html"><span class="link-icon">4</span> CLI &amp; Hooks</a>
-    <a class="sidebar-link" href="sessions/session-5.html"><span class="link-icon">5</span> Open Build</a>
-    <a class="sidebar-link" href="sessions/session-6.html"><span class="link-icon">6</span> Chaos &amp; Craft</a>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-section-title">Program</div>
-    <a class="sidebar-link" href="program/how-we-play.html"><span class="link-icon">&#9679;</span> How We Play</a>
-    <a class="sidebar-link" href="program/courses.html"><span class="link-icon">C</span> Courses <span class="badge-new">New</span></a>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-section-title">Frameworks</div>
-    <a class="sidebar-link" href="frameworks/builder-protocol.html"><span class="link-icon">B</span> The Builder Protocol <span class="badge-new">New</span></a>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-section-title">Resources</div>
-    <a class="sidebar-link" href="readings.html"><span class="link-icon">R</span> Readings</a>
-    <a class="sidebar-link" href="tools.html"><span class="link-icon">T</span> Tools</a>
-    <a class="sidebar-link" href="prompts.html"><span class="link-icon">P</span> Prompts</a>
-  </div>
-  <div class="sidebar-footer">
-    <a href="https://dhwaniris.com">dhwaniris.com</a>
-    <small>Built by Prody &mdash; an agent managed by Nihaan, Product Team @ DRIS</small>
-  </div>
-</aside>
+<aside class="sidebar" data-sidebar="root"></aside>
 
-<!-- Main content -->
 <div class="main"><div class="content">
 
-<div class="page-header">
-  <h1>Welcome to AI Playground<span>.</span></h1>
-  <div class="page-meta">Every Thursday &middot; 5:00 &ndash; 6:00 PM &middot; Dhwani RIS</div>
-</div>
-
-<!-- ═══════════════════════════════
-     HERO BANNER — THE PIVOT
-     ═══════════════════════════════ -->
-<div class="hero-banner">
-  <div class="hero-badge"><span class="pulse"></span> 6 Shipped &middot; The Pivot</div>
-  <h2>The Playground<br>becomes a playground<span>.</span></h2>
-  <div class="hero-date">Six sessions of scaffolding &middot; from here, the room builds together</div>
-  <div class="hero-teaser">
-    Session 6 closed the monologue arc. Aditya Gore on the four-layer AI pipeline. Abhinav Tyagi on the Skills Portal and Design Library MCP. Harshdeep on what Safe-to-Ship is about to unlock. <strong>Thursday 5&ndash;6 PM stays &mdash; but the lecture goes.</strong> From here, bring a problem. Leave with someone working on it with you. <strong>Today is the first one. Two problems on the floor &mdash; A2A architecture, HRMS ticketing.</strong>
+<!-- HERO — mission + mantra -->
+<div class="home-hero">
+  <div class="home-eyebrow"><span class="dot"></span> Live every Thursday &middot; 5&ndash;6 PM</div>
+  <h1>AI <em>Playground</em>.</h1>
+  <div class="home-mantra">
+    <span class="mtr">Come</span><span class="mtr">build</span><span class="mtr">share</span><span class="mtr"><em>play</em></span>
   </div>
-  <div class="hero-actions">
-    <a href="playground.html" class="hero-btn primary">On the Floor Today &rarr;</a>
-    <a href="sessions/session-6.html" class="hero-btn secondary">Session 6 Recap</a>
-    <a href="program/how-we-play.html" class="hero-btn secondary">How We Play</a>
+  <p class="home-hero-sub">A working room for people at Dhwani RIS who want to build with AI &mdash; not just talk about it. Show up with a real problem, pair with someone, ship something. <strong>The way you played at 7</strong> &mdash; low stakes, real play, mutual learning &mdash; with grown-up tools.</p>
+  <div class="home-hero-meta">
+    <span><strong>Where:</strong> MEVN room + Teams</span>
+    <span><strong>When:</strong> Thursdays, 5&ndash;6 PM</span>
+    <span><strong>Who:</strong> PMs &middot; ops &middot; domain experts</span>
   </div>
 </div>
 
-<!-- ═══════════════════════════════
-     RECORDING STRIP
-     ═══════════════════════════════ -->
-<div class="recording-strip-heading">Session Recordings &mdash; jump straight to the videos</div>
-<div class="recording-pill-row">
-  <a class="recording-pill" href="https://dhwaniris1-my.sharepoint.com/:v:/g/personal/nihaan_mohammed_dhwaniris_com/IQAWYyN_RTyLQ4R3e0xNxowUAQBu8gs9HurJN3ZeaYdWIJQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=47hSgB" target="_blank"><span class="pill-icon">&#9654;</span> S6 &middot; Chaos &amp; Craft</a>
-  <a class="recording-pill" href="https://dhwaniris1-my.sharepoint.com/:v:/g/personal/nihaan_mohammed_dhwaniris_com/IQDlPeunAL2uQKOGtOpyliPiAaU2ZVZFhgOPPvJ0_Oyv3QM?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=fIebba" target="_blank"><span class="pill-icon">&#9654;</span> S5 &middot; Open Build</a>
-  <a class="recording-pill" href="https://dhwaniris1-my.sharepoint.com/:v:/g/personal/nihaan_mohammed_dhwaniris_com/IQBJRQ2stCXuS7QWYhQREoesAVJIR5W2rjgGLcxXYobc9n8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=hpDCID" target="_blank"><span class="pill-icon">&#9654;</span> S4 &middot; CLI &amp; Hooks</a>
-  <a class="recording-pill" href="https://dhwaniris1-my.sharepoint.com/:v:/g/personal/nihaan_mohammed_dhwaniris_com/IQButXa5sSq0QaOnLFfXtbCeASbzn-13s23eBjj1EMzArY8?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=1byJ1B" target="_blank"><span class="pill-icon">&#9654;</span> S3 &middot; Hands On</a>
-  <a class="recording-pill" href="https://teams.microsoft.com/l/meetingrecap?driveId=b%210oNJhLI4AUGjp5W7veorxP0T_1iayIFNvc7RjHGGTgU1MqUx1wnZTpykcXyQDC51&driveItemId=01BMCH33YEDVMNPLAVJBF2XKB44ONF2OTY&sitePath=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQAEHVjXrBVIS6uoPOOaXTp4AZ0WOhm-QdUnNzgEHwhQWXk&fileUrl=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQAEHVjXrBVIS6uoPOOaXTp4AZ0WOhm-QdUnNzgEHwhQWXk&iCalUid=040000008200E00074C5B7101A82E00807EA03133EF80A0AB0ACDC01000000000000000010000000BF88594600842543B848855EBE777156&masterICalUid=040000008200E00074C5B7101A82E008000000003EF80A0AB0ACDC01000000000000000010000000BF88594600842543B848855EBE777156&threadId=19%3Ameeting_NjkxOGRmMTYtOWI5My00NjU1LWJhOWItNDM3MWQ1YzhmZjFj%40thread.v2&organizerId=163ae90d-7d16-41da-8079-2a1879f5e3a6&tenantId=6be9876d-2470-42cb-9f42-060454fab53d&callId=7d13aaee-3444-48d4-9291-ee8b4e6ad1ec&threadType=Meeting&meetingType=Recurring&subType=RecapSharingLink_RecapChiclet" target="_blank"><span class="pill-icon">&#9654;</span> S2 &middot; GitHub Knowledge</a>
-  <a class="recording-pill" href="https://teams.microsoft.com/l/meetingrecap?driveId=b%210oNJhLI4AUGjp5W7veorxP0T_1iayIFNvc7RjHGGTgU1MqUx1wnZTpykcXyQDC51&driveItemId=01BMCH332QSTKPGAG55NDLWADXHBIORBLC&sitePath=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQBQlNTzAN3rRrsAdzhQ6IViAcJuHMT2IeRXd8Bri94oRUs&fileUrl=https%3A%2F%2Fdhwaniris1-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Fnihaan_mohammed_dhwaniris_com%2FIQBQlNTzAN3rRrsAdzhQ6IViAcJuHMT2IeRXd8Bri94oRUs&iCalUid=040000008200E00074C5B7101A82E00807EA03063EF80A0AB0ACDC01000000000000000010000000BF88594600842543B848855EBE777156&masterICalUid=040000008200E00074C5B7101A82E008000000003EF80A0AB0ACDC01000000000000000010000000BF88594600842543B848855EBE777156&threadId=19%3Ameeting_NjkxOGRmMTYtOWI5My00NjU1LWJhOWItNDM3MWQ1YzhmZjFj%40thread.v2&organizerId=163ae90d-7d16-41da-8079-2a1879f5e3a6&tenantId=6be9876d-2470-42cb-9f42-060454fab53d&callId=5e6444de-01a7-4c54-b663-fd66f2c29224&threadType=Meeting&meetingType=Recurring&subType=RecapSharingLink_RecapChiclet" target="_blank"><span class="pill-icon">&#9654;</span> S1 &middot; Vibe Coding</a>
+<!-- NAVIGATE -->
+<div class="home-nav-eyebrow">Navigate</div>
+<div class="home-nav">
+
+  <a href="playground.html" class="home-nav-card live">
+    <span class="home-nav-tag">Live this week</span>
+    <h3>The <em>Playground</em></h3>
+    <p>This Thursday's open room &mdash; what's on the floor, who's building, where you'd plug in. The live page.</p>
+  </a>
+
+  <a href="program/log.html" class="home-nav-card">
+    <span class="home-nav-tag">Every Thursday, captured</span>
+    <h3>The <em>Log</em></h3>
+    <p>Each week's threads, ideas worth taking forward, who carried what next. Newest at the top, history all the way down.</p>
+  </a>
+
+  <a href="program/curriculum.html" class="home-nav-card">
+    <span class="home-nav-tag">Sealed &middot; Mar &ndash; Apr 2026</span>
+    <h3>The <em>Curriculum</em></h3>
+    <p>Seven sessions that built the floor &mdash; vibe coding through to skills, MCP, agents and the close. Read in order or pick one.</p>
+  </a>
+
+  <a href="frameworks/builder-protocol.html" class="home-nav-card">
+    <span class="home-nav-tag">How we build</span>
+    <h3>The <em>Builder Protocol</em></h3>
+    <p>The shared way of building in this org &mdash; what good looks like across CLAUDE.md, skills, hooks, and the stack underneath.</p>
+  </a>
+
 </div>
 
-<!-- ═══════════════════════════════
-     WHAT IS THIS
-     ═══════════════════════════════ -->
-<div class="prose" style="margin-bottom:20px;">
-  <p>Every week, the product and operations team at Dhwani RIS builds with AI. Not as developers &mdash; as domain experts with the most powerful tools in the world. No slides. No theory. Real work, real products.</p>
-</div>
+<!-- MISSION -->
+<div class="home-mission">
+  <div class="home-mission-eyebrow">Why this exists</div>
+  <p class="home-mission-lede">Most teams build in silence and learn alone. <em>This one doesn't.</em></p>
 
-<!-- ═══════════════════════════════
-     THE JOURNEY SO FAR
-     ═══════════════════════════════ -->
-<section>
-  <h2>What We've Built</h2>
-  <div class="stat-row">
-    <div class="stat">
-      <div class="stat-num">6</div>
-      <div class="stat-label">Sessions</div>
+  <div class="home-mission-grid">
+    <div class="home-mission-block">
+      <div class="home-mission-num">1</div>
+      <h4>Build</h4>
+      <p>Real problems, real products, every Thursday. AI is the most powerful tool in the room &mdash; we use it for the work that already pays the bills.</p>
     </div>
-    <div class="stat">
-      <div class="stat-num">10+</div>
-      <div class="stat-label">Builders</div>
+    <div class="home-mission-block">
+      <div class="home-mission-num">2</div>
+      <h4>Share</h4>
+      <p>Every solution belongs to all of us. A skill, a snippet, a workflow &mdash; if you cracked it, push it back to the stack so the next person doesn't have to.</p>
     </div>
-    <div class="stat">
-      <div class="stat-num">7</div>
-      <div class="stat-label">Live Products</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">0</div>
-      <div class="stat-label">Secrets Leaked</div>
+    <div class="home-mission-block">
+      <div class="home-mission-num">3</div>
+      <h4>Play</h4>
+      <p>No fear of failure. No false stakes. The room is built like a sandbox &mdash; try, fall, share, try again. Showing up is the whole rule.</p>
     </div>
   </div>
-  <div class="r"><strong style="min-width:200px;flex-shrink:0;">Aditya Gore</strong><span>Four-layer AI pipeline &mdash; rules, local hooks, CI blockers, human gates &mdash; treat AI as infrastructure &mdash; <a href="sessions/session-6.html">Session 6</a></span></div>
-  <div class="r"><strong style="min-width:200px;flex-shrink:0;">Abhinav Tyagi</strong><span>Dhwani Skills Portal + Design Library MCP &mdash; five skills live, every mock preservable in one line &mdash; <a href="sessions/session-6.html">Session 6</a></span></div>
-  <div class="r"><strong style="min-width:200px;flex-shrink:0;">Ravi Jangir</strong><span>M365 &harr; Claude Code &harr; Frappe HRMS &mdash; auto timesheet + project governance, no custom code &mdash; <a href="sessions/session-5.html">Session 5</a></span></div>
-  <div class="r"><strong style="min-width:200px;flex-shrink:0;">Kashish Talwani</strong><span>ATMA Education Foundation &mdash; end-to-end Frappe build from CLI-zero, FRD-driven &mdash; <a href="sessions/session-5.html">Session 5</a></span></div>
-  <div class="r"><strong style="min-width:200px;flex-shrink:0;">Arpita Jain</strong><span>Welspun Help Center &mdash; org-level resources + role-gated FAQs, 5-min install &mdash; <a href="sessions/session-5.html">Session 5</a></span></div>
-  <div class="r"><strong style="min-width:200px;flex-shrink:0;">Shweta &amp; Samarth</strong><span>69-indicator live monitoring dashboard &mdash; <a href="sessions/session-3.html">Session 3</a></span></div>
-  <div class="r"><strong style="min-width:200px;flex-shrink:0;">Aman Sharma</strong><span>CSR dashboard with SDG mapping + purchase order system &mdash; <a href="sessions/session-4.html">Session 4</a></span></div>
-  <div class="r"><strong style="min-width:200px;flex-shrink:0;">Sunita</strong><span>Dashboard with 3-level role-based security &mdash; <a href="sessions/session-4.html">Session 4</a></span></div>
-  <div class="r"><strong style="min-width:200px;flex-shrink:0;">Sunchay</strong><span>Login page in existing product, 30 min for future deploys &mdash; <a href="sessions/session-4.html">Session 4</a></span></div>
-  <div class="r"><strong style="min-width:200px;flex-shrink:0;">Akshat Verma</strong><span>Claude tips guide + GitHub Pages deployment &mdash; <a href="sessions/session-4.html">Session 4</a></span></div>
-  <div class="quote">
-    "Instead of putting prompting effort for two weeks, we can put manual effort for two days to clarify and build that context that Claude would understand better."
-    <cite>Shweta Singh, Session 3</cite>
+</div>
+
+<!-- RESOURCES STRIP -->
+<div class="home-res">
+  <div class="home-res-eyebrow">Reference shelf</div>
+  <div class="home-res-row">
+    <a class="home-res-link" href="readings.html"><span class="home-res-key">R</span><span class="home-res-title">Readings</span></a>
+    <a class="home-res-link" href="tools.html"><span class="home-res-key">T</span><span class="home-res-title">Tools</span></a>
+    <a class="home-res-link" href="prompts.html"><span class="home-res-key">P</span><span class="home-res-title">Prompts</span></a>
+    <a class="home-res-link" href="program/how-we-play.html"><span class="home-res-key">&#9679;</span><span class="home-res-title">How We Play</span></a>
+    <a class="home-res-link" href="program/courses.html"><span class="home-res-key">C</span><span class="home-res-title">Courses</span></a>
   </div>
-</section>
-
-<!-- ═══════════════════════════════
-     SESSIONS
-     ═══════════════════════════════ -->
-<section>
-  <h2>Sessions</h2>
-  <div class="session-grid">
-    <a href="sessions/session-6.html" class="session-card">
-      <div class="card-num">6</div>
-      <div class="card-body">
-        <h3>Of Chaos and Craft &mdash; The Collective Craft</h3>
-        <div class="card-date">23 Apr 2026 &middot; Thursday &middot; 5:00 PM <span class="badge-new" style="margin-left:4px;">Latest</span></div>
-        <div class="card-desc">The last of the monologue sessions. Aditya Gore on the four-layer AI pipeline &mdash; rules, hooks, CI, human gates. Abhinav Tyagi on the Skills Portal and the Design Library MCP. Harshdeep&rsquo;s preview of Safe-to-Ship. Closes with the pivot: the Playground becomes a playground.</div>
-      </div>
-    </a>
-    <a href="sessions/session-5.html" class="session-card">
-      <div class="card-num">5</div>
-      <div class="card-body">
-        <h3>Open Build &amp; Problem-Solving</h3>
-        <div class="card-date">16 Apr 2026 &middot; Thursday &middot; 5:00 PM</div>
-        <div class="card-desc">Four concepts &mdash; Skills, MCP, Plugins, Agents &mdash; then live demos: Ravi Jangir&rsquo;s M365 timesheet MCP, Kashish Talwani&rsquo;s ATMA Frappe build, Arpita Jain&rsquo;s Welspun Help Center.</div>
-      </div>
-    </a>
-    <a href="sessions/session-4.html" class="session-card">
-      <div class="card-num">4</div>
-      <div class="card-body">
-        <h3>CLI, Hooks &amp; Maintaining Real Products</h3>
-        <div class="card-date">7 Apr 2026 &middot; Tuesday &middot; 4:00 PM</div>
-        <div class="card-desc">The graduation path from chat to CLI. Hooks &amp; guardrails. Builder spotlights: Aman, Sunita, Sunchay &amp; Akshat on building in real projects.</div>
-      </div>
-    </a>
-    <a href="sessions/session-3.html" class="session-card">
-      <div class="card-num">3</div>
-      <div class="card-body">
-        <h3>Your AI Knowledge Base &mdash; Hands On</h3>
-        <div class="card-date">26 Mar 2026</div>
-        <div class="card-desc">GitHub setup, token management, CLAUDE.md, Security.md. Case study: IDH Dashboard by Shweta &amp; Samarth.</div>
-      </div>
-    </a>
-    <a href="sessions/session-2.html" class="session-card">
-      <div class="card-num">2</div>
-      <div class="card-body">
-        <h3>GitHub as Your Knowledge Base</h3>
-        <div class="card-date">19 Mar 2026</div>
-        <div class="card-desc">Why GitHub beats folders. Repository basics. CLI introduction. Dashboard QA demo using video.</div>
-      </div>
-    </a>
-    <a href="sessions/session-1.html" class="session-card">
-      <div class="card-num">1</div>
-      <div class="card-body">
-        <h3>Vibe Coding &mdash; The How-To Guide</h3>
-        <div class="card-date">12 Mar 2026</div>
-        <div class="card-desc">GitHub tokens. CLAUDE.md and Security MD. Claude Code vs Codex. Better prompts. Developer review workflow.</div>
-      </div>
-    </a>
-    <a href="sessions/session-0.html" class="session-card">
-      <div class="card-num">0</div>
-      <div class="card-body">
-        <h3>Introduction &amp; Open Build</h3>
-        <div class="card-date">6 Mar 2026</div>
-        <div class="card-desc">Why AI matters for our work. Tools overview. MD files. Skills concept. Token efficiency.</div>
-      </div>
-    </a>
-  </div>
-</section>
-
-<div class="callout green" style="margin-bottom:20px;">
-  <p><strong>Session 6 recap is live.</strong> Aditya Gore&rsquo;s four-layer AI pipeline &mdash; rules file, local hooks, CI blockers, human gates. Abhinav Tyagi&rsquo;s Skills Portal (five skills live) and Design Library MCP. Harshdeep&rsquo;s Safe-to-Ship preview. Closes on the rule of the year: <em>before you build anything, ask &mdash; did someone already solve this?</em></p>
-  <p style="margin-top:6px;"><a href="sessions/session-6.html" style="color:var(--green);font-weight:600;">Read Session 6 &rarr;</a></p>
 </div>
 
-<div class="callout accent" style="margin-bottom:20px;">
-  <p><strong>The Playground is live this Thursday.</strong> First open build room of the new format. <em>A2A Architecture</em> with Ankit and Nihaan &mdash; the protocol layer underneath multi-agent systems. <em>HRMS Ticketing MVP</em> with Akshat and Kashish &mdash; the first working slice of in-house ticketing. Plus the open slot &mdash; bring a problem of your own.</p>
-  <p style="margin-top:6px;"><a href="playground.html" style="color:var(--accent);font-weight:600;">Walk into the room &rarr;</a></p>
-</div>
-
-<div class="callout" style="margin-bottom:20px;">
-  <p><strong>Catching up?</strong> S5 taught the four concepts &mdash; Skills, MCP, Plugins, Agents &mdash; and showed three builders on real client work. <a href="sessions/session-5.html" style="color:var(--primary);font-weight:600;">Read Session 5 &rarr;</a></p>
-</div>
-
-<!-- ═══════════════════════════════
-     HOW TO USE THIS SITE
-     ═══════════════════════════════ -->
-<section>
-  <h2>How To Use This Site</h2>
-  <div class="n"><i>1</i><p><strong>Before a session:</strong> Open the latest session page. Read the objective and pre-reading. Come prepared.</p></div>
-  <div class="n"><i>2</i><p><strong>During a session:</strong> Follow along here. All templates and step-by-step guides are on the page.</p></div>
-  <div class="n"><i>3</i><p><strong>After a session:</strong> Come back for reference. Complete the action items. Check the further reading section.</p></div>
-  <div class="n"><i>4</i><p><strong>Feed it to AI:</strong> Paste any session page URL into Claude and say "read this and help me complete the action items."</p></div>
-</section>
-
-<!-- ═══════════════════════════════
-     WHO IS THIS FOR
-     ═══════════════════════════════ -->
-<section>
-  <h2>Who Is This For?</h2>
-  <div class="prose">
-    <p>Product managers, operations leads, domain experts &mdash; anyone at Dhwani RIS who wants to <strong>build with AI, not just talk about it</strong>.</p>
-    <p>You bring the domain knowledge. AI brings the execution. These sessions are where the two meet.</p>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════
-     QUICK LINKS
-     ═══════════════════════════════ -->
-<section>
-  <h2>Quick Links</h2>
-  <div class="r"><code>GitHub</code><span><a href="https://github.com">github.com</a> &mdash; sign up or log in</span></div>
-  <div class="r"><code>Claude</code><span><a href="https://claude.ai">claude.ai</a> &mdash; start a conversation</span></div>
-  <div class="r"><code>Deploy</code><span><a href="https://platform.dhwaniris.in">platform.dhwaniris.in</a> &mdash; scoped tokens for org repos</span></div>
-  <div class="r"><code>Prompts</code><span><a href="prompts.html">Copy-paste prompts</a> &mdash; CLI setup, CLAUDE.md, Security.md templates</span></div>
-  <div class="r"><code>Cheatsheet</code><span><a href="https://prody-dris.github.io/claude-code-cheatsheet/" target="_blank">Claude Code Cheatsheet</a> &mdash; commands, shortcuts, daily reference</span></div>
-  <div class="r"><code>Source</code><span><a href="https://github.com/prody-dris/ai-playground-sessions">This site's repo</a> &mdash; everything here is open</span></div>
-</section>
-
-<!-- DHWANI-ONLY CHECK-IN BAND -->
-<div class="dhwani-band">
-  <span class="dhwani-band-tag">Dhwani Employees Only</span>
-  <p class="dhwani-band-text"><strong>Finished an Anthropic Academy course?</strong> Log it in our internal check-in &mdash; takes about 90 seconds. The form is for the Dhwani team only.</p>
-  <a class="dhwani-band-link" href="program/learning-checkin.html">Submit check-in &rarr;</a>
-</div>
+<!-- CLOSING LINE -->
+<p class="home-close">If you're new and you want to start somewhere: <a href="program/curriculum.html">read S0</a>, then <a href="playground.html">walk into Thursday</a>. Bring a problem.</p>
 
 <div class="main-footer">
   <div><a href="https://dhwaniris.com">Dhwani RIS</a> &middot; <a href="https://github.com/prody-dris/ai-playground-sessions">Source</a></div>
@@ -387,5 +428,6 @@
 </div>
 
 </div></div>
+<script src="assets/sidebar.js"></script>
 </body>
 </html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The seven sessions that built the floor — Dhwani RIS AI Playground curriculum. Six teaching weeks, one closer.">
+<link rel="icon" type="image/png" href="../assets/images/dhwani-logo.png?v=2">
+<link rel="apple-touch-icon" href="../assets/images/dhwani-logo.png?v=2">
+<meta property="og:site_name" content="AI Playground — Dhwani RIS">
+<meta property="og:title" content="Curriculum — The Seven Sessions | AI Playground">
+<meta property="og:description" content="The seven sessions that built the floor. Sealed. From here, the room builds.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://prody-dris.github.io/ai-playground-sessions/program/curriculum.html">
+<title>Curriculum &mdash; AI Playground</title>
+<link rel="stylesheet" href="../assets/style.css?v=5">
+<style>
+/* Curriculum page — minimal Maven-style index */
+.cur-hero {
+  margin: 8px 0 32px;
+  padding: 0 0 24px;
+  border-bottom: 1px solid var(--rule);
+}
+.cur-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin: 0 0 12px;
+}
+.cur-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.8px;
+  color: var(--primary);
+  margin: 0 0 16px;
+}
+.cur-hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 500;
+}
+.cur-hero-sub {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  max-width: 640px;
+  margin: 0;
+}
+.cur-hero-meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 18px;
+}
+.cur-hero-meta strong {
+  color: var(--text-mid);
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+@media (max-width: 640px) {
+  .cur-hero h1 { font-size: 36px; }
+}
+
+/* Session list */
+.cur-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cur-item {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 22px;
+  align-items: baseline;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+.cur-item:last-child { border-bottom: none; }
+.cur-item:hover {
+  background: linear-gradient(90deg, transparent, rgba(212,132,42,0.04), transparent);
+}
+.cur-item:hover .cur-num { color: var(--accent); }
+.cur-item:hover h2 { color: var(--accent); }
+
+.cur-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 44px;
+  font-weight: 500;
+  color: var(--text-light);
+  line-height: 1;
+  letter-spacing: -1px;
+  transition: color 0.15s;
+}
+.cur-body h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin: 0 0 6px;
+  transition: color 0.15s;
+}
+.cur-body h2 em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+}
+.cur-body p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-mid);
+  margin: 0 0 8px;
+}
+.cur-body .cur-tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: var(--text-light);
+}
+.cur-body .cur-tags span::before { content: '·  '; opacity: 0.5; }
+.cur-body .cur-tags span:first-child::before { content: ''; }
+
+.cur-arrow {
+  font-size: 22px;
+  color: var(--text-light);
+  font-weight: 300;
+  align-self: center;
+  transition: color 0.15s, transform 0.15s;
+}
+.cur-item:hover .cur-arrow {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+@media (max-width: 640px) {
+  .cur-item { grid-template-columns: 40px 1fr; gap: 14px; padding: 18px 0; }
+  .cur-num { font-size: 32px; }
+  .cur-body h2 { font-size: 20px; }
+  .cur-arrow { display: none; }
+}
+
+/* Closer note */
+.cur-closer {
+  margin-top: 48px;
+  padding: 28px 32px;
+  background: linear-gradient(135deg, rgba(212,132,42,0.04), rgba(212,132,42,0.01));
+  border: 1px solid rgba(212,132,42,0.18);
+  border-radius: 14px;
+}
+.cur-closer-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+.cur-closer h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: -0.3px;
+  margin: 0 0 10px;
+}
+.cur-closer p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  margin: 0 0 14px;
+}
+.cur-closer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.cur-closer-cta:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="mobile-header">
+  <img src="../assets/images/dhwani-logo.png?v=2" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
+
+<!-- SIDEBAR — populated in sweep -->
+<aside class="sidebar" data-sidebar="subfolder"></aside>
+
+<div class="main"><div class="content">
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a> / Curriculum</div>
+</div>
+
+<div class="cur-hero">
+  <div class="cur-eyebrow">The teaching arc &middot; sealed</div>
+  <h1>Seven sessions that built <em>the floor</em>.</h1>
+  <p class="cur-hero-sub">Six teaching weeks, one closer. Each one designed to take the room one step further into building with AI &mdash; from the first idea of vibe coding all the way to the day we stopped lecturing and let the room build. Read in order if you're new. Pick a single one if you're catching up.</p>
+  <div class="cur-hero-meta">
+    <span><strong>7</strong> sessions</span>
+    <span><strong>~7 hrs</strong> total runtime</span>
+    <span><strong>Mar &ndash; Apr 2026</strong></span>
+    <span><strong>Audience:</strong> PMs, ops, domain experts</span>
+  </div>
+</div>
+
+<ol class="cur-list">
+
+  <a class="cur-item" href="../sessions/session-0.html">
+    <div class="cur-num">0</div>
+    <div class="cur-body">
+      <h2>Introduction &amp; Open Build</h2>
+      <p>Why AI matters for our work, and what the program is going to teach. Tools overview, MD files, the skills concept, token efficiency. The frame for everything that follows.</p>
+      <div class="cur-tags"><span>6 March 2026</span><span>~1 hr</span><span>Foundations</span></div>
+    </div>
+    <div class="cur-arrow">&rarr;</div>
+  </a>
+
+  <a class="cur-item" href="../sessions/session-1.html">
+    <div class="cur-num">1</div>
+    <div class="cur-body">
+      <h2>Vibe Coding &mdash; <em>the how-to guide</em></h2>
+      <p>GitHub tokens. CLAUDE.md and Security MD. Claude Code vs Codex. Better prompts. The first developer-review workflow that lets non-coders ship.</p>
+      <div class="cur-tags"><span>12 March 2026</span><span>~1 hr</span><span>Practice</span></div>
+    </div>
+    <div class="cur-arrow">&rarr;</div>
+  </a>
+
+  <a class="cur-item" href="../sessions/session-2.html">
+    <div class="cur-num">2</div>
+    <div class="cur-body">
+      <h2>GitHub as Your Knowledge Base</h2>
+      <p>Why GitHub beats folders. Repository basics. CLI introduction. A live dashboard QA demo using video walkthroughs as the brief.</p>
+      <div class="cur-tags"><span>19 March 2026</span><span>~1 hr</span><span>Infrastructure</span></div>
+    </div>
+    <div class="cur-arrow">&rarr;</div>
+  </a>
+
+  <a class="cur-item" href="../sessions/session-3.html">
+    <div class="cur-num">3</div>
+    <div class="cur-body">
+      <h2>Your AI Knowledge Base &mdash; <em>hands on</em></h2>
+      <p>GitHub setup, token management, CLAUDE.md and Security.md in practice. Live case study: the IDH dashboard, by Shweta and Samarth.</p>
+      <div class="cur-tags"><span>26 March 2026</span><span>~1 hr</span><span>Hands-on</span></div>
+    </div>
+    <div class="cur-arrow">&rarr;</div>
+  </a>
+
+  <a class="cur-item" href="../sessions/session-4.html">
+    <div class="cur-num">4</div>
+    <div class="cur-body">
+      <h2>CLI, Hooks &amp; Maintaining Real Products</h2>
+      <p>The graduation path from chat to CLI. Hooks and guardrails. Builder spotlights from Aman, Sunita, Sunchay and Akshat &mdash; people building inside live client projects.</p>
+      <div class="cur-tags"><span>7 April 2026</span><span>~1 hr</span><span>Production</span></div>
+    </div>
+    <div class="cur-arrow">&rarr;</div>
+  </a>
+
+  <a class="cur-item" href="../sessions/session-5.html">
+    <div class="cur-num">5</div>
+    <div class="cur-body">
+      <h2>Open Build &amp; Problem-Solving</h2>
+      <p>The four concepts &mdash; Skills, MCP, Plugins, Agents &mdash; in plain language. Then live builds: Ravi's M365 timesheet MCP, Kashish's ATMA Frappe project, Arpita's Welspun Help Center.</p>
+      <div class="cur-tags"><span>16 April 2026</span><span>~1 hr</span><span>Stack &amp; demos</span></div>
+    </div>
+    <div class="cur-arrow">&rarr;</div>
+  </a>
+
+  <a class="cur-item" href="../sessions/session-6.html">
+    <div class="cur-num">6</div>
+    <div class="cur-body">
+      <h2>Of Chaos &amp; Craft &mdash; <em>the closer</em></h2>
+      <p>Aditya's four-layer AI pipeline &mdash; rules, hooks, CI, human gates. Abhinav's Skills Portal and Design Library MCP. Harshdeep on Safe-to-Ship. The session that closed the monologue arc and opened the playground.</p>
+      <div class="cur-tags"><span>23 April 2026</span><span>~1 hr</span><span>Closer</span></div>
+    </div>
+    <div class="cur-arrow">&rarr;</div>
+  </a>
+
+</ol>
+
+<div class="cur-closer">
+  <div class="cur-closer-eyebrow">From here</div>
+  <h3>The room builds, every Thursday.</h3>
+  <p>The curriculum is sealed. Six weeks of scaffolding plus a closer was always meant to be a finite arc &mdash; long enough to land the practice, short enough to stay honest. From here on, the same hour every Thursday is an open working room. Bring a problem, pair off, leave with someone working on it.</p>
+  <a class="cur-closer-cta" href="../playground.html">Walk into the room &rarr;</a>
+</div>
+
+<div class="main-footer">
+  <div><a href="https://dhwaniris.com">Dhwani RIS</a> &middot; <a href="https://github.com/prody-dris/ai-playground-sessions">Source</a></div>
+  <small>Built by Prody &mdash; an agent managed by Nihaan, Product Team @ DRIS &middot; 2026</small>
+</div>
+
+</div></div>
+<script src="../assets/sidebar.js"></script>
+</body>
+</html>

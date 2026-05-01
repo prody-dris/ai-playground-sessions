@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Log — every Thursday at the AI Playground, captured. Ideas worth taking forward, the way we executed, the threads that ran.">
+<link rel="icon" type="image/png" href="../assets/images/dhwani-logo.png?v=2">
+<link rel="apple-touch-icon" href="../assets/images/dhwani-logo.png?v=2">
+<meta property="og:site_name" content="AI Playground — Dhwani RIS">
+<meta property="og:title" content="The Log — Every Thursday, Captured | AI Playground">
+<meta property="og:description" content="Each Thursday's open build room — the threads that ran, the ideas worth taking forward, who carried what next.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://prody-dris.github.io/ai-playground-sessions/program/log.html">
+<title>The Log &mdash; AI Playground</title>
+<link rel="stylesheet" href="../assets/style.css?v=5">
+<style>
+/* Log page — vertical timeline, Resend × Linear */
+.log-hero {
+  margin: 8px 0 36px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--rule);
+}
+.log-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin: 0 0 12px;
+}
+.log-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.8px;
+  color: var(--primary);
+  margin: 0 0 14px;
+}
+.log-hero h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
+.log-hero-sub {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  max-width: 640px;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .log-hero h1 { font-size: 36px; }
+}
+
+/* Timeline rail */
+.log-timeline {
+  position: relative;
+  padding-left: 28px;
+  margin: 0;
+}
+.log-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--rule), var(--rule), transparent);
+}
+
+/* Each weekly entry */
+.log-entry {
+  position: relative;
+  padding: 6px 0 36px;
+}
+.log-entry::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 14px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  border: 2px solid var(--text-light);
+}
+.log-entry.is-current::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(212,132,42,0.16);
+}
+.log-entry.is-curriculum::before { border-color: var(--rule); }
+
+.log-date {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 12px;
+}
+.log-date-main {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: -0.3px;
+}
+.log-date-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  padding: 3px 9px;
+  border-radius: 100px;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid var(--rule);
+}
+.log-date-tag.current {
+  color: var(--accent);
+  background: rgba(212,132,42,0.06);
+  border-color: rgba(212,132,42,0.22);
+}
+.log-date-tag.curriculum {
+  color: var(--text-light);
+  background: transparent;
+  border-style: dashed;
+}
+
+/* Thread cards inside an entry */
+.log-threads {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 4px 0 0;
+}
+.log-thread {
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--text-light);
+  border-radius: 10px;
+  padding: 18px 22px 16px;
+  background: var(--card-bg);
+}
+.log-thread.accent { border-left-color: var(--accent); }
+.log-thread.green  { border-left-color: var(--green); }
+.log-thread.craft  { border-left-color: #5e92b0; }
+
+.log-thread-tag {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 100px;
+  margin-bottom: 8px;
+  color: var(--text-mid);
+  background: rgba(0,0,0,0.04);
+}
+.log-thread.accent .log-thread-tag { color: var(--accent); background: rgba(212,132,42,0.06); }
+.log-thread.green  .log-thread-tag { color: var(--green);  background: rgba(34,139,34,0.06); }
+.log-thread.craft  .log-thread-tag { color: #3b6c87;       background: rgba(94,146,176,0.10); }
+
+.log-thread h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+.log-thread p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-mid);
+  margin: 0 0 6px;
+}
+.log-thread p strong { color: var(--text); }
+.log-thread p em { font-style: italic; }
+.log-thread-builders {
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.log-thread-builders strong { color: var(--text-mid); }
+
+.log-room {
+  margin: 14px 0 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-light);
+  font-style: italic;
+}
+.log-room strong { color: var(--text-mid); font-style: normal; font-weight: 600; }
+
+/* Curriculum row — single-line entries linking to session pages */
+.log-curriculum-line {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.55;
+  margin: 0;
+}
+.log-curriculum-line a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+.log-curriculum-line a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.log-curriculum-line .session-mark {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-right: 4px;
+}
+
+@media (max-width: 640px) {
+  .log-timeline { padding-left: 22px; }
+  .log-entry::before { left: -19px; }
+  .log-date-main { font-size: 19px; }
+  .log-thread h3 { font-size: 19px; }
+}
+
+/* Footer cap */
+.log-cap {
+  position: relative;
+  padding: 30px 0 0;
+  margin-top: 16px;
+}
+.log-cap::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 30px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--text-light);
+  opacity: 0.4;
+}
+.log-cap p {
+  font-size: 13px;
+  color: var(--text-light);
+  margin: 0;
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-header">
+  <img src="../assets/images/dhwani-logo.png?v=2" alt="Dhwani">
+  <span>AI Playground</span>
+  <button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open');document.querySelector('.sidebar-overlay').classList.toggle('open');">&#9776;</button>
+</div>
+<div class="sidebar-overlay" onclick="document.querySelector('.sidebar').classList.remove('open');this.classList.remove('open');"></div>
+
+<aside class="sidebar" data-sidebar="subfolder"></aside>
+
+<div class="main"><div class="content">
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="../index.html">Home</a> / The Log</div>
+</div>
+
+<div class="log-hero">
+  <div class="log-eyebrow">Every Thursday &middot; captured</div>
+  <h1>The <em>Log</em>.</h1>
+  <p class="log-hero-sub">Each Thursday at the AI Playground, in order. The threads that ran, the ideas worth taking forward, who carried what next. Older curriculum sessions roll into the same timeline so the room's whole story stays in one place.</p>
+</div>
+
+<div class="log-timeline">
+
+  <!-- ───── 30 April 2026 ───── -->
+  <article class="log-entry is-current">
+    <div class="log-date">
+      <span class="log-date-main">Thursday, 30 April 2026</span>
+      <span class="log-date-tag current">First open room</span>
+    </div>
+
+    <div class="log-threads">
+      <div class="log-thread accent">
+        <span class="log-thread-tag">Architecture &middot; A2A reframe</span>
+        <h3>Most &ldquo;agents talking&rdquo; problems are routing problems.</h3>
+        <p>We sat down to wire two agents into an A2A protocol. Twenty minutes in, the reframe: we don't actually need agents calling each other. We need <strong>both agents available in any chat</strong> &mdash; tag either, both respond. That's a routing fix, not a protocol fix.</p>
+        <p><em>Take it forward:</em> before reaching for an A2A pattern, ask the cheaper question &mdash; do the agents need to hand off context, or do you just want both in the room?</p>
+        <div class="log-thread-builders"><strong>Nihaan Mohammed</strong> &middot; <strong>Ankit Jangir</strong></div>
+      </div>
+
+      <div class="log-thread green">
+        <span class="log-thread-tag">Product &middot; Ticketing MVP</span>
+        <h3>The PRD <em>is</em> the build.</h3>
+        <p>CLI scaffold up; PRD scope drove every decision. Same lesson as S5 &mdash; once the spec is crisp, the build is cheap. The hour was spent writing the brief, not the code, and that's where it should be spent.</p>
+        <p><em>Take it forward:</em> if you're stuck mid-build with AI, the spec was probably soft. Don't iterate on the code &mdash; go upstream.</p>
+        <div class="log-thread-builders"><strong>Akshat Verma</strong> &middot; <strong>Kashish Talwani</strong></div>
+      </div>
+
+      <div class="log-thread craft">
+        <span class="log-thread-tag">Craft &middot; A generic stack for the product</span>
+        <h3>Every successful build owes a PR back to the stack.</h3>
+        <p>A long sidebar between Ankit Jangir and Ankit Android, on agents and what a <em>generic stack for the product</em> actually looks like. The sharp idea: when AI ships a feature, ask it &mdash; <em>&ldquo;what should change in our stack so the next person doesn't hit what we hit?&rdquo;</em> Push that change back. The stack compounds. The product wouldn't, on its own.</p>
+        <p><em>Take it forward:</em> make stack-improvement a standing thread. After every shipped feature, raise one stack PR &mdash; even a tiny one.</p>
+        <div class="log-thread-builders"><strong>Ankit Jangir</strong> &middot; <strong>Ankit Android</strong></div>
+      </div>
+    </div>
+
+    <p class="log-room"><strong>Also in the room.</strong> Aman Sharma on beneficiary program management. Namandeep with his own thread. Nobody works alone in silence anymore.</p>
+  </article>
+
+  <!-- ───── S6: 23 April ───── -->
+  <article class="log-entry is-curriculum">
+    <div class="log-date">
+      <span class="log-date-main">Thursday, 23 April 2026</span>
+      <span class="log-date-tag curriculum">Session 6 &middot; closer</span>
+    </div>
+    <p class="log-curriculum-line">
+      <span class="session-mark">S6</span>
+      <strong>Of Chaos &amp; Craft.</strong> Aditya's four-layer AI pipeline &mdash; rules, hooks, CI, human gates. Abhinav's Skills Portal and Design Library MCP. Harshdeep on Safe-to-Ship. The session that closed the monologue arc.
+      &nbsp;&rarr; <a href="../sessions/session-6.html">Read S6</a>
+    </p>
+  </article>
+
+  <!-- ───── S5: 16 April ───── -->
+  <article class="log-entry is-curriculum">
+    <div class="log-date">
+      <span class="log-date-main">Thursday, 16 April 2026</span>
+      <span class="log-date-tag curriculum">Session 5</span>
+    </div>
+    <p class="log-curriculum-line">
+      <span class="session-mark">S5</span>
+      <strong>Open Build &amp; Problem-Solving.</strong> Skills, MCP, Plugins, Agents in plain language. Live demos: Ravi's M365 timesheet MCP, Kashish's ATMA Frappe build, Arpita's Welspun Help Center.
+      &nbsp;&rarr; <a href="../sessions/session-5.html">Read S5</a>
+    </p>
+  </article>
+
+  <!-- ───── S4: 7 April ───── -->
+  <article class="log-entry is-curriculum">
+    <div class="log-date">
+      <span class="log-date-main">Tuesday, 7 April 2026</span>
+      <span class="log-date-tag curriculum">Session 4</span>
+    </div>
+    <p class="log-curriculum-line">
+      <span class="session-mark">S4</span>
+      <strong>CLI, Hooks &amp; Maintaining Real Products.</strong> Chat-to-CLI graduation. Hooks and guardrails. Builder spotlights from Aman, Sunita, Sunchay, Akshat in live client work.
+      &nbsp;&rarr; <a href="../sessions/session-4.html">Read S4</a>
+    </p>
+  </article>
+
+  <!-- ───── S3: 26 March ───── -->
+  <article class="log-entry is-curriculum">
+    <div class="log-date">
+      <span class="log-date-main">Thursday, 26 March 2026</span>
+      <span class="log-date-tag curriculum">Session 3</span>
+    </div>
+    <p class="log-curriculum-line">
+      <span class="session-mark">S3</span>
+      <strong>Your AI Knowledge Base &mdash; hands on.</strong> GitHub setup, token management, CLAUDE.md and Security.md in practice. Live case study: IDH dashboard, by Shweta and Samarth.
+      &nbsp;&rarr; <a href="../sessions/session-3.html">Read S3</a>
+    </p>
+  </article>
+
+  <!-- ───── S2: 19 March ───── -->
+  <article class="log-entry is-curriculum">
+    <div class="log-date">
+      <span class="log-date-main">Thursday, 19 March 2026</span>
+      <span class="log-date-tag curriculum">Session 2</span>
+    </div>
+    <p class="log-curriculum-line">
+      <span class="session-mark">S2</span>
+      <strong>GitHub as Your Knowledge Base.</strong> Why GitHub beats folders. Repository basics. CLI introduction. Live dashboard QA with video walkthroughs.
+      &nbsp;&rarr; <a href="../sessions/session-2.html">Read S2</a>
+    </p>
+  </article>
+
+  <!-- ───── S1: 12 March ───── -->
+  <article class="log-entry is-curriculum">
+    <div class="log-date">
+      <span class="log-date-main">Thursday, 12 March 2026</span>
+      <span class="log-date-tag curriculum">Session 1</span>
+    </div>
+    <p class="log-curriculum-line">
+      <span class="session-mark">S1</span>
+      <strong>Vibe Coding &mdash; the how-to guide.</strong> GitHub tokens. CLAUDE.md. Claude Code vs Codex. Better prompts. The first developer-review workflow that lets non-coders ship.
+      &nbsp;&rarr; <a href="../sessions/session-1.html">Read S1</a>
+    </p>
+  </article>
+
+  <!-- ───── S0: 6 March ───── -->
+  <article class="log-entry is-curriculum">
+    <div class="log-date">
+      <span class="log-date-main">Thursday, 6 March 2026</span>
+      <span class="log-date-tag curriculum">Session 0 &middot; start</span>
+    </div>
+    <p class="log-curriculum-line">
+      <span class="session-mark">S0</span>
+      <strong>Introduction &amp; Open Build.</strong> Why AI matters for our work. Tools overview. MD files. The skills concept. Token efficiency. The frame for everything that followed.
+      &nbsp;&rarr; <a href="../sessions/session-0.html">Read S0</a>
+    </p>
+  </article>
+
+  <!-- Cap -->
+  <div class="log-cap">
+    <p>The room is older than this log &mdash; this is just where we started writing it down.</p>
+  </div>
+
+</div>
+
+<div class="main-footer">
+  <div><a href="https://dhwaniris.com">Dhwani RIS</a> &middot; <a href="https://github.com/prody-dris/ai-playground-sessions">Source</a></div>
+  <small>Built by Prody &mdash; an agent managed by Nihaan, Product Team @ DRIS &middot; 2026</small>
+</div>
+
+</div></div>
+<script src="../assets/sidebar.js"></script>
+</body>
+</html>
