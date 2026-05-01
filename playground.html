@@ -377,6 +377,136 @@
   margin: 0;
 }
 
+/* Recap — populated state (3 threads, ideas-first) */
+.pg-recap-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 8px 0 4px;
+}
+.pg-recap-head h2 { margin: 0; }
+.pg-recap-date {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-light);
+}
+.pg-recap-intro {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  margin: 0 0 18px;
+  max-width: 700px;
+}
+
+.pg-recap-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 4px 0 18px;
+}
+.pg-recap-thread {
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--text-light);
+  border-radius: 12px;
+  padding: 22px 24px 20px;
+  background: var(--card-bg);
+}
+.pg-recap-thread.accent { border-left-color: var(--accent); }
+.pg-recap-thread.green  { border-left-color: var(--green); }
+.pg-recap-thread.craft  { border-left-color: #5e92b0; }
+
+.pg-recap-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-bottom: 12px;
+  color: var(--text-mid);
+  background: rgba(0,0,0,0.04);
+  border: 1px solid var(--rule);
+}
+.pg-recap-thread.accent .pg-recap-tag {
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-color: var(--accent-light);
+}
+.pg-recap-thread.green .pg-recap-tag {
+  color: var(--green);
+  background: var(--green-bg);
+  border-color: rgba(26,122,26,0.18);
+}
+.pg-recap-thread.craft .pg-recap-tag {
+  color: #3b6c87;
+  background: rgba(94,146,176,0.10);
+  border-color: rgba(94,146,176,0.32);
+}
+
+.pg-recap-thread h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: -0.3px;
+  line-height: 1.18;
+  margin: 0 0 10px;
+}
+.pg-recap-body {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  margin: 0 0 14px;
+}
+.pg-recap-take {
+  border-top: 1px solid var(--rule);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+.pg-recap-take-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 6px;
+}
+.pg-recap-take p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-mid);
+  margin: 0 0 10px;
+}
+.pg-recap-thread .pg-builders {
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+.pg-recap-room {
+  border-top: 1px dashed rgba(0,0,0,0.12);
+  padding-top: 16px;
+  margin-top: 14px;
+}
+.pg-recap-room-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 6px;
+}
+.pg-recap-room p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text-mid);
+  margin: 0;
+}
+.pg-recap-room strong { color: var(--text-mid); font-weight: 700; }
+
 /* Archive row */
 .pg-archive {
   border-top: 1px solid var(--rule);
@@ -594,13 +724,59 @@
   </div>
 </section>
 
-<!-- THIS WEEK'S RECAP (empty state until post-session) -->
+<!-- THIS WEEK'S RECAP — 30 April 2026 -->
 <section>
   <div class="pg-eyebrow">This week's recap</div>
-  <div class="pg-recap">
-    <div class="pg-recap-eyebrow">Drops by Tuesday</div>
-    <h3>What we cracked, what's still open.</h3>
-    <p>This space updates after Thursday with what each problem actually moved to &mdash; what got built, what got scoped, who's carrying which thread next. It stays here until next Thursday's problems take its place.</p>
+  <div class="pg-recap-head">
+    <h2>What we cracked, what's still open<span>.</span></h2>
+    <div class="pg-recap-date">Thursday, 30 April</div>
+  </div>
+  <p class="pg-recap-intro">Three threads ran the room. Less &ldquo;what happened&rdquo;, more <em>ideas worth taking forward</em> and <em>how we executed</em>. Each card ends with the move to take into your own work.</p>
+
+  <div class="pg-recap-grid">
+
+    <!-- Thread 1 — A2A reframe -->
+    <article class="pg-recap-thread accent">
+      <span class="pg-recap-tag">Architecture &middot; A2A reframe</span>
+      <h3>Most &ldquo;agents talking&rdquo; problems are routing problems.</h3>
+      <p class="pg-recap-body">We sat down to wire two agents into an A2A protocol. Twenty minutes in, the reframe: we don't actually need agents calling each other. We need <strong>both agents available in any chat</strong> &mdash; tag either, both respond, no handoff. That's a routing fix, not a protocol fix. The A2A pattern still has its place; this just wasn't it.</p>
+      <div class="pg-recap-take">
+        <div class="pg-recap-take-label">Take it forward</div>
+        <p>Before reaching for an A2A pattern, ask the cheaper question: do the agents need to hand off context, or do you just want both in the room? If it's the second, a tag-based router gets you there in an afternoon.</p>
+      </div>
+      <div class="pg-builders"><strong>Nihaan Mohammed</strong> &middot; <strong>Ankit Jangir</strong></div>
+    </article>
+
+    <!-- Thread 2 — HRMS Ticketing PRD -->
+    <article class="pg-recap-thread green">
+      <span class="pg-recap-tag">Product &middot; Ticketing MVP</span>
+      <h3>The PRD <em>is</em> the build.</h3>
+      <p class="pg-recap-body">CLI scaffold went up; the PRD scope drove every decision. Same lesson the room already learnt in S5: once the spec is crisp, the build is cheap. The hour was spent writing the brief, not the code &mdash; and that's where it should be spent. The thinnest workable lifecycle &mdash; raise, triage, resolve &mdash; is what's in scope. Everything else parks.</p>
+      <div class="pg-recap-take">
+        <div class="pg-recap-take-label">Take it forward</div>
+        <p>If you're stuck mid-build with AI, the spec was probably soft. Don't iterate on the code &mdash; go upstream. Tighten the PRD until each section is unambiguous, then come back. The build catches up fast.</p>
+      </div>
+      <div class="pg-builders"><strong>Akshat Verma</strong> &middot; <strong>Kashish Talwani</strong></div>
+    </article>
+
+    <!-- Thread 3 — Stack as habit -->
+    <article class="pg-recap-thread craft">
+      <span class="pg-recap-tag">Craft &middot; A generic stack for the product</span>
+      <h3>Every successful build owes a PR back to the stack.</h3>
+      <p class="pg-recap-body">A long sidebar between Ankit Jangir and Ankit Android, on agents and what a <em>generic stack for the product</em> actually looks like. The sharpest idea that came out: when AI ships a feature, don't just close the PR &mdash; ask it: <em>&ldquo;what should change in our stack so the next person doesn't hit what we hit?&rdquo;</em> Push that change back. Skill, hook, rule, doc &mdash; whatever the gap was. The stack compounds. The product wouldn't, on its own.</p>
+      <p class="pg-recap-body" style="margin-top:8px;"><strong>Working <em>on</em> the stack is not separate from working <em>on</em> the product.</strong> It's the multiplier underneath every Thursday from here on.</p>
+      <div class="pg-recap-take">
+        <div class="pg-recap-take-label">Take it forward</div>
+        <p>Make stack-improvement a standing thread. After every shipped feature, raise one stack PR &mdash; even a tiny one. Over a month, the next person's hour starts where yours ended.</p>
+      </div>
+      <div class="pg-builders"><strong>Ankit Jangir</strong> &middot; <strong>Ankit Android</strong></div>
+    </article>
+
+  </div>
+
+  <div class="pg-recap-room">
+    <div class="pg-recap-room-label">Also in the room</div>
+    <p><strong>Aman Sharma</strong> on beneficiary program management. <strong>Namandeep</strong> joined with his own thread. The point of the room: nobody works alone in silence anymore.</p>
   </div>
 </section>
 
