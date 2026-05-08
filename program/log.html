@@ -282,11 +282,55 @@
 
 <div class="log-timeline">
 
-  <!-- ───── 30 April 2026 ───── -->
+  <!-- ───── 7 May 2026 ───── -->
   <article class="log-entry is-current">
     <div class="log-date">
+      <span class="log-date-main">Thursday, 7 May 2026</span>
+      <span class="log-date-tag current">Open room &middot; week 2</span>
+    </div>
+
+    <div class="log-threads">
+      <div class="log-thread craft">
+        <span class="log-thread-tag">Pattern &middot; Advisor mode is native now</span>
+        <h3>Anthropic shipped Opus + Sonnet as one workflow.</h3>
+        <p>The pattern Superpowers introduced &mdash; Opus plans and reviews, Sonnet executes &mdash; is now <strong>built into Claude Code as advisor mode</strong>. Same tab, shared context, configurable in <code>settings.json</code>. Opus runs ideation, spec writing, and output review. Sonnet picks up the spec, ships, hands the diff back. The senior-PM-with-a-developer mental model, with neither side losing context.</p>
+        <p>The trick most people miss: don't fire the advisor on every turn. <strong>Add a custom eval that classifies the task as basic or complex first</strong> &mdash; advisor only kicks in for complex. Simple edits stay one-shot. Saves tokens, keeps friction low, gives you a real plan when stakes are real.</p>
+        <p><em>Take it forward:</em> if you're not using advisor mode, you're leaving the most expensive part of the model on the bench. Turn it on, gate it on complexity, and let Opus do the thinking it was built for.</p>
+        <div class="log-thread-builders"><strong>Nihaan Mohammed</strong> &middot; open to the room</div>
+      </div>
+
+      <div class="log-thread accent">
+        <span class="log-thread-tag">Craft &middot; First real skill, in the open</span>
+        <h3>What actually comes up when you build a skill for a real audience.</h3>
+        <p>Someone in the room was building their first real skill &mdash; not a toy, not a template. Spec'd it for an audience the safety bar matters for, with a real distribution problem. The hour was about <em>the things you only learn by doing it</em>, not what the docs cover.</p>
+        <p>What surfaced &mdash;</p>
+        <p>&bull; <strong>Persona is the spec.</strong> Before the skill body, before the trigger words, the persona configuration shapes what every other field needs to be. Get the persona crisp; the rest writes itself.<br>
+        &bull; <strong>Plugin or skill?</strong> A genuine architecture decision, not a packaging detail. A plugin bundles skills, slash commands, sub-agents and MCP into one install &mdash; cheaper to distribute, harder to maintain. A skill is one file, one job &mdash; cheaper to maintain, harder to distribute alone. The right answer depends on who installs it.<br>
+        &bull; <strong>Distribution shapes the build.</strong> If your audience can't run a CLI, the skill has to ship as a co-pilot package or a lightweight app, not a markdown file. The build doesn't change &mdash; the wrapper does. Plan for the wrapper from day one or you'll rebuild.<br>
+        &bull; <strong>Safety belongs in the spec, not the postscript.</strong> For audiences where harm is possible, the safety parameters &mdash; manipulation, isolation, addiction guardrails &mdash; go into the persona and the skill body, not into a separate disclaimer page. If safety is a layer on top, it gets routed around.</p>
+        <p><em>Take it forward:</em> when you build your first real skill, don't optimise the prompt &mdash; optimise the persona, the distribution wrapper, and the safety bar. Those decisions cost nothing on day one and everything on day ninety.</p>
+        <div class="log-thread-builders">A builder in the room &middot; coached live</div>
+      </div>
+
+      <div class="log-thread green">
+        <span class="log-thread-tag">Tactics &middot; Tiny things that save hours</span>
+        <h3>Three setup tricks the room learned the hard way.</h3>
+        <p>&bull; <strong>Skill edits not reflecting?</strong> Claude Chat stores edits to <code>SKILL.md</code> locally and invisibly. Ask the AI to <em>output the full updated file</em>, then re-upload it directly. Round-trips instead of guessing.<br>
+        &bull; <strong>Context weighting depends on file length.</strong> The room's working assumption is &ldquo;last words weight more.&rdquo; True for long files; less true for short ones. Don't hide the rule that matters at the bottom &mdash; place it where the model will see it regardless of length.<br>
+        &bull; <strong>Sandbox install boundaries.</strong> If your install lands outside the sandbox, you've leaked privilege. Default to scoped install, with a small script to enforce the boundary. <code>sudo</code> is a smell, not a fix.</p>
+        <p><em>Take it forward:</em> the documentation tells you the happy path. The room tells you the friction path. Capture both.</p>
+        <div class="log-thread-builders">Open thread &middot; from the floor</div>
+      </div>
+    </div>
+
+    <p class="log-room"><strong>Also in the room.</strong> HRMS Ticketing kept moving with Akshat &amp; Kashish. Aman pushed Beneficiary Management another step forward. Frappe theme &amp; module-naming work continued in the stack thread. Three pods, one hour.</p>
+  </article>
+
+  <!-- ───── 30 April 2026 ───── -->
+  <article class="log-entry">
+    <div class="log-date">
       <span class="log-date-main">Thursday, 30 April 2026</span>
-      <span class="log-date-tag current">First open room</span>
+      <span class="log-date-tag">First open room</span>
     </div>
 
     <div class="log-threads">
