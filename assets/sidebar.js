@@ -24,7 +24,7 @@
 
     + '<div class="sidebar-section">'
     +   '<a class="sidebar-link" href="' + p + 'index.html"><span class="link-icon">~</span> Home</a>'
-    +   '<a class="sidebar-link" href="' + p + 'playground.html"><span class="link-icon">&#9650;</span> The Playground <span class="badge-new">Live</span></a>'
+    +   '<a class="sidebar-link" href="' + p + 'playground.html"><span class="link-icon">&#9650;</span> The Playground <span class="badge">On hold</span></a>'
     +   '<a class="sidebar-link" href="' + p + 'program/log.html"><span class="link-icon">&#8226;</span> The Log <span class="badge-new">New</span></a>'
     + '</div>'
 
