@@ -37,7 +37,6 @@
     +   '</summary>'
     +   '<div class="sidebar-collapsible-children">'
     +     '<a class="sidebar-link" href="' + p + 'program/curriculum.html"><span class="link-icon">&#9866;</span> All Sessions</a>'
-    +     '<a class="sidebar-link" href="' + p + 'program/recordings.html"><span class="link-icon">&#9654;</span> Recordings</a>'
     +     '<a class="sidebar-link" href="' + p + 'sessions/session-0.html"><span class="link-icon">0</span> Introduction</a>'
     +     '<a class="sidebar-link" href="' + p + 'sessions/session-1.html"><span class="link-icon">1</span> Vibe Coding</a>'
     +     '<a class="sidebar-link" href="' + p + 'sessions/session-2.html"><span class="link-icon">2</span> GitHub Knowledge</a>'
